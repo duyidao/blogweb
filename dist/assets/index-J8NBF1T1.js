@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o,c}from"./index-BqPAdiV-.js";const r={},t={class:"box"};function s(n,_){return o(),c("div",t," hover ")}const i=e(r,[["render",s]]);export{i as default};

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: '/blogweb/',
+  base: './blogweb/',
   server: {
     port: 3001,
   },
