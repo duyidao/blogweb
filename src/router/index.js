@@ -12,10 +12,11 @@ export const routes = generateRoutes(pages, comps)   // 生成路由
 
 const router = createRouter({
     history: createWebHistory(),
+    base: '/blogweb/',
     routes: [
         {
             path: '/blogweb/',
-            redirect: '/blogweb/css'
+            redirect: '/blogweb/home'
         },
         ...routes
     ],
