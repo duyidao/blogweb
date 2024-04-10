@@ -1,6 +1,92 @@
+/* CSS初始化样式文件 */
+:root {
+  --primary-bg: #1976D2;
+  --primary-font: #a5dee5;
+  --primary-border: #607D8B;
+  --primary-info: #757575;
+  --warning-font: #f08a5d;
+  --body-bg: #ffffff;
+}
+
+.dark {
+  --primary-bg: #616161;
+  --primary-font: #dbe2ef;
+  --primary-border: #2196F3;
+  --primary-info: #F5F5F5;
+  --body-bg: #212121;
+}
+
+/* 清除所有元素的内外边距和默认样式 */
 * {
   margin: 0;
   padding: 0;
-  border: 0;
   box-sizing: border-box;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  list-style: none;
+  border: 0;
+}
+
+/* 设置默认字体和颜色 */
+body {
+  font-family: 'Microsoft YaHei', 'Heiti SC', 'tahoma', 'arial', 'Hiragino Sans GB', '宋体', sans-serif;
+  color: var(--primary-font);
+  background-color: var(--body-bg);
+  font-size: 12px;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 图片和视频不超出其容器 */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* 设置链接样式 */
+a {
+  color: #666;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c81623;
+}
+
+/* 设置输入框和按钮样式 */
+input,
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* 设置表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/* 隐藏元素 */
+.hide,
+.none {
+  display: none;
 }
