@@ -11,7 +11,7 @@ export const generateRoutes = (pages, comps) => {
      */
     function addRoute(path, page) {
         const compPath = path.replace('page.js', 'index.vue');
-        path = '/blogweb' + path.replace('../views', '').replace('/page.js', '');
+        path = path.replace('../views', '').replace('/page.js', '');
         const name = path.split('/').filter(Boolean).join('-');
         const route = {
             path,

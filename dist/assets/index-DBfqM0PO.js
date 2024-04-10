@@ -1,0 +1,1 @@
+import{_ as o}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{r as t,o as r,c,a as s,b as n}from"./index-iC9BTT-W.js";const a={},_={class:"box"};function i(d,m){const e=t("router-view");return r(),c("div",_,[s(" js "),n(e)])}const l=o(a,[["render",i]]);export{l as default};

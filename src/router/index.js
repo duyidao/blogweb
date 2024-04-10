@@ -11,12 +11,11 @@ const comps = import.meta.glob('../views/**/index.vue')
 export const routes = generateRoutes(pages, comps)   // 生成路由
 
 const router = createRouter({
-    history: createWebHistory(),
-    base: '/blogweb/',
+    history: createWebHashHistory(),
     routes: [
         {
-            path: '/blogweb/',
-            redirect: '/blogweb/home'
+            path: '/',
+            redirect: '/home'
         },
         ...routes
     ],
