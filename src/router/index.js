@@ -11,7 +11,7 @@ const comps = import.meta.glob('../views/**/index.vue')
 export const routes = generateRoutes(pages, comps)   // 生成路由
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',
