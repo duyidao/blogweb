@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{o,c}from"./index-Cp0ktkv-.js";const t={},r={class:"box"};function s(n,_){return o(),c("div",r," 首页 ")}const i=e(t,[["render",s]]);export{i as default};
