@@ -1,1 +1,0 @@
-import{_ as o,r as t,o as c,c as r,a as s,b as n}from"./index-BoSH3TJW.js";const a={},_={class:"box"};function d(i,f){const e=t("router-view");return c(),r("div",_,[s(" js "),n(e)])}const m=o(a,[["render",d]]);export{m as default};

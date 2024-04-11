@@ -1,8 +1,18 @@
 <script setup>
 const light = ref(true);
 
+const candleFireStyle = ref({
+  height: '0',
+  width: '0'
+})
+
 const changeLightFn = () => {
   light.value = !light.value;
+  setTimeout(() => {
+    candleFireStyle.value.width = light.value ? '0' : '16px'
+    candleFireStyle.value.height = light.value ? '0' : '20px'
+    console.log('candleFireStyle1', candleFireStyle);
+  }, 500);
 };
 </script>
 
@@ -34,8 +44,7 @@ const changeLightFn = () => {
           <div class="candle2_stick"></div>
         </div>
 
-        <div class="candle2_fire"></div>
-        <div class="candle_smoke1"></div>
+        <div ref="candleFire" :style="candleFireStyle" class="candle2_fire"></div>
         <div class="candle_smoke2"></div>
       </div>
 
