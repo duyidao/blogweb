@@ -6,21 +6,29 @@ const candleFireStyle = ref({
   width: '0'
 })
 
+// 切换模式
 const changeLightFn = () => {
   light.value = !light.value;
   setTimeout(() => {
     candleFireStyle.value.width = light.value ? '0' : '16px'
     candleFireStyle.value.height = light.value ? '0' : '20px'
-    console.log('candleFireStyle1', candleFireStyle);
   }, 500);
+
+  // 根组件设置样式
+  if (light.value) {
+    document.documentElement.classList.remove('dark');
+  } else {
+    document.documentElement.classList.add('dark');
+  }
 };
 </script>
 
 <template>
-  <div class="candle" :class="{'light': light, 'dark': !light}" @click.stop="changeLightFn">
+  <div class="candle"
+    :class="{ 'light': light, 'dark': !light }"
+    @click.stop="changeLightFn">
     <div class="warpper">
       <div class="candles">
-
         <!-- 蜡烛1 -->
         <div class="candle1">
           <div class="candle1_body">
@@ -49,6 +57,8 @@ const changeLightFn = () => {
       </div>
 
       <div class="floor"></div>
+
+      <div class="div-corner"></div>
     </div>
   </div>
 </template>

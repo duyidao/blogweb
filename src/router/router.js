@@ -1,4 +1,5 @@
 export const generateRoutes = (pages, comps) => {
+    console.log('pages', pages, comps);
     // 页面数组路由级别排序
     const sortedArray = Object.entries(pages).sort((a, b) => a[1].menuOrder - b[1].menuOrder);
 
@@ -11,7 +12,7 @@ export const generateRoutes = (pages, comps) => {
      */
     function addRoute(path, page) {
         const compPath = path.replace('page.js', 'index.vue');
-        path = '/blogweb' + path.replace('../views', '').replace('/page.js', '');
+        path = '/blogweb/catalogue' + path.replace('../views', '').replace('/page.js', '');
         const name = path.split('/').filter(Boolean).join('-');
         const route = {
             path,

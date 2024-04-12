@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as o}from"./index-kE2roC0i.js";const s={},t={class:"home"};function _(a,n){return c(),o("div",t," 首页 ")}const d=e(s,[["render",_],["__scopeId","data-v-a8525cb8"]]);export{d as default};

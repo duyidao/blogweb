@@ -8,17 +8,32 @@ const pages = import.meta.glob('../views/**/page.js', {
     import: 'default', // 获取默认导出
 })
 const comps = import.meta.glob('../views/**/index.vue')
-export const routes = generateRoutes(pages, comps)   // 生成路由
+const routers = generateRoutes(pages, comps)   // 生成路由
+
+export const routes = [
+    {
+        path: '/blogweb',
+        redirect: '/blogweb/home'
+    },
+    {
+        path: '/blogweb/home',
+        component: () => import('@/views/home/index.vue'),
+        meta: {
+            title: '首页',
+        }
+    },
+    {
+        path: '/blogweb/catalogue',
+        component: () => import('@/views/catalogue/index.vue'),
+        children: [
+            ...routers
+        ]
+    },
+]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: [
-        {
-            path: '/blogweb',
-            redirect: '/blogweb/home'
-        },
-        ...routes
-    ],
+    routes,
 });
 
 // 全局前置导航
