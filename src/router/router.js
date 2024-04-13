@@ -1,5 +1,4 @@
 export const generateRoutes = (pages, comps) => {
-    console.log('pages', pages, comps);
     // 页面数组路由级别排序
     const sortedArray = Object.entries(pages).sort((a, b) => a[1].menuOrder - b[1].menuOrder);
 
@@ -18,10 +17,7 @@ export const generateRoutes = (pages, comps) => {
             path,
             name,
             component: comps[compPath],
-            meta: {
-                title: page.title,
-                menuOrder: page.menuOrder,
-            },
+            meta: page,
             children: [],
         };
 

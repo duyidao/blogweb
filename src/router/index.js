@@ -24,10 +24,22 @@ export const routes = [
     },
     {
         path: '/blogweb/catalogue',
+        redirect: '/blogweb/catalogue/css',
         component: () => import('@/views/catalogue/index.vue'),
         children: [
             ...routers
         ]
+    },
+    {
+        path: '/blogweb/404',
+        name: 'NoPage404',
+        component: () => import('@/views/404/index.vue'), // 404 页面组件
+        hidden: true, // 可选，隐藏该路由
+    },
+    {
+        path: '/:pathMatch(.*)', // 使用正则匹配任意路径
+        redirect: '/blogweb/404', // 重定向到 404 页面
+        hidden: true, // 可选，隐藏该路由
     },
 ]
 

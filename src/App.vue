@@ -1,4 +1,19 @@
 <script setup>
+const screenWidth = ref(document.documentElement.clientWidth || document.body.clientWidth);
+
+onMounted(() => {
+  window.addEventListener('resize', () => {
+    console.log('window.innerWidth', window.innerWidth);
+console.log('document.documentElement.clientWidth', document.documentElement.clientWidth);
+console.log('document.body.clientWidth', document.body.clientWidth);
+    screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth;
+  });
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', () => {
+  });
+});
 </script>
 
 <template>

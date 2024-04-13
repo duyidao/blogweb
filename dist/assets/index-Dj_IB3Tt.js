@@ -1,0 +1,1 @@
+import{_ as o,b as t,o as c,c as s,j as r,d as n}from"./index-bbx5hPPq.js";const a={},_={class:"box"};function d(i,f){const e=t("router-view");return c(),s("div",_,[r(" js "),n(e)])}const m=o(a,[["render",d]]);export{m as default};

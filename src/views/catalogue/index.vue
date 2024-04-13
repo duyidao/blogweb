@@ -7,8 +7,14 @@ const route = useRoute()
 const routeList = ref([])
 
 watch(route, (to, from) => {
-    let arr = routes.find(item => item.path === to.path)
-    routeList.value = arr?.children
+    let arr = routes
+        .find(item => item.path === '/blogweb/catalogue')
+        .children
+        .find(item => to.path.includes(item.path))
+        .children
+        // .filter(item => item.path !== to.path)
+    routeList.value = arr
+    console.log('routeList.value', routeList.value);
 }, {
     immediate: true,
     deep: true,
@@ -30,7 +36,7 @@ watch(route, (to, from) => {
                 <!-- gitee直达 -->
                 <div class="gitee">
                     <div class="card">
-                        <div class="card-face card-front">
+                        <div class="card-face card-front transition-bg">
                             <div class="card-title">Gitee</div>
                             <div class="card-word">前往码云仓库👉</div>
                             <SvgIcon class="card-svg-cat"
@@ -42,20 +48,29 @@ watch(route, (to, from) => {
                                 width="50px"
                                 height="50px" />
                         </div>
-                        <div class="card-face card-back">
+                        <div class="card-face card-back transition-bg">
                             关注我
                         </div>
                     </div>
                 </div>
 
                 <!-- 其他目录列表 -->
-                <div class="list">
-                    <div class="list-title">其他文章</div>
+                <div class="list transition-bg">
+                    <div class="list-title">
+                        <SvgIcon name="time" width="30px" height="30px" />
+                        <span>其他文章</span>
+                    </div>
 
                     <div class="list-info">
-                        <div v-for="(item, index) in 6"
+                        <div v-for="(item, index) in routeList"
                             :key="index"
-                            class="list-item">{{ item }}</div>
+                            class="list-item transition-bg">
+                            <div class="list-item-title">{{ item.meta.title }}</div>
+                            <div class="list-item-info">
+                                <SvgIcon name="article" />
+                                <div>{{ item.meta.info }}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +116,7 @@ watch(route, (to, from) => {
 
                 &:hover {
                     .card {
-                        transform: rotateY(180deg);
+                        transform: rotateY(-180deg);
                     }
                 }
 
@@ -142,7 +157,6 @@ watch(route, (to, from) => {
                                 right: -0.7125rem;
                                 bottom: -0.9125rem;
                                 transform: rotate(-30deg);
-                                fill: var(--normal-word);
                             }
 
                             .card-svg-dog {
@@ -150,7 +164,6 @@ watch(route, (to, from) => {
                                 right: -0.7125rem;
                                 top: -0.9125rem;
                                 transform: rotate(-150deg);
-                                fill: var(--normal-word);
                             }
                         }
 
@@ -167,10 +180,82 @@ watch(route, (to, from) => {
 
             .list {
                 width: 100%;
-                height: 400px;
-                border-radius: 20px;
-                background-color: aqua;
+                height: 30rem;
+                padding: .9375rem .625rem;
+                color: var(--primary-info);
+                border-radius: 1.25rem;
+                border: 1px solid var(--primary-border);
+
+                svg {
+                    fill: var(--primary-info);
+                }
+
+                .list-title {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 3.35rem;
+
+                    span {
+                        margin-left: 1rem;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                    }
+                }
+
+                .list-info {
+                    display: flex;
+                    flex-direction: column;
+                    height: calc(100% - 3.35rem);
+
+                    .list-item {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        width: 100%;
+                        height: calc(100% / 7);
+                        padding: 15px 0 15px 1rem;
+                        margin-bottom: 12px;
+                        border-radius: .9375rem;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--primary-bg);
+                            color: var(--normal-word);
+                            
+                            svg {
+                                fill: var(--normal-word);
+                            }
+                        }
+
+                        .list-item-title {
+                            margin-bottom: .625rem;
+                            font-size: 1.2rem;
+                        }
+
+                        .list-item-info {
+                            display: flex;
+                            align-items: center;
+
+                            div {
+                                margin-left: .5rem;
+                            }
+                        }
+                    }
+                }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .catalogue {
+        .catalogue-content {
+            margin-right: 0;
+        }
+
+        .catalogue-aside {
+            display: none;
         }
     }
 }

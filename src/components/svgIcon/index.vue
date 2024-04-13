@@ -32,4 +32,9 @@ defineProps({
     </svg>
 </template>
 
-<style scoped></style>
+<style scoped>
+svg {
+    transition: fill .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+    fill: var(--normal-word);
+}
+</style>
