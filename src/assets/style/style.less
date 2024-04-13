@@ -7,7 +7,8 @@
   --primary-info: #757575;
   --warning-font: #f08a5d;
   --normal-word: #ffffff;
-  --body-bg: #ffffff;
+  --body-bg: #f1f1f1;
+  --catalogue-bg: #ffffff;
 }
 
 :root.dark {
@@ -16,19 +17,38 @@
   --primary-info: #F5F5F5;
   --normal-word: #cccccc;
   --body-bg: #212121;
+  --catalogue-bg: #323232;
 }
 
-.transition-bg {
-  transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+.transition-color {
+  transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
 }
 
 .ifrname-box {
   width: 100%;
-  background-color: var(--body-bg);
   padding: 1.25rem 1.875rem;
   border-radius: .625rem;
 
-  p, div {
-    color: var(--primary-info);
+  .iframe-box-title {
+    position: relative;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    padding-left: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--primary-border);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: .35rem;
+      height: 1.625rem;
+      border-radius: .0625rem;
+      background-color: var(--primary-border);
+      transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+    }
   }
 }

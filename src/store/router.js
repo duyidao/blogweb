@@ -1,0 +1,1 @@
+export const routeNow = ref({}) // 当前路由信息

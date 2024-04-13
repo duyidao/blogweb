@@ -1,18 +1,16 @@
 <script setup>
 const screenWidth = ref(document.documentElement.clientWidth || document.body.clientWidth);
 
+const resizeFn = () => {
+  screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth;
+}
+
 onMounted(() => {
-  window.addEventListener('resize', () => {
-    console.log('window.innerWidth', window.innerWidth);
-console.log('document.documentElement.clientWidth', document.documentElement.clientWidth);
-console.log('document.body.clientWidth', document.body.clientWidth);
-    screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth;
-  });
+  window.addEventListener('resize', resizeFn);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', () => {
-  });
+  window.removeEventListener('resize', resizeFn);
 });
 </script>
 
@@ -27,8 +25,8 @@ onBeforeUnmount(() => {
 .blog {
   display: flex;
   justify-content: space-between;
-  width: calc(100vw - 25px);
-  height: 200vh;
+  width: 100vw;
+  min-height: 100vh;
   padding: 20px;
 }
 </style>

@@ -1,20 +1,17 @@
 <script setup>
-import { useRoute } from 'vue-router'
 import { routes } from '@/router/index'
-
-const route = useRoute()
+import { routeNow } from '@/store/router.js'
 
 const routeList = ref([])
 
-watch(route, (to, from) => {
+watch(() => routeNow.value, (to, from) => {
     let arr = routes
         .find(item => item.path === '/blogweb/catalogue')
         .children
         .find(item => to.path.includes(item.path))
         .children
-        // .filter(item => item.path !== to.path)
+        .filter(item => item.path !== to.path)
     routeList.value = arr
-    console.log('routeList.value', routeList.value);
 }, {
     immediate: true,
     deep: true,
@@ -23,53 +20,63 @@ watch(route, (to, from) => {
 
 <template>
     <div class="catalogue">
-        <div class="catalogue-content">
-            <router-view></router-view>
-        </div>
+        <div class="catalogue-head"></div>
 
-        <div class="catalogue-aside">
-            <!-- 花朵动画 -->
-            <div class="flower"></div>
+        <div class="catalogue-body">
+            <div class="catalogue-content">
+                <router-view></router-view>
+            </div>
 
-            <!-- 粘性定位 -->
-            <div class="sticky">
-                <!-- gitee直达 -->
-                <div class="gitee">
-                    <div class="card">
-                        <div class="card-face card-front transition-bg">
-                            <div class="card-title">Gitee</div>
-                            <div class="card-word">前往码云仓库👉</div>
-                            <SvgIcon class="card-svg-cat"
-                                name="cat"
-                                width="50px"
-                                height="50px" />
-                            <SvgIcon class="card-svg-dog"
-                                name="dog"
-                                width="50px"
-                                height="50px" />
-                        </div>
-                        <div class="card-face card-back transition-bg">
-                            关注我
-                        </div>
-                    </div>
-                </div>
+            <div v-if="routeNow.menuOrder !== 1"
+                class="catalogue-aside">
+                <!-- 花朵动画 -->
+                <div class="flower"></div>
 
-                <!-- 其他目录列表 -->
-                <div class="list transition-bg">
-                    <div class="list-title">
-                        <SvgIcon name="time" width="30px" height="30px" />
-                        <span>其他文章</span>
-                    </div>
-
-                    <div class="list-info">
-                        <div v-for="(item, index) in routeList"
-                            :key="index"
-                            class="list-item transition-bg">
-                            <div class="list-item-title">{{ item.meta.title }}</div>
-                            <div class="list-item-info">
-                                <SvgIcon name="article" />
-                                <div>{{ item.meta.info }}</div>
+                <!-- 粘性定位 -->
+                <div class="sticky">
+                    <!-- gitee直达 -->
+                    <div class="gitee">
+                        <div class="card">
+                            <div class="card-face card-front transition-color">
+                                <div class="card-title">Gitee</div>
+                                <div class="card-word">前往码云仓库👉</div>
+                                <SvgIcon class="card-svg-cat"
+                                    name="cat"
+                                    width="50px"
+                                    height="50px" />
+                                <SvgIcon class="card-svg-dog"
+                                    name="dog"
+                                    width="50px"
+                                    height="50px" />
                             </div>
+                            <div class="card-face card-back transition-color">
+                                关注我
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 其他目录列表 -->
+                    <div class="list transition-color">
+                        <div class="list-title">
+                            <SvgIcon name="time"
+                                width="30px"
+                                height="30px" />
+                            <span>其他文章</span>
+                        </div>
+
+                        <div class="list-info">
+                            <template v-if="routeList.length > 0">
+                                <div v-for="(item, index) in routeList"
+                                    :key="index"
+                                    class="list-item">
+                                    <div class="list-item-title">{{ item.meta.title }}</div>
+                                    <div class="list-item-info">
+                                        <SvgIcon name="article" />
+                                        <div>{{ item.meta.info }}</div>
+                                    </div>
+                                </div>
+                            </template>
+                            <None text="暂无其他文章，敬请期待更新~" v-else />
                         </div>
                     </div>
                 </div>
@@ -80,6 +87,18 @@ watch(route, (to, from) => {
 
 <style lang="less" scoped>
 .catalogue {
+    width: 100%;
+    height: 100%;
+
+    .catalogue-head {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 1.25rem;
+        background-color: red;
+    }
+}
+
+.catalogue-body {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -88,7 +107,10 @@ watch(route, (to, from) => {
     .catalogue-content {
         flex: 1;
         margin-right: 1.5rem;
-        background-color: red;
+        background-color: var(--catalogue-bg);
+        border-radius: 1.25rem;
+        box-shadow: 0 0 .3125rem #ccc;
+        transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
     }
 
     .catalogue-aside {
@@ -195,6 +217,7 @@ watch(route, (to, from) => {
                     align-items: center;
                     width: 100%;
                     height: 3.35rem;
+                    padding-left: .9375rem;
 
                     span {
                         margin-left: 1rem;
@@ -222,7 +245,7 @@ watch(route, (to, from) => {
                         &:hover {
                             background-color: var(--primary-bg);
                             color: var(--normal-word);
-                            
+
                             svg {
                                 fill: var(--normal-word);
                             }
