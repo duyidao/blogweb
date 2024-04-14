@@ -24,9 +24,12 @@ const changeLightFn = () => {
 </script>
 
 <template>
-  <div class="candle"
+  <div
+    title="切换模式"
+    class="candle"
     :class="{ 'light': light, 'dark': !light }"
-    @click.stop="changeLightFn">
+    @click.stop="changeLightFn"
+  >
     <div class="warpper">
       <div class="candles">
         <!-- 蜡烛1 -->

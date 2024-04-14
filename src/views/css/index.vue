@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="box">
+  <div class="css-box">
     css
     <router-view></router-view>
   </div>

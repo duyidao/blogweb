@@ -1,8 +1,28 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import { routes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
 
+const router = useRouter()
 const routeList = ref([])
+
+function getRandomElementsFromArray(arr, n) {
+    if (n > arr.length) {
+        throw new RangeError("Cannot extract more elements than available in the array.");
+    }
+
+    // Create a copy of the original array to avoid modifying it
+    const shuffledArray = [...arr];
+
+    // Fisher-Yates (Knuth) shuffle algorithm
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+
+    // Return the first n elements from the shuffled array
+    return shuffledArray.slice(0, n);
+}
 
 watch(() => routeNow.value, (to, from) => {
     let arr = routes
@@ -11,11 +31,15 @@ watch(() => routeNow.value, (to, from) => {
         .find(item => to.path.includes(item.path))
         .children
         .filter(item => item.path !== to.path)
-    routeList.value = arr
+    routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr
 }, {
     immediate: true,
     deep: true,
 })
+
+const handleRouter = (item) => {
+    router.push(item.path)
+}
 </script>
 
 <template>
@@ -30,7 +54,9 @@ watch(() => routeNow.value, (to, from) => {
             <div v-if="routeNow.menuOrder !== 1"
                 class="catalogue-aside">
                 <!-- 花朵动画 -->
-                <div class="flower"></div>
+                <div class="flower">
+                    <!-- <window /> -->
+                </div>
 
                 <!-- 粘性定位 -->
                 <div class="sticky">
@@ -68,7 +94,9 @@ watch(() => routeNow.value, (to, from) => {
                             <template v-if="routeList.length > 0">
                                 <div v-for="(item, index) in routeList"
                                     :key="index"
-                                    class="list-item">
+                                    class="list-item"
+                                    @click="handleRouter(item)"
+                                >
                                     <div class="list-item-title">{{ item.meta.title }}</div>
                                     <div class="list-item-info">
                                         <SvgIcon name="article" />
@@ -111,6 +139,7 @@ watch(() => routeNow.value, (to, from) => {
         border-radius: 1.25rem;
         box-shadow: 0 0 .3125rem #ccc;
         transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+        overflow: hidden;
     }
 
     .catalogue-aside {
@@ -120,7 +149,6 @@ watch(() => routeNow.value, (to, from) => {
             width: 100%;
             height: 400px;
             border-radius: 20px;
-            background-color: aqua;
         }
 
         .sticky {
