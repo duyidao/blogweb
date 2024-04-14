@@ -1,5 +1,5 @@
 <script setup>
-const screenWidth = ref(document.documentElement.clientWidth || document.body.clientWidth);
+import { screenWidth } from '@/store/index.js'
 
 const resizeFn = () => {
   screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth;

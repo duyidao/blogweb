@@ -1,0 +1,1 @@
+import{_ as c,o as s,c as o,p as t,k as a,e as _}from"./index-DYkwee5G.js";const d={},n=e=>(t("data-v-3afcb064"),e=e(),a(),e),r={class:"banner"},p=n(()=>_("div",{class:"title"},"前端搬砖人 每天都努力",-1)),i=[p];function f(e,l){return s(),o("div",r,i)}const m=c(d,[["render",f],["__scopeId","data-v-3afcb064"]]);export{m as default};

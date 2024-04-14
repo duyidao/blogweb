@@ -1,1 +1,0 @@
-import{_ as o,e as s,o as c,c as t,q as r,b as n}from"./index-CQZt396E.js";const a={},_={class:"css-box"};function d(i,f){const e=s("router-view");return c(),t("div",_,[r(" css "),n(e)])}const m=o(a,[["render",d]]);export{m as default};

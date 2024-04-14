@@ -6,6 +6,7 @@ import { routeNow } from '@/store/router.js'
 const router = useRouter()
 const routeList = ref([])
 
+// 从数组中筛选出6个数据
 function getRandomElementsFromArray(arr, n) {
     if (n > arr.length) {
         throw new RangeError("Cannot extract more elements than available in the array.");
@@ -37,6 +38,7 @@ watch(() => routeNow.value, (to, from) => {
     deep: true,
 })
 
+// 切换文章
 const handleRouter = (item) => {
     router.push(item.path)
 }
