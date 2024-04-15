@@ -13,19 +13,21 @@ const routers = generateRoutes(pages, comps)   // 生成路由
 export const routes = [
     {
         path: '/blogweb',
-        redirect: '/blogweb/home'
-    },
-    {
-        path: '/blogweb/home',
         component: () => import('@/views/home/index.vue'),
         meta: {
             title: '首页',
         }
     },
     {
-        path: '/blogweb/catalogue',
-        redirect: '/blogweb/catalogue/css',
-        component: () => import('@/views/catalogue/index.vue'),
+        path: '/blogweb/articleList',
+        component: () => import('@/views/articleList/index.vue'),
+        meta: {
+            title: '列表',
+        }
+    },
+    {
+        path: '/blogweb/detail/:name',
+        component: () => import('@/views/detail/index.vue'),
         children: [
             ...routers
         ]

@@ -54,8 +54,8 @@ const handleTypeChange = (params) => {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin-bottom: 1.25rem;
-    padding: 0 1.25rem 1.25rem;
+    margin-bottom: 20px;
+    padding: 0 20px 20px;
     border-bottom: 1px solid var(--primary-bg);
 
     .article-title {
@@ -63,7 +63,7 @@ const handleTypeChange = (params) => {
         display: flex;
         align-items: center;
         height: 40px;
-        font-size: 2rem;
+        font-size: 32px;
         color: var(--catalogue-word);
 
         span {

@@ -123,7 +123,7 @@ const handleRouter = (item) => {
     .catalogue-head {
         width: 100%;
         height: 150px;
-        margin-bottom: 1.25rem;
+        margin-bottom: 20px;
         background-color: red;
     }
 }
@@ -136,16 +136,16 @@ const handleRouter = (item) => {
 
     .catalogue-content {
         flex: 1;
-        margin-right: 1.5rem;
+        margin-right: 24px;
         background-color: var(--catalogue-bg);
-        border-radius: 1.25rem;
-        box-shadow: 0 0 .3125rem #ccc;
+        border-radius: 20px;
+        box-shadow: 0 0 5px #ccc;
         transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
         overflow: hidden;
     }
 
     .catalogue-aside {
-        width: 18.125rem;
+        width: 290px;
 
         .flower {
             width: 100%;
@@ -193,28 +193,28 @@ const handleRouter = (item) => {
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
-                            padding-left: 2rem;
-                            font-size: 2rem;
+                            padding-left: 32px;
+                            font-size: 32px;
 
                             .card-title {
-                                margin-bottom: .5rem;
+                                margin-bottom: 8px;
                             }
 
                             .card-word {
-                                font-size: 1rem;
+                                font-size: 16px;
                             }
 
                             .card-svg-cat {
                                 position: absolute;
-                                right: -0.7125rem;
-                                bottom: -0.9125rem;
+                                right: -11.4px;
+                                bottom: -14.6px;
                                 transform: rotate(-30deg);
                             }
 
                             .card-svg-dog {
                                 position: absolute;
-                                right: -0.7125rem;
-                                top: -0.9125rem;
+                                right: -11.4px;
+                                top: -14.6px;
                                 transform: rotate(-150deg);
                             }
                         }
@@ -232,10 +232,10 @@ const handleRouter = (item) => {
 
             .list {
                 width: 100%;
-                height: 30rem;
-                padding: .9375rem .625rem;
+                height: 480px;
+                padding: 15px 10px;
                 color: var(--primary-info);
-                border-radius: 1.25rem;
+                border-radius: 20px;
                 border: 1px solid var(--primary-border);
 
                 svg {
@@ -246,12 +246,12 @@ const handleRouter = (item) => {
                     display: flex;
                     align-items: center;
                     width: 100%;
-                    height: 3.35rem;
-                    padding-left: .9375rem;
+                    height: 35.6px;
+                    padding-left: 15px;
 
                     span {
-                        margin-left: 1rem;
-                        font-size: 1.5rem;
+                        margin-left: 16px;
+                        font-size: 24px;
                         font-weight: bold;
                     }
                 }
@@ -259,7 +259,7 @@ const handleRouter = (item) => {
                 .list-info {
                     display: flex;
                     flex-direction: column;
-                    height: calc(100% - 3.35rem);
+                    height: calc(100% - 35.6px);
 
                     .list-item {
                         display: flex;
@@ -267,9 +267,9 @@ const handleRouter = (item) => {
                         justify-content: center;
                         width: 100%;
                         height: calc(100% / 7);
-                        padding: 15px 0 15px 1rem;
+                        padding: 15px 0 15px 16px;
                         margin-bottom: 12px;
-                        border-radius: .9375rem;
+                        border-radius: 15px;
                         cursor: pointer;
 
                         &:hover {
@@ -282,8 +282,8 @@ const handleRouter = (item) => {
                         }
 
                         .list-item-title {
-                            margin-bottom: .625rem;
-                            font-size: 1.2rem;
+                            margin-bottom: 10px;
+                            font-size: 1.32px;
                         }
 
                         .list-item-info {
@@ -291,7 +291,7 @@ const handleRouter = (item) => {
                             align-items: center;
 
                             div {
-                                margin-left: .5rem;
+                                margin-left: 8px;
                             }
                         }
                     }

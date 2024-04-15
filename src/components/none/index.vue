@@ -30,8 +30,8 @@ defineProps({
 
     .none-text {
         width: 80%;
-        margin-top: 1.25rem;
-        font-size: 1.25rem;
+        margin-top: 20px;
+        font-size: 20px;
         color: var(--primary-info);
         text-align: center;
     }

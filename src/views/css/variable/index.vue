@@ -18,8 +18,8 @@ onMounted(() => {
 <style lang="less" scoped>
 .setProperty-box {
     width: 20rem;
-    height: 6.25rem;
-    margin: 6.25rem auto;
+    height: 100px;
+    margin: 100px auto;
     border: 1px solid #000;
 
     .item {

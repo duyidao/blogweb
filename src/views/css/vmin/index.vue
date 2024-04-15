@@ -12,7 +12,7 @@
 
 <style lang="less" scoped>
 .box {
-  padding: 1.25rem;
+  padding: 20px;
 
   img:first-child {
     display: block;

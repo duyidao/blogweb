@@ -11,7 +11,7 @@
   .banner {
     width: 500px;
     height: 250px;
-    margin: 6.25rem auto;
+    margin: 100px auto;
     text-align: center;
     line-height: 250px;
     background-image: linear-gradient(

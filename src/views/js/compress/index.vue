@@ -129,7 +129,7 @@ const setImgFileEmptyFn = () => {
 .box {
   display: flex;
   justify-content: space-between;
-  margin-top: .9375rem;
+  margin-top: 15px;
 
   img {
     display: inline-block;

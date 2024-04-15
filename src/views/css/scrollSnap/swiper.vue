@@ -11,7 +11,7 @@
 .box {
     display: flex;
     width: 100%;
-    height: 12.5rem;
+    height: 128px;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

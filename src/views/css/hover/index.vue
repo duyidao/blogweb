@@ -177,11 +177,11 @@
       }
 
       ul {
-        padding-left: .625rem;
+        padding-left: 10px;
 
         li {
           font-size: .875rem;
-          margin-bottom: .625rem;
+          margin-bottom: 10px;
         }
       }
     }

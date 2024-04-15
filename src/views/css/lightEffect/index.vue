@@ -25,13 +25,13 @@
 
 .box {
     width: 100%;
-    height: 6.25rem;
+    height: 100px;
     background-color: #000;
     text-align: center;
-    line-height: 6.25rem;
-    font-size: 2rem;
+    line-height: 100px;
+    font-size: 32px;
     font-weight: bold;
-    letter-spacing: .625rem;
+    letter-spacing: 10px;
 
     span {
         animation: spread 1s linear infinite alternate;
