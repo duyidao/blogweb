@@ -191,15 +191,15 @@ const handleRouter = (item) => {
 
                             .card-svg-cat {
                                 position: absolute;
-                                right: -11.4px;
-                                bottom: -14.6px;
+                                right: -3px;
+                                bottom: -7px;
                                 transform: rotate(-30deg);
                             }
 
                             .card-svg-dog {
                                 position: absolute;
-                                right: -11.4px;
-                                top: -14.6px;
+                                right: -3px;
+                                top: -7px;
                                 transform: rotate(-150deg);
                             }
                         }
@@ -303,6 +303,30 @@ const handleRouter = (item) => {
         .catalogue-aside {
             display: none;
         }
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .catalogue {
+        .catalogue-body {
+            .catalogue-aside {
+                width: 200px;
+                font-size: 18px !important;
+
+                .card-word {
+                    font-size: 12px !important;
+                }
+
+                .list-item-title, .card-back {
+                    font-size: 16px !important;
+                }
+
+                .list-item-content {
+                    font-size: 12px !important;
+                }
+            }
+        }
+
     }
 }
 </style>

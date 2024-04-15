@@ -147,6 +147,63 @@ const articleItemArr = ref([])
       }
     }
   }
+
+  .article-item-img {
+    display: flex;
+    flex-wrap: wrap;
+
+    .article-item {
+      width: 30%;
+      margin-right: 35px;
+      box-shadow: 0px 0px 3px var(--primary-border);
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      .article-item-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+        }
+
+        .content {
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 150px;
+
+          span {
+            font-size: 14px;
+            color: var(--primary-info);
+
+            &.content-title {
+              font-size: 18px;
+              height: 25px;
+              font-weight: bold;
+            }
+
+            &.content-tag {
+              height: 20px;
+              line-height: 20px;
+              text-align: right;
+              padding-right: 10px;
+              color: var(--catalogue-word);
+            }
+
+            &.content-info {
+              flex: 1;
+              margin: 12px 0;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .article-item-show {
