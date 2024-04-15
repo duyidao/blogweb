@@ -17,14 +17,14 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .setProperty-box {
-    width: 20rem;
+    width: 320px;
     height: 100px;
     margin: 100px auto;
     border: 1px solid #000;
 
     .item {
-        width: 1.875rem;
-        height: 1.875rem;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         background-color: red;
         animation: move 3s linear infinite;

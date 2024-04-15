@@ -11,7 +11,7 @@
   "dependencies": {
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
-    "nprogress": "^0.2.0",
+    "postcss-pxtorem": "^6.1.0",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vue": "^3.4.21",

@@ -26,18 +26,23 @@
   transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
 }
 
+.transition-border {
+  transition: border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+}
+
 .ifrname-box {
   width: 100%;
-  padding: 20px 1.875rem;
+  padding: 20px 15px;
   border-radius: 10px;
 
   .iframe-box-title {
     position: relative;
-    height: 3.125rem;
-    line-height: 3.125rem;
-    padding-left: 1.32px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
     margin: 20px 0;
     font-size: 20px;
+    font-weight: bold;
     border-bottom: 1px solid var(--primary-border);
     
     &::before {
@@ -46,15 +51,15 @@
       top: 50%;
       left: 0;
       transform: translateY(-50%);
-      width: 5.6px;
-      height: 110px;
-      border-radius: .0625rem;
+      width: 8px;
+      height: 30px;
+      border-radius: 4px;
       background-color: var(--primary-border);
       transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
     }
 
     .iframe-box-title-small {
-      font-size: .875rem;
+      font-size: 14px;
       margin-left: 10px;
     }
   }

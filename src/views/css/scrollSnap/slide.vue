@@ -10,7 +10,7 @@
 <style lang="less" scoped>
 .box {
     width: 100%;
-    height: 20rem;
+    height: 320px;
     overflow-y: scroll;
     scroll-snap-type: y proximity;
     scroll-behavior: smooth;
@@ -25,7 +25,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 20rem;
+        height: 320px;
         background-color: yellowgreen;
         color: #fff;
         font-size: 40px;

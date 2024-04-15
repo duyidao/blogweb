@@ -11,8 +11,8 @@
 
 <style lang="less" scoped>
 .box {
-    width: 10rem;
-    height: 10rem;
+    width: 16px;
+    height: 16px;
 
     img {
         width: 100%;

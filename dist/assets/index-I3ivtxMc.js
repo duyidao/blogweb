@@ -1,1 +1,0 @@
-import{_ as o,d as t,o as s,c,q as r,a as n}from"./index-DYkwee5G.js";const a={},_={class:"js-box"};function d(i,f){const e=t("router-view");return s(),c("div",_,[r(" js "),n(e)])}const m=o(a,[["render",d]]);export{m as default};

@@ -14,8 +14,8 @@
 <style lang="less" scoped>
 .box {
     position: relative;
-    width: 10rem;
-    height: 10rem;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 
     img {

@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-import {generateRoutes} from './router.js';
-import {beforeEachCallback, afterEachCallback} from './guards.js';
+import {generateRoutesFn} from './router.js';
+import {beforeEachCallback} from './guards.js';
 
 // 获取所有page.js文件配置
 const pages = import.meta.glob('../views/**/page.js', {
@@ -8,7 +8,7 @@ const pages = import.meta.glob('../views/**/page.js', {
     import: 'default', // 获取默认导出
 })
 const comps = import.meta.glob('../views/**/index.vue')
-const routers = generateRoutes(pages, comps)   // 生成路由
+export const generateRoutes = generateRoutesFn(pages, comps)   // 生成路由
 
 export const routes = [
     {
@@ -19,17 +19,18 @@ export const routes = [
         }
     },
     {
-        path: '/blogweb/articleList',
+        path: '/blogweb/articleList/:type',
         component: () => import('@/views/articleList/index.vue'),
         meta: {
             title: '列表',
         }
     },
     {
-        path: '/blogweb/detail/:name',
+        path: '/blogweb/detail/:type/:name',
+        name: 'detail',
         component: () => import('@/views/detail/index.vue'),
         children: [
-            ...routers
+            ...generateRoutes
         ]
     },
     {
@@ -52,8 +53,5 @@ const router = createRouter({
 
 // 全局前置导航
 router.beforeEach(beforeEachCallback);
-
-// 全局后置
-router.afterEach(afterEachCallback);
 
 export default router;

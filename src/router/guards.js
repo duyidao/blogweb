@@ -3,20 +3,14 @@ import { routeNow } from '@/store/router.js'
 /**
  * @file router guards
  */
-import NProgress from 'nprogress';
-
 const beforeEachCallback = async (to, from, next) => {
-    NProgress.start();
     routeNow.value = {
-        path: to.path,
-        menuOrder: to.meta.menuOrder,
+        path: to.path, // 完整路径
+        menuOrder: to.meta.menuOrder, // 菜单排序
+        rootRoute: to.path.split('/').slice(0, 3).join('/'), // 根路由
+        articleType: to.path.split('/')[3] // 文章类型
     };
     next();
-    NProgress.done();
 };
 
-const afterEachCallback = () => {
-    NProgress.done();
-};
-
-export {beforeEachCallback, afterEachCallback};
+export {beforeEachCallback};

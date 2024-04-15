@@ -1,6 +1,5 @@
 <script setup>
-import { useRouter } from 'vue-router'
-import { routes } from '@/router/index'
+import { generateRoutes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
 
 const router = useRouter()
@@ -26,12 +25,7 @@ function getRandomElementsFromArray(arr, n) {
 }
 
 watch(() => routeNow.value, (to, from) => {
-    let arr = routes
-        .find(item => item.path === '/blogweb/catalogue')
-        .children
-        .find(item => to.path.includes(item.path))
-        .children
-        .filter(item => item.path !== to.path)
+    let arr = generateRoutes.filter(item => item.path.includes(to.rootRoute + '/' + to.articleType))
     routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr
 }, {
     immediate: true,
@@ -46,15 +40,12 @@ const handleRouter = (item) => {
 
 <template>
     <div class="catalogue">
-        <div class="catalogue-head"></div>
-
         <div class="catalogue-body">
             <div class="catalogue-content">
                 <router-view></router-view>
             </div>
 
-            <div v-if="routeNow.menuOrder !== 1"
-                class="catalogue-aside">
+            <div class="catalogue-aside">
                 <!-- 花朵动画 -->
                 <div class="flower">
                     <!-- <window /> -->
@@ -84,12 +75,12 @@ const handleRouter = (item) => {
                     </div>
 
                     <!-- 其他目录列表 -->
-                    <div class="list transition-color">
+                    <div class="list transition-border">
                         <div class="list-title">
                             <SvgIcon name="time"
                                 width="30px"
                                 height="30px" />
-                            <span>其他文章</span>
+                            <span class="transition-color">其他文章</span>
                         </div>
 
                         <div class="list-info">
@@ -97,16 +88,16 @@ const handleRouter = (item) => {
                                 <div v-for="(item, index) in routeList"
                                     :key="index"
                                     class="list-item"
-                                    @click="handleRouter(item)"
-                                >
+                                    @click="handleRouter(item)">
                                     <div class="list-item-title">{{ item.meta.title }}</div>
                                     <div class="list-item-info">
                                         <SvgIcon name="article" />
-                                        <div>{{ item.meta.info }}</div>
+                                        <div class="list-item-content">{{ item.meta.info }}</div>
                                     </div>
                                 </div>
                             </template>
-                            <None text="暂无其他文章，敬请期待更新~" v-else />
+                            <None text="暂无其他文章，敬请期待更新~"
+                                v-else />
                         </div>
                     </div>
                 </div>
@@ -119,13 +110,7 @@ const handleRouter = (item) => {
 .catalogue {
     width: 100%;
     height: 100%;
-
-    .catalogue-head {
-        width: 100%;
-        height: 150px;
-        margin-bottom: 20px;
-        background-color: red;
-    }
+    padding-top: 180px;
 }
 
 .catalogue-body {
@@ -248,6 +233,7 @@ const handleRouter = (item) => {
                     width: 100%;
                     height: 35.6px;
                     padding-left: 15px;
+                    margin-bottom: 10px;
 
                     span {
                         margin-left: 16px;
@@ -259,7 +245,7 @@ const handleRouter = (item) => {
                 .list-info {
                     display: flex;
                     flex-direction: column;
-                    height: calc(100% - 35.6px);
+                    height: calc(100% - 40px);
 
                     .list-item {
                         display: flex;
@@ -271,19 +257,26 @@ const handleRouter = (item) => {
                         margin-bottom: 12px;
                         border-radius: 15px;
                         cursor: pointer;
+                        transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
 
                         &:hover {
                             background-color: var(--primary-bg);
                             color: var(--normal-word);
+                            transition: none;
 
                             svg {
                                 fill: var(--normal-word);
+                                transition: none;
                             }
                         }
 
                         .list-item-title {
                             margin-bottom: 10px;
-                            font-size: 1.32px;
+                            font-size: 16px;
                         }
 
                         .list-item-info {

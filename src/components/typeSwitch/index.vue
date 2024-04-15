@@ -53,9 +53,8 @@ const handleTypeChange = (params) => {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100px;
     margin-bottom: 20px;
-    padding: 0 20px 20px;
     border-bottom: 1px solid var(--primary-bg);
 
     .article-title {
@@ -106,9 +105,6 @@ const handleTypeChange = (params) => {
 
 @media screen and (max-width: 768px) {
     .article-type {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-
         .article-change {
             position: relative;
             display: block;

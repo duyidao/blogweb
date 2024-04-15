@@ -157,7 +157,7 @@
   }
 
   > div {
-    margin-bottom: 1.5625rem;
+    margin-bottom: 16px;
 
     &.link {
       a:link {
@@ -180,7 +180,7 @@
         padding-left: 10px;
 
         li {
-          font-size: .875rem;
+          font-size: 16px;
           margin-bottom: 10px;
         }
       }
@@ -206,7 +206,7 @@
       }
 
       li {
-        margin-bottom: 3.125rem;
+        margin-bottom: 40px;
 
         &:last-child {
           margin-bottom: 0;
@@ -223,7 +223,10 @@
       }
 
       input {
-        margin-right: 10px ;
+        margin-right: 10px;
+        max-width: 300px;
+        max-height: 40px;
+        font-size: 14px;
 
         &:checked {
           color: red ;
@@ -273,7 +276,7 @@
       .title-2 {
         font-size: 16px;
         font-weight: bold;
-        margin-bottom: .8125rem;
+        margin-bottom: 14px;
       }
 
       .box-where,
