@@ -33,11 +33,6 @@ watch(() => routeNow.value, (to, from) => {
     immediate: true,
     deep: true,
 })
-
-// 切换文章
-const handleRouter = (item) => {
-    router.push('/blogweb/detail/' + item.path)
-}
 </script>
 
 <template>
@@ -90,10 +85,10 @@ const handleRouter = (item) => {
                                 <div v-for="(item, index) in routeList"
                                     :key="index"
                                     class="list-item"
-                                    @click="handleRouter(item)">
+                                    @click="$goRouter(item, '/blogweb/detail/')">
                                     <div class="list-item-title">{{ item.meta.title }}</div>
                                     <div class="list-item-info">
-                                        <SvgIcon name="article" />
+                                        <SvgIcon name="article" width="16px" height="16px" />
                                         <div class="list-item-content">{{ item.meta.info }}</div>
                                     </div>
                                 </div>
@@ -255,7 +250,7 @@ const handleRouter = (item) => {
                         justify-content: center;
                         width: 100%;
                         height: calc(100% / 7);
-                        padding: 15px 0 15px 8px;
+                        padding: 15px 0 15px 15px;
                         margin-bottom: 12px;
                         border-radius: 15px;
                         cursor: pointer;
@@ -286,13 +281,13 @@ const handleRouter = (item) => {
                             align-items: center;
 
                             div {
-                                display:-webkit-box;
+                                display: -webkit-box;
                                 width: 100%;
                                 margin-left: 8px;
-                                word-break:break-all;
-                                -webkit-line-clamp:2;
-                                -webkit-box-orient:vertical;
-                                overflow:hidden;
+                                word-break: break-all;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
                             }
                         }
                     }
@@ -304,37 +299,20 @@ const handleRouter = (item) => {
 
 @media screen and (max-width: 1200px) {
     .catalogue {
-        .catalogue-content {
-            margin-right: 0;
-        }
+        padding-top: 11.25rem;
 
-        .catalogue-aside {
-            display: none;
-        }
-    }
-}
-
-@media screen and (min-width: 1201px) {
-    .catalogue {
         .catalogue-body {
+
+            .catalogue-content {
+                margin-right: 0;
+                border-radius: 1.25rem;
+                box-shadow: 0 0 .3125rem #ccc;
+            }
+
             .catalogue-aside {
-                width: 200px;
-                font-size: 18px !important;
-
-                .card-word {
-                    font-size: 12px !important;
-                }
-
-                .list-item-title, .card-back {
-                    font-size: 16px !important;
-                }
-
-                .list-item-content {
-                    font-size: 12px !important;
-                }
+                display: none;
             }
         }
-
     }
 }
 </style>

@@ -10,15 +10,13 @@ defineProps({
     }
 })
 
-const width = computed(() => screenWidth.value)
-
 const handleTypeChange = (params) => {
-
-    console.log('width.value', width.value);
-    console.log('params', params);
-    if (width.value > 768) type.value = params
+    if (screenWidth.value > 768) type.value = params
     else type.value = type.value === 'list' ? 'img' : 'list'
 }
+
+const width = computed(() => screenWidth.value > 768 ? '20px' : 20)
+const height = computed(() => screenWidth.value > 768 ? '20px' : 20)
 </script>
 
 <template>
@@ -32,15 +30,15 @@ const handleTypeChange = (params) => {
             <div :class="{ 'article-change-item': true, 'active': type === 'list' }"
                 class="transition-color"
                 @click.stop="handleTypeChange('list')">
-                <SvgIcon width="15px"
-                    height="15px"
+                <SvgIcon :width="width"
+                    :height="height"
                     name="list-type" />
             </div>
             <div :class="{ 'article-change-item': true, 'active': type === 'img' }"
                 class="transition-color"
                 @click.stop="handleTypeChange('img')">
-                <SvgIcon width="15px"
-                    height="15px"
+                <SvgIcon :width="width"
+                    :height="height"
                     name="img-type" />
             </div>
         </div>
@@ -105,11 +103,19 @@ const handleTypeChange = (params) => {
 
 @media screen and (max-width: 768px) {
     .article-type {
+        height: 5.5rem;
+        margin-bottom: 1.25rem;
+        border-bottom: .0625rem solid var(--primary-bg);
+
+        .article-title {
+            font-size: 2.2rem;
+        }
+
         .article-change {
             position: relative;
             display: block;
-            width: 40px;
-            height: 40px;
+            width: 4rem;
+            height: 4rem;
 
             .article-change-item {
                 display: flex;
@@ -120,7 +126,7 @@ const handleTypeChange = (params) => {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                padding: 10px;
+                padding: .625rem;
                 z-index: 1;
 
                 &.active {
@@ -129,7 +135,7 @@ const handleTypeChange = (params) => {
 
                 &:first-child,
                 &:last-child {
-                    border-radius: 20px !important;
+                    border-radius: 50% !important;
                     margin: 0 !important;
                     padding: 0 !important;
                 }

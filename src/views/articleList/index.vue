@@ -63,15 +63,15 @@ const articleItemArr = ref([])
     <div :class="{ 'article-item-list': type === 'list', 'article-item-img': type === 'img' }">
       <div v-for="(item, index) in routeList"
         :key="index"
-        class="article-item">
+        class="article-item transition-color">
         <router-link class="article-item-link"
           :to="'/blogweb/detail/' + item.path">
           <img src="../../assets/img/css.jpg"
             alt="">
           <div class="content">
-            <span class="content-title">{{ item.meta.title }}</span>
-            <span class="content-info">{{ item.meta.info }}</span>
-            <span class="content-tag">效率</span>
+            <span class="content-title transition-color">{{ item.meta.title }}</span>
+            <span class="content-info transition-color">{{ item.meta.info }}</span>
+            <span class="content-tag transition-color">效率</span>
           </div>
         </router-link>
       </div>
@@ -84,10 +84,6 @@ const articleItemArr = ref([])
   width: 100%;
   padding: 100px 10px 20px;
 
-  &:nth-child(2) {
-    min-height: calc(100vh - 352px);
-  }
-
   .article-item {
     animation: slide-in .6s .4s backwards;
     will-change: transform;
@@ -96,6 +92,10 @@ const articleItemArr = ref([])
     border-radius: 10px;
     background-color: var(--catalogue-bg);
     margin-bottom: 16px;
+
+    &:hover {
+      transform: translate(0, -3px);
+    }
   }
 
   .article-item-list {
@@ -154,7 +154,7 @@ const articleItemArr = ref([])
 
     .article-item {
       width: 30%;
-      margin-right: 35px;
+      margin-right: 5%;
       box-shadow: 0px 0px 3px var(--primary-border);
 
       &:nth-child(3n) {
@@ -165,6 +165,7 @@ const articleItemArr = ref([])
         display: block;
         width: 100%;
         height: 100%;
+
         img {
           width: 100%;
         }
@@ -198,6 +199,155 @@ const articleItemArr = ref([])
               flex: 1;
               margin: 12px 0;
               font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .article-list {
+    padding: 5.5rem .625rem 1.25rem;
+
+    .article-item-list {
+      .article-item-link {
+        img {
+          width: 18rem;
+          border-radius: .625rem 0 0 .625rem;
+          margin-right: .9375rem;
+        }
+
+        .content {
+          padding: .75rem 0;
+
+          span {
+            font-size: .875rem;
+
+            &.content-title {
+              font-size: 1.375rem;
+              height: 1.5625rem;
+            }
+
+            &.content-tag {
+              height: 1.25rem;
+              line-height: 1.25rem;
+              padding-right: .625rem;
+            }
+
+            &.content-info {
+              margin: .9375rem 0;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    .article-item-img {
+
+      .article-item {
+        margin-right: 2rem;
+        box-shadow: 0px 0px .1875rem var(--primary-border);
+
+        .article-item-link {
+          .content {
+            padding: .625rem;
+            min-height: 9.375rem;
+
+            span {
+              font-size: .875rem;
+
+              &.content-title {
+                font-size: 1.125rem;
+                height: 1.5625rem;
+              }
+
+              &.content-tag {
+                height: 1.25rem;
+                line-height: 1.25rem;
+                padding-right: .625rem;
+              }
+
+              &.content-info {
+                margin: .75rem 0;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .article-list {
+
+    .article-item-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .article-item {
+        width: 49%;
+      }
+    }
+
+    .article-item-img {
+
+      .article-item {
+        width: 23.1%;
+        margin-right: 2.5%;
+        box-shadow: 0px 0px 3px var(--primary-border);
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+        &:nth-child(3n) {
+          margin-right: 2.5%;
+        }
+
+        .article-item-link {
+          display: block;
+          width: 100%;
+          height: 100%;
+
+          img {
+            width: 100%;
+          }
+
+          .content {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 150px;
+
+            span {
+              font-size: 14px;
+              color: var(--primary-info);
+
+              &.content-title {
+                font-size: 18px;
+                height: 25px;
+                font-weight: bold;
+              }
+
+              &.content-tag {
+                height: 20px;
+                line-height: 20px;
+                text-align: right;
+                padding-right: 10px;
+                color: var(--catalogue-word);
+              }
+
+              &.content-info {
+                flex: 1;
+                margin: 12px 0;
+                font-size: 16px;
+              }
             }
           }
         }

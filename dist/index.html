@@ -1,19 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon"  href="/blogweb/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>刀刀博客效果</title>
-    <script type="module" crossorigin src="/blogweb/assets/index-6raQACl6.js"></script>
-    <link rel="stylesheet" crossorigin href="/blogweb/assets/index-Dm7-Pzzh.css">
-  </head>
-  <body>
-    <div id="app"></div>
-    <script>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+    href="/blogweb/favicon.ico" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+  <title>刀刀博客</title>
+  <script type="module" crossorigin src="/blogweb/assets/index-DSd1-1Q-.js"></script>
+  <link rel="stylesheet" crossorigin href="/blogweb/assets/index-D_Wq43fv.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    const getFontSize = () => {
       let width = document.body.clientWidth;
-      let fontSize = (width / 750) * 100
+      let fontSize = (width / 750) * 16
       document.documentElement.style.fontSize = fontSize + "px";
-    </script>
-  </body>
+      document.documentElement.style.setProperty('--width', width)
+    }
+    getFontSize()
+    window.addEventListener('resize', getFontSize)
+  </script>
+</body>
+
 </html>

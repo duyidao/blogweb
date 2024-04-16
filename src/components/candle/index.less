@@ -259,6 +259,99 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .candle {
+        top: -1.25rem;
+        width: 8rem;
+        height: 7.25rem;
+    
+        .warpper {
+            .floor {
+                height: .5625rem;
+                box-shadow: 0px .125rem .3125rem #111;
+            }
+    
+            .candles {
+                height: calc(100% - 10% - .5625rem);
+    
+                .candle1 {
+                    width: 2.1875rem;
+                    border: .1875rem solid #673C63;
+                    border-radius: .1875rem;
+                    box-shadow: -0.125rem 0 0 #95c6f2 inset;
+    
+                    .candle1_eyes {
+                        height: 1.875rem;
+    
+                        .candle1_eyes-left {
+                            width: .3125rem;
+                            height: .3125rem;
+                        }
+    
+                        .candle1_eyes-right {
+                            width: .3125rem;
+                            height: .3125rem;
+                        }
+                    }
+    
+                    .candle1_mouth {
+                        border-radius: 1.25rem;
+                    }
+    
+                    .candle1_stick {
+                        width: 3px;
+                        height: .9375rem;
+                        border-radius: 8px;
+                    }
+                }
+    
+                .candle2 {
+                    width: 2.625rem;
+                    border: .1875rem solid #673C63;
+                    border-radius: .1875rem;
+                    box-shadow: -0.125rem 0px 0px #95c6f2 inset;
+    
+                    .candle2_eyes {
+                        width: 2.1875rem;
+                        height: 1.875rem;
+    
+                        .candle2_eyes-left {
+                            width: .3125rem;
+                            height: .3125rem;
+                        }
+    
+                        .candle2_eyes-right {
+                            width: .3125rem;
+                            height: .3125rem;
+                        }
+                    }
+    
+                    .candle2_stick {
+                        width: .1875rem;
+                        height: .75rem;
+                        border-radius: .5rem;
+                    }
+                }
+    
+                .candle_smoke2 {
+                    border-radius: .625rem;
+                }
+            }
+    
+            .div-corner {
+                bottom: -0.625rem;
+                width: 6.25rem;
+                /* 宽度 */
+                height: 1.875rem;
+                /* 高度 */
+                border-right: .3125rem solid #673C63;
+                border-top: .3125rem solid #673C63;
+                border-radius: 0 3.125rem 0 0;
+            }
+        }
+    }
+}
+
 
 @keyframes blink-eyes {
 

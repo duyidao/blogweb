@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const {width, height} = defineProps({
     //xlink:href属性值的前缀
     prefix: {
         type: String,
@@ -14,19 +14,24 @@ defineProps({
     },
     //svg宽度
     width: {
-        type: String,
-        default: '16px'
+        type: [String, Number],
+        default: '16'
     },
     //svg高度
     height: {
-        type: String,
-        default: '16px'
+        type: [String, Number],
+        default: '16'
     }
 })
+
+const svgRef = ref(null)
+
+const widthUnit = computed(() => typeof width === 'string' && width.includes('px') ? width : width / 16 + 'rem')
+const heightUnit = computed(() => typeof height === 'string' && height.includes('px') ? height : height / 16 + 'rem')
 </script>
 
 <template>
-    <svg :style="{ width: width, height: height }">
+    <svg :style="{'width': widthUnit, 'height': heightUnit}" ref="svgRef">
         <use :xlink:href="prefix + name"
             :fill="color"></use>
     </svg>

@@ -29,4 +29,11 @@ onBeforeUnmount(() => {
   min-height: 100vh;
   padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .blog {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+}
 </style>
