@@ -25,7 +25,7 @@ function getRandomElementsFromArray(arr, n) {
 }
 
 watch(() => routeNow.value, (to, from) => {
-    let arr = generateRoutes.filter(item => item.path.includes(to.rootRoute + '/' + to.articleType))
+    let arr = generateRoutes.filter(item => item.path.includes(to.articleType))
     routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr
 }, {
     immediate: true,
@@ -34,7 +34,7 @@ watch(() => routeNow.value, (to, from) => {
 
 // 切换文章
 const handleRouter = (item) => {
-    router.push(item.path)
+    router.push('/blogweb/detail/' + item.path)
 }
 </script>
 

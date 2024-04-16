@@ -26,7 +26,7 @@ export const routes = [
         }
     },
     {
-        path: '/blogweb/detail/:type/:name',
+        path: '/blogweb/detail',
         name: 'detail',
         component: () => import('@/views/detail/index.vue'),
         children: [

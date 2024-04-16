@@ -11,8 +11,8 @@
 <style lang="less" scoped>
 .box {
     position: relative;
-    width: 320px;
-    height: 16px;
+    width: 250px;
+    height: 100px;
     background: url(../../../assets/img/cat.png) no-repeat center 100%/100%;
 
     p.word {
@@ -22,7 +22,7 @@
         width: 100%;
         color: #fff !important;
         font-size: 30px;
-        line-height: 16px;
+        line-height: 100px;
         animation: fall 3s infinite;
     }
 }

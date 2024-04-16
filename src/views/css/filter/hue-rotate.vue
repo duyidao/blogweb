@@ -42,7 +42,7 @@ const reset = () => {
         button {
             width: 100px;
             height: 40px;
-            background-color: #aaa;
+            background-color: var(--primary-bg);
             color: #fff;
             margin-right: 15px;
         }
