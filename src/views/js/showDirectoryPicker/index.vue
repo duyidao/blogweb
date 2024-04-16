@@ -1,52 +1,53 @@
 <script setup>
-import { ref } from 'vue'
+const processHandle = async (handle) => {
+    // 添加判断，终止递归，返回文件
+    if (handle.kind === 'file') {
+        return handle
+    }
 
-const colorVal = ref('')
-const spanRef = ref(null)
+    handle.children = []
+    const iter = await handle.entries() // 获取文件夹中所有内容
+    for await (const info of iter) {
+        const subHandle = await processHandle(info[1]) // 返回的是一个数组，返回的内容格式如上所述。通过递归的思想一直获取文件夹内的内容
+        handle.children.push(subHandle)
+    }
 
-const clickFn = () => {
-  // 判断浏览器是否支持
-  if (!window.EyeDropper) {
-    colorVal.value = "你的浏览器不支持 EyeDropper API";
-    return;
-  }
+    return handle
+}
 
-  colorVal.value = "正在打开拾色器，请稍等...";
+const showDirectoryPickerFn = async () => {
+    try {
+        const handle = await window.showDirectoryPicker()
+        const root = await processHandle(handle)
+        console.log('root', root);
 
-  const eyeDropper = new EyeDropper();
-  const abortController = new AbortController();
-
-  eyeDropper
-    .open({ signal: abortController.signal })
-    .then((result) => {
-      colorVal.value = result.sRGBHex;
-      spanRef.value.style.backgroundColor = result.sRGBHex;
-    })
-    .catch((e) => {
-      colorVal.value = e;
-    });
-
-  setTimeout(() => {
-    abortController.abort();
-  }, 2000);
+        // 获取内容
+        const file = await root.children[1].getFile()
+        const reader = new FileReader()
+        reader.onload = e => {
+            console.log(e.target.result)
+        }
+    } catch (err) {
+        // ...
+        console.log('err', err);
+    }
 }
 </script>
 
 <template>
-  <div class="box">
-    <button @click.stop="clickFn">打开拾色器</button>
-    <span ref="spanRef">{{ colorVal }}</span>
-  </div>
+    <div class="box">
+        <button @click.stop="showDirectoryPickerFn">click me</button>
+    </div>
 </template>
 
-<style lang="less" scoped>
-button {
-  border: 1px solid #555;
-  padding: 5px 10px;
+<style scoped>
+.box {
+    text-align: center;
 }
-
-span {
-  font-size: 13px;
-  margin-left: 15px;
+button {
+  border: 1px solid var(--primary-bg);
+  padding: 5px 10px;
+  margin: 10px auto;
+  color: var(--catalogue-word);
 }
 </style>
