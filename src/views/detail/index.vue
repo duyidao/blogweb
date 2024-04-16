@@ -25,7 +25,9 @@ function getRandomElementsFromArray(arr, n) {
 }
 
 watch(() => routeNow.value, (to, from) => {
-    let arr = generateRoutes.filter(item => item.path.includes(to.articleType))
+    let arr = generateRoutes
+        .filter(item => item.path.includes(to.articleType))
+        .filter(item => !to.path.includes(item.path))
     routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr
 }, {
     immediate: true,
@@ -232,7 +234,7 @@ const handleRouter = (item) => {
                     align-items: center;
                     width: 100%;
                     height: 35.6px;
-                    padding-left: 15px;
+                    padding-left: 8px;
                     margin-bottom: 10px;
 
                     span {
@@ -253,7 +255,7 @@ const handleRouter = (item) => {
                         justify-content: center;
                         width: 100%;
                         height: calc(100% / 7);
-                        padding: 15px 0 15px 16px;
+                        padding: 15px 0 15px 8px;
                         margin-bottom: 12px;
                         border-radius: 15px;
                         cursor: pointer;
@@ -284,7 +286,13 @@ const handleRouter = (item) => {
                             align-items: center;
 
                             div {
+                                display:-webkit-box;
+                                width: 100%;
                                 margin-left: 8px;
+                                word-break:break-all;
+                                -webkit-line-clamp:2;
+                                -webkit-box-orient:vertical;
+                                overflow:hidden;
                             }
                         }
                     }

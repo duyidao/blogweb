@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const {searchAction} = defineProps({
   // 双向绑定的输入框内容
   msg: {
     type: [String, Number],
@@ -86,4 +86,9 @@ const blurFn = (e) => {
     rows="10"></textarea>
 </template>
 
-<style scoped></style>
+<style lang="less" scoped>
+input, textarea {
+  border: 1px solid var(--primary-border);
+  padding: 4px 8px;
+}
+</style>
