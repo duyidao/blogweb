@@ -33,6 +33,15 @@ watch(() => routeNow.value, (to, from) => {
     immediate: true,
     deep: true,
 })
+
+// 点击去往gitee
+const handleGiteeFn = () => {
+    let a = document.createElement('a')
+    a.href = 'https://gitee.com/duyidao'
+    a.target = '_blank'
+    a.click()
+    a.remove()
+}
 </script>
 
 <template>
@@ -51,7 +60,7 @@ watch(() => routeNow.value, (to, from) => {
                 <!-- 粘性定位 -->
                 <div class="sticky">
                     <!-- gitee直达 -->
-                    <div class="gitee">
+                    <div class="gitee" @click.stop="handleGiteeFn">
                         <div class="card">
                             <div class="card-face card-front transition-color">
                                 <div class="card-title">Gitee</div>

@@ -18,6 +18,9 @@ onBeforeUnmount(() => {
   <div class="blog">
     <router-view></router-view>
   </div>
+  <footer>
+    <Fishpond />
+  </footer>
   <Candle />
 </template>
 
@@ -26,14 +29,25 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 20px 20px 200px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 200px;
 }
 
 @media screen and (max-width: 768px) {
   .blog {
     flex-direction: column;
-    padding: 1.25rem;
+    padding: 1.25rem 1.25rem 11.855rem;
+  }
+
+  footer {
+    height: 11.85rem;
   }
 }
 </style>

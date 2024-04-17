@@ -18,7 +18,7 @@
 
     // 隐藏滚动条
     &::-webkit-scrollbar {
-        width: 0;
+        display: none;
     }
 
     .item {

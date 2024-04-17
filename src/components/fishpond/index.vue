@@ -1,11 +1,16 @@
-<script setup lang="ts">
-
+<script>
+import './index.js'
 </script>
 
 <template>
-  <h1>Hello vue3</h1>
+  <div id="fish-container"
+    class="container"></div>
 </template>
 
 <style scoped>
-
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--body-bg);
+}
 </style>

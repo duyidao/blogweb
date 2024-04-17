@@ -8,38 +8,33 @@ const clickFn = () => {
   // 判断浏览器是否支持
   if (!window.EyeDropper) {
     colorVal.value = "你的浏览器不支持 EyeDropper API";
+    spanRef.value.style.backgroundColor = '#000';
     return;
   }
 
   colorVal.value = "正在打开拾色器，请稍等...";
 
   const eyeDropper = new EyeDropper();
-  console.log('eyeDropper', eyeDropper);
   const abortController = new AbortController();
-  console.log('abortController', abortController);
 
   eyeDropper
     .open({ signal: abortController.signal })
     .then((result) => {
-      console.log('result', result);
       colorVal.value = result.sRGBHex;
       spanRef.value.style.backgroundColor = result.sRGBHex;
     })
     .catch((e) => {
-      console.log('error', e);
       colorVal.value = e;
     });
-
-  setTimeout(() => {
-    abortController.abort();
-  }, 2000);
 }
 </script>
 
 <template>
   <div class="ifrname-box box">
     <button @click.stop="clickFn">打开拾色器</button>
-    <span ref="spanRef">{{ colorVal }}</span>
+    <div class="spanRef" ref="spanRef">
+      <span>{{ colorVal }}</span>
+    </div>
   </div>
 </template>
 
@@ -50,9 +45,19 @@ button {
   color: var(--catalogue-word);
 }
 
-span {
-  font-size: 13px;
-  margin-left: 15px;
-  color: var(--catalogue-word);
+.spanRef {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3.125rem;
+  border-radius: 1rem;
+  margin-top: 1.25rem;
+
+  span {
+    font-size: 13px;
+    color: #fff;
+    mix-blend-mode: difference;
+  }
 }
 </style>

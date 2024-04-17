@@ -32,6 +32,41 @@ body {
   overflow-x: hidden;
 }
 
+#app {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+// 美化滚动条
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-horizontal {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background-color: var(--body-bg);
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-bg);
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+
 /* 设置a标签的默认样式 */
 a {
   color: var(--primary-font);
