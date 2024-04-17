@@ -107,7 +107,7 @@ const setImgFileEmptyFn = () => {
 </script>
 
 <template>
-  <div>
+  <div class="ifrname-box">
     <input type="file"
       name="file"
       id="imgFile"

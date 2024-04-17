@@ -95,6 +95,7 @@ const articleItemArr = ref([])
 
     &:hover {
       transform: translate(0, -3px);
+      box-shadow: 0px 0px 3px var(--primary-border);
     }
   }
 

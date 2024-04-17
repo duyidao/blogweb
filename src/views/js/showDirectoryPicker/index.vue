@@ -5,13 +5,17 @@ const processHandle = async (handle) => {
         return handle
     }
 
+    console.log('handle-------------', handle);
     handle.children = []
+    console.log('iter', iter);
     const iter = await handle.entries() // 获取文件夹中所有内容
     for await (const info of iter) {
+        console.log('info', info);
         const subHandle = await processHandle(info[1]) // 返回的是一个数组，返回的内容格式如上所述。通过递归的思想一直获取文件夹内的内容
         handle.children.push(subHandle)
     }
 
+    console.log('handle------------', handle);
     return handle
 }
 
@@ -24,6 +28,7 @@ const showDirectoryPickerFn = async () => {
         // 获取内容
         const file = await root.children[1].getFile()
         const reader = new FileReader()
+        console.log('reader', reader);
         reader.onload = e => {
             console.log(e.target.result)
         }
@@ -35,7 +40,7 @@ const showDirectoryPickerFn = async () => {
 </script>
 
 <template>
-    <div class="box">
+    <div class="ifrname-box box">
         <button @click.stop="showDirectoryPickerFn">click me</button>
     </div>
 </template>

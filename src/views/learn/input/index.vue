@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import inputComp from './input.vue'
 
 const inputValue = ref('daodao')

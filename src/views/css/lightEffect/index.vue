@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="box">
+    <div class="ifrname-box box">
         <span>C</span>
         <span>O</span>
         <span>L</span>
@@ -25,7 +25,6 @@
 
 .box {
     width: 100%;
-    height: 100px;
     background-color: #000;
     text-align: center;
     line-height: 100px;

@@ -10,7 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="setProperty-box">
+    <div class="ifrname-box setProperty-box">
         <div class="item"></div>
     </div>
 </template>

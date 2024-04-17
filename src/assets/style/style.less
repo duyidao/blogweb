@@ -32,7 +32,6 @@
 
 .ifrname-box {
   width: 100%;
-  padding: 20px 15px;
   border-radius: 10px;
 
   .iframe-box-title {
@@ -62,6 +61,32 @@
     .iframe-box-title-small {
       font-size: 14px;
       margin-left: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ifrname-box {
+    border-radius: .625rem;
+  
+    .iframe-box-title {
+      height: 3.125rem;
+      line-height: 3.125rem;
+      padding-left: 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 1.25rem;
+      border-bottom: .0625rem solid var(--primary-border);
+      
+      &::before {
+        width: .5rem;
+        height: 1.875rem;
+        border-radius: .25rem;
+      }
+  
+      .iframe-box-title-small {
+        font-size: .875rem;
+        margin-left: .625rem;
+      }
     }
   }
 }

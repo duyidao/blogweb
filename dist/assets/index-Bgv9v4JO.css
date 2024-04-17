@@ -1,0 +1,1 @@
+.setProperty-box[data-v-5ef5b059]{width:320px;height:100px;margin:100px auto;border:1px solid #000}.setProperty-box .item[data-v-5ef5b059]{width:30px;height:30px;border-radius:50%;background-color:red;animation:move-5ef5b059 3s linear infinite}@keyframes move-5ef5b059{50%{transform:translate(calc(var(--w) - 100%))}}

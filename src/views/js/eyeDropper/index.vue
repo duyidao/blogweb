@@ -14,15 +14,19 @@ const clickFn = () => {
   colorVal.value = "正在打开拾色器，请稍等...";
 
   const eyeDropper = new EyeDropper();
+  console.log('eyeDropper', eyeDropper);
   const abortController = new AbortController();
+  console.log('abortController', abortController);
 
   eyeDropper
     .open({ signal: abortController.signal })
     .then((result) => {
+      console.log('result', result);
       colorVal.value = result.sRGBHex;
       spanRef.value.style.backgroundColor = result.sRGBHex;
     })
     .catch((e) => {
+      console.log('error', e);
       colorVal.value = e;
     });
 
@@ -33,7 +37,7 @@ const clickFn = () => {
 </script>
 
 <template>
-  <div class="box">
+  <div class="ifrname-box box">
     <button @click.stop="clickFn">打开拾色器</button>
     <span ref="spanRef">{{ colorVal }}</span>
   </div>

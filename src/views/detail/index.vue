@@ -85,7 +85,7 @@ watch(() => routeNow.value, (to, from) => {
                                 <div v-for="(item, index) in routeList"
                                     :key="index"
                                     class="list-item"
-                                    @click="$goRouter(item, '/blogweb/detail/')">
+                                    @click="$goRouter(item.path, '/blogweb/detail/')">
                                     <div class="list-item-title">{{ item.meta.title }}</div>
                                     <div class="list-item-info">
                                         <SvgIcon name="article" width="16px" height="16px" />
@@ -119,6 +119,7 @@ watch(() => routeNow.value, (to, from) => {
     .catalogue-content {
         flex: 1;
         margin-right: 24px;
+        padding: 20px;
         background-color: var(--catalogue-bg);
         border-radius: 20px;
         box-shadow: 0 0 5px #ccc;
@@ -302,6 +303,7 @@ watch(() => routeNow.value, (to, from) => {
         padding-top: 11.25rem;
 
         .catalogue-body {
+            padding: 1.25rem;
 
             .catalogue-content {
                 margin-right: 0;

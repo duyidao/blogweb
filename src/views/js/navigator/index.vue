@@ -29,7 +29,7 @@ const clickFn = () => {
 </script>
 
 <template>
-    <div class="box transition-color">
+    <div class="ifrname-box box transition-color">
         <button class="transition-color" @click.stop="clickFn">获取网络状态</button>
         <div class="transition-color">当前网络环境：{{ info.type || '-' }}</div>
         <div class="transition-color">当前延迟：{{ info.rtt || 0 }}ms</div>

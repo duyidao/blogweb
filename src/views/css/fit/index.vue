@@ -2,18 +2,20 @@
 </script>
 
 <template>
-    <div class="banner">
-        <div class="title">前端搬砖人 每天都努力</div>
+    <div class="ifrname-box banner">
+        <div class="title">前端搬砖人每天都努力</div>
     </div>
 </template>
 
 <style scoped>
   .banner {
-    width: 500px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 30%;
     margin: 100px auto;
     text-align: center;
-    line-height: 250px;
     background-image: linear-gradient(
       45deg,
       #c7c6c5 0%,
