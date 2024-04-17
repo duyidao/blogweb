@@ -29,7 +29,8 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  padding: 20px 20px 200px;
+  min-height: calc(100vh - 200px);
+  padding: 20px 20px 205px;
 }
 
 footer {
@@ -43,11 +44,12 @@ footer {
 @media screen and (max-width: 768px) {
   .blog {
     flex-direction: column;
-    padding: 1.25rem 1.25rem 11.855rem;
+    height: calc(100vh - 12.5rem);
+    padding: 1.25rem 1.25rem 12.8125rem;
   }
 
   footer {
-    height: 11.85rem;
+    height: 12.5rem;
   }
 }
 </style>
