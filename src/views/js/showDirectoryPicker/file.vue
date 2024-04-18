@@ -17,6 +17,8 @@ export default defineComponent({
     setup(props, {emit}) {
         const data = ref(props.items.map(item => ({...item, show: false})))
 
+        console.log('data', data);
+
         const handleClick = (parentIndex, item) => {
             if (item && item.type === 'directory') {
                 item.show = !item.show;

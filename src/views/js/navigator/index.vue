@@ -20,7 +20,7 @@ const clickFn = () => {
     if(navigator.onLine) {
         console.log('navigator.connection', navigator.connection);
         info.value = {
-            type: navigator.connection.type,
+            type: navigator.connection.type || navigator.connection.effectiveType,
             rtt: navigator.connection.rtt,
             downlink: navigator.connection.downlink
         }

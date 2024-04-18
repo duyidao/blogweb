@@ -63,7 +63,7 @@ const articleItemArr = ref([])
     <div :class="{ 'article-item-list': type === 'list', 'article-item-img': type === 'img' }">
       <div v-for="(item, index) in routeList"
         :key="index"
-        class="article-item transition-color">
+        class="article-item transition-color transition-transform">
         <router-link class="article-item-link"
           :to="'/blogweb/detail/' + item.path">
           <img src="../../assets/img/css.jpg"

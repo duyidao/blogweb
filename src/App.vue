@@ -32,8 +32,9 @@ onBeforeUnmount(() => {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 5px;
     background-color: black;
+    z-index: 9999;
   }
 
   .blog {
