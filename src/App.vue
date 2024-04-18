@@ -22,34 +22,46 @@ onBeforeUnmount(() => {
     <Fishpond />
   </footer>
   <Candle />
+  <div class="footer"></div>
 </template>
 
-<style lang="less" scoped>
-.blog {
-  display: flex;
-  justify-content: space-between;
-  width: 100vw;
-  min-height: calc(100vh - 200px);
-  padding: 20px 20px 205px;
-}
+<style lang="less"
+  scoped>
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+  }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 200px;
-}
-
-@media screen and (max-width: 768px) {
   .blog {
-    flex-direction: column;
-    height: calc(100vh - 12.5rem);
-    padding: 1.25rem 1.25rem 12.8125rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    min-height: calc(100vh - 200px);
+    padding: 20px 20px 205px;
   }
 
   footer {
-    height: 12.5rem;
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100vw;
+    height: 200px;
   }
-}
+
+  @media screen and (max-width: 768px) {
+    .blog {
+      flex-direction: column;
+      bottom: .125rem;
+      height: calc(100vh - 12.5rem);
+      padding: 1.25rem 1.25rem 12.8125rem;
+    }
+
+    footer {
+      height: 12.5rem;
+    }
+  }
 </style>
