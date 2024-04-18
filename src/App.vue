@@ -56,7 +56,6 @@ onBeforeUnmount(() => {
     .blog {
       flex-direction: column;
       bottom: .125rem;
-      height: calc(100vh - 12.5rem);
       padding: 1.25rem 1.25rem 12.8125rem;
     }
 

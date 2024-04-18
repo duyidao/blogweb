@@ -4,7 +4,7 @@ import './index.js'
 
 <template>
   <div id="fish-container"
-    class="container"></div>
+    class="container transition-color"></div>
 </template>
 
 <style scoped>

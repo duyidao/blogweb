@@ -3,7 +3,6 @@ import { onMounted } from "vue";
 
 onMounted(() => {
     const box = document.querySelector('.setProperty-box')
-    console.log(box)
     const w = box.clientWidth
     box.style.setProperty('--w', w + 'px')
 });

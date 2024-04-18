@@ -79,8 +79,13 @@ export default defineComponent({
         margin-top: 10px;
     }
 
+    .file-item-file {
+        cursor: pointer;
+    }
+
     .file-item-directory {
         position: relative;
+        cursor: pointer;
 
         &.active {
             &::before {

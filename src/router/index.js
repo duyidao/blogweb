@@ -49,6 +49,15 @@ export const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        // 如果有 savedPosition，则滚动到该位置
+        if (savedPosition) {
+          return savedPosition;
+        } else {
+          // 否则，滚动到页面顶部
+          return { top: 0 };
+        }
+    }
 });
 
 // 全局前置导航

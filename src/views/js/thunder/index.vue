@@ -2,7 +2,6 @@
 const clickFn = () => {
     const links = document.querySelectorAll('a')
     for (const link of links) {
-        console.log('link', link);
         const newHref = btoa(`AA${link.href}ZZ`)
         link.href = `thunder://${newHref}`
     }

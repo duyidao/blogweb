@@ -18,7 +18,6 @@ const processHandle = async (handle) => {
         handle.children.push(subHandle)
     }
 
-    console.log('handle------------2', handle);
     return handle
 }
 
@@ -27,6 +26,7 @@ const showDirectoryPickerFn = async () => {
     try {
         const handle = await showDirectoryPicker()
         root.value = await processHandle(handle)
+        console.log('root.value', root.value);
     } catch(err) {
         console.log('err', err);
     }
