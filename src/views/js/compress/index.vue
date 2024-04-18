@@ -117,10 +117,10 @@ const setImgFileEmptyFn = () => {
     <div class="box">
       <img v-if="originImgSrc"
         :src="originImgSrc"
-        alt="未压缩" />
+        title="未压缩" alt="未压缩" />
       <img v-if="compressedImgSrc"
         :src="compressedImgSrc"
-        alt="压缩后" />
+        title="压缩后" alt="压缩后"  />
     </div>
   </div>
 </template>
@@ -134,6 +134,16 @@ const setImgFileEmptyFn = () => {
   img {
     display: inline-block;
     width: 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    margin-top: .9375rem;
+
+    img {
+      width: 18.5rem;
+    }
   }
 }
 </style>

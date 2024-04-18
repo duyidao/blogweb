@@ -317,6 +317,7 @@ const handleGiteeFn = () => {
             .catalogue-content {
                 margin-right: 0;
                 border-radius: 1.25rem;
+                padding: 1.25rem;
                 box-shadow: 0 0 .3125rem #ccc;
             }
 

@@ -70,13 +70,13 @@ const handleChange = () => {
 <template>
   <div class="ifrname-box box">
     <div class="input">
-        <input type="number" v-model="num" name="num" id="num" placeholder="请输入要转化的数字">
-        <button @click.stop="handleChange">转换</button>
+        <input class="transition-color" type="number" v-model="num" name="num" id="num" placeholder="请输入要转化的数字">
+        <button class="transition-color" @click.stop="handleChange">转换</button>
     </div>
     <div class="list">
         <div v-for="(item,index) in changeList" :key="index" class="item">
-            <div class="item-num">数字：{{ item.num }}</div>
-            <div class="item-word">转换后：{{ item.word }}</div>
+            <div class="item-num transition-color">数字：{{ item.num }}</div>
+            <div class="item-word transition-color">转换后：{{ item.word }}</div>
         </div>
     </div>
   </div>
@@ -124,6 +124,45 @@ const handleChange = () => {
 
                 &.item-word {
                     margin-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        .input {
+            margin-bottom: 1.25rem;
+            input {
+                width: 18.75rem;
+                height: 1.875rem;
+                border: .0625rem solid var(--primary-border);
+                padding: 0 .625rem;
+                font-size: 1rem;
+            }
+            button {
+                height: 1.875rem;
+                margin-left: .625rem;
+                padding: .3125rem .625rem;
+                border: .0625rem solid var(--primary-border);
+                font-size: 1rem;
+            }
+        }
+
+        .list {
+            max-height: 50rem;
+            margin-top: .9375rem;
+            overflow-y: auto;
+
+            .item {
+                margin-bottom: .625rem;
+
+                >div {
+                    font-size: .875rem;
+                    &.item-word {
+                        margin-left: 1.25rem;
+                    }
                 }
             }
         }

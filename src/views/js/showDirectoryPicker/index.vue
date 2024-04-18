@@ -55,8 +55,8 @@ const clickFn = async (index) => {
 <template>
     <div class="ifrname-box box">
         <button @click.stop="showDirectoryPickerFn">获取文件夹</button>
-        <div class="box-info">
-            <File class="file" :items="root" @click="clickFn" />
+        <div class="box-info" v-if="root && root.children && root.children.length">
+            <File class="file" :items="root.children" @click="clickFn" />
             <div class="content">{{ fileContent }}</div>
         </div>
     </div>
