@@ -13,6 +13,7 @@ export const generateRoutes = generateRoutesFn(pages, comps)   // 生成路由
 export const routes = [
     {
         path: '/blogweb',
+        name: 'home',
         component: () => import('@/views/home/index.vue'),
         meta: {
             title: '首页',
@@ -20,6 +21,7 @@ export const routes = [
     },
     {
         path: '/blogweb/articleList/:type',
+        name: 'articleList',
         component: () => import('@/views/articleList/index.vue'),
         meta: {
             title: '列表',

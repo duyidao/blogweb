@@ -65,6 +65,7 @@ const blurFn = (e) => {
 
 <template>
   <input v-if="type !== 'textarea'"
+    class="transition-color"
     :type="type"
     :value="msg"
     :maxlength="maxlength"
@@ -74,6 +75,7 @@ const blurFn = (e) => {
     @focus="focusFn"
     @blur="blurFn">
   <textarea v-else
+    class="transition-color"
     name=""
     :value="msg"
     :maxlength="maxlength"
@@ -90,5 +92,7 @@ const blurFn = (e) => {
 input, textarea {
   border: 1px solid var(--primary-border);
   padding: 4px 8px;
+  background-color: var(--catalogue-bg);
+  color: var(--catalogue-word);
 }
 </style>

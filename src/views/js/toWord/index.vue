@@ -29,7 +29,7 @@ const unitAdd = list => {
     let result = ''
     for(let i = 0; i < list.length; i++) {
         const part = list[i]
-        const unit = bigUnitMap[list.length - 1 - i]
+        let unit = bigUnitMap[list.length - 1 - i]
         // 如果是零，不设置单位
         if(part === numMap[0]) {
             unit = ''

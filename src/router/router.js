@@ -18,17 +18,9 @@ export const generateRoutesFn = (pages, comps) => {
             name,
             component: comps[compPath],
             meta: page,
-            children: [],
         };
 
-        const parentRoute = routes.find(route => path.startsWith(route.path));
-        if (parentRoute) {
-            // 能找到父级路由，添加
-            parentRoute.children.push(route);
-        } else {
-            // 不能找到父级路由，直接添加为一级路由
-            routes.push(route);
-        }
+        routes.push(route);
     }
 
     sortedArray.forEach(([path, page]) => {
