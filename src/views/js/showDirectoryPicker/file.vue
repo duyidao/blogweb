@@ -15,7 +15,10 @@ export default defineComponent({
         parentName: String
     },
     setup(props, {emit}) {
-        const data = ref(props.items.map(item => ({...item, show: false})))
+        const data = ref(props.items.map(item => {
+            console.log('({...item, show: false}))', item);
+            return {...item, show: false}
+        }))
 
         console.log('data', data);
 
@@ -41,12 +44,12 @@ export default defineComponent({
         <div v-for="(item, index) in data"
             :key="index"
             class="file-item">
-            <div v-if="item.type === 'file'"
+            <div v-if="item.kind === 'file'"
                 class="file-item-file"
                 @click.stop="handleClick([...parentIndex, index], item)">
                 文件: {{ item.name }}
             </div>
-            <div v-else-if="item.type === 'directory'"
+            <div v-else
                 class="file-item-directory"
                 :class="{'active': item.show}"
                 @click.stop="handleClick([...parentIndex, index], item)">

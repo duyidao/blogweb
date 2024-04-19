@@ -92,11 +92,6 @@ const articleItemArr = ref([])
     border-radius: 10px;
     background-color: var(--catalogue-bg);
     margin-bottom: 16px;
-
-    &:hover {
-      transform: translate(0, -3px);
-      box-shadow: 0px 0px 3px var(--primary-border);
-    }
   }
 
   .article-item-list {
@@ -353,6 +348,15 @@ const articleItemArr = ref([])
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .article-item {
+    &:hover {
+      transform: translate(0, -3px);
+      box-shadow: 0px 0px 3px var(--primary-border);
     }
   }
 }

@@ -9,13 +9,17 @@
     "preview": "vite preview --host"
   },
   "dependencies": {
+    "@vue-office/docx": "^1.6.0",
+    "@vue-office/excel": "^1.7.6",
+    "docx-preview": "^0.3.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "postcss-pxtorem": "^6.1.0",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

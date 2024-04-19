@@ -107,6 +107,35 @@ button {
 table {
   border-collapse: collapse;
   width: 100%;
+  font-size: 14px;
+  
+  td, th {
+    border: 1px solid var(--primary-bg);
+    padding: 8px 0 8px 8px;
+    color: var(--primary-info);
+    transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+  }
+
+  th {
+    font-size: 16px;
+    padding: 10px 0;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  table {
+    font-size: .875rem;
+    td, th {
+      border: .0625rem solid var(--primary-bg);
+      padding: .5rem 0 .5rem .5rem;
+    }
+
+    th {
+      font-size: 1rem;
+      padding: .625rem 0;
+    }
+  }
 }
 
 /* 清除浮动 */
