@@ -57,9 +57,9 @@ const exportFn = () => {
                     id="level">
             </label>
             <button class="transition-color"
-                @click.stop="clickFn">添加</button>
+                @click.stop="clickFn">数据添加到表格</button>
             <button class="transition-color"
-                @click.stop="exportFn">导出</button>
+                @click.stop="exportFn">表格数据导出xlsx</button>
         </div>
         <table ref="tableRef"
             class="table-list transition-color">

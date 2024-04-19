@@ -28,7 +28,7 @@ export default defineComponent({
         console.log('data', data);
 
         const handleClick = (parentIndex, item) => {
-            if (item && item.type === 'directory') {
+            if (item && item.kind === 'directory') {
                 item.show = !item.show;
             }
             else {
