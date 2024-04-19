@@ -89,11 +89,23 @@ const exportFn = () => {
 
         .input {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             color: var(--primary-info);
 
+            label {
+                display: flex;
+                align-items: center;
+                width: 50%;
+
+                &:nth-child(1),
+                &:nth-child(2) {
+                    margin-bottom: 10px;
+                }
+            }
+
             input {
-                width: 150px;
+                width: 85%;
                 height: 35px;
                 border: 1px solid var(--primary-bg);
                 margin-right: 20px;
@@ -103,12 +115,16 @@ const exportFn = () => {
             }
 
             button {
-                width: 100px;
+                width: 23%;
                 height: 35px;
                 border: 1px solid var(--primary-bg);
                 color: var(--primary-info);
                 background-color: var(--catalogue-bg);
                 margin-right: 15px;
+
+                &:last-child {
+                    margin: 0;
+                }
             }
         }
 
@@ -122,20 +138,20 @@ const exportFn = () => {
             margin-top: .9375rem;
 
             .input {
-
+                font-size: .875rem;
                 input {
-                    width: 9.375rem;
                     height: 2.1875rem;
                     border: .0625rem solid var(--primary-bg);
                     margin-right: 1.25rem;
                     padding-left: .9375rem;
+                    font-size: .875rem;
                 }
 
                 button {
-                    width: 6.25rem;
                     height: 2.1875rem;
                     border: .0625rem solid var(--primary-bg);
                     margin-right: .9375rem;
+                    font-size: .875rem;
                 }
             }
 

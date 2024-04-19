@@ -19,7 +19,7 @@ const changeFn = e => {
             name="file"
             id="file"
             @change="changeFn">
-        <vueOfficeWord v-if="wordSrc" :src="wordSrc" style="height: 500px;" />
+        <vueOfficeWord v-if="wordSrc" :src="wordSrc" style="height: 500px; overflow-y: auto;" />
     </div>
 </template>
 
