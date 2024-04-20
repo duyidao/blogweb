@@ -85,6 +85,7 @@ video {
 a {
   color: #666;
   text-decoration: none;
+  font-size: 15px;
 }
 
 a:hover {
@@ -101,6 +102,13 @@ button {
 
 button {
   cursor: pointer;
+  min-width: 80px;
+  font-size: 14px;
+  padding: 3px 10px;
+  background-color: var(--catalogue-bg);
+  color: var(--catalogue-word);
+  border: 1px solid var(--primary-bg);
+  border-radius: 15px;
 }
 
 /* 设置表格样式 */
@@ -124,6 +132,18 @@ table {
 }
 
 @media screen and (max-width: 768px) {
+  a {
+    font-size: .9375rem;
+  }
+
+  button {
+    min-width: 6.25rem;
+    font-size: 1rem;
+    padding: .215rem .625rem;
+    border: .0625rem solid var(--primary-bg);
+    border-radius: .9375rem;
+  }
+
   table {
     font-size: .875rem;
     td, th {

@@ -88,9 +88,12 @@ const clickFn = async (index) => {
     }
 }
 button {
-  border: 1px solid var(--primary-bg);
-  padding: 5px 10px;
-  margin: 10px auto;
-  color: var(--catalogue-word);
+  margin: 0 auto 20px;
+}
+
+@media screen and (max-width: 768px) {
+    button {
+        margin: 0 auto 1.25rem;
+    }
 }
 </style>

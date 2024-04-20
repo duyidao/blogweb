@@ -97,12 +97,7 @@ const handleChange = () => {
             background-color: var(--catalogue-bg);
         }
         button {
-            height: 30px;
             margin-left: 10px;
-            padding: 5px 10px;
-            border: 1px solid var(--primary-border);
-            color: var(--catalogue-word);
-            background-color: var(--catalogue-bg);
         }
     }
 
@@ -142,11 +137,7 @@ const handleChange = () => {
                 font-size: 1rem;
             }
             button {
-                height: 1.875rem;
                 margin-left: .625rem;
-                padding: .3125rem .625rem;
-                border: .0625rem solid var(--primary-border);
-                font-size: 1rem;
             }
         }
 

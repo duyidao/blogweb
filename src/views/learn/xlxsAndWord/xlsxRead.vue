@@ -40,11 +40,7 @@ const changeFn = e => {
             }
 
             button {
-                width: 100px;
-                height: 35px;
-                border: 1px solid var(--primary-bg);
-                color: var(--primary-info);
-                background-color: var(--catalogue-bg);
+                height: 30px;
             }
         }
 

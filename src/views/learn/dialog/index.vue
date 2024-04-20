@@ -29,14 +29,5 @@ const show = ref(false)
 <style lang="less" scoped>
 .box {
     padding: 15px;
-
-    button {
-        border: 1px solid var(--primary-bg);
-        color: var(--catalogue-word);
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: var(--body-bg);
-    }
 }
 </style>

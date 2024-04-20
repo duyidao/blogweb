@@ -45,16 +45,28 @@ const clickFn = () => {
     padding-top: 20px;
 
     button {
-        border: 1px solid var(--primary-bg);
-        padding: 5px 10px;
-        margin: 10px auto;
-        color: var(--catalogue-word);
+        margin: 0 auto 20px;
     }
 
     div {
         font-size: 14px;
         color: var(--primary-info);
         margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        padding-top: 1.25rem;
+
+        button {
+            margin: 0 auto 1.25rem;
+        }
+
+        div {
+            font-size: .875rem;
+            margin-bottom: 1rem;
+        }
     }
 }
 </style>

@@ -39,12 +39,6 @@ const clickFn = () => {
 </template>
 
 <style lang="less" scoped>
-button {
-  border: 1px solid var(--primary-bg);
-  padding: 5px 10px;
-  color: var(--catalogue-word);
-}
-
 .spanRef {
   display: flex;
   justify-content: center;

@@ -40,10 +40,6 @@ const reset = () => {
         margin-bottom: 15px;
 
         button {
-            width: 100px;
-            height: 40px;
-            background-color: var(--primary-bg);
-            color: #fff;
             margin-right: 15px;
         }
     }

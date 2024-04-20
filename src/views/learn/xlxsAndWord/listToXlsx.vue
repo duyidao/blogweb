@@ -116,10 +116,7 @@ const exportFn = () => {
 
             button {
                 width: 23%;
-                height: 35px;
-                border: 1px solid var(--primary-bg);
-                color: var(--primary-info);
-                background-color: var(--catalogue-bg);
+                height: 30px;
                 margin-right: 15px;
 
                 &:last-child {
@@ -148,7 +145,7 @@ const exportFn = () => {
                 }
 
                 button {
-                    height: 2.1875rem;
+                    height: 1.875rem;
                     border: .0625rem solid var(--primary-bg);
                     margin-right: .9375rem;
                     font-size: .875rem;

@@ -27,9 +27,24 @@ const clickFn = () => {
 }
 
 button {
-  border: 1px solid var(--primary-bg);
-  padding: 5px 10px;
-  margin: 10px auto;
-  color: var(--catalogue-word);
+  margin: 0 auto 20px;
+}
+
+a {
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        padding-top: 1.25rem;
+    }
+
+    button {
+        margin: 0 auto 1.25rem;
+    }
+
+    a {
+        margin-bottom: 1.15rem;
+    }
 }
 </style>
