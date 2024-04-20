@@ -11,6 +11,7 @@ const beforeEachCallback = async (to, from, next) => {
         articleType: to.path.split('/')[3], // 文章类型
         title: to.meta.title, // 标题
         info: to.meta.info, // 描述
+        img: to.meta.img, // 图片
     };
     next();
 };

@@ -66,7 +66,7 @@ const articleItemArr = ref([])
         class="article-item transition-color transition-transform">
         <router-link class="article-item-link"
           :to="'/blogweb/detail/' + item.path">
-          <img src="../../assets/img/css.jpg"
+          <img :src="item.meta.img"
             alt="">
           <div class="content">
             <span class="content-title transition-color">{{ item.meta.title }}</span>
@@ -104,6 +104,7 @@ const articleItemArr = ref([])
       img {
         display: block;
         width: 350px;
+        height: 200px;
         border-radius: 10px 0 0 10px;
         overflow: hidden;
         margin-right: 15px;
@@ -164,6 +165,7 @@ const articleItemArr = ref([])
 
         img {
           width: 100%;
+          height: 170px;
         }
 
         .content {
@@ -211,6 +213,7 @@ const articleItemArr = ref([])
       .article-item-link {
         img {
           width: 18rem;
+          height: 12.5rem;
           border-radius: .625rem 0 0 .625rem;
           margin-right: .9375rem;
         }
@@ -248,6 +251,9 @@ const articleItemArr = ref([])
         box-shadow: 0px 0px .1875rem var(--primary-border);
 
         .article-item-link {
+          img {
+            height: 10.625rem;
+          }
           .content {
             padding: .625rem;
             min-height: 9.375rem;
