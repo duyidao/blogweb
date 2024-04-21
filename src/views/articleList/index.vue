@@ -1,6 +1,7 @@
 <script setup>
 import { generateRoutes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
+import { type } from '@/store/index.js'
 
 const routeList = ref([])
 
@@ -11,9 +12,7 @@ watch(() => routeNow.value, (to, from) => {
   immediate: true,
   deep: true,
 })
-
-const type = ref('list')
-
+console.log('type.value', type.value);
 // 获取要观察的目标元素列表
 const articleItemArr = ref([])
 
@@ -91,7 +90,7 @@ const articleItemArr = ref([])
     overflow: hidden;
     border-radius: 10px;
     background-color: var(--catalogue-bg);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .article-item-list {
@@ -208,6 +207,10 @@ const articleItemArr = ref([])
 @media screen and (max-width: 768px) {
   .article-list {
     padding: 5.5rem .625rem 1.25rem;
+
+    .article-item {
+      margin-bottom: 1.25rem;
+    }
 
     .article-item-list {
       .article-item-link {
@@ -353,6 +356,59 @@ const articleItemArr = ref([])
             }
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .article-list {
+
+    .article-item-img {
+
+      .article-item {
+        width: 18%;
+
+        &:nth-child(5n) {
+          margin-right: 0;
+        }
+        &:nth-child(3n),
+        &:nth-child(4n) {
+          margin-right: 2.5%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .article-list {
+
+    .article-item-img {
+
+      .article-item {
+        width: 14.58%;
+
+        &:nth-child(6n) {
+          margin-right: 0 !important;
+        }
+        &:nth-child(3n),
+        &:nth-child(4n),
+        &:nth-child(5n) {
+          margin-right: 2.5%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2100px) {
+  .article-list {
+
+    .article-item-list {
+
+      .article-item {
+        width: 33%;
       }
     }
   }

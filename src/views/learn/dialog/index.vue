@@ -5,7 +5,7 @@ const show = ref(false)
 </script>
 
 <template>
-    <div class="box">
+    <div class="ifrname-box box">
         <div>
             <button class="transition-color" @click.stop="show = true">点击唤起弹窗</button>
         </div>
@@ -27,7 +27,4 @@ const show = ref(false)
 </template>
 
 <style lang="less" scoped>
-.box {
-    padding: 15px;
-}
 </style>

@@ -12,6 +12,8 @@
     "@vue-office/docx": "^1.6.0",
     "@vue-office/excel": "^1.7.6",
     "docx-preview": "^0.3.0",
+    "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
     "postcss-pxtorem": "^6.1.0",
