@@ -2,8 +2,19 @@
 import { generateRoutes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
 import { type } from '@/store/index.js'
+import { useMeta } from 'vue-meta';
 
 const routeList = ref([])
+
+onMounted(() => {
+  useMeta({
+    title: '文章列表 - 刀刀博客',
+    meta: [
+      { name: 'keywords', content: '刀刀,vue,JavaScript,刀刀小站,前端,css,程序员' },
+      { name: 'description', content: '文章列表模块，记录着效果或功能实现的方法代码，可上手实操~' }
+    ]
+  })
+})
 
 watch(() => routeNow.value, (to, from) => {
   let arr = generateRoutes.filter(item => item.path.includes(to.articleType))
@@ -12,7 +23,6 @@ watch(() => routeNow.value, (to, from) => {
   immediate: true,
   deep: true,
 })
-console.log('type.value', type.value);
 // 获取要观察的目标元素列表
 const articleItemArr = ref([])
 
@@ -257,6 +267,7 @@ const articleItemArr = ref([])
           img {
             height: 10.625rem;
           }
+
           .content {
             padding: .625rem;
             min-height: 9.375rem;
@@ -310,6 +321,7 @@ const articleItemArr = ref([])
         &:nth-child(4n) {
           margin-right: 0;
         }
+
         &:nth-child(3n) {
           margin-right: 2.5%;
         }
@@ -372,6 +384,7 @@ const articleItemArr = ref([])
         &:nth-child(5n) {
           margin-right: 0;
         }
+
         &:nth-child(3n),
         &:nth-child(4n) {
           margin-right: 2.5%;
@@ -392,6 +405,7 @@ const articleItemArr = ref([])
         &:nth-child(6n) {
           margin-right: 0 !important;
         }
+
         &:nth-child(3n),
         &:nth-child(4n),
         &:nth-child(5n) {

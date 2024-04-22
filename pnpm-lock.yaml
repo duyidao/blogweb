@@ -38,6 +38,9 @@ dependencies:
   vue:
     specifier: ^3.4.21
     version: 3.4.21
+  vue-meta:
+    specifier: 3.0.0-alpha.7
+    version: 3.0.0-alpha.7(vue@3.4.21)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.0(vue@3.4.21)
@@ -2964,6 +2967,14 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dependencies:
+      vue: 3.4.21
+    dev: false
+
+  /vue-meta@3.0.0-alpha.7(vue@3.4.21):
+    resolution: {integrity: sha512-C5JgqeVvqjPvWzJ1+Wpffk5GWxdlskuxP3q7iOQrI7TZ+ofVMDA5RDd1iAvAcPwfbaSrhGd8zda0zu+IfBvSLg==}
+    peerDependencies:
+      vue: ^3.0.0
     dependencies:
       vue: 3.4.21
     dev: false

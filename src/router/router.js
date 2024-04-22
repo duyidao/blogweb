@@ -1,6 +1,6 @@
 export const generateRoutesFn = (pages, comps) => {
     // 页面数组路由级别排序
-    const sortedArray = Object.entries(pages).sort((a, b) => a[1].menuOrder - b[1].menuOrder);
+    const sortedArray = Object.entries(pages);
 
     const routes = [];
     /**

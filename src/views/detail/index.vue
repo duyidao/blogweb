@@ -1,6 +1,7 @@
 <script setup>
 import { generateRoutes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
+import { useMeta } from 'vue-meta';
 
 const router = useRouter()
 const routeList = ref([])
@@ -23,7 +24,15 @@ function getRandomElementsFromArray(arr, n) {
     // Return the first n elements from the shuffled array
     return shuffledArray.slice(0, n);
 }
-
+onMounted(() => {
+    useMeta({
+        title: '文章列表 - 刀刀博客',
+        meta: [
+            { name: 'keywords', content: '刀刀,vue,JavaScript,刀刀小站,前端,css,' + routeNow.value.title },
+            { name: 'description', content: `${routeNow.value.title}，主要记录${routeNow.value.info}` }
+        ]
+    })
+})
 watch(() => routeNow.value, (to, from) => {
     let arr = generateRoutes
         .filter(item => item.path.includes(to.articleType))
@@ -47,17 +56,17 @@ const handleGiteeFn = () => {
 <template>
     <div class="catalogue">
         <div class="catalogue-title">
-            <div class="catalogue-title-big transition-color">
+            <p class="catalogue-title-big transition-color">
                 {{ routeNow.title }}
-            </div>
-            <div class="catalogue-title-info transition-color">{{ routeNow.info }}</div>
+            </p>
+            <p class="catalogue-title-info transition-color">{{ routeNow.info }}</p>
         </div>
         <div class="catalogue-body">
-            <div class="catalogue-content">
+            <main class="catalogue-content">
                 <router-view></router-view>
-            </div>
+            </main>
 
-            <div class="catalogue-aside">
+            <aside class="catalogue-aside">
                 <!-- 花朵动画 -->
                 <div class="flower">
                     <!-- <window /> -->
@@ -70,8 +79,8 @@ const handleGiteeFn = () => {
                         @click.stop="handleGiteeFn">
                         <div class="card">
                             <div class="card-face card-front transition-color">
-                                <div class="card-title">Gitee</div>
-                                <div class="card-word">前往码云仓库👉</div>
+                                <p class="card-title">Gitee</p>
+                                <p class="card-word">前往码云仓库👉</p>
                                 <SvgIcon class="card-svg-cat"
                                     name="cat"
                                     width="50px"
@@ -81,9 +90,9 @@ const handleGiteeFn = () => {
                                     width="50px"
                                     height="50px" />
                             </div>
-                            <div class="card-face card-back transition-color">
+                            <p class="card-face card-back transition-color">
                                 关注我
-                            </div>
+                            </p>
                         </div>
                     </div>
 
@@ -102,12 +111,12 @@ const handleGiteeFn = () => {
                                     :key="index"
                                     class="list-item"
                                     @click="$goRouter(item.path, '/blogweb/detail/')">
-                                    <div class="list-item-title">{{ item.meta.title }}</div>
+                                    <p class="list-item-title">{{ item.meta.title }}</p>
                                     <div class="list-item-info">
                                         <SvgIcon name="article"
                                             width="16px"
                                             height="16px" />
-                                        <div class="list-item-content">{{ item.meta.info }}</div>
+                                        <p class="list-item-content">{{ item.meta.info }}</p>
                                     </div>
                                 </div>
                             </template>
@@ -116,7 +125,7 @@ const handleGiteeFn = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </aside>
         </div>
     </div>
 </template>
@@ -316,7 +325,7 @@ const handleGiteeFn = () => {
                             display: flex;
                             align-items: center;
 
-                            div {
+                            .list-item-content {
                                 width: 100%;
                                 text-overflow: ellipsis;
                                 overflow: hidden;

@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <div class="home">
+  <nav class="home">
     首页
-    <div @click.stop="$goRouter('css', '/blogweb/articleList/')">css</div>
-    <div @click.stop="$goRouter('js', '/blogweb/articleList/')">js</div>
-    <div @click.stop="$goRouter('learn', '/blogweb/articleList/')">learn</div>
-  </div>
+    <router-link to="/blogweb/articleList/css">css</router-link>
+    <router-link to="/blogweb/articleList/js">js</router-link>
+    <router-link to="/blogweb/articleList/learn">learn</router-link>
+  </nav>
 </template>
 
 <style lang="less" scoped>
