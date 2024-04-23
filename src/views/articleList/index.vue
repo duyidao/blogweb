@@ -10,7 +10,7 @@ onMounted(() => {
   useMeta({
     title: '文章列表 - 刀刀博客',
     meta: [
-      { name: 'keywords', content: '刀刀,vue,JavaScript,刀刀小站,前端,css,程序员' },
+      { name: 'keywords', content: '刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端,程序员' },
       { name: 'description', content: '文章列表模块，记录着效果或功能实现的方法代码，可上手实操~' }
     ]
   })

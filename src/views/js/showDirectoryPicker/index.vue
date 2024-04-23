@@ -37,7 +37,8 @@ const fileContent = ref('')
 // 点击文件，获取文件内容
 const clickFn = async (index) => {
     console.log('index', index);
-    let fileData = root.value
+    let fileData = root.value.children
+    console.log('fileData:-----------begin',  fileData);
     for (let i = 0; i < index.length; i++) {
         console.log('i, index.length', i, index.length, index[i]);
         console.log('fileData[index[i]]', fileData[index[i]]);
@@ -45,7 +46,7 @@ const clickFn = async (index) => {
         else fileData = fileData[index[i]]
         console.log('fileData:',  fileData);
     }
-    console.log('fileData--------------', fileData);
+    console.log('fileData:------------after', fileData);
     const file = await fileData.getFile()
     const reader = new FileReader()
     reader.onload = e => {

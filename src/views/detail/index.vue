@@ -3,7 +3,6 @@ import { generateRoutes } from '@/router/index'
 import { routeNow } from '@/store/router.js'
 import { useMeta } from 'vue-meta';
 
-const router = useRouter()
 const routeList = ref([])
 
 // 从数组中筛选出6个数据
@@ -24,15 +23,17 @@ function getRandomElementsFromArray(arr, n) {
     // Return the first n elements from the shuffled array
     return shuffledArray.slice(0, n);
 }
+
 onMounted(() => {
     useMeta({
-        title: '文章列表 - 刀刀博客',
+        title: routeNow.value.title + ' - 刀刀博客',
         meta: [
-            { name: 'keywords', content: '刀刀,vue,JavaScript,刀刀小站,前端,css,' + routeNow.value.title },
+            { name: 'keywords', content: '刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端,' + routeNow.value.title },
             { name: 'description', content: `${routeNow.value.title}，主要记录${routeNow.value.info}` }
         ]
     })
 })
+
 watch(() => routeNow.value, (to, from) => {
     let arr = generateRoutes
         .filter(item => item.path.includes(to.articleType))

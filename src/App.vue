@@ -6,7 +6,7 @@ onMounted(() => {
   useMeta({
     title: '刀刀小站效果展示 - 刀刀博客',
     meta: [
-      { name: 'keywords', content: '刀刀,vue,JavaScript,刀刀小站,前端,css,程序员' },
+      { name: 'keywords', content: '刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端,程序员' },
       { name: 'description', content: '欢迎来到刀刀小站，此模块用于展示博客效果，技术学习永无止尽，做到今天的自己比昨天更优秀，每天都要更努力！' }
     ]
   });
