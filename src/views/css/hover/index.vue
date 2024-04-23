@@ -6,13 +6,13 @@
   <div id="ifrname-box"
     class="ifrname-box">
     <div class="link">
-      <div class="iframe-box-title transition-color">伪类选择器</div>
+      <div class="iframe-box-title">伪类选择器</div>
       <ul>
         <li><a href="javascript:;">无操作链接显示蓝色；长按链接显示绿色；鼠标悬停显示红色</a></li>
       </ul>
     </div>
     <div class="input">
-      <div class="iframe-box-title transition-color">表单选择器</div>
+      <div class="iframe-box-title">表单选择器</div>
       <ul>
         <li>
           单选框组：
@@ -95,7 +95,7 @@
       </ul>
     </div>
     <div class="element">
-      <div class="iframe-box-title transition-color">元素选择器</div>
+      <div class="iframe-box-title">元素选择器</div>
       <div class="box">
         <p>第一个元素</p>
         <div>第二个元素：div</div>
@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="function">
-      <div class="iframe-box-title transition-color">表单选择器</div>
+      <div class="iframe-box-title">表单选择器</div>
       <div class="where">
         <p class="title-2">where：所有p标签和div标签下的span改为黄色</p>
         <div class="box-where">

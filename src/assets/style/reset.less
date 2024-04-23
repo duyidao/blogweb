@@ -10,16 +10,6 @@
   border: 0;
 }
 
-/* 移除所有元素的高亮框 */
-*:focus {
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  -moz-tap-highlight-color: transparent;
-  -ms-tap-highlight-color: transparent;
-  -o-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
-}
-
 /* 设置默认字体和颜色 */
 body {
   font-family: 'Microsoft YaHei', 'Heiti SC', 'tahoma', 'arial', 'Hiragino Sans GB', '宋体', sans-serif;
@@ -30,6 +20,12 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
   overflow-x: hidden;
+}
+
+// 移动端点击遮罩去除
+div {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -ms-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #app {
@@ -89,7 +85,7 @@ a {
 }
 
 a:hover {
-  color: #c81623;
+  color: #002c6e;
 }
 
 /* 设置输入框和按钮样式 */
@@ -109,6 +105,7 @@ button {
   color: var(--catalogue-word);
   border: 1px solid var(--primary-bg);
   border-radius: 15px;
+  transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
 }
 
 /* 设置表格样式 */

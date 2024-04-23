@@ -53,6 +53,7 @@ const onChangeFn = e => {
 <template>
     <div ref="compress"
         class="compress">
+        <myUpload />
         <input type="file"
             @change="onChangeFn" />
         <div class="info transition-color">原图大小：{{ imgInfo.size }}，压缩后大小：{{ imgInfo.blobsize || 0 }}</div>

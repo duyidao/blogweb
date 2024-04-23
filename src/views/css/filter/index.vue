@@ -14,30 +14,30 @@ const grayscale = ref(0)
     <div class="ifrname-box"
         id="ifrname-box">
         <div class="polygon">
-            <div class="iframe-box-title transition-color">对比度
+            <div class="iframe-box-title">对比度
                 <span class="iframe-box-title-small">当前对比度：{{ contrast }}%</span>
             </div>
             <Contrast v-model="contrast" />
         </div>
         <div class="polygon">
-            <div class="iframe-box-title transition-color">色相旋转
+            <div class="iframe-box-title">色相旋转
                 <span class="iframe-box-title-small">当前度数：{{ deg }}deg</span>
             </div>
             <HueRotate v-model="deg" />
         </div>
         <div class="ellipse">
-            <div class="iframe-box-title transition-color">模糊
+            <div class="iframe-box-title">模糊
             </div>
             <Blur />
         </div>
         <div class="inset">
-            <div class="iframe-box-title transition-color">灰度图
+            <div class="iframe-box-title">灰度图
                 <span class="iframe-box-title-small">当前灰度值：{{ grayscale }}%</span>
             </div>
             <Grayscale v-model="grayscale" />
         </div>
         <div class="polygons">
-            <div class="iframe-box-title transition-color">轮廓阴影</div>
+            <div class="iframe-box-title">轮廓阴影</div>
             <DropShadow />
         </div>
     </div>

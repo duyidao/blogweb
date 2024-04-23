@@ -146,7 +146,6 @@ const exportFn = () => {
 
                 button {
                     height: 1.875rem;
-                    border: .0625rem solid var(--primary-bg);
                     margin-right: .9375rem;
                     font-size: .875rem;
                 }
