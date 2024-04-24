@@ -3,22 +3,30 @@ import { renderAsync } from 'docx-preview'
 
 const wordRef = ref(null)
 
-const changeFn = e => {
-    const file = e.target.files[0]
-    renderAsync(file, wordRef.value)
+const onChangeFn = e => {
+    renderAsync(e, wordRef.value)
 }
 </script>
 
 <template>
     <div class="word">
-        <input type="file"
-            name="file"
-            id="file"
-            @change="changeFn">
+        <div class="word-upload">
+            <myUpload needList @change="onChangeFn" />
+        </div>
         <div ref="wordRef"></div>
     </div>
 </template>
 
 <style lang="less" scoped>
+.word-upload {
+    width: 300px;
+    margin: 0 auto 20px;
+}
 
+@media screen and (max-width: 768px) {
+    .word-upload {
+        width: 18.75rem;
+        margin-bottom: 1.25rem;
+    }
+}
 </style>

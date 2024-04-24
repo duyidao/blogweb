@@ -4,12 +4,9 @@ const imgRef = ref(null)
 const filter = ref(null)
 
 const onChangeFn = e => {
-    // 获取用户上传的文件
-    const file = e.target.files[0]
-
     // 预览文件
     let fr = new FileReader()
-    fr.readAsDataURL(file)
+    fr.readAsDataURL(e)
 
     // 获取图片读完的图片结果（非同步，需要在onload获取）
     fr.onload = () => {
@@ -47,8 +44,9 @@ const addFn = () => {
 
 <template>
     <div ref="filter" class="filter">
-        <input type="file"
-            @change="onChangeFn" />
+        <div class="filter-upload">
+            <myUpload @change="onChangeFn" />
+        </div>
         <img :src="imgUrl"
             ref="imgRef" />
         <button v-if="imgUrl" @click="addFn">
@@ -63,6 +61,10 @@ const addFn = () => {
     flex-direction: column;
     align-items: center;
 
+    .filter-upload {
+        width: 300px;
+    }
+
     button {
         margin: 20px;
     }
@@ -75,6 +77,10 @@ const addFn = () => {
 
 @media screen and (max-width: 768px) {
     .filter {
+        .filter-upload {
+            width: 18.75rem;
+        }
+        
         button {
             margin: 1.25rem;
         }

@@ -2,8 +2,9 @@
 const imageList = ref([])
 
 // 用户选择图片
-const onChange = e => {
-    Array.from(e.target.files).forEach(item => {
+const onChangeFn = e => {
+    imageList.value = []
+    Array.from(e).forEach(item => {
         imageList.value.push(item)
     })
 }
@@ -20,12 +21,31 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <input type="file"
-        name=""
-        id=""
-        multiple
-        @change="onChange">
-    <button @click="onSubmit">提交</button>
+    <div class="ifrname-box">
+        <div class="upload-upload">
+            <myUpload needList multiple @change="onChangeFn" />
+        </div>
+        <button @click="onSubmit">提交</button>
+    </div>
 </template>
 
-<style scoped></style>
+<style lang="less" scoped>
+.ifrname-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .upload-upload {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .upload-upload {
+        width: 18.75rem;
+        margin-bottom: 1.25rem;
+    }
+}
+</style>

@@ -9,10 +9,10 @@ const { size } = defineProps({
     }
 })
 
-const onChange = e => {
+const onChangeFn = e => {
     fileObj.value = {}
     precent.value = 0
-    fileObj.value = e.target.files[0]
+    fileObj.value = e
 }
 
 const onSubmit = async () => {
@@ -42,14 +42,10 @@ const onSubmit = async () => {
 
 <template>
     <div class="ifrname-box">
-        <div class="input">
-            <input type="file"
-                name=""
-                id=""
-                multiple
-                @change="onChange">
-            <button @click="onSubmit">提交</button>
+        <div class="upload-upload">
+            <myUpload needList @change="onChangeFn" />
         </div>
+        <button @click="onSubmit">提交</button>
 
         <div class="jindu">
             <div class="progress">
@@ -62,9 +58,22 @@ const onSubmit = async () => {
 </template>
 
 <style lang="less" scoped>
+.ifrname-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .upload-upload {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+}
+
 .jindu {
     display: flex;
     align-items: center;
+    width: 100%;
     margin-top: 20px;
 
     .progress {
@@ -75,7 +84,7 @@ const onSubmit = async () => {
 
         .progress-bar {
             width: 0;
-            height: 100%;
+            height: 10px;
             background-color: #f00;
             border-radius: 5px;
         }
@@ -87,8 +96,18 @@ const onSubmit = async () => {
 }
 
 @media screen and (max-width: 768px) {
+    .upload-upload {
+        width: 18.75rem;
+        margin-bottom: 1.25rem;
+    }
+
     .jindu {
         margin-top: 1.25rem;
+
+        .progress-bar {
+            height: .625rem;
+            border-radius: .3125rem;
+        }
 
         .progress-text {
             margin-left: .625rem;

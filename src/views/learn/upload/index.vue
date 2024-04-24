@@ -6,13 +6,13 @@ import breakpoint from './breakpoint.vue'
 // file
 const selectedFiles = ref({})
 const fileChange = e => {
-    selectedFiles.value = e.target.files[0]
+    selectedFiles.value = e
 }
 
 // blob
 const blobFiles = ref({})
 const blobChange = e => {
-    const file = e.target.files[0]
+    const file = e
     const blob = new Blob([file], { type: file.type })
     blobFiles.value = { size: blob.size, type: blob.type, name: file.name }
 }
@@ -21,9 +21,10 @@ const blobChange = e => {
 const formData = ref({})
 const formDataChange = e => {
     formData.value = new FormData()
-    formData.value.append("file", e.target.files[0]);
+    formData.value.append("file", e);
     formData.value.append("username", "John");
     formData.value.append("age", 30);
+    console.log('formData.value', formData.value);
 }
 
 // fileReader
@@ -86,13 +87,12 @@ const fileReaderChange = (e, type) => {
             <div class="iframe-box-title">前置知识</div>
             <ul class="list-style-circle">
                 <li class="flex-column">
-                    <div>
-                        <span>file</span>
-                        <input type="file"
-                            name="file"
-                            id="file"
-                            @change="fileChange">
-                        <div class="content">
+                    <div class="file">
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，file类型"
+                                @change="fileChange" />
+                        </div>
+                        <div class="content transition-color">
                             <div>文件名: {{ selectedFiles.name || '-' }}</div>
                             <div>文件类型: {{ selectedFiles.type || '-' }}</div>
                             <div>文件大小: {{ selectedFiles.size || 0 }}bytes</div>
@@ -101,12 +101,11 @@ const fileReaderChange = (e, type) => {
                 </li>
                 <li class="flex-column">
                     <div>
-                        <span>blob</span>
-                        <input type="file"
-                            name="blob"
-                            id="blob"
-                            @change="blobChange">
-                        <div class="content">
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，blob类型"
+                                @change="blobChange" />
+                        </div>
+                        <div class="content transition-color">
                             <div>文件名: {{ blobFiles.name }}</div>
                             <div>文件类型: {{ blobFiles.type }}</div>
                             <div>文件大小: {{ blobFiles.size }}bytes</div>
@@ -115,49 +114,29 @@ const fileReaderChange = (e, type) => {
                 </li>
                 <li class="flex-column">
                     <div>
-                        <span>formData</span>
-                        <input type="file"
-                            name="formData"
-                            id="formData"
-                            @change="formDataChange">
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，formData类型"
+                                @change="formDataChange" />
+                        </div>
                     </div>
                 </li>
                 <li class="flex-column">
                     <div class="flex-column-fileReader">
-                        <span>fileReader</span>
-                        <div class="flex">
-                            <label class=""
-                                for="readAsText">
-                                <i>readAsText</i>
-                                <input type="file"
-                                    name="readAsText"
-                                    id="readAsText"
-                                    @change="(e) => fileReaderChange(e, 'readAsText')">
-                            </label>
-                            <label class=""
-                                for="readAsArrayBuffer">
-                                <i>readAsArrayBuffer</i>
-                                <input type="file"
-                                    name="readAsArrayBuffer"
-                                    id="readAsArrayBuffer"
-                                    @change="(e) => fileReaderChange(e, 'readAsArrayBuffer')">
-                            </label>
-                            <label class=""
-                                for="readAsDataURL">
-                                <i>readAsDataURL</i>
-                                <input type="file"
-                                    name="readAsDataURL"
-                                    id="readAsDataURL"
-                                    @change="(e) => fileReaderChange(e, 'readAsDataURL')">
-                            </label>
-                            <label class=""
-                                for="readAsBinaryString">
-                                <i>readAsBinaryString</i>
-                                <input type="file"
-                                    name="readAsBinaryString"
-                                    id="readAsBinaryString"
-                                    @change="(e) => fileReaderChange(e, 'readAsBinaryString')">
-                            </label>
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，fileReader类型readAsText"
+                                @change="(e) => fileReaderChange(e, 'readAsText')" />
+                        </div>
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，fileReader类型readAsArrayBuffer"
+                                @change="(e) => fileReaderChange(e, 'readAsArrayBuffer')" />
+                        </div>
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，fileReader类型readAsDataURL"
+                                @change="(e) => fileReaderChange(e, 'readAsDataURL')" />
+                        </div>
+                        <div class="upload-upload">
+                            <myUpload info="上传文件，fileReader类型readAsBinaryString"
+                                @change="(e) => fileReaderChange(e, 'readAsBinaryString')" />
                         </div>
                         <div class="content-fileReader">{{ result }} </div>
                     </div>
@@ -183,34 +162,27 @@ const fileReaderChange = (e, type) => {
 .flex-column {
     >div {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+
+        .upload-upload {
+            width: 300px;
+            margin-right: 20px;
+        }
 
         &.flex-column-fileReader {
-            .flex {
-                display: flex;
-                flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
 
-                label {
-                    display: flex;
-                    align-items: center;
-                    width: 50%;
-                    margin-bottom: 10px;
-
-                    i {
-                        color: var(--primary-info);
-                        margin-right: 15px;
-                        padding: 2px 5px;
-                        border-radius: 3px;
-                    }
-                }
+            > div {
+                margin-bottom: 20px;
             }
 
             .content-fileReader {
                 min-height: 20px;
                 max-height: 300px;
                 overflow-y: auto;
-                word-wrap:break-word;
-                word-break:break-all;
+                word-wrap: break-word;
+                word-break: break-all;
             }
         }
     }
@@ -223,7 +195,13 @@ const fileReaderChange = (e, type) => {
     }
 
     .content {
-        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 120px;
+        padding: 10px 0;
+        font-size: 15px;
+        color: var(--primary-info);
 
         div {
             margin-bottom: 8px;

@@ -13,16 +13,12 @@ const whData = ref({
     top: 0
 })
 const onChangeFn = e => {
-    // 获取用户上传的文件
-    const file = e.target.files[0]
-
     // 预览文件
     let fr = new FileReader()
-    fr.readAsDataURL(file)
+    fr.readAsDataURL(e)
 
     // 获取图片读完的图片结果（非同步，需要在onload获取）
     fr.onload = () => {
-        console.log('fr', fr);
         imgUrl.value = fr.result
 
         let ctx = canvasRef.value.getContext('2d')
@@ -43,8 +39,9 @@ const onChangeFn = e => {
 
 <template>
     <div class="tailor">
-        <input type="file"
-            @change="onChangeFn" />
+        <div class="tailor-upload">
+            <myUpload @change="onChangeFn" />
+        </div>
         <div>
             原图：
             <img :src="imgUrl"
@@ -65,8 +62,9 @@ const onChangeFn = e => {
     flex-direction: column;
     align-items: center;
 
-    input {
-        margin-bottom: 10px;
+    .tailor-upload {
+        width: 300px;
+        margin-bottom: 20px;
     }
 
     img {
@@ -82,8 +80,9 @@ const onChangeFn = e => {
 @media screen and (max-width: 768px) {
     .tailor {
 
-        input {
-            margin-bottom: .625rem;
+        .tailor-upload {
+            width: 18.75rem;
+            margin-bottom: 1.25rem;
         }
 
         img {

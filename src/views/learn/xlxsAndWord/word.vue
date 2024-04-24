@@ -3,10 +3,9 @@ import vueOfficeWord from '@vue-office/docx'
 
 const wordSrc = ref(null)
 
-const changeFn = e => {
-    const file = e.target.files[0]
+const onChangeFn = e => {
     const fr = new FileReader()
-    fr.readAsDataURL(file)
+    fr.readAsDataURL(e)
     fr.onload = (e) => {
         wordSrc.value = e.target.result
     }
@@ -15,14 +14,23 @@ const changeFn = e => {
 
 <template>
     <div class="word">
-        <input type="file"
-            name="file"
-            id="file"
-            @change="changeFn">
+        <div class="word-upload">
+            <myUpload needList @change="onChangeFn" />
+        </div>
         <vueOfficeWord v-if="wordSrc" :src="wordSrc" style="height: 500px; overflow-y: auto;" />
     </div>
 </template>
 
 <style lang="less" scoped>
+.word-upload {
+    width: 300px;
+    margin: 0 auto 20px;
+}
 
+@media screen and (max-width: 768px) {
+    .word-upload {
+        width: 18.75rem;
+        margin-bottom: 1.25rem;
+    }
+}
 </style>

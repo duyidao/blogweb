@@ -2,8 +2,8 @@
 const fileObj = ref({}) // 文件上传
 const precent = ref(0) // 百分比
 
-const onChange = e => {
-    fileObj.value = e.target.files[0]
+const onChangeFn = e => {
+    fileObj.value = e
 }
 
 const onSubmit = async () => {
@@ -31,16 +31,30 @@ const onSubmit = async () => {
 
 <template>
     <div class="ifrname-box">
-        <div class="input">
-            <input type="file"
-                name=""
-                id=""
-                multiple
-                @change="onChange">
-            <button @click="onSubmit">提交</button>
+        <div class="upload-upload">
+            <myUpload needList @change="onChangeFn" />
         </div>
+        <button @click="onSubmit">提交</button>
     </div>
 </template>
 
 <style lang="less" scoped>
+.ifrname-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .upload-upload {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .upload-upload {
+        width: 18.75rem;
+        margin-bottom: 1.25rem;
+    }
+}
 </style>

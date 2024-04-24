@@ -11,17 +11,14 @@ const compress = ref(null)
 
 // 获取图片
 const onChangeFn = e => {
-    // 获取用户上传的文件
-    const file = e.target.files[0]
-
     // 预览文件
     let fr = new FileReader()
-    fr.readAsDataURL(file)
+    fr.readAsDataURL(e)
 
     // 获取图片读完的图片结果（非同步，需要在onload获取）
     fr.onload = (e) => {
-        imgInfo.value.size = file.size
         imgUrl.value = fr.result
+        imgInfo.value.size = e.total
 
         // 创建canvas真实dom元素
         let canvas = document.createElement('canvas')
@@ -38,9 +35,8 @@ const onChangeFn = e => {
 
             // 把canvas转为blob格式
             canvas.toBlob((blob) => {
-                console.log('blob', blob);
                 imgInfo.value.blobsize = blob.size
-                saveAs(blob, 'img.jpeg')
+                // saveAs(blob, 'img.jpeg')
                 let form = new FormData()
                 form.append('file', blob)
                 // axios.post('xxx', form)
@@ -53,9 +49,9 @@ const onChangeFn = e => {
 <template>
     <div ref="compress"
         class="compress">
-        <myUpload />
-        <input type="file"
-            @change="onChangeFn" />
+        <div class="compress-upload">
+            <myUpload @change="onChangeFn" />
+        </div>
         <div class="info transition-color">原图大小：{{ imgInfo.size }}，压缩后大小：{{ imgInfo.blobsize || 0 }}</div>
         <img ref="imgRef"
             :src="imgUrl" />
@@ -68,8 +64,8 @@ const onChangeFn = e => {
     flex-direction: column;
     align-items: center;
 
-    input {
-        margin-bottom: 10px;
+    .compress-upload {
+        width: 300px;
     }
 
     img {
@@ -85,8 +81,8 @@ const onChangeFn = e => {
 @media screen and (max-width: 768px) {
     .compress {
 
-        input {
-            margin-bottom: .625rem;
+        .compress-upload {
+            width: 18.75rem;
         }
 
         img {
