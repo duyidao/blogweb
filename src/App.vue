@@ -14,9 +14,12 @@ onMounted(() => {
 
 const resizeFn = () => {
   screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth;
+  let fontSize = (document.body.clientWidth / 750) * 16
+  document.documentElement.style.fontSize = fontSize + "px";
 }
 
 onMounted(() => {
+  resizeFn()
   window.addEventListener('resize', resizeFn);
 });
 

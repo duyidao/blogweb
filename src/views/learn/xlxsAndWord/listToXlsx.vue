@@ -56,10 +56,12 @@ const exportFn = () => {
                     name="level"
                     id="level">
             </label>
-            <button class="transition-color"
-                @click.stop="clickFn">数据添加到表格</button>
-            <button class="transition-color"
-                @click.stop="exportFn">表格数据导出xlsx</button>
+            <div class="buttons">
+                <button class="transition-color"
+                    @click.stop="clickFn">数据添加到表格</button>
+                <button class="transition-color"
+                    @click.stop="exportFn">表格数据导出xlsx</button>
+            </div>
         </div>
         <table ref="tableRef"
             class="table-list transition-color">
@@ -105,7 +107,7 @@ const exportFn = () => {
             }
 
             input {
-                width: 85%;
+                width: 80%;
                 height: 35px;
                 border: 1px solid var(--primary-bg);
                 margin-right: 20px;
@@ -114,13 +116,20 @@ const exportFn = () => {
                 background-color: var(--catalogue-bg);
             }
 
-            button {
-                width: 23%;
-                height: 30px;
-                margin-right: 15px;
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50%;
 
-                &:last-child {
-                    margin: 0;
+                button {
+                    width: 45%;
+                    height: 30px;
+                    margin-right: 15px;
+
+                    &:last-child {
+                        margin: 0;
+                    }
                 }
             }
         }
@@ -136,6 +145,12 @@ const exportFn = () => {
 
             .input {
                 font-size: .875rem;
+
+                label {
+                    width: 100%;
+                    margin-bottom: .625rem;
+                }
+
                 input {
                     height: 2.1875rem;
                     border: .0625rem solid var(--primary-bg);
@@ -144,11 +159,17 @@ const exportFn = () => {
                     font-size: .875rem;
                 }
 
-                button {
-                    height: 1.875rem;
-                    margin-right: .9375rem;
-                    font-size: .875rem;
+                .buttons {
+                    width: 90%;
+
+                    button {
+                        height: 1.875rem;
+                        margin-right: .9375rem;
+                        font-size: .875rem;
+                    }
                 }
+
+
             }
 
             table {

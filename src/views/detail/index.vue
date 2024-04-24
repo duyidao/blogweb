@@ -61,6 +61,7 @@ const handleGiteeFn = () => {
                 {{ routeNow.title }}
             </p>
             <p class="catalogue-title-info transition-color">{{ routeNow.info }}</p>
+            <back />
         </div>
         <div class="catalogue-body">
             <main class="catalogue-content">
@@ -137,8 +138,7 @@ const handleGiteeFn = () => {
     height: 100%;
 
     .catalogue-title {
-        margin-bottom: 80px;
-        margin-top: 50px;
+        margin: 50px 0;
 
         .catalogue-title-big {
             font-size: 40px;
@@ -150,7 +150,7 @@ const handleGiteeFn = () => {
         .catalogue-title-info {
             font-size: 14px;
             font-style: italic;
-            color: var(--catalogue-info);
+            color: var(--catalogue-title);
         }
     }
 }
@@ -345,8 +345,7 @@ const handleGiteeFn = () => {
     .catalogue {
 
         .catalogue-title {
-            margin-bottom: 5rem;
-            margin-top: 3.125rem;
+            margin: 3.125rem 0;
 
             .catalogue-title-big {
                 font-size: 2.5rem;
@@ -364,7 +363,7 @@ const handleGiteeFn = () => {
                 margin-right: 0;
                 border-radius: 1.25rem;
                 padding: 1.25rem;
-                box-shadow: 0 0 .3125rem #ccc;
+                box-shadow: 0 0 .3125rem var(--primary-border);
             }
 
             .catalogue-aside {

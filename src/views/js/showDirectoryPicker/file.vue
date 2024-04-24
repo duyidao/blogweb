@@ -16,7 +16,6 @@ export default defineComponent({
     },
     setup(props, {emit}) {
         const data = ref(props.items.map(item => {
-            console.log('({...item, show: false}))', item, item.name);
             return {
                 ...item,
                 name: item.name,
