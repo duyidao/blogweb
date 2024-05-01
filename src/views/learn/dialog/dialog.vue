@@ -2,7 +2,14 @@
 const props = defineProps({
     width: [String, Number],
     marginTop: [String, Number],
-    fullDialog: Boolean,
+    fullDialog: {
+        type: Boolean,
+        default: false
+    },
+    center: {
+        type: Boolean,
+        default: false
+    },
     show: {
         type: Boolean,
         default: false
@@ -18,16 +25,23 @@ const props = defineProps({
     url: {
         type: String,
         default: ''
+    },
+    params: {
+        type: Object,
+        default: () => ({})
     }
 })
 
-const emit = defineEmits(['update:show', 'cancel', 'comfirm'])
+const emit = defineEmits(['update:show', 'update:fullDialog', 'cancel', 'comfirm'])
 
+// 点击取消或关闭按钮
 const cancelFn = () => {
     emit('update:show', false)
     emit('cancel')
+    document.body.style.overflowY = 'auto'
 }
 
+// 点击确认按钮
 const comfirmFn = () => {
     if (props.url) {
         // 模拟发请求
@@ -36,6 +50,11 @@ const comfirmFn = () => {
     emit('update:show', false)
     emit('comfirm')
 }
+
+// 点击全局按钮
+const fullFn = () => {
+    emit('update:fullDialog', !props.fullDialog)
+}
 </script>
 
 <template>
@@ -43,7 +62,7 @@ const comfirmFn = () => {
         v-if="show">
         <!--fullDialog：传递该字段后让弹窗组件全屏显示-->
         <div class="dialog"
-            :class="{ 'fullDialog': fullDialog }"
+            :class="{ fullDialog, center }"
             :style="{ width: width + 'px', marginTop: marginTop + 'px' }">
             <!-- 标题部分 -->
             <div class="title">
@@ -54,8 +73,9 @@ const comfirmFn = () => {
                 </slot>
 
                 <!-- 关闭按钮 -->
-                <span class="close-icon"
-                    @click.stop="cancelFn">×</span>
+                <span class="full-icon" @click.stop="fullFn">all</span>
+                <!-- 关闭按钮 -->
+                <span class="close-icon" @click.stop="cancelFn">×</span>
             </div>
 
             <!-- 内容部分 -->
@@ -90,6 +110,8 @@ const comfirmFn = () => {
 }
 
 .dialog {
+    display: flex;
+    flex-direction: column;
     min-width: 200px;
     background-color: #fff;
     width: 50%;
@@ -113,14 +135,23 @@ const comfirmFn = () => {
     text-align: center;
 }
 
-.close-icon {
+.full-icon {
     position: absolute;
-    right: 15px;
+    right: 35px;
     top: 10px;
     cursor: pointer;
 }
 
+.close-icon {
+    position: absolute;
+    right: 13px;
+    top: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 .content {
+    flex: 1;
     padding: 15px;
 }
 
