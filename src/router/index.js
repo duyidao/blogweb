@@ -12,7 +12,7 @@ export const generateRoutes = generateRoutesFn(pages, comps)   // 生成路由
 
 export const routes = [
     {
-        path: '/blogweb',
+        path: '/',
         name: 'home',
         component: () => import('@/views/home/index.vue'),
         meta: {
@@ -20,7 +20,7 @@ export const routes = [
         }
     },
     {
-        path: '/blogweb/articleList/:type',
+        path: '/articleList/:type',
         name: 'articleList',
         component: () => import('@/views/articleList/index.vue'),
         meta: {
@@ -28,7 +28,7 @@ export const routes = [
         }
     },
     {
-        path: '/blogweb/detail',
+        path: '/detail',
         name: 'detail',
         component: () => import('@/views/detail/index.vue'),
         children: [
@@ -36,22 +36,21 @@ export const routes = [
         ]
     },
     {
-        path: '/blogweb/404',
+        path: '/404',
         name: 'NoPage404',
         component: () => import('@/views/404/index.vue'), // 404 页面组件
         hidden: true, // 可选，隐藏该路由
     },
     {
         path: '/:pathMatch(.*)', // 使用正则匹配任意路径
-        redirect: '/blogweb/404', // 重定向到 404 页面
+        redirect: '/404', // 重定向到 404 页面
         hidden: true, // 可选，隐藏该路由
     },
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
-    base: '/blogweb/',
     scrollBehavior(to, from, savedPosition) {
         // 如果有 savedPosition，则滚动到该位置
         if (savedPosition) {

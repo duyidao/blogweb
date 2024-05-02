@@ -112,7 +112,7 @@ const handleGiteeFn = () => {
                                 <div v-for="(item, index) in routeList"
                                     :key="index"
                                     class="list-item"
-                                    @click="$goRouter(item.path, '/blogweb/detail/')">
+                                    @click="$goRouter(item.path, '/detail/')">
                                     <p class="list-item-title">{{ item.meta.title }}</p>
                                     <div class="list-item-info">
                                         <SvgIcon name="article"
