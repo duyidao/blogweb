@@ -51,6 +51,7 @@ export const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+    base: '/blogweb/',
     scrollBehavior(to, from, savedPosition) {
         // 如果有 savedPosition，则滚动到该位置
         if (savedPosition) {
