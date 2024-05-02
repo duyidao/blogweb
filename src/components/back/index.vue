@@ -6,7 +6,6 @@ const router = useRouter()
 const emit = defineEmits(['back'])
 
 const click = () => {
-    console.log('router', router);
     router.back()
     emit('back')
 }

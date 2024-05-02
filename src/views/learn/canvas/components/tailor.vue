@@ -25,11 +25,8 @@ const onChangeFn = e => {
 
         setTimeout(() => {
             // 等比计算截取的图片宽高
-            console.log('height', imgRef.value.height, imgRef.value.width);
-            console.log('naturalHeight', imgRef.value.naturalHeight, imgRef.value.naturalWidth);
             let height = (200 / imgRef.value.height) * imgRef.value.naturalHeight
             let width = (200 / imgRef.value.width) * imgRef.value.naturalWidth
-            console.log('height', height, width);
 
             ctx.drawImage(imgRef.value, 0, 0, width, height, 0, 0, 200, 200)
         }, 1000);

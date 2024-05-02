@@ -46,7 +46,6 @@ const clickFn = async (index) => {
     const file = await fileData.getFile()
     const reader = new FileReader()
     reader.onload = e => {
-        console.log('e', e);
         fileContent.value = e.target.result
     }
     reader.readAsText(file, 'utf-8')

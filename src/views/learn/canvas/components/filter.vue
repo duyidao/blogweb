@@ -25,7 +25,6 @@ const addFn = () => {
 
     // 获取像素值
     let imageData = ctx.getImageData(0, 0, imgRef.value.width, imgRef.value.height)
-    console.log('imageData', imageData);
     let _len = imageData.data.length
     for (let i = 0; i < _len; i++) {
         if (i % 2 === 0) {
@@ -36,7 +35,6 @@ const addFn = () => {
     // 清空 canvas
     ctx.clearRect(0, 0, imgRef.value.width, imgRef.value.height)
 
-    console.log('imageData', imageData);
     // 重新绘制像素
     ctx.putImageData(imageData, 0, 0)
 }

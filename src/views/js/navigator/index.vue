@@ -1,21 +1,6 @@
 <script setup>
 const info = ref({})
 
-navigator.connection.onchange = (e) => {
-    // ...
-    console.log('change', e);
-}
-
-window.addEventListener('online', (e) => {
-    // ...
-    console.log('online', e);
-})
-
-window.addEventListener('offline', (e) => {
-    // ...
-    console.log('offline', e);
-})
-
 const clickFn = () => {
     if(navigator.onLine) {
         console.log('navigator.connection', navigator.connection);

@@ -29,6 +29,7 @@ watch(() => routeNow.value, (to, from) => {
 const articleItemArr = ref([])
 
 const routerFn = (item) => {
+  console.log('item', item);
   router.push({
     path: '/detail/' + item.path
   })
@@ -49,8 +50,10 @@ const routerFn = (item) => {
           <img :src="item.meta.img"
             alt="">
           <div class="content">
-            <span class="content-title transition-color">{{ item.meta.title }}</span>
-            <span class="content-info transition-color">{{ item.meta.info }}</span>
+            <div>
+              <span class="content-title transition-color">{{ item.meta.title }}</span>
+              <span class="content-info transition-color">{{ item.meta.info }}</span>
+            </div>
             <span class="content-tag transition-color">效率</span>
           </div>
         </div>
@@ -120,6 +123,11 @@ const routerFn = (item) => {
             flex: 1;
             margin: 15px 0;
             font-size: 16px;
+            overflow:hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 6;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
           }
         }
       }
@@ -178,6 +186,11 @@ const routerFn = (item) => {
               flex: 1;
               margin: 12px 0;
               font-size: 16px;
+              overflow:hidden;
+              text-overflow: ellipsis;
+              -webkit-line-clamp: 3;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
             }
           }
         }

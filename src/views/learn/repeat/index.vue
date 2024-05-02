@@ -2,7 +2,6 @@
 import {signProp} from './dialog.jsx'
 
 const clickFn = () => {
-    console.log('clickFn');
     signProp('我是内容文本', {
         confirm: () => {},
         cancel: () => {}
