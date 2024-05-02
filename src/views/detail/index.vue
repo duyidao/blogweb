@@ -35,6 +35,7 @@ onMounted(() => {
 })
 
 watch(() => routeNow.value, (to, from) => {
+  if(!to.path.includes('detail')) return
     let arr = generateRoutes
         .filter(item => item.path.includes(to.articleType))
         .filter(item => !to.path.includes(item.path))

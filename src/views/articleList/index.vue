@@ -4,6 +4,7 @@ import { routeNow } from '@/store/router.js'
 import { type } from '@/store/index.js'
 import { useMeta } from 'vue-meta';
 
+const router = useRouter()
 const routeList = ref([])
 
 onMounted(() => {
@@ -17,6 +18,7 @@ onMounted(() => {
 })
 
 watch(() => routeNow.value, (to, from) => {
+  if(!to.path.includes('articleList')) return
   let arr = generateRoutes.filter(item => item.path.includes(to.articleType))
   routeList.value = arr
 }, {
@@ -26,55 +28,24 @@ watch(() => routeNow.value, (to, from) => {
 // 获取要观察的目标元素列表
 const articleItemArr = ref([])
 
-// const setComponentRef = (index) => (el) => {
-//   if (el) {
-//     articleItemArr.value[index] = el
-//   }
-// }
-
-// const options = {
-//   threshold: 0.6, // 重叠面积占被观察者的比例
-//   // root: document.querySelector('#scrollArea'), // 观察的根元素
-// };
-
-// const callback = (entries, observer) => {
-//   entries.forEach(entry => {
-//     if (entry.isIntersecting) {
-//       // 元素进入可视区域
-//       entry.target.classList.add('article-item-show')
-//     } else {
-//       // 元素离开可视区域
-//       entry.target.classList.remove('article-item-show')
-//     }
-//   });
-// };
-// const observer = new IntersectionObserver(callback, options);
-
-// onMounted(() => {
-//   // 观察每个目标元素
-//   articleItemArr.value.forEach((target) => {
-//     observer.observe(target);
-//   });
-// })
-
-// onBeforeUnmount(() => {
-//   // 销毁监听
-//   articleItemArr.value.forEach((target) => {
-//     observer.unobserve(target);
-//   });
-// })
+const routerFn = (item) => {
+  router.push({
+    path: '/detail/' + item.path
+  })
+}
 </script>
 
 <template>
   <div class="article-list">
+    <back />
     <TypeSwitch :title="`${routeNow.articleType} 相关模块`"
       v-model="type" />
     <div :class="{ 'article-item-list': type === 'list', 'article-item-img': type === 'img' }">
       <div v-for="(item, index) in routeList"
         :key="index"
         class="article-item transition-color transition-transform">
-        <router-link class="article-item-link"
-          :to="'/detail/' + item.path">
+        <div class="article-item-link"
+          @click.stop="routerFn(item)">
           <img :src="item.meta.img"
             alt="">
           <div class="content">
@@ -82,7 +53,7 @@ const articleItemArr = ref([])
             <span class="content-info transition-color">{{ item.meta.info }}</span>
             <span class="content-tag transition-color">效率</span>
           </div>
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -101,6 +72,7 @@ const articleItemArr = ref([])
     border-radius: 10px;
     background-color: var(--catalogue-bg);
     margin-bottom: 20px;
+    cursor: pointer;
   }
 
   .article-item-list {
