@@ -35,10 +35,9 @@ onMounted(() => {
 })
 
 watch(() => routeNow.value, (to, from) => {
-  if(!to.path.includes('detail')) return
-  console.log('generateRoutes', generateRoutes, to);
+    if(!to.path.includes('detail')) return
     let arr = generateRoutes
-        .filter(item => item.path.includes(to.articleType))
+        .filter(item => item.path.includes(to.detailType))
         .filter(item => !to.path.includes(item.path))
     routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr
 }, {
