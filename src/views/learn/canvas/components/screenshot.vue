@@ -1,16 +1,25 @@
-<script setup>
+<script>
 import html2canvas from 'html2canvas'
 import { ref } from 'vue'
 import { saveAs } from 'file-saver'
 
-const imgUrl = ref('')
+export default {
+    setup() {
+        const imgUrl = ref('')
 
-const saveScreen = () => {
-    html2canvas(document.body).then(res => {
-        res.toBlob((blob) => {
-            saveAs(blob, 'screen.png')
-        })
-    })
+        const saveScreen = () => {
+            html2canvas(document.body).then(res => {
+                res.toBlob((blob) => {
+                    saveAs(blob, 'screen.png')
+                })
+            })
+        }
+
+        return {
+            imgUrl,
+            saveScreen
+        }
+    }
 }
 </script>
 

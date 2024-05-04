@@ -1,10 +1,19 @@
-<script setup>
+<script>
 import { renderAsync } from 'docx-preview'
 
-const wordRef = ref(null)
+export default {
+    setup() {
+        const wordRef = ref(null)
 
-const onChangeFn = e => {
-    renderAsync(e, wordRef.value)
+        const onChangeFn = e => {
+            renderAsync(e, wordRef.value)
+        }
+
+        return {
+            wordRef,
+            onChangeFn
+        }
+    }
 }
 </script>
 

@@ -1,31 +1,43 @@
-<script setup>
+<script>
 import { writeFile, utils } from "xlsx";
 
-const info = ref({})
-const tableData = ref([])
+export default {
+    setup() {
+        const info = ref({})
+        const tableData = ref([])
 
-// 点击添加按钮
-const clickFn = () => {
-    if (Object.keys(info).length === 0) return
-    tableData.value.push({ ...info.value, id: Date.now() })
-    info.value = {}
-}
+        // 点击添加按钮
+        const clickFn = () => {
+            if (Object.keys(info).length === 0) return
+            tableData.value.push({ ...info.value, id: Date.now() })
+            info.value = {}
+        }
 
-const tableRef = ref(null)
-// 点击导出按钮
-const exportFn = () => {
-    if (tableData.value.length === 0) return
+        const tableRef = ref(null)
+        // 点击导出按钮
+        const exportFn = () => {
+            if (tableData.value.length === 0) return
 
-    const ws = utils.json_to_sheet(tableData.value)
-    const wb = utils.book_new()
-    utils.book_append_sheet(wb, ws, 'sheet1')
-    writeFile(wb, 'test.xlsx')
+            const ws = utils.json_to_sheet(tableData.value)
+            const wb = utils.book_new()
+            utils.book_append_sheet(wb, ws, 'sheet1')
+            writeFile(wb, 'test.xlsx')
 
-    // 转换table dom
-    const tableWs = utils.table_to_sheet(tableRef.value)
-    const wb2 = utils.book_new()
-    utils.book_append_sheet(wb2, tableWs, 'sheet1')
-    writeFile(wb2, 'tableTest.xlsx')
+            // 转换table dom
+            const tableWs = utils.table_to_sheet(tableRef.value)
+            const wb2 = utils.book_new()
+            utils.book_append_sheet(wb2, tableWs, 'sheet1')
+            writeFile(wb2, 'tableTest.xlsx')
+        }
+
+        return {
+            info,
+            tableData,
+            clickFn,
+            exportFn,
+            tableRef
+        }
+    }
 }
 </script>
 

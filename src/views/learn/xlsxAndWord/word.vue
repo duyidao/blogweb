@@ -1,13 +1,25 @@
-<script setup>
+<script>
 import vueOfficeWord from '@vue-office/docx'
 
-const wordSrc = ref(null)
+export default {
+    components: {
+        vueOfficeWord
+    },
+    setup() {
+        const wordSrc = ref(null)
 
-const onChangeFn = e => {
-    const fr = new FileReader()
-    fr.readAsDataURL(e)
-    fr.onload = (e) => {
-        wordSrc.value = e.target.result
+        const onChangeFn = e => {
+            const fr = new FileReader()
+            fr.readAsDataURL(e)
+            fr.onload = (e) => {
+                wordSrc.value = e.target.result
+            }
+        }
+
+        return {
+            wordSrc,
+            onChangeFn
+        }
     }
 }
 </script>

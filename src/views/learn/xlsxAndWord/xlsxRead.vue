@@ -1,11 +1,23 @@
-<script setup>
+<script>
 import vueOfficeExcel from '@vue-office/excel'
 import '@vue-office/excel/lib/index.css'
 
-const file = ref(null)
+export default {
+    components: {
+        vueOfficeExcel
+    },
+    setup() {
+        const file = ref(null)
 
-const onChangeFn = e => {
-    file.value = e // 读取文件数据
+        const onChangeFn = e => {
+            file.value = e // 读取文件数据
+        }
+
+        return {
+            file,
+            onChangeFn
+        }
+    }
 }
 </script>
 
