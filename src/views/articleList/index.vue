@@ -36,7 +36,7 @@ const routerFn = (item) => {
 </script>
 
 <template>
-  <div>
+  <div style="width: 100%;">
     <back />
     <div class="article-list">
       <TypeSwitch :title="`${routeNow.articleType} 相关模块`"

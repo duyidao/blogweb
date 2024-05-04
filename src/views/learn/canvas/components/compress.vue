@@ -1,5 +1,4 @@
 <script>
-// import { saveAs } from 'file-saver'
 export default {
     setup() {
         const imgUrl = ref('')

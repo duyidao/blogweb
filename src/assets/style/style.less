@@ -7,6 +7,9 @@
   --primary-border: #BBDEFB;
   --primary-info: #1a2a3a;
   --normal-word: #ffffff;
+  --home-word-normal: #3F51B533;
+  --home-word-hover: #3F51B580;
+  --home-bg-hover: #33333333;
   --body-bg: #f1f1f1;
   --catalogue-bg: #ffffff;
   --catalogue-word: #3F51B5;
@@ -19,6 +22,9 @@
   --primary-border: #BDBDBD;
   --primary-info: #F5F5F5;
   --normal-word: #cccccc;
+  --home-word-normal: #cccccc33;
+  --home-word-hover: #cccccc80;
+  --home-bg-hover: #99999933;
   --body-bg: #313131;
   --catalogue-bg: #424242;
   --catalogue-word: #9f9f9f;
@@ -28,10 +34,10 @@
 
 .transition-color {
   transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
+}
 
-  &.transition-transform {
-    transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), transform .3s linear;
-  }
+.transition-transform {
+  transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), transform .3s linear;
 }
 
 .transition-border {

@@ -4,12 +4,12 @@
 
 <template>
   <nav class="home">
-    首页
-    <div class="nav">
-      <router-link to="/articleList/css">css</router-link>
-      <router-link to="/articleList/js">js</router-link>
-      <router-link to="/articleList/learn">learn</router-link>
-    </div>
+    <div class="user">首页</div>
+      <div class="nav">
+        <router-link class="transition-transform" to="/articleList/css" style="--i: -1">css</router-link>
+        <router-link class="transition-transform" to="/articleList/js" style="--i: 0">js</router-link>
+        <router-link class="transition-transform" to="/articleList/learn" style="--i: 1">learn</router-link>
+      </div>
   </nav>
 </template>
 
@@ -19,30 +19,54 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  background-color: aqua;
+
+  .user {
+    width: 100%;
+    height: 200px;
+  }
 
   .nav {
     display: flex;
-    width: 100%;
-    height: 100px;
-    background-color: aquamarine;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    height: 240px;
+    margin: 35px auto 10px;
+
+    &:active {
+      a:not(:active) {
+        background-color: #333;
+        border-color: #333;
+      }
+    }
+
+    &:hover {
+      a {
+        transform: rotate(calc(var(--i) * 10deg)) translate(calc(var(--i) * 120px), -30px);
+        box-shadow: 0 0 15px rgba(0, 0, 0, .3);
+        color: var(--home-word-hover);
+      }
+    }
 
     a {
-      flex: 1;
+      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #000;
-      font-size: 20px;
-      font-weight: 700;
-      border: 1px solid #000;
-      &:hover {
-        background-color: #000;
-        color: #fff;
-      }
-      &.router-link-exact-active {
-        background-color: #000;
-        color: #fff;
+      width: 180px;
+      height: 100%;
+      border-radius: 8px;
+      border: 10px solid var(--catalogue-bg);
+      background-color: var(--catalogue-bg);
+      transform-origin: 50% 100%;
+      filter: hue-rotate(calc(var(--i) * 50deg));
+      box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+      color: var(--home-word-normal);
+
+      &:active {
+        translate: calc(var(--i) * 20px) -50px;
+        z-index: 9;
       }
     }
   }
