@@ -29,7 +29,6 @@ watch(() => routeNow.value, (to, from) => {
 const articleItemArr = ref([])
 
 const routerFn = (item) => {
-  console.log('item', item);
   router.push({
     path: '/detail/' + item.path
   })
@@ -37,24 +36,26 @@ const routerFn = (item) => {
 </script>
 
 <template>
-  <div class="article-list">
+  <div>
     <back />
-    <TypeSwitch :title="`${routeNow.articleType} 相关模块`"
-      v-model="type" />
-    <div :class="{ 'article-item-list': type === 'list', 'article-item-img': type === 'img' }">
-      <div v-for="(item, index) in routeList"
-        :key="index"
-        class="article-item transition-color transition-transform">
-        <div class="article-item-link"
-          @click.stop="routerFn(item)">
-          <img :src="item.meta.img"
-            alt="">
-          <div class="content">
-            <div>
-              <span class="content-title transition-color">{{ item.meta.title }}</span>
-              <span class="content-info transition-color">{{ item.meta.info }}</span>
+    <div class="article-list">
+      <TypeSwitch :title="`${routeNow.articleType} 相关模块`"
+        v-model="type" />
+      <div :class="{ 'article-item-list': type === 'list', 'article-item-img': type === 'img' }">
+        <div v-for="(item, index) in routeList"
+          :key="index"
+          class="article-item transition-color transition-transform">
+          <div class="article-item-link"
+            @click.stop="routerFn(item)">
+            <img :src="item.meta.img"
+              alt="">
+            <div class="content">
+              <div>
+                <span class="content-title transition-color">{{ item.meta.title }}</span>
+                <span class="content-info transition-color">{{ item.meta.info }}</span>
+              </div>
+              <span class="content-tag transition-color">效率</span>
             </div>
-            <span class="content-tag transition-color">效率</span>
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@ const routerFn = (item) => {
 <style lang="less" scoped>
 .article-list {
   width: 100%;
-  padding: 100px 10px 20px;
+  padding: 40px 10px 20px;
 
   .article-item {
     animation: slide-in .6s .4s backwards;
@@ -201,7 +202,7 @@ const routerFn = (item) => {
 
 @media screen and (max-width: 768px) {
   .article-list {
-    padding: 5.5rem .625rem 1.25rem;
+    padding: 2.5rem .625rem 1.25rem;
 
     .article-item {
       margin-bottom: 1.25rem;
@@ -250,7 +251,7 @@ const routerFn = (item) => {
 
         .article-item-link {
           img {
-            height: 10.625rem;
+            height: 10rem;
           }
 
           .content {

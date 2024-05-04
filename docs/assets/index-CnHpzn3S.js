@@ -1,1 +1,0 @@
-import{_ as e,o,c as s}from"./index-Dgs0BWMt.js";const t={class:"ifrname-box xlsx-word"},_={__name:"index",setup(c){return(a,n)=>(o(),s("div",t," 123 "))}},d=e(_,[["__scopeId","data-v-f8b66879"]]);export{d as default};

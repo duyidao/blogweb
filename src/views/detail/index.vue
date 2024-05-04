@@ -57,12 +57,12 @@ const handleGiteeFn = () => {
 
 <template>
     <div class="catalogue">
+        <back />
         <div class="catalogue-title">
             <p class="catalogue-title-big transition-color">
                 {{ routeNow.title }}
             </p>
             <p class="catalogue-title-info transition-color">{{ routeNow.info }}</p>
-            <back />
         </div>
         <div class="catalogue-body">
             <main class="catalogue-content">
@@ -139,7 +139,7 @@ const handleGiteeFn = () => {
     height: 100%;
 
     .catalogue-title {
-        margin: 50px 0;
+        margin: 20px 0 50px;
 
         .catalogue-title-big {
             font-size: 40px;
@@ -346,7 +346,7 @@ const handleGiteeFn = () => {
     .catalogue {
 
         .catalogue-title {
-            margin: 3.125rem 0;
+            margin: 1.25rem 0 3.125rem;
 
             .catalogue-title-big {
                 font-size: 2.5rem;
