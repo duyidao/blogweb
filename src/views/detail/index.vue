@@ -82,19 +82,21 @@ const handleGiteeFn = () => {
                         @click.stop="handleGiteeFn">
                         <div class="card">
                             <div class="card-face card-front transition-color">
-                                <p class="card-title">Gitee</p>
+                                <p class="card-title">
+                                    <SvgIcon
+                                        name="gitee"
+                                        width="35px"
+                                        height="35px" />
+                                    <span>Gitee</span>
+                                </p>
                                 <p class="card-word">前往码云仓库👉</p>
-                                <SvgIcon class="card-svg-cat"
-                                    name="cat"
-                                    width="50px"
-                                    height="50px" />
-                                <SvgIcon class="card-svg-dog"
-                                    name="dog"
-                                    width="50px"
-                                    height="50px" />
                             </div>
                             <p class="card-face card-back transition-color">
-                                关注我
+                                <SvgIcon
+                                    name="like"
+                                    width="35px"
+                                    height="35px" />
+                                <span>关注我</span>
                             </p>
                         </div>
                     </div>
@@ -226,25 +228,22 @@ const handleGiteeFn = () => {
                             font-size: 32px;
 
                             .card-title {
+                                display: flex;
+                                align-items: center;
                                 margin-bottom: 8px;
+
+                                svg {
+                                    fill: var(--normal-word);
+                                    margin-right: 8px;
+                                }
+
+                                span {
+                                    margin-top: 2px;
+                                }
                             }
 
                             .card-word {
                                 font-size: 16px;
-                            }
-
-                            .card-svg-cat {
-                                position: absolute;
-                                right: -3px;
-                                bottom: -7px;
-                                transform: rotate(-30deg);
-                            }
-
-                            .card-svg-dog {
-                                position: absolute;
-                                right: -3px;
-                                top: -7px;
-                                transform: rotate(-150deg);
                             }
                         }
 
@@ -254,6 +253,11 @@ const handleGiteeFn = () => {
                             justify-content: center;
                             align-items: center;
                             font-size: 2em;
+
+                            svg {
+                                fill: var(--normal-word);
+                                margin-right: 8px;
+                            }
                         }
                     }
                 }

@@ -4,56 +4,63 @@
 
 <template>
   <div class="nav card">
-        <router-link class="transition-transform" to="/articleList/css" style="--i: -1">
-            <div class="corner top">
-              <span class="number">K</span>
-              <span>♣</span>
-            </div>
-    
-            <div class="suit">
-              <span>CSS</span>
-            </div>
-    
-            <div class="corner bottom">
-              <span class="number">K</span>
-              <span>♣</span>
-            </div>
-        </router-link>
-        <router-link class="transition-transform" to="/articleList/js" style="--i: 0">
-            <div class="corner top">
-              <span class="number">Q</span>
-              <span>♦</span>
-            </div>
-    
-            <div class="suit">
-              <span>JavaScript</span>
-            </div>
-    
-            <div class="corner bottom">
-              <span class="number">Q</span>
-              <span>♦</span>
-            </div>
-        </router-link>
-        <router-link class="transition-transform" to="/articleList/learn" style="--i: 1">
-            <div class="corner top">
-              <span class="number">J</span>
-              <span>♠</span>
-            </div>
-    
-            <div class="suit">
-              <span>Learn</span>
-            </div>
-    
-            <div class="corner bottom">
-              <span class="number">J</span>
-              <span>♠</span>
-            </div>
-        </router-link>
+    <router-link class="transition-transform"
+      to="/articleList/css"
+      style="--i: -1">
+      <div class="corner top">
+        <span class="number">K</span>
+        <span>♣</span>
       </div>
+
+      <div class="suit">
+        <span>CSS</span>
+      </div>
+
+      <div class="corner bottom">
+        <span class="number">K</span>
+        <span>♣</span>
+      </div>
+    </router-link>
+    <router-link class="transition-transform"
+      to="/articleList/js"
+      style="--i: 0">
+      <div class="corner top">
+        <span class="number">Q</span>
+        <span>♦</span>
+      </div>
+
+      <div class="suit">
+        <span>JavaScript</span>
+      </div>
+
+      <div class="corner bottom">
+        <span class="number">Q</span>
+        <span>♦</span>
+      </div>
+    </router-link>
+    <router-link class="transition-transform"
+      to="/articleList/learn"
+      style="--i: 1">
+      <div class="corner top">
+        <span class="number">J</span>
+        <span>♠</span>
+      </div>
+
+      <div class="suit">
+        <span>Learn</span>
+      </div>
+
+      <div class="corner bottom">
+        <span class="number">J</span>
+        <span>♠</span>
+      </div>
+    </router-link>
+  </div>
 </template>
 
-<style lang="less" scoped>
-.nav {
+<style lang="less"
+  scoped>
+  .nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,20 +107,38 @@
         font-weight: bold;
         text-align: center;
         transform: rotate(-15deg);
-    }
+      }
 
       .corner {
-        line-height: 1; overflow: hidden; position: absolute;
+        line-height: 1;
+        overflow: hidden;
+        position: absolute;
         text-align: center;
 
-        &.top { left: 8px; top: 12px; }
+        &.top {
+          left: 8px;
+          top: 12px;
+        }
 
-        &.bottom { bottom: 12px; right: 8px; -moz-transform: rotate(180deg); -webkit-transform: rotate(180deg); }
+        &.bottom {
+          bottom: 12px;
+          right: 8px;
+          -moz-transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+        }
 
-        span { display: block; font-size: 24px; font-weight: bold; }
+        span {
+          display: block;
+          font-size: 24px;
+          font-weight: bold;
+        }
 
-        .number { font-size: 32px; height: 32px; line-height: 32px; }
-    }
+        .number {
+          font-size: 32px;
+          height: 32px;
+          line-height: 32px;
+        }
+      }
 
       &:active {
         translate: calc(var(--i) * 20px) -50px;

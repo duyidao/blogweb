@@ -31,7 +31,7 @@ const heightUnit = computed(() => typeof height === 'string' && height.includes(
 </script>
 
 <template>
-    <svg :style="{'width': widthUnit, 'height': heightUnit}" ref="svgRef">
+    <svg :style="{'--width': widthUnit, '--height': heightUnit}" ref="svgRef">
         <use :xlink:href="prefix + name"
             :fill="color"></use>
     </svg>
@@ -39,6 +39,8 @@ const heightUnit = computed(() => typeof height === 'string' && height.includes(
 
 <style scoped>
 svg {
+    width: var(--width);
+    height: var(--height);
     transition: fill .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
     fill: var(--normal-word);
 }
