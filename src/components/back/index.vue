@@ -47,15 +47,19 @@
         <a ref="backRef"
             href="javascript:;"
             @click.stop="btnClickFn('home')">
-            <SvgIcon name="home" />
-            <span>首页</span>
+            <p>
+                <SvgIcon name="home" />
+                <span>首页</span>
+            </p>
         </a>
 
         <a ref="homeRef"
             href="javascript:;"
             @click.stop="btnClickFn('back')">
-            <SvgIcon name="back" />
-            <span>返回</span>
+            <p>
+                <SvgIcon name="back" />
+                <span>返回</span>
+            </p>
         </a>
     </div>
 </template>
@@ -66,10 +70,8 @@
         display: flex;
 
         a {
-            display: flex;
-            align-items: center;
             position: relative;
-            padding: 15px 30px;
+            padding: 10px 26px;
             background-color: var(--catalogue-bg);
             color: var(--primary-info);
             border-radius: 30px;
@@ -77,11 +79,20 @@
             overflow: hidden;
             margin-right: 15px;
 
-            svg {
+            p {
+                display: flex;
+                align-items: center;
                 position: relative;
-                margin-right: .625rem;
-                fill: var(--primary-info);
                 z-index: 5;
+
+                svg {
+                    margin-right: .5rem;
+                    fill: var(--primary-info);
+                }
+
+                span {
+                    letter-spacing: 2px;
+                }
             }
 
             &:hover {
@@ -103,8 +114,8 @@
                 top: var(--y);
                 left: var(--x);
                 transform: translate(-50%, -50%);
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
                 opacity: 0;
                 transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), opacity .5s;
                 background: radial-gradient(var(--catalogue-title), transparent, transparent);
@@ -117,12 +128,6 @@
                 border-radius: 30px;
                 inset: 2px;
                 transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
-            }
-
-            span {
-                position: relative;
-                letter-spacing: 2px;
-                z-index: 9;
             }
         }
     }
