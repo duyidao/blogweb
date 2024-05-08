@@ -264,12 +264,37 @@ const handleGiteeFn = () => {
             }
 
             .list {
+                position: relative;
                 width: 100%;
                 height: 480px;
                 padding: 15px 10px;
                 color: var(--primary-info);
                 border-radius: 20px;
-                border: 1px solid var(--primary-border);
+                overflow: hidden;
+                z-index: 2;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 200%;
+                    height: 200%;
+                    left: -50%;
+                    top: -50%;
+                    background-color: var(--detail-border);
+                    background-image: conic-gradient(
+                        transparent, var(--detail-animate), transparent 30%
+                    );
+                    z-index: -2;
+                    animation: rotate 5s linear infinite;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 1vmin;
+                    background-color: var(--catalogue-bg);
+                    border-radius: 20px;
+                    z-index: -1;
+                }
 
                 svg {
                     fill: var(--primary-info);
@@ -343,6 +368,12 @@ const handleGiteeFn = () => {
                 }
             }
         }
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
     }
 }
 
