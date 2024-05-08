@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const notcopyRef = ref()
+const notcopyRef = ref();
 
 onMounted(() => {
-    notcopyRef.value.addEventListener('copy', function (e) {
-        e.preventDefault()
-        navigator.clipboard.writeText('自定义内容') 
-    })
-})
+  notcopyRef.value.addEventListener("copy", function (e) {
+    e.preventDefault();
+    navigator.clipboard.writeText("自定义内容");
+  });
+});
 </script>
 
 <template>
@@ -17,9 +17,9 @@ onMounted(() => {
 
 <style scoped>
 div {
-    padding: .9375rem;
-    border: 1px solid var(--primary-info);
-    color: var(--primary-info);
-    border-radius: 1.25rem;
+  padding: 0.9375rem;
+  border: 1px solid var(--primary-info);
+  color: var(--primary-info);
+  border-radius: 1.25rem;
 }
 </style>

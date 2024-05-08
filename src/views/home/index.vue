@@ -1,5 +1,5 @@
 <script setup>
-import ArticleNav from './components/articleNav.vue'
+import ArticleNav from "./components/articleNav.vue";
 </script>
 
 <template>
@@ -10,15 +10,15 @@ import ArticleNav from './components/articleNav.vue'
 </template>
 
 <style lang="less" scoped>
-  .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 
-    .user {
-      width: 100%;
-      height: 200px;
-    }
+  .user {
+    width: 100%;
+    height: 200px;
   }
+}
 </style>
