@@ -75,7 +75,6 @@
             background-color: var(--catalogue-bg);
             color: var(--primary-info);
             border-radius: 30px;
-            transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
             overflow: hidden;
             margin-right: 15px;
 
@@ -117,7 +116,6 @@
                 width: 140px;
                 height: 140px;
                 opacity: 0;
-                transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), opacity .5s;
                 background: radial-gradient(var(--catalogue-title), transparent, transparent);
             }
 
@@ -127,7 +125,6 @@
                 background-color: var(--catalogue-bg);
                 border-radius: 30px;
                 inset: 2px;
-                transition: background-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), border-color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06), color .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
             }
         }
     }

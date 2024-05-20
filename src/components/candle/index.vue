@@ -1,4 +1,6 @@
 <script setup>
+import {screenWidth, convertToRem} from '@/store/index';
+
 const light = ref(true);
 
 const candleFireStyle = ref({
@@ -6,13 +8,15 @@ const candleFireStyle = ref({
   width: '0'
 })
 
+const windowResizeFn = () => {
+  candleFireStyle.value.width = light.value ? '0' : screenWidth.value > 768 ? '16px' : convertToRem(16)
+  candleFireStyle.value.height = light.value ? '0' : screenWidth.value > 768 ? '20px' : convertToRem(20)
+}
+
 // 切换模式
 const changeLightFn = () => {
   light.value = !light.value;
-  setTimeout(() => {
-    candleFireStyle.value.width = light.value ? '0' : '16px'
-    candleFireStyle.value.height = light.value ? '0' : '20px'
-  }, 500);
+  setTimeout(windowResizeFn, 200);
 
   // 根组件设置样式
   if (light.value) {
@@ -21,6 +25,14 @@ const changeLightFn = () => {
     document.documentElement.classList.add('dark');
   }
 };
+
+onMounted(() => {
+  window.addEventListener('resize', windowResizeFn)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', windowResizeFn)
+})
 </script>
 
 <template>
@@ -38,10 +50,10 @@ const changeLightFn = () => {
             <div class="candle1_eyes">
               <span class="candle1_eyes-left"></span>
               <span class="candle1_eyes-right"></span>
+              <div class="candle1_stick"></div>
             </div>
             <div class="candle1_mouth"></div>
           </div>
-          <div class="candle1_stick"></div>
         </div>
 
         <!-- 蜡烛2 -->

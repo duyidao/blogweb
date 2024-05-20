@@ -41,7 +41,6 @@ const heightUnit = computed(() => typeof height === 'string' && height.includes(
 svg {
     width: var(--width);
     height: var(--height);
-    transition: fill .5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
     fill: var(--normal-word);
 }
 </style>

@@ -6,58 +6,47 @@
     height: 116px;
 
     &.dark {
-        .candle2_stick {
-            /* 矮蜡烛火芯转动 */
-            animation: stick-animation 1s linear;
-        }
-
         .candle2 {
             /* 火苗重新生成的动画 */
-            animation: shake-left .5s linear;
+            animation: shake-left .25s linear;
         }
 
         .candle2_eyes-left {
             /* 矮蜡烛火生成时眯左眼 */
-            animation: changeto-lower .5s linear;
+            animation: changeto-lower .25s linear;
         }
 
         .candle2_eyes-right {
             /* 矮蜡烛火生成时眯右眼 */
-            animation: changeto-greater .5s linear;
-        }
+            animation: changeto-greater .25s linear;
+        }        
+    }
 
-
-
-        .candle2_fire {
-            /* 矮蜡烛火焰动画 */
-            animation: dance-fire 1.5s infinite linear;
-        }
+    .candle2_fire {
+        /* 矮蜡烛火焰动画 */
+        animation: dance-fire 1.5s infinite linear;
     }
 
     &.light {
-        .candle2_fire {
-            animation: dance-fire 1.2s infinite linear;
-        }
-
         .candle1 {
             /* 高蜡烛身体抖动 */
-            animation: expand-body 1s linear;
+            animation: expand-body .5s linear;
         }
 
         .candle1_eyes-left,
         .candle1_eyes-right {
             /* 高蜡烛左眼移动 */
-            animation: blink-eyes 1s linear;
+            animation: blink-eyes .5s linear;
         }
 
         .candle1_mouth {
             /* 高蜡烛张嘴 */
-            animation: uff 1s linear;
+            animation: uff .5s linear;
         }
 
         .candle_smoke2 {
             /* 矮蜡烛火被吹灭的扬尘动画 */
-            animation: move-top 1s linear;
+            animation: move-top .5s linear;
         }
     }
 
@@ -95,8 +84,8 @@
 
             .candle1 {
                 position: absolute;
-                left: 58%;
-                top: 40%;
+                left: 45%;
+                top: 53%;
                 width: 35px;
                 height: 68%;
                 background: #fff;
@@ -104,14 +93,14 @@
                 border-bottom: 0px;
                 border-radius: 3px;
                 transform-origin: center right;
-                // transform: translate(60%, -25%);
+                transform: translate(60%, -25%);
                 box-shadow: -2px 0px 0px #95c6f2 inset;
 
                 .candle1_eyes {
                     position: absolute;
                     left: 50%;
                     top: 0%;
-                    width: 100%;
+                    width: 35px;
                     height: 30px;
                     transform: translate(-50%, 0%);
 
@@ -136,29 +125,30 @@
                         background: #673C63;
                         transform: translate(-70%, 0%);
                     }
+
+                    .candle1_stick {
+                        position: absolute;
+                        left: 50%;
+                        top: 0%;
+                        width: 3px;
+                        height: 15px;
+                        background: #673C63;
+                        border-radius: 8px;
+                        transform: translate(-50%, -100%);
+                    }
                 }
 
                 .candle1_mouth {
                     position: absolute;
                     left: 40%;
                     top: 28%;
-                    width: 0;
-                    height: 0;
+                    width: 15px;
+                    height: 15px;
                     border-radius: 20px;
                     background: #673C63;
                     transform: translate(-50%, -50%);
                     will-change: transform;
-                }
-
-                .candle1_stick {
-                    position: absolute;
-                    left: 50%;
-                    top: 0%;
-                    width: 3px;
-                    height: 15px;
-                    background: #673C63;
-                    border-radius: 8px;
-                    transform: translate(-50%, -100%);
+                    opacity: 0;
                 }
             }
 
@@ -227,7 +217,7 @@
             .candle2_fire {
                 position: absolute;
                 top: 50%;
-                // left: 40%;
+                left: 36%;
                 border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
                 background: #ff9800;
                 transform: translate(-50%, -50%);
@@ -235,11 +225,14 @@
 
             .candle_smoke2 {
                 position: absolute;
-                left: 30%;
-                top: 40%;
+                left: 35%;
+                top: 45%;
+                width: 10px;
+                height: 10px;
                 border-radius: 10px;
                 background: grey;
                 transform: translate(-50%, -50%);
+                opacity: 0;
             }
         }
 
@@ -251,7 +244,6 @@
             /* 宽度 */
             height: 30px;
             /* 高度 */
-            //   background-color: #333; /* 背景颜色 */
             border-right: 5px solid #673C63;
             border-top: 5px solid #673C63;
             border-radius: 0 50px 0 0;
@@ -281,6 +273,7 @@
                     box-shadow: -0.125rem 0 0 #95c6f2 inset;
     
                     .candle1_eyes {
+                        width: 2.1875rem;
                         height: 1.875rem;
     
                         .candle1_eyes-left {
@@ -295,6 +288,8 @@
                     }
     
                     .candle1_mouth {
+                        width: .9375rem;
+                        height: .9375rem;
                         border-radius: 1.25rem;
                     }
     
@@ -357,18 +352,15 @@
 
     0%,
     35% {
-        opacity: 1;
         transform: translate(-70%, 0%);
     }
 
     36%,
     39% {
-        opacity: 0;
         transform: translate(-70%, 0%);
     }
 
     40% {
-        opacity: 1;
         transform: translate(-70%, 0%);
     }
 
@@ -386,34 +378,28 @@
 
     0%,
     40% {
-        top: 40%;
-        transform: scale(1, 1);
+        transform: translate(60%, -25%) scale(1, 1);
     }
 
     45%,
     55% {
-        top: 36%;
-        transform: scale(1.1, 1.1);
+        transform: translate(60%, -25%) scale(1.1, 1.1);
     }
 
     60% {
-        top: 36%;
-        transform: scale(0.89, 0.89);
+        transform: translate(60%, -25%) scale(0.89, 0.89);
     }
 
     65% {
-        top: 36%;
-        transform: scale(1, 1);
+        transform: translate(60%, -25%) scale(1, 1);
     }
 
     70% {
-        top: 39%;
-        transform: scale(0.95, 0.95);
+        transform: translate(60%, -25%) scale(0.95, 0.95);
     }
 
     75% {
-        top: 40%;
-        transform: scale(1, 1);
+        transform: translate(60%, -25%) scale(1, 1);
     }
 }
 
@@ -421,33 +407,33 @@
 
     0%,
     40% {
-        width: 0px;
-        height: 0px;
+        opacity: 0;
     }
 
     50%,
     54% {
-        width: 15px;
-        height: 15px;
-        left: 30%;
+        opacity: 1;
+        transform: translate(-60%, -50%);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translate(-60%, -50%) scale(.7, .7);
     }
 
     59% {
-        width: 5px;
-        height: 5px;
-        left: 20%;
+        opacity: 1;
+        transform: translate(-70%, -50%) scale(.4, .4);
     }
 
     62% {
-        width: 2px;
-        height: 2px;
-        left: 20%;
+        opacity: 1;
+        transform: translate(-70%, -50%) scale(.2, .2);
     }
 
     67% {
-        width: 0px;
-        height: 0px;
-        left: 30%;
+        opacity: 0;
+        transform: translate(-60%, -50%);
     }
 }
 
@@ -497,22 +483,17 @@
     0%,
     64%,
     100% {
-        width: 0px;
-        height: 0px;
-        top: 0%;
+        opacity: 0;
     }
 
     65% {
-        width: 10px;
-        height: 10px;
-        top: 40%;
-        left: 40%;
+        opacity: 1;
+        transform: translate(-130%, -150%) scale(1.5);
     }
 
     80% {
-        width: 0px;
-        height: 0px;
-        top: 20%;
+        opacity: 0;
+        transform: translate(-170%, -200%) scale(2);
     }
 }
 
@@ -533,66 +514,6 @@
     }
 }
 
-@keyframes stick-animation {
-
-    0%,
-    40% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-    }
-
-    50%,
-    54% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-    }
-
-    59% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-    }
-
-    62% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(-15deg) translate(-50%, -100%);
-    }
-
-    65% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(15deg) translate(-50%, -100%);
-    }
-
-    70% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(-5deg) translate(-50%, -100%);
-    }
-
-    72% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(5deg) translate(-50%, -100%);
-    }
-
-    74%,
-    84% {
-        left: 50%;
-        top: 0%;
-        transform: rotateZ(0deg) translate(-50%, -100%);
-    }
-
-    92% {
-        left: 50%;
-        top: 0%;
-        transform: translate(-50%, -100%);
-    }
-}
-
 @keyframes dance-fire {
 
     0%,
@@ -608,7 +529,7 @@
     80%,
     89%,
     97% {
-        left: 36.6%;
+        transform: translate(-56%, -50%);
         background: #FFC107;
     }
 
@@ -625,7 +546,7 @@
     85%,
     94%,
     100% {
-        left: 37.4%;
+        transform: translate(-46%, -50%);
         background: #FF9800;
     }
 }

@@ -30,8 +30,15 @@ onMounted(() => {
 
 <style scoped>
 div {
-  padding: 0.9375rem;
+  padding: 15px;
   border: 1px solid var(--primary-info);
   color: var(--primary-info);
+}
+
+@media screen and (max-width: 768px) {
+  div {
+    padding: 0.9375rem;
+    border: .0625rem solid var(--primary-info);
+  }
 }
 </style>

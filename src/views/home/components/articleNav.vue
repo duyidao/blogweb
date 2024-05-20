@@ -3,7 +3,6 @@
 <template>
   <div class="nav card">
     <router-link
-      class="transition-transform"
       to="/articleList/css"
       style="--i: -1"
     >
@@ -22,7 +21,6 @@
       </div>
     </router-link>
     <router-link
-      class="transition-transform"
       to="/articleList/js"
       style="--i: 0"
     >
@@ -41,7 +39,6 @@
       </div>
     </router-link>
     <router-link
-      class="transition-transform"
       to="/articleList/learn"
       style="--i: 1"
     >
@@ -81,10 +78,15 @@
 
   &:hover {
     a {
+      background: #fff;
       transform: rotate(calc(var(--i) * 10deg))
         translate(calc(var(--i) * 120px), -30px);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       color: var(--home-word-hover);
+
+      .suit, .corner {
+        opacity: 1;
+      }
     }
   }
 
@@ -99,7 +101,9 @@
     border: 10px solid var(--catalogue-bg);
     background-color: var(--catalogue-bg);
     transform-origin: 50% 100%;
+    background: url('../../../assets/img/puke.jpg') no-repeat center center;
     filter: hue-rotate(calc(var(--i) * 50deg));
+    transition: background .3s, transform 0.3s, translate .3s;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     color: var(--home-word-normal);
 
@@ -111,6 +115,7 @@
       font-weight: bold;
       text-align: center;
       transform: rotate(-15deg);
+      opacity: 0;
     }
 
     .corner {
@@ -118,6 +123,7 @@
       overflow: hidden;
       position: absolute;
       text-align: center;
+      opacity: 0;
 
       &.top {
         left: 8px;
@@ -144,7 +150,7 @@
       }
     }
 
-    &:active {
+    &:hover {
       translate: calc(var(--i) * 20px) -50px;
       z-index: 9;
     }

@@ -183,16 +183,28 @@ onMounted(() => {
 
 <style lang="less" scoped>
 div {
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   border: 1px solid var(--primary-info);
   color: var(--primary-info);
-  border-radius: 1.25rem;
+  border-radius: 20px;
 
   li {
     list-style: auto;
     line-height: 1.5;
-    font-size: 0.875rem;
+    font-size: 14px;
     color: var(--primary-info);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div {
+    padding: 1rem 2rem;
+    border: .0625rem solid var(--primary-info);
+    border-radius: 1.25rem;
+
+    li {
+      font-size: 0.875rem;
+    }
   }
 }
 </style>

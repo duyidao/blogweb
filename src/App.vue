@@ -83,7 +83,7 @@ footer {
   }
 
   footer {
-    height: 12.5rem;
+    height: 15rem;
   }
 }
 </style>

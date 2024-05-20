@@ -175,8 +175,6 @@ const handleGiteeFn = () => {
     background-color: var(--catalogue-bg);
     border-radius: 20px;
     box-shadow: 0 0 5px #ccc;
-    transition: background-color 0.5s cubic-bezier(0.89, 0.04, 0.96, 0.06),
-      color 0.5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
     overflow: hidden;
   }
 
@@ -337,9 +335,6 @@ const handleGiteeFn = () => {
             margin-bottom: 12px;
             border-radius: 15px;
             cursor: pointer;
-            transition: background-color 0.5s
-                cubic-bezier(0.89, 0.04, 0.96, 0.06),
-              color 0.5s cubic-bezier(0.89, 0.04, 0.96, 0.06);
 
             &:last-child {
               margin-bottom: 0;
