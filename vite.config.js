@@ -22,7 +22,7 @@ export default defineConfig({
         // auto-import内置vue、vue-router、react这些常见基本库的引入规则
         "vue",
         "vue-router",
-      ]
+      ],
     }),
     createSvgIconsPlugin({
       // Specify the icon folder to be cached
@@ -33,7 +33,7 @@ export default defineConfig({
     Components({
       dirs: [
         './src/components',
-      ]
+      ],
     })
   ],
   base: '/blogweb/',

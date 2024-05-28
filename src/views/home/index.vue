@@ -1,12 +1,15 @@
 <script setup>
 import ArticleNav from "./components/articleNav.vue";
+import Weather from "./components/weather.vue";
 </script>
 
 <template>
-  <nav class="home">
-    <div class="user">首页</div>
+  <div class="home">
+    <div class="user">
+      <Weather/>
+    </div>
     <ArticleNav />
-  </nav>
+  </div>
 </template>
 
 <style lang="less" scoped>
@@ -15,10 +18,5 @@ import ArticleNav from "./components/articleNav.vue";
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-
-  .user {
-    width: 100%;
-    height: 200px;
-  }
 }
 </style>
