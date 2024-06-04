@@ -48,8 +48,6 @@ export const routes = [
     },
 ]
 
-console.log('routes', routes);
-
 const router = createRouter({
     history: createWebHashHistory(),
     routes,

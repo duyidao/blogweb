@@ -21,17 +21,18 @@ function getLocation() {
 // 成功时的回调函数
 // 第一步获取定位成功返回的经纬度数据，然后结合百度那边提供的接口进行具体位置的转换，最后还有一个数据提交的方法，要跟自己的业务操作了
 function onSuccess(position) {
-  console.log("position", position);
   // 返回用户位置
   // 经度
   var longitude = position.coords.longitude;
   // 纬度
   var latitude = position.coords.latitude;
   console.log("您的当前地址的经纬度：经度" + longitude + "，纬度" + latitude);
+  handleWeather();
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
   var map = new BMap.Map("allmap");
   var point = new BMap.Point(longitude, latitude);
   var gc = new BMap.Geocoder();
+  console.log('map, point, gc', map, point, gc);
   gc.getLocation(point, function (rs) {
     var addComp = rs.addressComponents;
     console.log(
@@ -46,7 +47,6 @@ function onSuccess(position) {
         addComp.streetNumber
     );
   });
-  handleWeather();
 }
 
 // 失败时的回调函数
@@ -85,6 +85,7 @@ const handleWeather = (code) => {
     .then((res) => {
       weatherData.value = res.data.forecasts[0];
       weatherList.value = res.data.forecasts[0].casts;
+      getHelloFn();
     });
 };
 
@@ -96,18 +97,18 @@ const getHelloFn = () => {
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
   if (hour >= 6 && hour < 12) {
-    weatherHello.value = weather.includes("雨")
+    weatherHello.value = weather && weather.includes("雨")
       ? "早上好，今天有雨，上班记得带伞哦"
       : "早上好，今天是个好天气，希望一天都有好心情";
   } else if (hour >= 12 && hour < 14) {
-    weatherHello.value = weather.includes("雨")
+    weatherHello.value = weather && weather.includes("雨")
       ? "中午好，外面有雨，去吃饭注意地滑"
       : "中午好，劳累了一个上午，吃顿好的犒劳自己吧~";
   } else if (hour >= 14 && hour < 18) {
     weatherHello.value = "下午好，该继续上午的任务了";
   } else if (hour >= 18 && hour < 22) {
-    weatherHello.value = weather.includes("雨")
-      ? "晚上好，傍着雨声敲代码，也有一番风味呢~"
+    weatherHello.value = weather && weather.includes("雨")
+      ? "晚上好，傍着雨声听听音乐休息一下吧~"
       : "晚上好，又奋斗了一天，好好放松一下吧~";
   } else {
     weatherHello.value = "夜深了，该休息了，明天也是拼搏的一天";
@@ -117,7 +118,6 @@ const getHelloFn = () => {
 onMounted(() => {
   // html5获取地理位置
   getLocation();
-  getHelloFn();
   interval.value = setInterval(() => {
     getHelloFn();
   }, 100000);
@@ -137,7 +137,7 @@ onUnmounted(() => {
           <img src="" alt="" />
           <div class="today__content">
             <div class="today__content__daytemp">
-              {{ weatherList[0]?.daytemp }}°
+              {{ weatherList[0]?.daytemp || 0 }}°
             </div>
             <div class="today__content__weather">
               {{ weatherList[0]?.dayweather }}

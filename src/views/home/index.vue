@@ -1,17 +1,13 @@
 <script setup>
-import ArticleNav from "./components/articleNav.vue";
 import Weather from "./components/weather.vue";
-import RouterButtons from "./components/routerButtons.vue";
 </script>
 
 <template>
   <div class="home">
-    <RouterButtons/>
     <div class="user">
       <div>123</div>
       <Weather />
     </div>
-    <ArticleNav />
   </div>
 </template>
 

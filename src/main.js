@@ -3,9 +3,13 @@ import App from './App.vue';
 import router from '@/router/index.js';
 import { createMetaManager} from 'vue-meta'
 import 'virtual:svg-icons-register';
-import '@/assets/style/style.less';
+
 import directives from './directives/index.js';
 import customMethod from './utils/customMethod.js';
+
+import '@/assets/style/style.less';
+import '@/assets/icon/iconfont.css';
+import '@/assets/icon/iconfont.js';
 
 const app = createApp(App);
 

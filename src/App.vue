@@ -37,8 +37,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <metainfo></metainfo>
   <div class="blog">
+    <RouterButtons/>
     <router-view></router-view>
   </div>
   <Candle />
@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
 <style lang="less" scoped>
 .blog {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100vw;
   min-height: calc(100vh - 200px);
   padding: 20px 20px 0;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   word: {
     type: String,
-    default: "确认",
+    default: "",
   },
   showIcon: {
     type: Boolean,
@@ -10,7 +10,11 @@ defineProps({
   },
   iconName: {
     type: String,
-    default: "home",
+    default: "icon-shouye",
+  },
+  full: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -22,8 +26,8 @@ const click = () => {
 const myButtonRef = ref(null);
 
 const mousemoveFn = (dom, e) => {
-  let x = e.offsetX - dom.offsetLeft;
-  let y = e.offsetY - dom.offsetTop;
+  let x =e.pageX - dom.getBoundingClientRect().left;
+  let y =e.pageY - dom.getBoundingClientRect().top;
   dom.style.setProperty("--x", x + "px");
   dom.style.setProperty("--y", y + "px");
 };
@@ -42,38 +46,68 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <a class="my-button" ref="myButtonRef" href="javascript:;" @click.stop="click">
-    <p>
-      <SvgIcon v-if="showIcon" :name="iconName" />
-      <span>{{ word }}</span>
-    </p>
-  </a>
+  <div :class="{ full }" ref="myButtonRef" @click.stop="click">
+    <i v-if="showIcon" class="iconfont" :class="iconName"></i>
+    <span :class="{ hasMargin: showIcon }">{{ word }}</span>
+  </div>
 </template>
 
 <style lang="less" scoped>
-a {
-  display: block;
+div {
   position: relative;
-  padding: 10px 26px;
+  padding: 0 26px;
+  min-width: 80px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
   background-color: var(--catalogue-bg);
   color: var(--primary-info);
   border-radius: 30px;
   overflow: hidden;
-  margin-right: 15px;
+  transition: all 0.5s;
+  cursor: pointer;
 
-  p {
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 5;
+  &.full {
+    background-color: var(--primary-bg);
+    color: var(--catalogue-bg);
 
-    svg {
-      margin-right: 0.5rem;
-      fill: var(--primary-info);
+    i,
+    span {
+      color: var(--normal-word);
     }
 
-    span {
-      letter-spacing: 2px;
+    &:hover {
+      color: var(--catalogue-title);
+      text-shadow: 0 0 20px var(--catalogue-bg), 0 0 50px var(--catalogue-bg);
+    }
+
+    &::before {
+      background: radial-gradient(
+        var(--catalogue-bg),
+        transparent,
+        transparent
+      );
+    }
+
+    &::after {
+      background-color: var(--catalogue-title);
+      border-radius: 30px;
+      inset: 3px;
+    }
+  }
+
+  span,
+  i {
+    position: relative;
+    letter-spacing: 2px;
+    z-index: 5;
+  }
+
+  span {
+    font-size: 14px;
+
+    &.hasMargin {
+      margin-left: 5px;
     }
   }
 
@@ -85,10 +119,6 @@ a {
     &::before {
       opacity: 1;
     }
-
-    svg {
-      fill: var(--catalogue-title);
-    }
   }
 
   &::before {
@@ -97,8 +127,8 @@ a {
     top: var(--y);
     left: var(--x);
     transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     opacity: 0;
     background: radial-gradient(
       var(--catalogue-title),
@@ -117,10 +147,37 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  a {
-    padding: 0.9375rem 1.875rem;
+  div {
+    padding: 0 1.625rem;
+    min-width: 5rem;
+    height: 2.1875rem;
+    line-height: 2.1875rem;
     border-radius: 1.875rem;
-    margin-right: 0.9375rem;
+
+    &.full {
+      &:hover {
+        text-shadow: 0 0 1.25rem var(--catalogue-bg),
+          0 0 3.125rem var(--catalogue-bg);
+      }
+
+      &::after {
+        border-radius: 1.875rem;
+        inset: 0.125rem;
+      }
+    }
+
+    span,
+    i {
+      letter-spacing: 0.125rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+
+      &.hasMargin {
+        margin-left: 0.3125rem;
+      }
+    }
 
     &:hover {
       text-shadow: 0 0 1.25rem var(--catalogue-title),
@@ -128,17 +185,13 @@ a {
     }
 
     &::before {
-      width: 7.5rem;
-      height: 7.5rem;
+      width: 9.375rem;
+      height: 9.375rem;
     }
 
     &::after {
       border-radius: 1.875rem;
       inset: 0.125rem;
-    }
-
-    span {
-      letter-spacing: 0.125rem;
     }
   }
 }
