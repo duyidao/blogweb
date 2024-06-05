@@ -4,13 +4,9 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  showIcon: {
-    type: Boolean,
-    default: false,
-  },
   iconName: {
     type: String,
-    default: "icon-shouye",
+    default: "",
   },
   full: {
     type: Boolean,
@@ -47,8 +43,8 @@ onBeforeUnmount(() => {
 
 <template>
   <div :class="{ full }" ref="myButtonRef" @click.stop="click">
-    <i v-if="showIcon" class="iconfont" :class="iconName"></i>
-    <span :class="{ hasMargin: showIcon }">{{ word }}</span>
+    <i v-if="iconName" class="iconfont" :class="iconName"></i>
+    <span :class="{ hasMargin: iconName }">{{ word }}</span>
   </div>
 </template>
 

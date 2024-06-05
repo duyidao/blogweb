@@ -6,6 +6,34 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "579741",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "1160159",
+      "name": "js",
+      "font_class": "js",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "2029536",
+      "name": "学习",
+      "font_class": "xuexi",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "16459945",
+      "name": "css",
+      "font_class": "css",
+      "unicode": "ec3a",
+      "unicode_decimal": 60474
+    },
+    {
       "icon_id": "1107033",
       "name": "首页",
       "font_class": "shouye",

@@ -1,6 +1,8 @@
 <script setup>
 import axios from "axios";
 
+const addComp = ref({})
+const point = ref({})
 // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
 function getLocation() {
   let options = {
@@ -19,8 +21,6 @@ function getLocation() {
 }
 
 // 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
-const addComp = ref({})
-const point = ref({})
 function onSuccess(position) {
   // 经度
   point.value.longitude = position.coords.longitude;
@@ -32,7 +32,8 @@ function onSuccess(position) {
   let point = new BMap.Point(longitude, latitude);
   let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
-    addComp.addComp = rs.addressComponents;
+    addComp.value = rs.addressComponents;
+    console.log('addComp.value', addComp.value);
   });
 }
 
@@ -115,8 +116,8 @@ onUnmounted(() => {
     <div class="weather-today">
       <p class="weather-today__title">
         <span>{{ addComp.province || '广东省' }}</span>
-        <span>{{ addComp.city || '广州市' }}</span>
-        <span class="end">{{ addComp.district || '天河区' }}</span>
+        <span>{{ addComp.city || '湛江市' }}</span>
+        <span class="end">{{ addComp.district || '霞山区' }}</span>
         <span>{{ point.longitude || '113.3824' }}</span>
         <span>{{ point.latitude || '23.1962' }}</span>
       </p>

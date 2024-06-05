@@ -15,37 +15,45 @@ const showBtn = ref([false, false, false]);
 const routerBtnList = ref([
   {
     name: "文章列表",
+    icon: 'icon-liebiao',
     children: [
       {
         name: "CSS",
         base: "/articleList/",
         path: "css",
+        icon: 'icon-css'
       },
       {
         name: "Javascript",
         base: "/articleList/",
         path: "js",
+        icon: 'icon-js'
       },
       {
         name: "Learn",
         base: "/articleList/",
         path: "learn",
+        icon: 'icon-xuexi'
       },
     ],
   },
-  {
-    name: "刀刀导航",
-  },
+  // {
+  //   name: "刀刀导航",
+  // },
+  // {
+  //   name: "关于我",
+  //   icon: 'icon-yonghu'
+  // },
 ]);
-const showItemFn = (index) => {
-  showBtn.value[index] = !showBtn.value[index];
+const showItemFn = (index, type) => {
+  showBtn.value[index] = type;
 };
 
 // 点击跳转
 const goRouter = (item, index) => {
   if (!item.base || !item.path) return;
   router.push(`${item.base}${item.path}`);
-  showItemFn(index)
+  showItemFn(index, false)
 };
 </script>
 
@@ -57,7 +65,7 @@ const goRouter = (item, index) => {
       @mouseleave="mouseleaveFn"
     >
       <span v-if="logoHover" class="logo__text">刀刀博客</span>
-      <my-button v-else full showIcon @click="router.replace('/')" />
+      <my-button v-else full iconName="icon-shouye" @click="router.replace('/')" />
     </div>
     <div class="router-buttons__list">
       <div
@@ -65,13 +73,13 @@ const goRouter = (item, index) => {
         :key="index"
         class="router-buttons__item"
         :class="{ 'item-list-active': item.children?.length && showBtn[index] }"
-        @mouseenter="showItemFn(index)"
-        @mouseleave="showItemFn(index)"
+        @mouseenter="showItemFn(index, true)"
+        @mouseleave="showItemFn(index, false)"
       >
-        <my-button :word="item.name" />
+        <my-button :word="item.name" :iconName="item.icon" />
         <div class="item-list">
           <div v-for="(e, i) in item.children" :key="i" class="item-list__item">
-            <my-button :word="e.name" @click="goRouter(e, index)" />
+            <my-button :iconName="e.icon" :word="e.name" @click="goRouter(e, index)" />
           </div>
         </div>
       </div>
@@ -116,11 +124,11 @@ const goRouter = (item, index) => {
       &.item-list-active {
         &::after {
           opacity: 1;
-          transform: translate(-50%, 0);
+          transform: translate(-50%, 0) scale(1);
         }
 
         .item-list {
-          transform: translate(-50%, 0);
+          transform: translate(-50%, 0) scale(1);
           opacity: 1;
         }
       }
@@ -140,7 +148,7 @@ const goRouter = (item, index) => {
         position: absolute;
         bottom: -10px;
         left: 50%;
-        transform: translate(-50%, 150%);
+        transform: translate(-50%, 150%) scale(0.1);
         opacity: 0;
         border-bottom: 10px solid #eaeaea;
         border-top: 10px solid transparent;
@@ -157,7 +165,7 @@ const goRouter = (item, index) => {
         position: absolute;
         top: 43px;
         left: 50%;
-        transform: translate(-50%, 50%);
+        transform: translate(-50%, 60%) scale(0.1);
         padding: 10px 20px 10px;
         background-color: #eaeaea;
         opacity: 0;
