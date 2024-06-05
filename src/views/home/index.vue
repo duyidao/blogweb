@@ -1,11 +1,12 @@
 <script setup>
 import Weather from "./components/weather.vue";
+import User from "./components/user.vue";
 </script>
 
 <template>
   <div class="home">
     <div class="user">
-      <div>123</div>
+      <User />
       <Weather />
     </div>
   </div>

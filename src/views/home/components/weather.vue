@@ -3,7 +3,7 @@ import axios from "axios";
 
 // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
 function getLocation() {
-  var options = {
+  let options = {
     enableHighAccuracy: true,
     maximumAge: 1000,
   };
@@ -18,34 +18,21 @@ function getLocation() {
   }
 }
 
-// 成功时的回调函数
-// 第一步获取定位成功返回的经纬度数据，然后结合百度那边提供的接口进行具体位置的转换，最后还有一个数据提交的方法，要跟自己的业务操作了
+// 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
+const addComp = ref({})
+const point = ref({})
 function onSuccess(position) {
-  // 返回用户位置
   // 经度
-  var longitude = position.coords.longitude;
+  point.value.longitude = position.coords.longitude;
   // 纬度
-  var latitude = position.coords.latitude;
-  console.log("您的当前地址的经纬度：经度" + longitude + "，纬度" + latitude);
+  point.value.latitude = position.coords.latitude;
   handleWeather();
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
-  var map = new BMap.Map("allmap");
-  var point = new BMap.Point(longitude, latitude);
-  var gc = new BMap.Geocoder();
-  console.log('map, point, gc', map, point, gc);
+  let map = new BMap.Map("allmap");
+  let point = new BMap.Point(longitude, latitude);
+  let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
-    var addComp = rs.addressComponents;
-    console.log(
-      addComp.province +
-        ", " +
-        addComp.city +
-        ", " +
-        addComp.district +
-        ", " +
-        addComp.street +
-        ", " +
-        addComp.streetNumber
-    );
+    addComp.addComp = rs.addressComponents;
   });
 }
 
@@ -66,16 +53,12 @@ function onError(error) {
       console.log("未知错误！");
       break;
   }
-  // 这里后面可以写你的后续操作了，下面的经纬度是天安门的具体位置
-  // 经度
-  var longitude = 23.130061;
-  // 纬度
-  var latitude = 113.264499;
+  let longitude = 23.130061;
+  let latitude = 113.264499;
   handleWeather();
 }
 
 // 获取天气数据
-const weatherData = ref([]);
 const weatherList = ref([]);
 const handleWeather = (code) => {
   axios
@@ -83,7 +66,6 @@ const handleWeather = (code) => {
       "https://restapi.amap.com/v3/weather/weatherInfo?key=c687eb90870c9b75cf7c54d1124e2023&city=440100&extensions=all"
     )
     .then((res) => {
-      weatherData.value = res.data.forecasts[0];
       weatherList.value = res.data.forecasts[0].casts;
       getHelloFn();
     });
@@ -131,7 +113,13 @@ onUnmounted(() => {
 <template>
   <div class="weather">
     <div class="weather-today">
-      <p class="weather-today__title">{{ weatherData?.city }}</p>
+      <p class="weather-today__title">
+        <span>{{ addComp.province || '广东省' }}</span>
+        <span>{{ addComp.city || '广州市' }}</span>
+        <span class="end">{{ addComp.district || '天河区' }}</span>
+        <span>{{ point.longitude || '113.3824' }}</span>
+        <span>{{ point.latitude || '23.1962' }}</span>
+      </p>
       <div class="weather-today__content">
         <div class="today__content__info">
           <img src="" alt="" />
@@ -165,7 +153,7 @@ onUnmounted(() => {
 .weather {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 49%;
   height: 250px;
   border-radius: 12px;
   box-shadow: 0 0 8px 1px #ccc;
@@ -177,6 +165,18 @@ onUnmounted(() => {
       padding: 10px 20px;
       font-size: 14px;
       color: gray;
+
+      span {
+        margin-right: 5px;
+
+        &.end {
+          margin-right: 16px;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
 
     .weather-today__content {
@@ -250,6 +250,14 @@ onUnmounted(() => {
       .weather-today__title {
         padding: 0.625rem 1.25rem;
         font-size: 0.875rem;
+
+        span {
+          margin-right: .3125rem;
+
+          &.end {
+            margin-right: 1rem;
+          }
+        }
       }
 
       .weather-today__content {

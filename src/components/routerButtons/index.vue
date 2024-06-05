@@ -65,8 +65,10 @@ const goRouter = (item, index) => {
         :key="index"
         class="router-buttons__item"
         :class="{ 'item-list-active': item.children?.length && showBtn[index] }"
+        @mouseenter="showItemFn(index)"
+        @mouseleave="showItemFn(index)"
       >
-        <my-button :word="item.name" @click="showItemFn(index)" />
+        <my-button :word="item.name" />
         <div class="item-list">
           <div v-for="(e, i) in item.children" :key="i" class="item-list__item">
             <my-button :word="e.name" @click="goRouter(e, index)" />
@@ -113,12 +115,12 @@ const goRouter = (item, index) => {
 
       &.item-list-active {
         &::after {
-          bottom: -10px;
           opacity: 1;
+          transform: translate(-50%, 0);
         }
 
         .item-list {
-          top: 43px;
+          transform: translate(-50%, 0);
           opacity: 1;
         }
       }
@@ -136,11 +138,11 @@ const goRouter = (item, index) => {
       &::after {
         content: "";
         position: absolute;
-        bottom: 0;
+        bottom: -10px;
         left: 50%;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, 150%);
         opacity: 0;
-        border-bottom: 10px solid #e1e1e1;
+        border-bottom: 10px solid #eaeaea;
         border-top: 10px solid transparent;
         border-left: 10px solid transparent;
         border-right: 10px solid transparent;
@@ -153,11 +155,11 @@ const goRouter = (item, index) => {
 
       .item-list {
         position: absolute;
-        top: -100px;
+        top: 43px;
         left: 50%;
-        transform: translate(-50%, 0);
+        transform: translate(-50%, 50%);
         padding: 10px 20px 10px;
-        background-color: #e1e1e1;
+        background-color: #eaeaea;
         opacity: 0;
         transition: all 0.3s;
         will-change: transform;
@@ -221,7 +223,7 @@ const goRouter = (item, index) => {
         }
 
         &::after {
-          border-bottom: 0.625rem solid #e1e1e1;
+          border-bottom: 0.625rem solid #eaeaea;
           border-top: 0.625rem solid transparent;
           border-left: 0.625rem solid transparent;
           border-right: 0.625rem solid transparent;
