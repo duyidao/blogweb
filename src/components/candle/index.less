@@ -1,7 +1,5 @@
 .candle {
-    position: absolute;
-    top: -20px;
-    right: 0;
+    position: relative;
     width: 128px;
     height: 116px;
 
@@ -235,25 +233,11 @@
                 opacity: 0;
             }
         }
-
-        .div-corner {
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 100px;
-            /* 宽度 */
-            height: 30px;
-            /* 高度 */
-            border-right: 5px solid #673C63;
-            border-top: 5px solid #673C63;
-            border-radius: 0 50px 0 0;
-        }
     }
 }
 
 @media screen and (max-width: 768px) {
     .candle {
-        top: -1.25rem;
         width: 8rem;
         height: 7.25rem;
     
@@ -294,8 +278,8 @@
                     }
     
                     .candle1_stick {
-                        width: 3px;
-                        height: .9375rem;
+                        width: .1875rem !important;
+                        height: .9375rem !important;
                         border-radius: 8px;
                     }
                 }
@@ -331,17 +315,6 @@
                 .candle_smoke2 {
                     border-radius: .625rem;
                 }
-            }
-    
-            .div-corner {
-                bottom: -0.625rem;
-                width: 6.25rem;
-                /* 宽度 */
-                height: 1.875rem;
-                /* 高度 */
-                border-right: .3125rem solid #673C63;
-                border-top: .3125rem solid #673C63;
-                border-radius: 0 3.125rem 0 0;
             }
         }
     }

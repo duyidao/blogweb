@@ -41,7 +41,6 @@ onBeforeUnmount(() => {
     <RouterButtons/>
     <router-view></router-view>
   </div>
-  <Candle />
 </template>
 
 <style lang="less" scoped>

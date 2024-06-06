@@ -72,8 +72,6 @@ onUnmounted(() => {
       </div>
 
       <div class="floor"></div>
-
-      <div class="div-corner"></div>
     </div>
   </div>
 </template>

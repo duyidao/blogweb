@@ -144,6 +144,9 @@ div {
 
 @media screen and (max-width: 768px) {
   div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 0 1.625rem;
     min-width: 5rem;
     height: 2.1875rem;

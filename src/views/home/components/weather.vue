@@ -2,14 +2,13 @@
 import axios from "axios";
 
 const addComp = ref({})
-const point = ref({})
+const userPoint = ref({})
 // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
 function getLocation() {
   let options = {
     enableHighAccuracy: true,
     maximumAge: 1000,
   };
-  console.log("获取位置信息开始--------->", navigator.geolocation);
   if (navigator.geolocation) {
     // 走到这里说明，浏览器支持geolocation，参数里有两个回调函数，一个是定位成功后的处理操作，一个是定位失败后的处理操作，另外一个参数没有研究过
     navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
@@ -23,9 +22,9 @@ function getLocation() {
 // 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
 function onSuccess(position) {
   // 经度
-  point.value.longitude = position.coords.longitude;
+  userPoint.value.longitude = position.coords.longitude;
   // 纬度
-  point.value.latitude = position.coords.latitude;
+  userPoint.value.latitude = position.coords.latitude;
   handleWeather();
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
   let map = new BMap.Map("allmap");
@@ -118,8 +117,8 @@ onUnmounted(() => {
         <span>{{ addComp.province || '广东省' }}</span>
         <span>{{ addComp.city || '湛江市' }}</span>
         <span class="end">{{ addComp.district || '霞山区' }}</span>
-        <span>{{ point.longitude || '113.3824' }}</span>
-        <span>{{ point.latitude || '23.1962' }}</span>
+        <span>{{ userPoint.longitude || '113.3824' }}</span>
+        <span>{{ userPoint.latitude || '23.1962' }}</span>
       </p>
       <div class="weather-today__content">
         <div class="today__content__info">
