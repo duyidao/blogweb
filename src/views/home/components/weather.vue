@@ -28,7 +28,7 @@ function onSuccess(position) {
   handleWeather();
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
   let map = new BMap.Map("allmap");
-  let point = new BMap.Point(longitude, latitude);
+  let point = new BMap.Point(userPoint.value.longitude, userPoint.value.latitude);
   let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
     addComp.value = rs.addressComponents;
