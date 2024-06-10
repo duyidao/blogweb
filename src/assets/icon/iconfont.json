@@ -6,6 +6,13 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "9974807",
+      "name": "随机",
+      "font_class": "suiji",
+      "unicode": "e71f",
+      "unicode_decimal": 59167
+    },
+    {
       "icon_id": "7617119",
       "name": "github",
       "font_class": "github",

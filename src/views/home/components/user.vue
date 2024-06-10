@@ -30,11 +30,10 @@ const handleLinkFn = (type) => {
       </div>
     </div>
     <div class="user-famous">
-      <div>
-        <span class="user-famous__word"
-          >前端之路渐行渐远，退路早已遥遥无期</span
-        >
-      </div>
+      <p class="user-famous__word">前端之路渐行渐远，退路早已遥遥无期</p>
+      <p class="user-famous__word">
+        The road to the front is fading away, and the road to return is far away
+      </p>
     </div>
     <div class="user-call">
       <span>联系我：</span>
@@ -69,51 +68,40 @@ const handleLinkFn = (type) => {
   .user-call {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 18px;
     font-family: "宋体";
     font-weight: 600;
-    margin-top: 15px;
+    margin-top: 20px;
     color: var(--primary-bg);
 
     span {
-      padding: 8px 12px;
+      padding: 8px 12px 8px 0;
       font-weight: 600;
     }
 
     i {
-      margin-right: 10px;
+      margin-right: 20px;
       cursor: pointer;
+      font-size: 18px;
     }
   }
 
   .user-famous {
     width: 100%;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
     margin: 15px 0;
+    font-size: 16px;
+    font-family: "仿宋";
 
-    > div {
-      display: inline-block;
-      font-size: 18px;
-      font-family: "宋体";
-      .user-famous__word {
-        display: block;
-        overflow: hidden;
-        border-right: 2px solid var(--primary-bg);
-        white-space: nowrap;
-        width: 0;
-        animation: typing 4s steps(14) forwards, blink 0.8s infinite;
-        font-weight: 500;
-      }
+    p {
+      margin-bottom: 15px;
     }
   }
 
   .user-accent {
     display: flex;
     img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       margin-right: 15px;
     }
@@ -146,82 +134,56 @@ const handleLinkFn = (type) => {
   }
 }
 
-@keyframes typing {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-@keyframes blink {
-  from {
-    border-color: transparent;
-  }
-  to {
-    border-color: var(--primary-bg);
-  }
-}
-
 @media screen and (max-width: 768px) {
   .home-user {
     width: 100%;
     height: 15.625rem;
     border-radius: 0.75rem;
-    padding: 1.25rem 0.625rem;
-    margin-bottom: 1.25rem;
+    padding: 1.5rem 1.625rem;
     margin-right: 0;
+    margin-bottom: 1rem;
     box-shadow: 0 0 0.5rem 0.0625rem #ccc;
 
     .user-call {
-      justify-content: center;
-      font-size: 1.25rem;
-      margin-top: 0.9375rem;
+      font-size: 1.125rem;
+      margin-top: 1.25rem;
 
       span {
-        display: none;
+        padding: 0.5rem 0.75rem 0.5rem 0;
       }
 
       i {
-        margin-right: 3.875rem;
-
-        &:last-child {
-          margin-right: 0;
-        }
+        margin-right: 1.25rem;
+        font-size: 1.125rem;
       }
     }
 
     .user-famous {
-      height: 1.875rem;
-      line-height: 1.875rem;
       margin: 0.9375rem 0;
+      font-size: 1rem;
 
-      > div {
-        font-size: 1.125rem;
-        .user-famous__word {
-          border-right: 0.125rem solid var(--primary-bg);
-        }
+      p {
+        margin-bottom: 0.9375rem;
       }
     }
 
     .user-accent {
       img {
-        width: 6.25rem;
-        height: 6.25rem;
+        width: 5rem;
+        height: 5rem;
         margin-right: 0.9375rem;
       }
       .user-accent__name {
         p {
           &:first-child {
             font-size: 1.875rem;
-            margin-bottom: 0.9375rem;
+            margin-bottom: .9375rem;
           }
           &:last-child {
-            font-size: 0.875rem;
+            font-size: .875rem;
 
             .user-accent__name__en {
-              margin-left: 0.3125rem;
+              margin-left: .3125rem;
             }
           }
         }

@@ -3,30 +3,23 @@ import Weather from "./components/weather.vue";
 import User from "./components/user.vue";
 
 const timer = ref(null);
+const nowYear = ref("");
 const nowTime = ref("");
 
+const week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+const nowDate = ref("");
+
 onMounted(() => {
+  let now = new Date();
+  const date = now.getDay();
+  nowYear.value = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
+  nowDate.value = week[date];
   timer.value = setInterval(() => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = ("0" + (now.getMonth() + 1)).slice(-2);
-    const day = ("0" + now.getDate()).slice(-2);
+    now = new Date();
     const hours = ("0" + now.getHours()).slice(-2);
     const minutes = ("0" + now.getMinutes()).slice(-2);
     const seconds = ("0" + now.getSeconds()).slice(-2);
-
-    nowTime.value =
-      year +
-      "-" +
-      month +
-      "-" +
-      day +
-      " " +
-      hours +
-      ":" +
-      minutes +
-      ":" +
-      seconds;
+    nowTime.value = hours + ":" + minutes + ":" + seconds;
   }, 1000);
 });
 
@@ -43,7 +36,11 @@ onUnmounted(() => {
       <div class="home-candle">
         <Candle />
       </div>
-      <div class="home-time">{{ nowTime }}</div>
+      <div class="home-time">
+        <span>{{ nowYear }}</span>
+        <span>{{ nowDate }}</span>
+        <span>{{ nowTime }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -55,23 +52,49 @@ onUnmounted(() => {
   justify-content: space-between;
   width: 100%;
 
-  .home-candle {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 25%;
-    height: 136px;
-    padding: 10px 0;
-    margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 8px 1px #ccc;
-  }
-
   .user {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    .home-candle {
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      width: 25%;
+      height: 136px;
+      padding: 10px 0;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px 1px #ccc;
+    }
+
+    .home-time {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 25%;
+      height: 136px;
+      padding: 10px 0;
+      margin-top: 20px;
+      margin-left: 2.5%;
+      border-radius: 12px;
+      font-family: "黑体";
+      font-size: 25px;
+      box-shadow: 0 0 8px 1px #ccc;
+
+      span {
+        &:nth-child(2) {
+          margin: 10px 0;
+          font-size: 20px;
+        }
+        &:last-child {
+          font-size: 32px;
+        }
+      }
+    }
   }
 }
 
@@ -79,16 +102,44 @@ onUnmounted(() => {
   .home {
     .home-candle {
       width: 30%;
+      padding: 0.625rem 0;
+      margin-top: 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+    }
+    .user {
+    width: 100%;
+
+    .home-candle {
+      width: 25%;
+      height: 8.5rem;
       padding: .625rem 0;
       margin-top: 1.25rem;
       border-radius: .75rem;
       box-shadow: 0 0 .5rem .0625rem #ccc;
     }
-    .user {
-      flex-direction: row;
-      justify-content: start;
-      width: 100%;
+
+    .home-time {
+      width: 25%;
+      height: 8.5rem;
+      padding: .625rem 0;
+      margin-top: 1.25rem;
+      border-radius: .75rem;
+      font-family: "黑体";
+      font-size: 1.5625rem;
+      box-shadow: 0 0 .5rem .0625rem #ccc;
+
+      span {
+        &:nth-child(2) {
+          margin: .625rem 0;
+          font-size: 1.25rem;
+        }
+        &:last-child {
+          font-size: 2rem;
+        }
+      }
     }
+  }
   }
 }
 </style>

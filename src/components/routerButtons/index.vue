@@ -59,14 +59,17 @@ const goRouter = (item, index) => {
 
 <template>
   <div class="router-buttons">
+    <!-- 左侧logo -->
     <div
       class="router-buttons__logo"
       @mouseenter="mouseenterFn"
       @mouseleave="mouseleaveFn"
     >
-      <span v-if="logoHover" class="logo__text">刀刀博客</span>
+      <span v-if="logoHover" class="logo__text">刀刀小站</span>
       <my-button v-else full iconName="icon-shouye" @click="router.replace('/')" />
     </div>
+
+    <!-- 中间导航 -->
     <div class="router-buttons__list">
       <div
         v-for="(item, index) in routerBtnList"
@@ -84,7 +87,13 @@ const goRouter = (item, index) => {
         </div>
       </div>
     </div>
-    <div class="router-buttons__link"></div>
+
+    <!-- 右侧外链 -->
+    <div class="router-buttons__link">
+      <div title="刀刀博客小站" class="router-buttons__link__item">
+        <i class="iconfont icon-fujianguanli"></i>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -189,11 +198,23 @@ const goRouter = (item, index) => {
 
   .router-buttons__link {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     width: 150px;
     height: 100%;
-    background-color: pink;
+
+    &__item {
+      padding: 5px;
+      border: 1px solid var(--primary-bg);
+      color: var(--primary-bg);
+      border-radius: 8px;
+      margin-left: 15px;
+      cursor: pointer;
+
+      &:last-child {
+        margin-left: 0;
+      }
+    }
   }
 }
 
