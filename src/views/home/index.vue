@@ -6,13 +6,26 @@ const timer = ref(null);
 const nowYear = ref("");
 const nowTime = ref("");
 
-const week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+const week = [
+  "星期日",
+  "星期一",
+  "星期二",
+  "星期三",
+  "星期四",
+  "星期五",
+  "星期六",
+];
 const nowDate = ref("");
 
 onMounted(() => {
   let now = new Date();
   const date = now.getDay();
-  nowYear.value = now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2);
+  nowYear.value =
+    now.getFullYear() +
+    "-" +
+    ("0" + (now.getMonth() + 1)).slice(-2) +
+    "-" +
+    ("0" + now.getDate()).slice(-2);
   nowDate.value = week[date];
   timer.value = setInterval(() => {
     now = new Date();
@@ -62,7 +75,7 @@ onUnmounted(() => {
       display: flex;
       justify-content: center;
       align-self: center;
-      width: 25%;
+      width: 23%;
       height: 136px;
       padding: 10px 0;
       margin-top: 20px;
@@ -75,7 +88,7 @@ onUnmounted(() => {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 25%;
+      width: 23.5%;
       height: 136px;
       padding: 10px 0;
       margin-top: 20px;
@@ -100,46 +113,39 @@ onUnmounted(() => {
 
 @media screen and (max-width: 768px) {
   .home {
-    .home-candle {
-      width: 30%;
-      padding: 0.625rem 0;
-      margin-top: 1.25rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 0 0.5rem 0.0625rem #ccc;
-    }
     .user {
-    width: 100%;
+      width: 100%;
 
-    .home-candle {
-      width: 25%;
-      height: 8.5rem;
-      padding: .625rem 0;
-      margin-top: 1.25rem;
-      border-radius: .75rem;
-      box-shadow: 0 0 .5rem .0625rem #ccc;
-    }
+      .home-candle {
+        width: 49%;
+        height: 8.5rem;
+        padding: 0.625rem 0;
+        margin-top: 1.25rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+      }
 
-    .home-time {
-      width: 25%;
-      height: 8.5rem;
-      padding: .625rem 0;
-      margin-top: 1.25rem;
-      border-radius: .75rem;
-      font-family: "黑体";
-      font-size: 1.5625rem;
-      box-shadow: 0 0 .5rem .0625rem #ccc;
+      .home-time {
+        width: 49%;
+        height: 8.5rem;
+        padding: 0.625rem 0;
+        margin-top: 1.25rem;
+        border-radius: 0.75rem;
+        font-size: 1.5625rem;
+        margin-left: 2%;
+        box-shadow: 0 0 0.5rem 0.0625rem #ccc;
 
-      span {
-        &:nth-child(2) {
-          margin: .625rem 0;
-          font-size: 1.25rem;
-        }
-        &:last-child {
-          font-size: 2rem;
+        span {
+          &:nth-child(2) {
+            margin: 0.625rem 0;
+            font-size: 1.25rem;
+          }
+          &:last-child {
+            font-size: 2rem;
+          }
         }
       }
     }
-  }
   }
 }
 </style>

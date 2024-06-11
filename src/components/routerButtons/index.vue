@@ -15,25 +15,25 @@ const showBtn = ref([false, false, false]);
 const routerBtnList = ref([
   {
     name: "文章列表",
-    icon: 'icon-liebiao',
+    icon: "icon-liebiao",
     children: [
       {
         name: "CSS",
         base: "/articleList/",
         path: "css",
-        icon: 'icon-css'
+        icon: "icon-css",
       },
       {
         name: "Javascript",
         base: "/articleList/",
         path: "js",
-        icon: 'icon-js'
+        icon: "icon-js",
       },
       {
         name: "Learn",
         base: "/articleList/",
         path: "learn",
-        icon: 'icon-xuexi'
+        icon: "icon-xuexi",
       },
     ],
   },
@@ -49,11 +49,22 @@ const showItemFn = (index, type) => {
   showBtn.value[index] = type;
 };
 
-// 点击跳转
+// 点击跳转项目内路由
 const goRouter = (item, index) => {
   if (!item.base || !item.path) return;
   router.push(`${item.base}${item.path}`);
-  showItemFn(index, false)
+  showItemFn(index, false);
+};
+
+// 点击跳转项目外路由
+const handleLinkFn = (type) => {
+  switch (type) {
+    case "link":
+      window.open("https://duyidao.github.io/");
+      break;
+    default:
+      break;
+  }
 };
 </script>
 
@@ -66,7 +77,12 @@ const goRouter = (item, index) => {
       @mouseleave="mouseleaveFn"
     >
       <span v-if="logoHover" class="logo__text">刀刀小站</span>
-      <my-button v-else full iconName="icon-shouye" @click="router.replace('/')" />
+      <my-button
+        v-else
+        full
+        iconName="icon-shouye"
+        @click="router.replace('/')"
+      />
     </div>
 
     <!-- 中间导航 -->
@@ -82,7 +98,11 @@ const goRouter = (item, index) => {
         <my-button :word="item.name" :iconName="item.icon" />
         <div class="item-list">
           <div v-for="(e, i) in item.children" :key="i" class="item-list__item">
-            <my-button :iconName="e.icon" :word="e.name" @click="goRouter(e, index)" />
+            <my-button
+              :iconName="e.icon"
+              :word="e.name"
+              @click="goRouter(e, index)"
+            />
           </div>
         </div>
       </div>
@@ -91,7 +111,7 @@ const goRouter = (item, index) => {
     <!-- 右侧外链 -->
     <div class="router-buttons__link">
       <div title="刀刀博客小站" class="router-buttons__link__item">
-        <i class="iconfont icon-fujianguanli"></i>
+        <i class="iconfont icon-fujianguanli" @click.stop="handleLinkFn('link')"></i>
       </div>
     </div>
   </div>
@@ -205,11 +225,14 @@ const goRouter = (item, index) => {
 
     &__item {
       padding: 5px;
-      border: 1px solid var(--primary-bg);
       color: var(--primary-bg);
       border-radius: 8px;
       margin-left: 15px;
       cursor: pointer;
+      
+      :deep(.iconfont) {
+        font-size: 22px;
+      }
 
       &:last-child {
         margin-left: 0;
@@ -272,7 +295,12 @@ const goRouter = (item, index) => {
 
     .router-buttons__link {
       width: 9.375rem;
-      background-color: pink;
+
+      &__item {
+        padding: 0.3125rem;
+        border-radius: 0.5rem;
+        margin-left: 0.9375rem;
+      }
     }
   }
 }
