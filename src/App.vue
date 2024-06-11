@@ -49,14 +49,14 @@ onBeforeUnmount(() => {
   flex-direction: column;
   width: 100vw;
   min-height: calc(100vh - 200px);
-  padding: 20px 20px 0;
+  padding: 20px 20px;
 }
 
 @media screen and (max-width: 768px) {
   .blog {
     flex-direction: column;
     bottom: 0.125rem;
-    padding: 1.25rem 1.25rem 0;
+    padding: 1.25rem 1.25rem;
   }
 }
 </style>
