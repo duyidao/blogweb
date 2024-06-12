@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/scroll-nap.jpg'
+import cssImg from '@/assets/img/wenli.jfif'
 
 export default {
     title: '文字适配纹理',

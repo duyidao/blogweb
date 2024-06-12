@@ -71,7 +71,6 @@ const handleGiteeFn = () => {
 
 <template>
   <div class="catalogue">
-    <back />
     <div class="catalogue-title">
       <p class="catalogue-title-big transition-color">
         {{ routeNow.title }}

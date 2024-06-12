@@ -1,8 +1,9 @@
 <script setup>
 import axios from "axios";
+import { adcodeList } from "@/store/adcode.js";
 
-const addComp = ref({})
-const userPoint = ref({})
+const addComp = ref({});
+const userPoint = ref({});
 // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
 function getLocation() {
   let options = {
@@ -10,11 +11,14 @@ function getLocation() {
     maximumAge: 1000,
   };
   if (navigator.geolocation) {
-    // 走到这里说明，浏览器支持geolocation，参数里有两个回调函数，一个是定位成功后的处理操作，一个是定位失败后的处理操作，另外一个参数没有研究过
+    addComp.value = "正在定位...";
+    // 调用html5的geolocation()方法
+    // 第一个参数是定位成功后的回调函数，第二个参数是定位失败后的回调函数，第三个参数是定位的一些配置参数
+    // 注意：第三个参数里有一个enableHighAccuracy属性，这个属性是用来开启高精度定位的，默认是false，开启后，会消耗更多的电量和流量
     navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
   } else {
     // 否则浏览器不支持geolocation
-    console.log("您的浏览器不支持地理位置定位！");
+    addComp.value = "浏览器不支持定位";
     handleWeather();
   }
 }
@@ -25,45 +29,51 @@ function onSuccess(position) {
   userPoint.value.longitude = position.coords.longitude;
   // 纬度
   userPoint.value.latitude = position.coords.latitude;
-  handleWeather();
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
   let map = new BMap.Map("allmap");
-  let point = new BMap.Point(userPoint.value.longitude, userPoint.value.latitude);
+  let point = new BMap.Point(
+    userPoint.value.longitude,
+    userPoint.value.latitude
+  );
   let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
     addComp.value = rs.addressComponents;
-    console.log('addComp.value', addComp.value);
+    let cityList = adcodeList.find((item) => {
+      return addComp.value.province.includes(item.provice);
+    });
+    let adcode = cityList.city.find((item) =>
+      addComp.value.city.includes(item.name)
+    ).adcode;
+    handleWeather(adcode);
   });
 }
 
 // 失败时的回调函数
 // 这里是错误提示信息
 function onError(error) {
+  handleWeather();
   switch (error.code) {
     case 1:
-      console.log("位置服务被拒绝！");
+      addComp.value = "位置服务被拒绝！";
       break;
     case 2:
-      console.log("暂时获取不到位置信息！");
+      addComp.value = "暂时获取不到位置信息！";
       break;
     case 3:
-      console.log("获取信息超时！");
+      addComp.value = "获取信息超时！";
       break;
     case 4:
-      console.log("未知错误！");
+      addComp.value = "未知错误！";
       break;
   }
-  let longitude = 23.130061;
-  let latitude = 113.264499;
-  handleWeather();
 }
 
 // 获取天气数据
 const weatherList = ref([]);
-const handleWeather = (code) => {
+const handleWeather = (code = "440100") => {
   axios
     .get(
-      "https://restapi.amap.com/v3/weather/weatherInfo?key=c687eb90870c9b75cf7c54d1124e2023&city=440100&extensions=all"
+      `https://restapi.amap.com/v3/weather/weatherInfo?key=c687eb90870c9b75cf7c54d1124e2023&city=${code}&extensions=all`
     )
     .then((res) => {
       weatherList.value = res.data.forecasts[0].casts;
@@ -79,19 +89,22 @@ const getHelloFn = () => {
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
   if (hour >= 6 && hour < 12) {
-    weatherHello.value = weather && weather.includes("雨")
-      ? "早上好，今天有雨，上班记得带伞哦"
-      : "早上好，今天是个好天气，希望一天都有好心情";
+    weatherHello.value =
+      weather && weather.includes("雨")
+        ? "早上好，今天有雨，上班记得带伞哦"
+        : "早上好，今天是个好天气，希望一天都有好心情";
   } else if (hour >= 12 && hour < 14) {
-    weatherHello.value = weather && weather.includes("雨")
-      ? "中午好，外面有雨，去吃饭注意地滑"
-      : "中午好，劳累了一个上午，吃顿好的犒劳自己吧~";
+    weatherHello.value =
+      weather && weather.includes("雨")
+        ? "中午好，外面有雨，去吃饭注意地滑"
+        : "中午好，劳累了一个上午，吃顿好的犒劳自己吧~";
   } else if (hour >= 14 && hour < 18) {
     weatherHello.value = "下午好，该继续上午的任务了";
   } else if (hour >= 18 && hour < 22) {
-    weatherHello.value = weather && weather.includes("雨")
-      ? "晚上好，傍着雨声听听音乐休息一下吧~"
-      : "晚上好，又奋斗了一天，好好放松一下吧~";
+    weatherHello.value =
+      weather && weather.includes("雨")
+        ? "晚上好，傍着雨声听听音乐休息一下吧~"
+        : "晚上好，又奋斗了一天，好好放松一下吧~";
   } else {
     weatherHello.value = "夜深了，该休息了，明天也是拼搏的一天";
   }
@@ -114,11 +127,16 @@ onUnmounted(() => {
   <div class="weather">
     <div class="weather-today">
       <p class="weather-today__title">
-        <span>{{ addComp.province || '广东省' }}</span>
-        <span>{{ addComp.city || '湛江市' }}</span>
-        <span class="end">{{ addComp.district || '霞山区' }}</span>
-        <span>{{ userPoint.longitude || '113.3824' }}</span>
-        <span>{{ userPoint.latitude || '23.1962' }}</span>
+        <template v-if="typeof addComp === 'string'">
+          <span class="end">{{ addComp }}</span>
+        </template>
+        <template>
+          <span>{{ addComp.province }}</span>
+          <span>{{ addComp.city }}</span>
+          <span class="end">{{ addComp.district }}</span>
+        </template>
+        <span>{{ userPoint.longitude }}</span>
+        <span>{{ userPoint.latitude }}</span>
       </p>
       <div class="weather-today__content">
         <div class="today__content__info">
@@ -252,7 +270,7 @@ onUnmounted(() => {
         font-size: 0.875rem;
 
         span {
-          margin-right: .3125rem;
+          margin-right: 0.3125rem;
 
           &.end {
             margin-right: 1rem;
