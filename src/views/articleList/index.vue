@@ -95,6 +95,7 @@ const routerFn = (item) => {
     border-radius: 10px;
     background-color: var(--catalogue-bg);
     margin-bottom: 20px;
+    transition: all .3s;
     cursor: pointer;
   }
 

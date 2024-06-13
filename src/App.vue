@@ -34,6 +34,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener("resize", resizeFn);
 });
+
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) {
+    document.title = "诶(ﾟДﾟ*)ﾉ你要离开了吗";
+  } else {
+    document.title = "嘿(≧∇≦)ﾉ欢迎回来";
+    setTimeout(() => {
+      document.title = '刀刀博客小站'
+    }, 10000);
+  }
+});
 </script>
 
 <template>

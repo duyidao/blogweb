@@ -2,15 +2,29 @@
 import bgImg from "../../../assets/img/puke.jpg";
 
 const inputValue = ref("Logo");
-const colorValue = ref("");
+const colorValue = ref("#ff0000");
 
 const inputChange = (e) => {
   inputValue.value = e.target.value;
 };
+
+const fileValue = ref(bgImg);
+const changeFn = (e) => {
+  const reader = new FileReader();
+  reader.addEventListener("load", (event) => {
+    // 读取完成后的回调函数
+    const fileData = event.target.result;
+    // 在这里可以对文件数据进行进一步处理
+    fileValue.value = fileData;
+  });
+
+  reader.readAsDataURL(e);
+}
 </script>
 
 <template>
   <div>
+    <my-upload @change="changeFn" />
     <div class="input__list">
       <my-input v-model="inputValue" />
       <input v-model="colorValue" type="color" name="" id="" />
@@ -19,7 +33,7 @@ const inputChange = (e) => {
       <defs>
         <filter id="conform">
           <feImage
-            :href="bgImg"
+            :href="fileValue"
             result="ORIGIN_IMAGE"
             x="0"
             y="0"
@@ -42,7 +56,7 @@ const inputChange = (e) => {
             result="TEXTURED_TEXT"
           ></feDisplacementMap>
           <feImage
-            :href="bgImg"
+            :href="fileValue"
             in="TEXTURED_TEXT"
             x="0"
             y="0"
@@ -66,7 +80,7 @@ const inputChange = (e) => {
         </filter>
       </defs>
       <image
-        :href="bgImg"
+        :href="fileValue"
         x="0"
         y="0"
         width="100%"
@@ -93,11 +107,14 @@ const inputChange = (e) => {
 .input__list {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 
   > input {
-    height: 25px;
+    height: 35px;
 
     &:last-child {
+      width: 40px;
       margin-left: 10px;
     }
   }
@@ -108,11 +125,13 @@ svg {
 
 @media screen and (max-width: 768px) {
   .input__list {
+    margin-top: 1.25rem;
     > input {
-      height: 1.5625rem;
+      height: 1.875rem;
 
       &:last-child {
         margin-left: 0.625rem;
+        width: 2.5rem;
       }
     }
   }
