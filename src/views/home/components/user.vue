@@ -100,8 +100,8 @@ const handleLinkFn = (type) => {
   .user-accent {
     display: flex;
     img {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       margin-right: 15px;
     }
@@ -169,8 +169,8 @@ const handleLinkFn = (type) => {
 
     .user-accent {
       img {
-        width: 5rem;
-        height: 5rem;
+        width: 4.375rem;
+        height: 4.375rem;
         margin-right: 0.9375rem;
       }
       .user-accent__name {

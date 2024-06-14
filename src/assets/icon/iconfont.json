@@ -6,6 +6,20 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "12247914",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "24940458",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
       "icon_id": "9974807",
       "name": "随机",
       "font_class": "suiji",

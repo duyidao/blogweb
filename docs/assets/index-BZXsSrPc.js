@@ -1,0 +1,1 @@
+import{_ as s,o,c,p as t,l as a,b as d}from"./index-4xk28UTg.js";const _={},n=e=>(t("data-v-5517d2d0"),e=e(),a(),e),r={class:"ifrname-box banner"},i=n(()=>d("div",{class:"title"},"前端搬砖人每天都努力",-1)),p=[i];function l(e,f){return o(),c("div",r,p)}const m=s(_,[["render",l],["__scopeId","data-v-5517d2d0"]]);export{m as default};

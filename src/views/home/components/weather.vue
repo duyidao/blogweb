@@ -25,31 +25,34 @@ function getLocation() {
 
 // 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
 function onSuccess(position) {
+  console.log('position', position);
   // 经度
   userPoint.value.longitude = position.coords.longitude;
   // 纬度
   userPoint.value.latitude = position.coords.latitude;
   // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
-  let map = new BMap.Map("allmap");
   let point = new BMap.Point(
     userPoint.value.longitude,
     userPoint.value.latitude
   );
   let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
+    console.log('rs', rs);
     addComp.value = rs.addressComponents;
+    console.log('addComp.value', addComp.value);
     let cityList = adcodeList.find((item) => {
       return addComp.value.province.includes(item.provice);
     });
+    console.log('cityList', cityList);
     let adcode = cityList.city.find((item) =>
       addComp.value.city.includes(item.name)
     ).adcode;
+    console.log('adcode', adcode);
     handleWeather(adcode);
   });
 }
 
-// 失败时的回调函数
-// 这里是错误提示信息
+// 失败时的回调函数，错误提示信息
 function onError(error) {
   handleWeather();
   switch (error.code) {
@@ -83,11 +86,15 @@ const handleWeather = (code = "440100") => {
 
 const interval = ref("");
 const weatherHello = ref("欢迎光临~");
+const waetherImg = ref('/images/sunny.jpg');
 // 获取欢迎词
 const getHelloFn = () => {
   let now = new Date();
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
+  waetherImg.value = weather && weather.includes("雨") ? '/images/rain.jpg' : '/images/sunny.jpg';
+
+  // 根据时间与天气获取欢迎词
   if (hour >= 6 && hour < 12) {
     weatherHello.value =
       weather && weather.includes("雨")
@@ -109,6 +116,7 @@ const getHelloFn = () => {
     weatherHello.value = "夜深了，该休息了，明天也是拼搏的一天";
   }
 };
+
 // 页面载入时请求获取当前地理位置
 onMounted(() => {
   // html5获取地理位置
@@ -124,7 +132,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="weather">
+  <div class="weather" :style="{backgroundImage: `url(${waetherImg})`}">
     <div class="weather-today">
       <p class="weather-today__title">
         <template v-if="typeof addComp === 'string'">
@@ -168,6 +176,11 @@ onUnmounted(() => {
 </template>
 
 <style lang="less" scoped>
+.dark {
+  .weather {
+    opacity: .75;
+  }
+}
 .weather {
   display: flex;
   flex-direction: column;
@@ -175,6 +188,8 @@ onUnmounted(() => {
   height: 250px;
   border-radius: 12px;
   box-shadow: 0 0 8px 1px #ccc;
+  background: no-repeat center / 100%;
+  color: #fff;
 
   .weather-today {
     flex: 1;
@@ -182,7 +197,6 @@ onUnmounted(() => {
     .weather-today__title {
       padding: 10px 20px;
       font-size: 14px;
-      color: gray;
 
       span {
         margin-right: 5px;
@@ -240,14 +254,12 @@ onUnmounted(() => {
 
     .weather-item {
       font-size: 14px;
-      color: #555;
 
       .weather-daytemp {
         margin: 10px 0;
       }
 
       .weather-date {
-        color: #000;
         font-size: 16px;
         font-weight: 600;
       }

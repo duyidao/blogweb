@@ -1,6 +1,7 @@
 <script setup>
 import Weather from "./components/weather.vue";
 import User from "./components/user.vue";
+import Candle from './components/candle/index.vue';
 
 const timer = ref(null);
 const nowYear = ref("");
