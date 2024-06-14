@@ -1,7 +1,7 @@
 <script setup>
 import { light, screenWidth } from '@/store/index';
 import { generateRoutes } from '@/router/index'
-console.log('generateRoutes', generateRoutes);
+
 const router = useRouter();
 
 // logo展示文字还是按钮

@@ -1,6 +1,7 @@
 <script setup>
 import { screenWidth } from "@/store/index.js";
 import { useMeta } from "vue-meta";
+import { loading } from '@/store/router'
 
 onMounted(() => {
   useMeta({
@@ -51,7 +52,7 @@ document.addEventListener("visibilitychange", function () {
   <div class="blog">
     <RouterButtons/>
     <router-view></router-view>
-      <my-loading/>
+      <my-loading :loading="loading"/>
   </div>
 </template>
 
