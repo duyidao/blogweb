@@ -51,6 +51,7 @@ document.addEventListener("visibilitychange", function () {
   <div class="blog">
     <RouterButtons/>
     <router-view></router-view>
+      <my-loading/>
   </div>
 </template>
 

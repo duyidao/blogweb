@@ -68,7 +68,6 @@ const handleLinkFn = (type) => {
       break;
     case 'random':
       const num = Math.floor(Math.random() * (generateRoutes.length));
-      console.log('num', num, '/' + generateRoutes[num].path);
       router.push('/detail/' + generateRoutes[num].path)
       break;
     default:

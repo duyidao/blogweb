@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-import {generateRoutesFn} from './router.js';
-import {beforeEachCallback} from './guards.js';
+import { generateRoutesFn } from './router.js';
+import { beforeEachCallback, afterEachCallback } from './guards.js';
 
 // 获取所有page.js文件配置
 const pages = import.meta.glob('../views/**/page.js', {
@@ -64,5 +64,7 @@ const router = createRouter({
 
 // 全局前置导航
 router.beforeEach(beforeEachCallback);
+// 全局后置导航
+router.afterEach(afterEachCallback);
 
 export default router;

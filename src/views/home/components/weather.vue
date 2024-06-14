@@ -37,18 +37,17 @@ function onSuccess(position) {
   );
   let gc = new BMap.Geocoder();
   gc.getLocation(point, function (rs) {
-    console.log('rs', rs);
     addComp.value = rs.addressComponents;
-    console.log('addComp.value', addComp.value);
     let cityList = adcodeList.find((item) => {
       return addComp.value.province.includes(item.provice);
     });
-    console.log('cityList', cityList);
-    let adcode = cityList.city.find((item) =>
-      addComp.value.city.includes(item.name)
-    ).adcode;
-    console.log('adcode', adcode);
-    handleWeather(adcode);
+    if (!cityList) return;
+    let city = cityList.city.find((item) => {
+      console.log('item', item, addComp.value.city);
+      return addComp.value.city.includes(item.name);
+    });
+    console.log('city', city);
+    handleWeather(city.adcode);
   });
 }
 
@@ -86,13 +85,13 @@ const handleWeather = (code = "440100") => {
 
 const interval = ref("");
 const weatherHello = ref("欢迎光临~");
-const waetherImg = ref('/public/images/sunny.jpg');
+const waetherImg = ref('/blogweb/public/images/sunny.jpg');
 // 获取欢迎词
 const getHelloFn = () => {
   let now = new Date();
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
-  waetherImg.value = weather && weather.includes("雨") ? '/public/images/rain.jpg' : '/public/images/sunny.jpg';
+  waetherImg.value = weather && weather.includes("雨") ? '/blogweb/public/images/rain.jpg' : '/blogweb/public/images/sunny.jpg';
 
   // 根据时间与天气获取欢迎词
   if (hour >= 6 && hour < 12) {

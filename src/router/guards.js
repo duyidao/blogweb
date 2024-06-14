@@ -1,9 +1,10 @@
-import { routeNow } from '@/store/router.js'
+import { routeNow, loading } from '@/store/router.js'
 
 /**
  * @file router guards
  */
 const beforeEachCallback = async (to, from, next) => {
+    loading.value = true;
     routeNow.value = {
         path: to.path, // 完整路径
         menuOrder: to.meta.menuOrder, // 菜单排序
@@ -16,4 +17,8 @@ const beforeEachCallback = async (to, from, next) => {
     next();
 };
 
-export {beforeEachCallback};
+const afterEachCallback = (to, from) => {
+    loading.value = false;
+}
+
+export {beforeEachCallback, afterEachCallback};
