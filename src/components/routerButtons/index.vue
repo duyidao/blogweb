@@ -1,6 +1,7 @@
 <script setup>
 import { light, screenWidth } from '@/store/index';
-
+import { generateRoutes } from '@/router/index'
+console.log('generateRoutes', generateRoutes);
 const router = useRouter();
 
 // logo展示文字还是按钮
@@ -64,6 +65,11 @@ const handleLinkFn = (type) => {
   switch (type) {
     case "link":
       window.open("https://duyidao.github.io/");
+      break;
+    case 'random':
+      const num = Math.floor(Math.random() * (generateRoutes.length));
+      console.log('num', num, '/' + generateRoutes[num].path);
+      router.push('/detail/' + generateRoutes[num].path)
       break;
     default:
       break;
@@ -135,7 +141,7 @@ const handleShowFn = () => {
         <div title="前往随机文章"
           class="router-buttons__link__item">
           <i class="iconfont icon-suiji"
-            @click.stop="handleLinkFn('link')"></i>
+            @click.stop="handleLinkFn('random')"></i>
         </div>
         <div title="刀刀博客小站"
           class="router-buttons__link__item">
@@ -253,6 +259,7 @@ const handleShowFn = () => {
           opacity: 0;
           transition: all 0.3s;
           will-change: transform;
+          z-index: 999;
 
           .item-list__item {
             display: inline-block;

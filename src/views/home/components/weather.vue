@@ -86,13 +86,13 @@ const handleWeather = (code = "440100") => {
 
 const interval = ref("");
 const weatherHello = ref("欢迎光临~");
-const waetherImg = ref('/images/sunny.jpg');
+const waetherImg = ref('/public/images/sunny.jpg');
 // 获取欢迎词
 const getHelloFn = () => {
   let now = new Date();
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
-  waetherImg.value = weather && weather.includes("雨") ? '/images/rain.jpg' : '/images/sunny.jpg';
+  waetherImg.value = weather && weather.includes("雨") ? '/public/images/rain.jpg' : '/public/images/sunny.jpg';
 
   // 根据时间与天气获取欢迎词
   if (hour >= 6 && hour < 12) {
