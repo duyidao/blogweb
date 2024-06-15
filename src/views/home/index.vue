@@ -2,6 +2,7 @@
 import Weather from "./components/weather.vue";
 import User from "./components/user.vue";
 import Candle from './components/candle/index.vue';
+import Music from './components/music.vue';
 
 const timer = ref(null);
 const nowYear = ref("");
@@ -28,12 +29,17 @@ onMounted(() => {
     "-" +
     ("0" + now.getDate()).slice(-2);
   nowDate.value = week[date];
-  timer.value = setInterval(() => {
+
+  const getTime = () => {
     now = new Date();
     const hours = ("0" + now.getHours()).slice(-2);
     const minutes = ("0" + now.getMinutes()).slice(-2);
     const seconds = ("0" + now.getSeconds()).slice(-2);
     nowTime.value = hours + ":" + minutes + ":" + seconds;
+  }
+  getTime();
+  timer.value = setInterval(() => {
+    getTime();
   }, 1000);
 });
 
@@ -47,6 +53,8 @@ onUnmounted(() => {
     <div class="user">
       <User />
       <Weather />
+    </div>
+    <div class="play">
       <div class="home-candle">
         <Candle />
       </div>
@@ -55,6 +63,7 @@ onUnmounted(() => {
         <span>{{ nowDate }}</span>
         <span>{{ nowTime }}</span>
       </div>
+      <Music />
     </div>
   </div>
 </template>
@@ -66,12 +75,16 @@ onUnmounted(() => {
   justify-content: space-between;
   width: 100%;
 
-  .user {
+  .user,
+  .play {
     display: flex;
-    flex-wrap: wrap;
     max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
+  }
 
+  .play {
+    margin-top: 20px;
     .home-candle {
       display: flex;
       justify-content: center;
@@ -79,7 +92,6 @@ onUnmounted(() => {
       width: 23%;
       height: 136px;
       padding: 10px 0;
-      margin-top: 20px;
       border-radius: 12px;
       box-shadow: 0 0 8px 1px #ccc;
     }
@@ -92,7 +104,6 @@ onUnmounted(() => {
       width: 23.5%;
       height: 136px;
       padding: 10px 0;
-      margin-top: 20px;
       margin-left: 2.5%;
       border-radius: 12px;
       font-family: "黑体";
@@ -104,6 +115,7 @@ onUnmounted(() => {
           margin: 10px 0;
           font-size: 20px;
         }
+
         &:last-child {
           font-size: 32px;
         }
@@ -114,14 +126,18 @@ onUnmounted(() => {
 
 @media screen and (max-width: 768px) {
   .home {
-    .user {
+    .user,
+    .play {
+      flex-wrap: wrap;
       width: 100%;
+    }
+    .play {
+      margin-top: 1.25rem;
 
       .home-candle {
         width: 49%;
         height: 8.5rem;
         padding: 0.625rem 0;
-        margin-top: 1.25rem;
         border-radius: 0.75rem;
         box-shadow: 0 0 0.5rem 0.0625rem #ccc;
       }
@@ -130,7 +146,6 @@ onUnmounted(() => {
         width: 49%;
         height: 8.5rem;
         padding: 0.625rem 0;
-        margin-top: 1.25rem;
         border-radius: 0.75rem;
         font-size: 1.5625rem;
         margin-left: 2%;
@@ -141,6 +156,7 @@ onUnmounted(() => {
             margin: 0.625rem 0;
             font-size: 1.25rem;
           }
+
           &:last-child {
             font-size: 2rem;
           }

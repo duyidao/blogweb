@@ -177,12 +177,16 @@ const handleShowFn = () => {
   @import './darkBtn.css';
 
   .router-buttons {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 60px;
     margin: 0 0 40px;
+    background-color: var(--body-bg);
+    z-index: 9990;
 
     .router-buttons__logo {
       width: 120px;

@@ -134,10 +134,10 @@ onUnmounted(() => {
   <div class="weather" :style="{backgroundImage: `url(${waetherImg})`}">
     <div class="weather-today">
       <p class="weather-today__title">
-        <template v-if="typeof addComp === 'string'">
+        <template v-if="!addComp.province">
           <span class="end">{{ addComp }}</span>
         </template>
-        <template>
+        <template v-else>
           <span>{{ addComp.province }}</span>
           <span>{{ addComp.city }}</span>
           <span class="end">{{ addComp.district }}</span>
