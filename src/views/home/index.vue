@@ -2,7 +2,7 @@
 import Weather from "./components/weather.vue";
 import User from "./components/user.vue";
 import Candle from './components/candle/index.vue';
-// import Music from './components/music.vue';
+import Music from './components/music.vue';
 
 const timer = ref(null);
 const nowYear = ref("");
@@ -63,7 +63,7 @@ onUnmounted(() => {
         <span>{{ nowDate }}</span>
         <span>{{ nowTime }}</span>
       </div>
-      <!-- <Music /> -->
+      <Music />
     </div>
   </div>
 </template>

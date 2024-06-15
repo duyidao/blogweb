@@ -1,7 +1,6 @@
 <script setup>
 import { light } from '@/store/index'
-import 'APlayer/dist/APlayer.min.css';
-import APlayer from 'APlayer';
+import '@/assets/style/APlayer.min.css';
 import musicShi from '@/assets/music/shi.mp3'
 import lrcShi from '@/assets/music/shi.js'
 import coverLike from '@/assets/img/music/likeme.webp'
@@ -101,6 +100,7 @@ watch(() => light.value, () => {
         font-size: 1.5625rem;
         box-shadow: 0 0 .5rem .0625rem #ccc;
         margin-top: 1.25rem;
+        margin-left: 0;
 
         :deep(.aplayer-info) {
             .aplayer-music {
