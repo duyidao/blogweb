@@ -64,7 +64,7 @@ const goRouter = (item, index) => {
 const handleLinkFn = (type) => {
   switch (type) {
     case "link":
-      // window.open("https://duyidao.github.io/");
+      window.open("https://duyidao.github.io/");
       break;
     case 'random':
       const num = Math.floor(Math.random() * (generateRoutes.length));
