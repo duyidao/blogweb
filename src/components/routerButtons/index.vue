@@ -1,5 +1,5 @@
 <script setup>
-import { light, screenWidth } from '@/store/index';
+import { light, screenWidth, scrollAngle, scrollProgress } from '@/store/index';
 import { generateRoutes } from '@/router/index'
 
 const router = useRouter();
@@ -41,9 +41,6 @@ const routerBtnList = ref([
       },
     ],
   },
-  // {
-  //   name: "刀刀导航",
-  // },
   // {
   //   name: "关于我",
   //   icon: 'icon-yonghu'
@@ -133,6 +130,8 @@ const handleShowFn = () => {
         </div>
       </div>
     </div>
+
+    <div ref="scrollAngleRef" id="scroll-angle" :style="{'background': `conic-gradient(from 0deg, #008eff 0%, #f00 ${scrollAngle}deg, #000 ${scrollAngle}deg)`}">{{ scrollProgress }}</div>
 
     <!-- 右侧外链 -->
     <div class="router-buttons__btns">
@@ -276,6 +275,23 @@ const handleShowFn = () => {
             }
           }
         }
+      }
+    }
+
+    #scroll-angle {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 15px;
+        background-color: #fff;
       }
     }
 

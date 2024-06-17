@@ -94,7 +94,7 @@ watch(() => light.value, () => {
 @media screen and (max-width: 768px) {
     .home-music {
         width: 100%;
-        height: 8.5rem;
+        height: 12rem;
         padding: .625rem;
         border-radius: .75rem;
         font-size: 1.5625rem;
@@ -102,9 +102,81 @@ watch(() => light.value, () => {
         margin-top: 1.25rem;
         margin-left: 0;
 
-        :deep(.aplayer-info) {
-            .aplayer-music {
-                line-height: 1.25rem;
+        :deep(.aplayer-body) {
+            .aplayer-pic {
+                width: 6.625rem;
+                height: 6.625rem;
+            }
+
+            .aplayer-info {
+                height: 6.625rem;
+                margin-left: 6.625rem;
+                padding: .625rem .4375rem 0;
+
+                .aplayer-music {
+                    line-height: 1rem;
+                    margin: 0 0 .8125rem .3125rem;
+                    padding-bottom: .125rem;
+                    height: 1.25rem;
+
+                    .aplayer-title {
+                        font-size: .875rem;
+                    }
+
+                    .aplayer-author {
+                        font-size: .75rem;
+                    }
+                }
+
+                .aplayer-lrc {
+                    height: 2.875rem;
+                    margin: -0.625rem 0 .4375rem;
+
+                    p {
+                        font-size: .75rem;
+                        line-height: 1rem;
+                        min-height: 1rem;
+                    }
+                }
+
+                .aplayer-controller {
+                    .aplayer-bar-wrap {
+                        margin: 0 0 0 .3125rem;
+                        padding: .25rem 0;
+                    }
+
+                    .aplayer-time {
+                        bottom: .25rem;
+                        height: 1.0625rem;
+                        font-size: .6875rem;
+                        padding-left: .4375rem;
+
+                        .aplayer-icon {
+                            width: .9375rem;
+                            height: .9375rem;
+                            font-size: .75rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        :deep(.aplayer-list) {
+            max-height: 15.625rem !important;
+
+            ol {
+                max-height: 15.625rem;
+
+                li {
+                    height: 2rem;
+                    line-height: 2rem;
+                    padding: 0 .9375rem;
+                    font-size: .75rem;
+
+                    .aplayer-list-index {
+                        margin-right: .75rem;
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,13 @@
 <script setup>
 import axios from "axios";
 import { adcodeList } from "@/store/adcode.js";
+import duoyun from '/images/duoyun.svg'
+import yin from '/images/yin.svg'
+import zhongyu from '/images/zhongyu.svg'
+import xiaoyu from '/images/xiaoyu.svg'
+import dayu from '/images/dayu.svg'
+import leizhenyu from '/images/leizhenyu.svg'
+import qing from '/images/qing.svg'
 
 const addComp = ref({});
 const userPoint = ref({});
@@ -70,6 +77,27 @@ function onError(error) {
   }
 }
 
+const getWeatherImg = type => {
+  switch (type) {
+    case '晴':
+      return qing
+    case '阴':
+      return yin
+    case '多云':
+      return duoyun
+    case '小雨':
+      return xiaoyu
+    case '中雨':
+      return zhongyu
+    case '大雨':
+      return dayu
+    case '雷阵雨':
+      return leizhenyu
+    default:
+      break;
+  }
+}
+
 // 获取天气数据
 const weatherList = ref([]);
 const handleWeather = (code = "440100") => {
@@ -78,7 +106,12 @@ const handleWeather = (code = "440100") => {
       `https://restapi.amap.com/v3/weather/weatherInfo?key=c687eb90870c9b75cf7c54d1124e2023&city=${code}&extensions=all`
     )
     .then((res) => {
-      weatherList.value = res.data.forecasts[0].casts;
+      weatherList.value = res.data.forecasts[0].casts.map(item => {
+        return {
+          ...item,
+          weatherImg: getWeatherImg(item.dayweather)
+        }
+      });
       getHelloFn();
     });
 };
@@ -131,7 +164,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="weather" :style="{backgroundImage: `url(${waetherImg})`}">
+  <div class="weather"
+    :style="{ backgroundImage: `url(${waetherImg})` }">
     <div class="weather-today">
       <p class="weather-today__title">
         <template v-if="!addComp.province">
@@ -147,7 +181,8 @@ onUnmounted(() => {
       </p>
       <div class="weather-today__content">
         <div class="today__content__info">
-          <img src="" alt="" />
+          <img :src="weatherList[0]?.weatherImg"
+            alt="" />
           <div class="today__content">
             <div class="today__content__daytemp">
               {{ weatherList[0]?.daytemp || 0 }}°
@@ -161,14 +196,18 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="weather-list">
-      <div
-        v-for="item in weatherList.filter((item, index) => index !== 0)"
+      <div v-for="item in weatherList.filter((item, index) => index !== 0)"
         :key="item.date"
-        class="weather-item"
-      >
+        class="weather-item">
         <div class="weather-date">{{ item.date }}</div>
-        <div class="weather-daytemp">{{ item.daytemp }}℃</div>
-        <div class="weather-dayweather">{{ item.dayweather }}</div>
+        <div class="weather-msg">
+          <img :src="item.weatherImg"
+            alt="">
+          <div>
+            <div class="weather-daytemp">{{ item.daytemp }}℃</div>
+            <div class="weather-dayweather">{{ item.dayweather }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -180,6 +219,7 @@ onUnmounted(() => {
     opacity: .75;
   }
 }
+
 .weather {
   display: flex;
   flex-direction: column;
@@ -189,13 +229,15 @@ onUnmounted(() => {
   box-shadow: 0 0 8px 1px #ccc;
   background: no-repeat center / 100%;
   color: #fff;
+  padding: 10px 20px;
 
   .weather-today {
     flex: 1;
+    margin-bottom: 18px;
 
     .weather-today__title {
-      padding: 10px 20px;
       font-size: 14px;
+      margin-bottom: 15px;
 
       span {
         margin-right: 5px;
@@ -214,6 +256,16 @@ onUnmounted(() => {
       display: flex;
       align-items: center;
       height: calc(100% - 34px);
+
+      .today__content__info {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 58px;
+          height: 64px;
+        }
+      }
 
       .today__content {
         display: flex;
@@ -248,19 +300,34 @@ onUnmounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex: 1;
     height: 130px;
-    padding: 0 20px;
 
     .weather-item {
       font-size: 14px;
 
-      .weather-daytemp {
-        margin: 10px 0;
+      .weather-date {
+        font-size: 18px;
+        font-weight: 600;
       }
 
-      .weather-date {
-        font-size: 16px;
-        font-weight: 600;
+      .weather-msg {
+        display: flex;
+        align-items: center;
+        height: 50px;
+        margin-top: 15px;
+
+        img {
+          height: 50px;
+          margin-right: 15px;
+        }
+
+        >div {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          height: 100%;
+        }
       }
     }
   }
@@ -272,13 +339,15 @@ onUnmounted(() => {
     height: 15.625rem;
     border-radius: 0.75rem;
     box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+    padding: .625rem 1.25rem;
+    margin-bottom: 1.125rem;
 
     .weather-today {
       flex: 1;
 
       .weather-today__title {
-        padding: 0.625rem 1.25rem;
         font-size: 0.875rem;
+        margin-bottom: .9375rem;
 
         span {
           margin-right: 0.3125rem;
@@ -291,6 +360,14 @@ onUnmounted(() => {
 
       .weather-today__content {
         height: calc(100% - 2.125rem);
+
+        .today__content__info {
+
+          img {
+            width: 3.625rem;
+            height: 4rem;
+          }
+        }
 
         .today__content {
           margin-left: 1.25rem;
@@ -314,17 +391,22 @@ onUnmounted(() => {
 
     .weather-list {
       height: 8.125rem;
-      padding: 0 1.25rem;
 
       .weather-item {
         font-size: 0.875rem;
 
-        .weather-daytemp {
-          margin: 0.625rem 0;
+        .weather-date {
+          font-size: 1.125rem;
         }
 
-        .weather-date {
-          font-size: 1rem;
+        .weather-msg {
+          height: 3.125rem;
+          margin-top: .9375rem;
+
+          img {
+            height: 3.125rem;
+            margin-right: .9375rem;
+          }
         }
       }
     }

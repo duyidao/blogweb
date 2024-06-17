@@ -11,3 +11,7 @@ export const light = ref(true);
 export const convertToRem = (size) => {
     return `${size / 16}rem`
 }
+
+// 获取当前浏览器滚动进度
+export const scrollProgress = ref(0);
+export const scrollAngle = ref(0);

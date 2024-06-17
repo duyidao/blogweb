@@ -1,5 +1,5 @@
 <script setup>
-import { screenWidth } from "@/store/index.js";
+import { screenWidth, scrollProgress, scrollAngle } from "@/store/index.js";
 import { useMeta } from "vue-meta";
 import { loading } from '@/store/router'
 
@@ -27,13 +27,23 @@ const resizeFn = () => {
   document.documentElement.style.fontSize = fontSize + "px";
 };
 
+const scrollFn = () => {
+  let scrollTop = document.documentElement.scrollTop;
+  let total = document.documentElement.scrollHeight - window.innerHeight;
+  scrollProgress.value = parseInt(scrollTop / total * 100);
+  scrollAngle.value = window.scrollY / total * 360;
+}
+
 onMounted(() => {
   resizeFn();
+  scrollFn();
   window.addEventListener("resize", resizeFn);
+  window.addEventListener('scroll', scrollFn, false);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("resize", resizeFn);
+  window.removeEventListener('scroll', scrollFn);
 });
 
 document.addEventListener("visibilitychange", function () {
@@ -50,9 +60,9 @@ document.addEventListener("visibilitychange", function () {
 
 <template>
   <div class="blog">
-    <RouterButtons/>
+    <RouterButtons />
     <router-view></router-view>
-      <my-loading :loading="loading"/>
+    <my-loading :loading="loading" />
   </div>
 </template>
 
@@ -60,15 +70,12 @@ document.addEventListener("visibilitychange", function () {
 .blog {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  min-height: calc(100vh - 200px);
+  width: 100%;
   padding: 20px 20px;
 }
 
 @media screen and (max-width: 768px) {
   .blog {
-    flex-direction: column;
-    bottom: 0.125rem;
     padding: 1.25rem 1.25rem;
   }
 }
