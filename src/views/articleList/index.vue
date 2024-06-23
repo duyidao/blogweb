@@ -85,7 +85,6 @@ const routerFn = (item) => {
 <style lang="less" scoped>
 .article-list {
   width: 100%;
-  padding: 0 10px;
 
   .article-item {
     animation: slide-in 0.6s 0.4s backwards;
@@ -222,8 +221,6 @@ const routerFn = (item) => {
 
 @media screen and (max-width: 768px) {
   .article-list {
-    padding: 0 0.625rem;
-
     .article-item {
       margin-bottom: 1.25rem;
     }

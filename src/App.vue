@@ -62,7 +62,12 @@ document.addEventListener("visibilitychange", function () {
   <div class="blog">
     <RouterButtons />
     <router-view></router-view>
+
+    <!-- 路由切换进度条 -->
     <my-loading :loading="loading" />
+
+    <!-- 返回顶部 -->
+    <my-toTop />
   </div>
 </template>
 

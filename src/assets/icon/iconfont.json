@@ -6,6 +6,13 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "729521",
+      "name": "返回顶部 (3)",
+      "font_class": "fanhuidingbu3",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
       "icon_id": "12247914",
       "name": "关闭",
       "font_class": "guanbi",

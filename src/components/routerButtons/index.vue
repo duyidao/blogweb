@@ -1,13 +1,14 @@
 <script setup>
-import { light, screenWidth, scrollAngle, scrollProgress } from '@/store/index';
-import { generateRoutes } from '@/router/index'
+import { light, screenWidth, scrollAngle, scrollProgress } from "@/store/index";
+import { generateRoutes } from "@/router/index";
+import PhoneDom from "./phone_dom.vue";
 
 const router = useRouter();
 
 // logo展示文字还是按钮
 const logoHover = ref(true);
 const mouseenterFn = () => {
-  if(screenWidth.value < 768) return
+  if (screenWidth.value < 768) return;
   logoHover.value = false;
 };
 const mouseleaveFn = () => {
@@ -63,9 +64,9 @@ const handleLinkFn = (type) => {
     case "link":
       window.open("https://duyidao.github.io/");
       break;
-    case 'random':
-      const num = Math.floor(Math.random() * (generateRoutes.length));
-      router.push('/detail/' + generateRoutes[num].path)
+    case "random":
+      const num = Math.floor(Math.random() * generateRoutes.length);
+      router.push("/detail/" + generateRoutes[num].path);
       break;
     default:
       break;
@@ -76,292 +77,319 @@ const darkBtn = ref(null);
 // 切换模式
 const changeLightFn = () => {
   light.value = !light.value;
-
-  // 根组件设置样式
-  if (light.value) {
-    darkBtn.value?.classList.remove('active');
-    document.documentElement.classList.remove('dark');
-  } else {
-    darkBtn.value?.classList.add('active');
-    document.documentElement.classList.add('dark');
-  }
 };
 
-const labelShow = ref(false)
+watch(
+  () => light.value,
+  (newVal) => {
+    // 根组件设置样式
+    if (newVal) {
+      darkBtn.value?.classList.remove("active");
+      document.documentElement.classList.remove("dark");
+    } else {
+      darkBtn.value?.classList.add("active");
+      document.documentElement.classList.add("dark");
+    }
+  }
+);
+
+const labelShow = ref(false);
 // 点击展开按钮
 const handleShowFn = () => {
   labelShow.value = true;
+};
+
+const handleRouter = () => {
+  labelShow.value = false;
 }
 </script>
 
 <template>
   <div class="router-buttons">
     <!-- 左侧logo -->
-    <div class="router-buttons__logo"
+    <div
+      class="router-buttons__logo"
       @mouseenter="mouseenterFn"
       @mouseleave="mouseleaveFn"
-      @click="router.replace('/')">
-      <span v-if="logoHover"
-        class="logo__text">刀刀小站</span>
-      <my-button v-else
+      @click="router.replace('/')"
+    >
+      <span v-if="logoHover" class="logo__text">刀刀小站</span>
+      <my-button
+        v-else
         full
         iconName="icon-shouye"
-        @click="router.replace('/')" />
+        @click="router.replace('/')"
+      />
     </div>
 
     <!-- 中间导航 -->
     <div class="router-buttons__list">
-      <div v-for="(item, index) in routerBtnList"
+      <div
+        v-for="(item, index) in routerBtnList"
         :key="index"
         class="router-buttons__item"
         :class="{ 'item-list-active': item.children?.length && showBtn[index] }"
         @mouseenter="showItemFn(index, true)"
-        @mouseleave="showItemFn(index, false)">
-        <my-button :word="item.name"
-          :iconName="item.icon" />
+        @mouseleave="showItemFn(index, false)"
+      >
+        <my-button :word="item.name" :iconName="item.icon" />
         <div class="item-list">
-          <div v-for="(e, i) in item.children"
-            :key="i"
-            class="item-list__item">
-            <my-button :iconName="e.icon"
+          <div v-for="(e, i) in item.children" :key="i" class="item-list__item">
+            <my-button
+              :iconName="e.icon"
               :word="e.name"
-              @click="goRouter(e, index)" />
+              @click="goRouter(e, index)"
+            />
           </div>
         </div>
       </div>
     </div>
 
-    <div ref="scrollAngleRef" id="scroll-angle" :style="{'background': `conic-gradient(from 0deg, #008eff 0%, #f00 ${scrollAngle}deg, #000 ${scrollAngle}deg)`}">{{ scrollProgress }}</div>
+    <div
+      v-if="!isNaN(scrollProgress)"
+      ref="scrollAngleRef"
+      id="scroll-angle"
+      :style="{
+        background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${
+          light.value ? '#000' : '#616161'
+        } ${scrollAngle}deg`,
+      }"
+    >
+      {{ scrollProgress }}
+    </div>
 
     <!-- 右侧外链 -->
     <div class="router-buttons__btns">
       <div class="router-buttons__link">
-        <div title="前往随机文章"
-          class="router-buttons__link__item">
-          <i class="iconfont icon-suiji"
-            @click.stop="handleLinkFn('random')"></i>
+        <div title="前往随机文章" class="router-buttons__link__item">
+          <i
+            class="iconfont icon-suiji"
+            @click.stop="handleLinkFn('random')"
+          ></i>
         </div>
-        <div title="刀刀博客小站"
-          class="router-buttons__link__item">
-          <i class="iconfont icon-fujianguanli"
-            @click.stop="handleLinkFn('link')"></i>
+        <div title="刀刀博客小站" class="router-buttons__link__item">
+          <i
+            class="iconfont icon-fujianguanli"
+            @click.stop="handleLinkFn('link')"
+          ></i>
         </div>
       </div>
-      <div ref="darkBtn"
+      <div
+        ref="darkBtn"
         title="暗黑模式切换"
         id="dark-btn"
-        @click.stop="changeLightFn"></div>
+        @click.stop="changeLightFn"
+      ></div>
     </div>
 
     <div class="router-button__btns__phone">
       <i class="iconfont icon-zhankai" @click.stop="handleShowFn"></i>
       <my-dropper v-model="labelShow">
-        <template #title>
-          <div>
-            123
-          </div>
-        </template>
         <template #default>
-          <div>
-            123
-          </div>
+          <PhoneDom :list="generateRoutes" @handleRouter="handleRouter" />
         </template>
       </my-dropper>
     </div>
   </div>
 </template>
 
-<style lang="less"
-  scoped>
-  @import './darkBtn.css';
+<style lang="less" scoped>
+@import "./darkBtn.css";
 
-  .router-buttons {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    margin: 0 0 40px;
-    background-color: var(--body-bg);
-    z-index: 9990;
+.router-buttons {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  margin: 0 0 40px;
+  background-color: var(--body-bg);
+  z-index: 9990;
 
-    .router-buttons__logo {
-      width: 120px;
-      cursor: pointer;
+  .router-buttons__logo {
+    width: 120px;
+    cursor: pointer;
 
-      .logo__text {
-        font-family: "仿宋";
-        font-weight: 600;
-        font-size: 25px;
-        letter-spacing: 2px;
-        color: var(--primary-bg);
-      }
+    .logo__text {
+      font-family: "仿宋";
+      font-weight: 600;
+      font-size: 25px;
+      letter-spacing: 2px;
+      color: var(--primary-bg);
     }
+  }
 
-    .router-buttons__list {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+  .router-buttons__list {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
-      .router-buttons__item {
-        position: relative;
-        margin-right: 15px;
+    .router-buttons__item {
+      position: relative;
+      margin-right: 15px;
 
-        &.item-list-active {
-          &::after {
-            opacity: 1;
-            transform: translate(-50%, 0) scale(1);
-          }
-
-          .item-list {
-            transform: translate(-50%, 0) scale(1);
-            opacity: 1;
-          }
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          bottom: -10px;
-          left: 0;
-          width: 100%;
-          height: 10px;
-          background-color: transparent;
-        }
-
+      &.item-list-active {
         &::after {
-          content: "";
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translate(-50%, 150%) scale(0.1);
-          opacity: 0;
-          border-bottom: 10px solid #eaeaea;
-          border-top: 10px solid transparent;
-          border-left: 10px solid transparent;
-          border-right: 10px solid transparent;
-          transition: all 0.3s;
-        }
-
-        &:last-child {
-          margin-right: 0;
+          opacity: 1;
+          transform: translate(-50%, 0) scale(1);
         }
 
         .item-list {
-          position: absolute;
-          top: 43px;
-          left: 50%;
-          transform: translate(-50%, 60%) scale(0.1);
-          padding: 10px 20px 10px;
-          background-color: #eaeaea;
-          opacity: 0;
-          transition: all 0.3s;
-          will-change: transform;
-          z-index: 999;
-
-          .item-list__item {
-            display: inline-block;
-            width: 100%;
-            margin-right: 15px;
-            margin-bottom: 15px;
-
-            &:last-child {
-              margin-right: 0;
-              margin-bottom: 0;
-            }
-          }
+          transform: translate(-50%, 0) scale(1);
+          opacity: 1;
         }
       }
-    }
-
-    #scroll-angle {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      height: 30px;
-      margin-right: 15px;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
-        inset: 15px;
-        background-color: #fff;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: transparent;
       }
-    }
 
-    .router-buttons__btns {
-      display: flex;
-      align-items: center;
-      margin-right: -75px;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translate(-50%, 150%) scale(0.1);
+        opacity: 0;
+        border-bottom: 10px solid #eaeaea;
+        border-top: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        transition: all 0.3s;
+      }
 
-      .router-buttons__link {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        height: 100%;
-        margin-right: -65px;
+      &:last-child {
+        margin-right: 0;
+      }
 
-        &__item {
-          padding: 5px;
-          color: var(--primary-bg);
-          border-radius: 8px;
-          margin-left: 14px;
-          cursor: pointer;
+      .item-list {
+        position: absolute;
+        top: 43px;
+        left: 50%;
+        transform: translate(-50%, 60%) scale(0.1);
+        padding: 10px 20px 10px;
+        background-color: #eaeaea;
+        opacity: 0;
+        transition: all 0.3s;
+        will-change: transform;
+        z-index: 999;
 
-          :deep(.iconfont) {
-            font-size: 28px;
-          }
+        .item-list__item {
+          display: inline-block;
+          width: 100%;
+          margin-right: 15px;
+          margin-bottom: 15px;
 
-          &:first-child {
-            margin-left: 0;
+          &:last-child {
+            margin-right: 0;
+            margin-bottom: 0;
           }
         }
       }
-    }
-
-    .router-button__btns__phone {
-      display: none;
     }
   }
 
-  @media screen and (max-width: 768px) {
-    .router-buttons {
-      height: 3.75rem;
-      margin: 0 0 2.5rem;
+  #scroll-angle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    color: var(--catalogue-word);
+    margin-right: 15px;
+    z-index: 5;
 
-      .router-buttons__logo {
-        width: 7.5rem;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      background-color: var(--body-bg);
+      z-index: -1;
+    }
+  }
 
-        .logo__text {
-          font-size: 1.5625rem;
-          letter-spacing: 0.125rem;
-        }
-      }
+  .router-buttons__btns {
+    display: flex;
+    align-items: center;
+    margin-right: -75px;
 
-      .router-buttons__list,
-      .router-buttons__link,
-      .router-buttons__btns {
-        display: none;
-      }
+    .router-buttons__link {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      height: 100%;
+      margin-right: -65px;
 
-      .router-button__btns__phone {
-        display: block;
+      &__item {
+        padding: 5px;
+        color: var(--primary-bg);
+        border-radius: 8px;
+        margin-left: 14px;
         cursor: pointer;
 
         :deep(.iconfont) {
-          font-size: 1.5625rem !important;
+          font-size: 28px;
+        }
 
-          &:hover {
-            color: var(--primary-bg);
-          }
+        &:first-child {
+          margin-left: 0;
         }
       }
     }
   }
+
+  .router-button__btns__phone {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .router-buttons {
+    height: 3.75rem;
+    margin: 0 0 2.5rem;
+
+    .router-buttons__logo {
+      width: 7.5rem;
+
+      .logo__text {
+        font-size: 1.5625rem;
+        letter-spacing: 0.125rem;
+      }
+    }
+
+    .router-buttons__list,
+    .router-buttons__link,
+    .router-buttons__btns {
+      display: none;
+    }
+
+    .router-button__btns__phone {
+      display: block;
+      cursor: pointer;
+
+      :deep(.iconfont) {
+        font-size: 1.5625rem !important;
+
+        &:hover {
+          color: var(--primary-bg);
+        }
+      }
+    }
+  }
+
+  #scroll-angle {
+    display: none !important;
+  }
+}
 </style>
