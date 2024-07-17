@@ -4,9 +4,9 @@
 
 <template>
     <div class="box">
-        <img src="../../../assets/img//cat.png"
+        <img src="../../../assets/img/music/shape.webp"
             alt="">
-        <img src="../../../assets/img//dog.png"
+        <img src="../../../assets/img/music/shi.webp"
             alt="">
     </div>
 </template>

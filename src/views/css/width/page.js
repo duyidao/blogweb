@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/fit.jpg'
+import cssImg from '@/assets/img/css/fit.jpg'
 
 export default {
     title: '宽度自适应',

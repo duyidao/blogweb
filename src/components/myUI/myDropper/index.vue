@@ -28,8 +28,8 @@ const show = defineModel();
   right: -100%;
   width: var(--width);
   height: 100vh;
-  background-color: #fff;
-  box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+  background-color: var(--drop-bg);
+  box-shadow: 0 0 0.5rem 0.0625rem var(--drop-shadow);
   z-index: 9999;
   transition: all 0.3s;
 
@@ -47,7 +47,7 @@ const show = defineModel();
     top: 0;
     left: -4rem;
     font-size: 1.25rem !important;
-    background-color: #fff;
+    background-color: var(--drop-bg);
   }
 
   &__title {

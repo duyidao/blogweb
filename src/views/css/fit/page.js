@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/mix-blend-mode.png'
+import cssImg from '@/assets/img/css/mix-blend-mode.png'
 
 export default {
     title: '文字填充',

@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/vmin.jpg'
+import cssImg from '@/assets/img/css/vmin.jpg'
 
 export default {
     title: '视口单位',

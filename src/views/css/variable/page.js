@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/var.png'
+import cssImg from '@/assets/img/css/var.png'
 
 export default {
     title: '变量',

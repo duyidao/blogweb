@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/filter.jpg'
+import cssImg from '@/assets/img/css/filter.jpg'
 
 export default {
     title: '视觉效果',

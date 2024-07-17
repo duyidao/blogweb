@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/scroll-nap.jpg'
+import cssImg from '@/assets/img/css/scroll-nap.jpg'
 
 export default {
     title: 'Scroll Snap',

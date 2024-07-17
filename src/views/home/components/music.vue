@@ -98,7 +98,7 @@ watch(() => light.value, () => {
         padding: .625rem;
         border-radius: .75rem;
         font-size: 1.5625rem;
-        box-shadow: 0 0 .5rem .0625rem #ccc;
+        box-shadow: 0 0 0.25rem #ccc;
         margin-top: 1.25rem;
         margin-left: 0;
 

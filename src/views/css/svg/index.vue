@@ -1,5 +1,5 @@
 <script setup>
-import bgImg from "../../../assets/img/puke.jpg";
+import bgImg from "../../../assets/img/cat.png";
 
 const inputValue = ref("Logo");
 const colorValue = ref("#ff0000");

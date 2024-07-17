@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/text-shadow.png'
+import cssImg from '@/assets/img/css/text-shadow.png'
 
 export default {
     title: '文字光影特效',

@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/hover.png'
+import cssImg from '@/assets/img/css/hover.png'
 
 export default {
     title: '巧用伪类',

@@ -206,6 +206,7 @@ const handleRouter = () => {
   height: 60px;
   margin: 0 0 40px;
   background-color: var(--body-bg);
+  padding: 0 20px;
   z-index: 9990;
 
   .router-buttons__logo {
@@ -376,10 +377,10 @@ const handleRouter = () => {
 
     .router-button__btns__phone {
       display: block;
-      cursor: pointer;
 
       :deep(.iconfont) {
         font-size: 1.5625rem !important;
+        cursor: pointer;
 
         &:hover {
           color: var(--primary-bg);

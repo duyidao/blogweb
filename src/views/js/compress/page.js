@@ -1,4 +1,4 @@
-import jsImg from '@/assets/img/compress.jpg'
+import jsImg from '@/assets/img/js/compress.jpg'
 
 export default {
     title: '图片压缩',

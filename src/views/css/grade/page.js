@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/gradation.png'
+import cssImg from '@/assets/img/css/gradation.png'
 
 export default {
     title: '渐变',

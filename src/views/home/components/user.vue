@@ -142,7 +142,7 @@ const handleLinkFn = (type) => {
     padding: 1.5rem 1.625rem;
     margin-right: 0;
     margin-bottom: 1rem;
-    box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+    box-shadow: 0 0 0.25rem #ccc;
 
     .user-call {
       font-size: 1.125rem;

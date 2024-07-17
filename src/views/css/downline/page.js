@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/downline.png'
+import cssImg from '@/assets/img/css/downline.png'
 
 export default {
     title: '下划线动画',

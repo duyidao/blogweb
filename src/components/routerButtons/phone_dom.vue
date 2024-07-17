@@ -1,39 +1,72 @@
 <script setup>
 import methods from '@/utils/customMethod'
 
-defineProps({
-  list: {
-    type: Array,
-    required: true,
-  },
-});
-
 const emit = defineEmits(['handleRouter'])
 
-const handleRouterFn = (item) => {
-    methods.$goRouter(item.path, '/detail/');
-    emit('handleRouter')
+const handleRouterFn = (path) => {
+  methods.$goRouter(path, '/articleList/');
+  emit('handleRouter')
 }
 </script>
 
 <template>
-  <div class="phone-dome__list">
-    <div
-      v-for="item in list" :key="item.name"
-      class="phone-dome__item"
-      @click.stop="handleRouterFn(item)"
-    >{{ item.meta?.title }}</div>
+  <div class="phone-dom">
+    <div class="phone-dom__title">文章列表</div>
+    <div class="phone-dome__list">
+      <div class="phone-dome__item"
+        @click.stop="handleRouterFn('css')">
+        <i class="iconfont icon-css"></i>
+        <span>CSS</span>
+      </div>
+      <div class="phone-dome__item"
+        @click.stop="handleRouterFn('js')">
+        <i class="iconfont icon-js"></i>
+        <span>Javascript</span>
+      </div>
+      <div class="phone-dome__item"
+        @click.stop="handleRouterFn('learn')">
+        <i class="iconfont icon-xuexi"></i>
+        <span>Learn</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
-.phone-dome__list {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
+.phone-dom__title {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+}
 
-    .phone-dome__item {
-        padding: .625rem 0;
+.phone-dome__list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+
+  .phone-dome__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding: .625rem 0;
+    border: .0625rem solid var(--primary-font);
+    border-radius: .5rem;
+    cursor: pointer;
+
+    &:hover {
+      border: .0625rem solid #303F9F;
+      background-color: #303F9F;
+      color: #fff;
     }
+
+    span {
+      font-size: 1.15rem;
+      margin-top: .75rem;
+    }
+  }
 }
 </style>

@@ -8,6 +8,7 @@ import xiaoyu from '/images/xiaoyu.svg'
 import dayu from '/images/dayu.svg'
 import leizhenyu from '/images/leizhenyu.svg'
 import qing from '/images/qing.svg'
+import zhenyu from '/images/zhengyu.svg'
 
 const addComp = ref({});
 const userPoint = ref({});
@@ -93,6 +94,8 @@ const getWeatherImg = type => {
       return dayu
     case '雷阵雨':
       return leizhenyu
+    case '阵雨':
+      return zhenyu
     default:
       break;
   }
@@ -338,7 +341,7 @@ onUnmounted(() => {
     width: 100%;
     height: 15.625rem;
     border-radius: 0.75rem;
-    box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+    box-shadow: 0 0 0.25rem #ccc;
     padding: .625rem 1.25rem;
     margin-bottom: 1.125rem;
 

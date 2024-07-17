@@ -25,7 +25,7 @@ export default {
 <template>
     <div class="tailor">
         <button @click="saveScreen">截图</button>
-        <img src="../../../../assets/img/js.jpg" />
+        <img src="../../../../assets/img/music/peter.webp" />
     </div>
 </template>
 

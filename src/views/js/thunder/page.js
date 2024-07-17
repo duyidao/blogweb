@@ -1,4 +1,4 @@
-import jsImg from '@/assets/img/thunder.jpg'
+import jsImg from '@/assets/img/js/thunder.jpg'
 export default {
     title: '触发迅雷下载',
     info: '前端触发用户迅雷下载插件实现迅雷下载',

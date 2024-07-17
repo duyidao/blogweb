@@ -1,4 +1,4 @@
-import jsImg from '@/assets/img/showDirectoryPicker.jpg'
+import jsImg from '@/assets/img/js/showDirectoryPicker.jpg'
 export default {
     title: '浏览器访问文件夹',
     info: '浏览器访问文件夹内的文件与内容',

@@ -1,4 +1,4 @@
-import jsImg from '@/assets/img/navigator.png'
+import jsImg from '@/assets/img/js/navigator.png'
 export default {
     title: '网络状态监控',
     info: '监控用户的网络状态、延迟和带宽等数据',

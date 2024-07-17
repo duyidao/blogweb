@@ -59,8 +59,8 @@ document.addEventListener("visibilitychange", function () {
 </script>
 
 <template>
+  <RouterButtons />
   <div class="blog">
-    <RouterButtons />
     <router-view></router-view>
 
     <!-- 路由切换进度条 -->

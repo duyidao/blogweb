@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/clipPath.jpg'
+import cssImg from '@/assets/img/css/clipPath.jpg'
 
 export default {
     title: 'clipPath',

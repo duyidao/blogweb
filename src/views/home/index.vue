@@ -132,14 +132,14 @@ onUnmounted(() => {
       width: 100%;
     }
     .play {
-      margin-top: 1.25rem;
+      margin-top: .001rem;
 
       .home-candle {
         width: 49%;
         height: 8.5rem;
         padding: 0.625rem 0;
         border-radius: 0.75rem;
-        box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+        box-shadow: 0 0 0.25rem #ccc;
       }
 
       .home-time {
@@ -149,7 +149,7 @@ onUnmounted(() => {
         border-radius: 0.75rem;
         font-size: 1.5625rem;
         margin-left: 2%;
-        box-shadow: 0 0 0.5rem 0.0625rem #ccc;
+        box-shadow: 0 0 0.25rem #ccc;
 
         span {
           &:nth-child(2) {
