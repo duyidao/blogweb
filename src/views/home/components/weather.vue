@@ -226,13 +226,14 @@ onUnmounted(() => {
 .weather {
   display: flex;
   flex-direction: column;
-  width: 49%;
-  height: 250px;
+  width: 100%;
+  height: 290px;
   border-radius: 12px;
   box-shadow: 0 0 8px 1px #ccc;
   background: no-repeat center / 100%;
   color: #fff;
   padding: 10px 20px;
+  margin-bottom: 20px;
 
   .weather-today {
     flex: 1;
@@ -339,11 +340,11 @@ onUnmounted(() => {
 @media screen and (max-width: 768px) {
   .weather {
     width: 100%;
-    height: 15.625rem;
+    height: 18.125rem;
     border-radius: 0.75rem;
     box-shadow: 0 0 0.25rem #ccc;
     padding: .625rem 1.25rem;
-    margin-bottom: 1.125rem;
+    margin-bottom: 1.25rem;
 
     .weather-today {
       flex: 1;

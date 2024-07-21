@@ -61,6 +61,10 @@ const handleRouterFn = (path) => {
       border: .0625rem solid #303F9F;
       background-color: #303F9F;
       color: #fff;
+
+      i {
+        color: #fff !important;
+      }
     }
 
     span {

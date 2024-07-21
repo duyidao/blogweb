@@ -63,15 +63,15 @@ watch(() => light.value, () => {
 
 <style lang="less" scoped>
 .home-music {
-    width: 49%;
-    height: 136px;
+    width: 100%;
+    height: 292px;
     padding: 10px;
-    margin: 0 0 0 2%;
     border-radius: 12px;
     font-family: "黑体";
     font-size: 25px;
     box-shadow: 0 0 8px 1px #ccc;
     overflow-y: scroll;
+    margin: 0;
 
     &.aplayer {
         background-color: transparent;
@@ -94,7 +94,7 @@ watch(() => light.value, () => {
 @media screen and (max-width: 768px) {
     .home-music {
         width: 100%;
-        height: 12rem;
+        height: 17rem;
         padding: .625rem;
         border-radius: .75rem;
         font-size: 1.5625rem;

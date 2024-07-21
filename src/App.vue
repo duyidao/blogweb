@@ -59,9 +59,10 @@ document.addEventListener("visibilitychange", function () {
 </script>
 
 <template>
-  <RouterButtons />
-  <div class="blog">
-    <router-view></router-view>
+  <div class="blog" v-close="false">
+    <RouterButtons />
+
+    <router-view class="content"></router-view>
 
     <!-- 路由切换进度条 -->
     <my-loading :loading="loading" />
@@ -76,11 +77,14 @@ document.addEventListener("visibilitychange", function () {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px 20px;
+
+  .content {
+    padding: 20px 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .blog {
+  .blog .content {
     padding: 1.25rem 1.25rem;
   }
 }

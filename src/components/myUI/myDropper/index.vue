@@ -10,8 +10,16 @@ const show = defineModel();
 </script>
 
 <template>
-  <div class="my-dropper" :class="{ show: show }" :style="{ '--width': width }">
-    <i class="iconfont icon-guanbi" @click.stop="show = false"></i>
+  <div
+    class="my-dropper"
+    :class="{ show: show }"
+    v-close="true"
+    :style="{ '--width': width }"
+  >
+    <i
+      class="iconfont icon-guanbi"
+      @click.stop="show = false"
+    ></i>
     <div v-if="$slots.title" class="my-dropper__title">
       <slot name="title"></slot>
     </div>

@@ -1,7 +1,9 @@
 import resize from './resize.js'
+import close from './close.js'
 
 const directives = {
-    resize
+    resize,
+    close
 }
    
 export default {

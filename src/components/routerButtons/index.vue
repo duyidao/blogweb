@@ -1,9 +1,8 @@
 <script setup>
-import { light, screenWidth, scrollAngle, scrollProgress } from "@/store/index";
+import { light, screenWidth, scrollAngle, scrollProgress, labelShow } from "@/store/index";
 import { generateRoutes } from "@/router/index";
+import methods from '@/utils/customMethod'
 import PhoneDom from "./phone_dom.vue";
-
-const router = useRouter();
 
 // logo展示文字还是按钮
 const logoHover = ref(true);
@@ -54,7 +53,7 @@ const showItemFn = (index, type) => {
 // 点击跳转项目内路由
 const goRouter = (item, index) => {
   if (!item.base || !item.path) return;
-  router.push(`${item.base}${item.path}`);
+  methods.$goRouter(item.path, item.base);
   showItemFn(index, false);
 };
 
@@ -66,7 +65,7 @@ const handleLinkFn = (type) => {
       break;
     case "random":
       const num = Math.floor(Math.random() * generateRoutes.length);
-      router.push("/detail/" + generateRoutes[num].path);
+      methods.$goRouter(generateRoutes[num].path, '/detail/');
       break;
     default:
       break;
@@ -92,16 +91,6 @@ watch(
     }
   }
 );
-
-const labelShow = ref(false);
-// 点击展开按钮
-const handleShowFn = () => {
-  labelShow.value = true;
-};
-
-const handleRouter = () => {
-  labelShow.value = false;
-}
 </script>
 
 <template>
@@ -111,14 +100,14 @@ const handleRouter = () => {
       class="router-buttons__logo"
       @mouseenter="mouseenterFn"
       @mouseleave="mouseleaveFn"
-      @click="router.replace('/')"
+      @click="methods.$goRouter('/')"
     >
       <span v-if="logoHover" class="logo__text">刀刀小站</span>
       <my-button
         v-else
         full
         iconName="icon-shouye"
-        @click="router.replace('/')"
+        @click="methods.$goRouter('/')"
       />
     </div>
 
@@ -183,10 +172,14 @@ const handleRouter = () => {
     </div>
 
     <div class="router-button__btns__phone">
-      <i class="iconfont icon-zhankai" @click.stop="handleShowFn"></i>
-      <my-dropper v-model="labelShow">
+      <i
+        v-close="true"
+        class="iconfont icon-zhankai"
+        @click.stop="handleShowFn"
+      ></i>
+      <my-dropper v-model="labelShow" width="60%">
         <template #default>
-          <PhoneDom :list="generateRoutes" @handleRouter="handleRouter" />
+          <PhoneDom :list="generateRoutes" />
         </template>
       </my-dropper>
     </div>
@@ -357,8 +350,9 @@ const handleRouter = () => {
 
 @media screen and (max-width: 768px) {
   .router-buttons {
-    height: 3.75rem;
-    margin: 0 0 2.5rem;
+    height: 4.5rem;
+    padding: 1.25rem 1.25rem;
+    margin: 0 0 1.35rem;
 
     .router-buttons__logo {
       width: 7.5rem;

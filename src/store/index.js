@@ -7,6 +7,9 @@ export const type = ref('img')
 // 当前模式（暗黑模式与光亮模式）
 export const light = ref(true);
 
+// 移动端右侧drop是否显示
+export const labelShow = ref(false);
+
 // px转rem函数方法
 export const convertToRem = (size) => {
     return `${size / 16}rem`
