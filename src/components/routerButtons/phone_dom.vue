@@ -1,4 +1,5 @@
 <script setup>
+import { light, labelShow } from "@/store/index";
 import methods from '@/utils/customMethod'
 
 defineProps({
@@ -16,6 +17,7 @@ const emit = defineEmits(['handleRouter'])
 
 const handleRouterFn = (path) => {
   methods.$goRouter(path, '/articleList/');
+  labelShow.value = false;
   emit('handleRouter')
 }
 </script>
@@ -61,9 +63,11 @@ const handleRouterFn = (path) => {
     </div>
 
     <!-- 暗黑模式 -->
+    <div class="phone-dom__title">模式切换</div>
     <div ref="darkBtn"
       title="暗黑模式切换"
       id="dark-btn"
+      :class="{'active': !light, 'dark': light}"
       @click.stop="changeLightFn"></div>
   </div>
 </template>
@@ -77,7 +81,7 @@ const handleRouterFn = (path) => {
     height: 100%;
     #dark-btn {
       position: absolute;
-      bottom: 0%;
+      top: 18%;
       left: -36%;
     }
   }
@@ -90,7 +94,6 @@ const handleRouterFn = (path) => {
 
   .phone-dome__list {
     display: flex;
-    // justify-content: space-between;
     width: 100%;
     overflow-y: auto;
     margin-bottom: 1.75rem;

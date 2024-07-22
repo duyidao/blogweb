@@ -355,7 +355,8 @@ watch(
     margin: 0 0 1.35rem;
 
     .router-buttons__logo {
-      width: 7.5rem;
+      // width: 7.5rem;
+      flex: 1;
 
       .logo__text {
         font-size: 1.5625rem;
@@ -371,6 +372,7 @@ watch(
 
     .router-button__btns__phone {
       display: block;
+      margin-top: 0.125rem;
 
       :deep(.iconfont) {
         font-size: 1.5625rem !important;
@@ -381,10 +383,18 @@ watch(
         }
       }
     }
-  }
 
-  #scroll-angle {
-    display: none !important;
+    #scroll-angle {
+      width: 1.875rem;
+      height: 1.875rem;
+      margin-right: .9375rem;
+      font-size: .985rem;
+      line-height: 3rem;
+
+      &::before {
+        inset: .1875rem;
+      }
+    }
   }
 }
 </style>

@@ -10,6 +10,38 @@
   border: 0;
 }
 
+// 注册属性
+@property --scroll-position {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --scroll-position-delayed {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --scroll-velocity {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+
+@keyframes adjust {
+  to {
+    --scroll-position: 100;
+    --scroll-position-delayed: 100;
+    --scroll-velocity: 100;
+  }
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+
 /* 设置默认字体和颜色 */
 body {
   font-family: 'Microsoft YaHei', 'Heiti SC', 'tahoma', 'arial', 'Hiragino Sans GB', '宋体', sans-serif;
@@ -19,6 +51,10 @@ body {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: --scroll-position-delayed .15s linear;
+  // 定义两个自定义属性，用于页面滚动时动画实现
+  --scroll-velocity: calc(var(--scroll-position) - var(--scroll-position-delayed));
+  --scroll-dynamic: calc(var(--scroll-velocity) / var(--scroll-velocity));
 }
 
 // 移动端点击遮罩去除
