@@ -33,7 +33,6 @@ function getLocation() {
 
 // 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
 function onSuccess(position) {
-  console.log('position', position);
   // 经度
   userPoint.value.longitude = position.coords.longitude;
   // 纬度
@@ -51,10 +50,8 @@ function onSuccess(position) {
     });
     if (!cityList) return;
     let city = cityList.city.find((item) => {
-      console.log('item', item, addComp.value.city);
       return addComp.value.city.includes(item.name);
     });
-    console.log('city', city);
     handleWeather(city.adcode);
   });
 }
@@ -121,13 +118,13 @@ const handleWeather = (code = "440100") => {
 
 const interval = ref("");
 const weatherHello = ref("欢迎光临~");
-const waetherImg = ref('/blogweb/images/sunny.jpg');
+const waetherImg = ref('/blogweb/images/sunny.webp');
 // 获取欢迎词
 const getHelloFn = () => {
   let now = new Date();
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
-  waetherImg.value = weather && weather.includes("雨") ? '/blogweb/images/rain.jpg' : '/blogweb/images/sunny.jpg';
+  waetherImg.value = weather && weather.includes("雨") ? '/blogweb/images/rain.webp' : '/blogweb/images/sunny.webp';
 
   // 根据时间与天气获取欢迎词
   if (hour >= 6 && hour < 12) {

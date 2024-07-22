@@ -179,7 +179,7 @@ watch(
       ></i>
       <my-dropper v-model="labelShow" width="60%">
         <template #default>
-          <PhoneDom :list="generateRoutes" />
+          <PhoneDom :handleLinkFn="handleLinkFn" :changeLightFn="changeLightFn" />
         </template>
       </my-dropper>
     </div>

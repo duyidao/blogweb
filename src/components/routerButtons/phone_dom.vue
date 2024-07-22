@@ -1,6 +1,17 @@
 <script setup>
 import methods from '@/utils/customMethod'
 
+defineProps({
+  handleLinkFn: {
+    type: Function,
+    default: () => () => { }
+  },
+  changeLightFn: {
+    type: Function,
+    default: () => () => { }
+  }
+})
+
 const emit = defineEmits(['handleRouter'])
 
 const handleRouterFn = (path) => {
@@ -11,6 +22,7 @@ const handleRouterFn = (path) => {
 
 <template>
   <div class="phone-dom">
+    <!-- 文章列表 -->
     <div class="phone-dom__title">文章列表</div>
     <div class="phone-dome__list">
       <div class="phone-dome__item"
@@ -29,48 +41,96 @@ const handleRouterFn = (path) => {
         <span>Learn</span>
       </div>
     </div>
+
+    <!-- 功能按钮 -->
+    <div class="phone-dom__title">功能按钮</div>
+    <div class="phone-dome__list">
+      <div title="前往随机文章"
+        class="phone-dome__item">
+        <i class="iconfont icon-suiji"
+          @click.stop="handleLinkFn('random')"></i>
+        <span>随机文章</span>
+      </div>
+
+      <div title="刀刀博客小站"
+        class="phone-dome__item">
+        <i class="iconfont icon-fujianguanli"
+          @click.stop="handleLinkFn('link')"></i>
+        <span>刀刀小站外链</span>
+      </div>
+    </div>
+
+    <!-- 暗黑模式 -->
+    <div ref="darkBtn"
+      title="暗黑模式切换"
+      id="dark-btn"
+      @click.stop="changeLightFn"></div>
   </div>
 </template>
 
-<style lang="less" scoped>
-.phone-dom__title {
-  width: 100%;
-  font-size: 1rem;
-  margin-bottom: 1.75rem;
-}
+<style lang="less"
+  scoped>
+  @import "./darkBtn.css";
 
-.phone-dome__list {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-
-  .phone-dome__item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    padding: .625rem 0;
-    border: .0625rem solid var(--primary-font);
-    border-radius: .5rem;
-    cursor: pointer;
-
-    &:hover {
-      border: .0625rem solid #303F9F;
-      background-color: #303F9F;
-      color: #fff;
-
-      i {
-        color: #fff !important;
-      }
-    }
-
-    span {
-      font-size: 1.15rem;
-      margin-top: .75rem;
+  .phone-dom {
+    position: relative;
+    height: 100%;
+    #dark-btn {
+      position: absolute;
+      bottom: 0%;
+      left: -36%;
     }
   }
-}
+
+  .phone-dom__title {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1.55rem;
+  }
+
+  .phone-dome__list {
+    display: flex;
+    // justify-content: space-between;
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 1.75rem;
+
+    .phone-dome__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      padding: .625rem 0;
+      margin-right: 5%;
+      border: .0625rem solid var(--primary-font);
+      border-radius: .5rem;
+      cursor: pointer;
+
+      &:nth-child(3) {
+        margin-right: 0;
+      }
+
+      &:hover {
+        border: .0625rem solid #303F9F;
+        background-color: #303F9F;
+        color: #fff;
+
+        i {
+          color: #fff !important;
+        }
+      }
+
+      span {
+        font-size: 1.15rem;
+        margin-top: .75rem;
+      }
+    }
+  }
+
+  .phone-dom__link__item {
+    display: inline-block;
+    padding: .3125rem .625rem;
+    border: .0625rem solid var(--primary-font);
+  }
 </style>
