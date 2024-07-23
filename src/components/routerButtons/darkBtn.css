@@ -108,3 +108,91 @@
             190px -20px 0 10px transparent;
     }
 }
+
+@media screen and (max-width: 768px) {
+    #dark-btn {
+        position: relative;
+        width: 13.75rem;
+        height: 5.625rem;
+        background:
+            radial-gradient(circle at 18% 1.25rem, #fff, #fff .375rem, transparent .4375rem, transparent),
+            radial-gradient(circle at 35% 2.8125rem, #fff, #fff .0625rem, transparent .125rem, transparent),
+            radial-gradient(circle at 10% 4.375rem, #fff, #fff 0.1563rem, transparent 0.2188rem, transparent),
+            radial-gradient(circle at 25% .9375rem, #fff, #fff .1875rem, transparent .25rem, transparent),
+            radial-gradient(circle at 15% 3.125rem, #fff, #fff 0.0938rem, transparent 0.1563rem, transparent),
+            radial-gradient(circle at 30% 4.6875rem, #fff, #fff .3125rem, transparent .375rem, transparent),
+            radial-gradient(circle at 5% 1.875rem, #fff, #fff 0.0313rem, transparent 0.0938rem, transparent),
+            radial-gradient(circle at 25% 3.75rem, #fff, #fff 0.0313rem, transparent 0.0938rem, transparent),
+            radial-gradient(circle at 7% 2.1875rem, #fff, #fff 0.0313rem, transparent 0.0938rem, transparent),
+            linear-gradient(90deg, #2b303e, #2b303e 50%, #5a81b4 50%, #5a81b4);
+        border-radius: 5.625rem;
+        box-shadow:
+            0 -0.1875rem .25rem #999,
+            inset 0 .1875rem .3125rem #333,
+            0 .25rem .25rem #ffe,
+            inset 0 -.1875rem .3125rem #ddd;
+    
+        &::before {
+            width: 4.6875rem;
+            height: 4.6875rem;
+            inset: 0.4688rem;
+            box-shadow:
+                0 0 .3125rem #333,
+                inset .125rem .125rem .1875rem #f8f4e4,
+                inset -.125rem -.125rem .1875rem #665613;
+        }
+    
+        &::after {
+            width: 4.375rem;
+            height: 4.375rem;
+            inset: .625rem;
+            box-shadow:
+                .625rem 3.75rem 0 .625rem #fff,
+                4.0625rem 3.75rem 0 .3125rem #fff,
+                5.9375rem 4.375rem 0 .625rem #fff,
+                8.4375rem 2.8125rem 0 .3125rem #fff,
+                10.625rem 2.1875rem 0 .625rem #fff,
+                12.1875rem -0.3125rem 0 .625rem #fff,
+                -.625rem 0 0 3.125rem rgba(255, 255, 255, .2),
+                .9375rem 0 0 3.125rem rgba(255, 255, 255, .15),
+                2.5rem 0 0 3.125rem rgba(255, 255, 255, .21),
+                .625rem 2.5rem 0 .625rem #abc1d9,
+                4.375rem 2.1875rem 0 .625rem #abc1d9,
+                5.9375rem 2.5rem 0 .625rem #abc1d9,
+                8.4375rem 1.25rem 0 .625rem #abc1d9,
+                9.6875rem .9375rem 0 .625rem #abc1d9,
+                11.875rem -1.25rem 0 .625rem #abc1d9;
+        }
+    }
+    
+    #dark-btn.active {
+        &::before {
+            translate: 8.125rem;
+            background:
+                radial-gradient(circle at 50% 1.25rem, #939aa5, #939aa5 0.4063rem, transparent .4375rem, transparent),
+                radial-gradient(circle at 35% 2.8125rem, #939aa5, #939aa5 0.7188rem, transparent .75rem, transparent),
+                radial-gradient(circle at 72% 3.125rem, #939aa5, #939aa5 0.5313rem, transparent .5625rem, transparent),
+                radial-gradient(#cbcdda, #cbcdda);
+        }
+    
+        &::after {
+            transform: translate(8.125rem);
+            box-shadow:
+                .625rem 3.75rem 0 .625rem transparent,
+                4.0625rem 3.75rem 0 .3125rem transparent,
+                5.9375rem 4.375rem 0 .625rem transparent,
+                8.4375rem 2.8125rem 0 .3125rem transparent,
+                10.625rem 2.1875rem 0 .625rem transparent,
+                12.1875rem -.3125rem 0 .625rem transparent,
+                .625rem 0 0 3.125rem rgba(255, 255, 255, .2),
+                -0.9375rem 0 0 3.125rem rgba(255, 255, 255, .15),
+                -2.5rem 0 0 3.125rem rgba(255, 255, 255, .21),
+                .625rem -2.5rem 0 .625rem transparent,
+                4.375rem 2.1875rem 0 .625rem transparent,
+                5.9375rem -2.5rem 0 .625rem transparent,
+                8.4375rem 1.25rem 0 .625rem transparent,
+                9.6875rem -0.9375rem 0 .625rem transparent,
+                11.875rem -1.25rem 0 .625rem transparent;
+        }
+    }
+}

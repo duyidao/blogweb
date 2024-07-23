@@ -64,11 +64,14 @@ const handleRouterFn = (path) => {
 
     <!-- 暗黑模式 -->
     <div class="phone-dom__title">模式切换</div>
-    <div ref="darkBtn"
-      title="暗黑模式切换"
-      id="dark-btn"
-      :class="{'active': !light, 'dark': light}"
-      @click.stop="changeLightFn"></div>
+    <div class="phone-dom__father">
+      <div ref="darkBtn"
+        title="暗黑模式切换"
+        id="dark-btn"
+        :class="{ 'active': !light, 'dark': light }"
+        @click.stop="changeLightFn">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -77,12 +80,18 @@ const handleRouterFn = (path) => {
   @import "./darkBtn.css";
 
   .phone-dom {
-    position: relative;
     height: 100%;
-    #dark-btn {
-      position: absolute;
-      top: 18%;
-      left: -36%;
+
+    .phone-dom__father {
+      position: relative;
+      width: 100%;
+      height: 2.5rem;
+
+      #dark-btn {
+        position: absolute;
+        top: -90%;
+        left: -20%;
+      }
     }
   }
 
