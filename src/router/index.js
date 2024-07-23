@@ -20,9 +20,9 @@ export const routes = [
         }
     },
     {
-        path: '/articleList/:type',
-        name: 'articleList',
-        component: () => import('@/views/articleList/index.vue'),
+        path: '/article/:type',
+        name: 'article',
+        component: () => import('@/views/article/index.vue'),
         meta: {
             title: '列表',
         }
@@ -30,7 +30,7 @@ export const routes = [
     {
         path: '/detail',
         name: 'detail',
-        component: () => import('@/views/detail/index.vue'),
+        component: () => import('@/views/article/detail.vue'),
         children: [
             ...generateRoutes
         ]

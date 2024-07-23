@@ -23,19 +23,19 @@ const routerBtnList = ref([
     children: [
       {
         name: "CSS",
-        base: "/articleList/",
+        base: "/article/",
         path: "css",
         icon: "icon-css",
       },
       {
         name: "Javascript",
-        base: "/articleList/",
+        base: "/article/",
         path: "js",
         icon: "icon-js",
       },
       {
         name: "Learn",
-        base: "/articleList/",
+        base: "/article/",
         path: "learn",
         icon: "icon-xuexi",
       },
@@ -96,92 +96,86 @@ watch(
 <template>
   <div class="router-buttons">
     <!-- 左侧logo -->
-    <div
-      class="router-buttons__logo"
+    <div class="router-buttons__logo"
       @mouseenter="mouseenterFn"
       @mouseleave="mouseleaveFn"
-      @click="methods.$goRouter('/')"
-    >
-      <span v-if="logoHover" class="logo__text">刀刀小站</span>
-      <my-button
-        v-else
+      @click="methods.$goRouter('/')">
+      <span v-if="logoHover"
+        class="logo__text">刀刀小站</span>
+      <my-button v-else
         full
         iconName="icon-shouye"
-        @click="methods.$goRouter('/')"
-      />
+        @click="methods.$goRouter('/')" />
     </div>
 
     <!-- 中间导航 -->
     <div class="router-buttons__list">
-      <div
-        v-for="(item, index) in routerBtnList"
+      <div v-for="(item, index) in routerBtnList"
         :key="index"
         class="router-buttons__item"
         :class="{ 'item-list-active': item.children?.length && showBtn[index] }"
         @mouseenter="showItemFn(index, true)"
-        @mouseleave="showItemFn(index, false)"
-      >
-        <my-button :word="item.name" :iconName="item.icon" />
+        @mouseleave="showItemFn(index, false)">
+        <my-button :word="item.name"
+          :iconName="item.icon" />
         <div class="item-list">
-          <div v-for="(e, i) in item.children" :key="i" class="item-list__item">
-            <my-button
-              :iconName="e.icon"
+          <div v-for="(e, i) in item.children"
+            :key="i"
+            class="item-list__item">
+            <my-button :iconName="e.icon"
               :word="e.name"
-              @click="goRouter(e, index)"
-            />
+              @click="goRouter(e, index)" />
           </div>
         </div>
       </div>
     </div>
 
-    <div
-      v-if="!isNaN(scrollProgress)"
-      ref="scrollAngleRef"
-      id="scroll-angle"
-      :style="{
-        background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${
-          light.value ? '#000' : '#616161'
-        } ${scrollAngle}deg`,
-      }"
-    >
-      {{ scrollProgress }}
-    </div>
-
-    <!-- 右侧外链 -->
-    <div class="router-buttons__btns">
-      <div class="router-buttons__link">
-        <div title="前往随机文章" class="router-buttons__link__item">
-          <i
-            class="iconfont icon-suiji"
-            @click.stop="handleLinkFn('random')"
-          ></i>
-        </div>
-        <div title="刀刀博客小站" class="router-buttons__link__item">
-          <i
-            class="iconfont icon-fujianguanli"
-            @click.stop="handleLinkFn('link')"
-          ></i>
-        </div>
+    <!-- 右侧其他 -->
+    <div style="display: flex; align-items: center;">
+      <!-- 滚动条 -->
+      <div v-if="!isNaN(scrollProgress)"
+        ref="scrollAngleRef"
+        id="scroll-angle"
+        :style="{
+          background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${light.value ? '#000' : '#616161'
+            } ${scrollAngle}deg`,
+        }">
+        {{ scrollProgress }}
       </div>
-      <div
-        ref="darkBtn"
-        title="暗黑模式切换"
-        id="dark-btn"
-        @click.stop="changeLightFn"
-      ></div>
-    </div>
 
-    <div class="router-button__btns__phone">
-      <i
-        v-close="true"
-        class="iconfont icon-zhankai"
-        @click.stop="handleShowFn"
-      ></i>
-      <my-dropper v-model="labelShow" width="60%">
-        <template #default>
-          <PhoneDom :handleLinkFn="handleLinkFn" :changeLightFn="changeLightFn" />
-        </template>
-      </my-dropper>
+      <!-- 外链 -->
+      <div class="router-buttons__btns">
+        <div class="router-buttons__link">
+          <div title="前往随机文章"
+            class="router-buttons__link__item">
+            <i class="iconfont icon-suiji"
+              @click.stop="handleLinkFn('random')"></i>
+          </div>
+          <div title="刀刀博客小站"
+            class="router-buttons__link__item">
+            <i class="iconfont icon-fujianguanli"
+              @click.stop="handleLinkFn('link')"></i>
+          </div>
+        </div>
+        <div ref="darkBtn"
+          title="暗黑模式切换"
+          id="dark-btn"
+          @click.stop="changeLightFn"></div>
+      </div>
+
+      <!-- 移动端 -->
+      <div class="router-button__btns__phone">
+        <i v-close="true"
+          class="iconfont icon-zhankai"
+          @click.stop="handleShowFn"></i>
+        <my-dropper v-model="labelShow"
+          width="60%">
+          <template #default>
+            <PhoneDom :handleLinkFn="handleLinkFn"
+              :changeLightFn="changeLightFn" />
+          </template>
+        </my-dropper>
+      </div>
     </div>
   </div>
 </template>
@@ -355,8 +349,7 @@ watch(
     margin: 0 0 1.35rem;
 
     .router-buttons__logo {
-      // width: 7.5rem;
-      flex: 1;
+      width: 7.5rem;
 
       .logo__text {
         font-size: 1.5625rem;
@@ -372,7 +365,9 @@ watch(
 
     .router-button__btns__phone {
       display: block;
+      flex: 1;
       margin-top: 0.125rem;
+      text-align: right;
 
       :deep(.iconfont) {
         font-size: 1.5625rem !important;

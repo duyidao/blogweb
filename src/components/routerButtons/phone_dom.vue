@@ -23,7 +23,7 @@ const handleFuncFn = (type) => {
 
 // 点击文章按钮跳往文章页面
 const handleRouterFn = (path) => {
-  methods.$goRouter(path, '/articleList/');
+  methods.$goRouter(path, '/article/');
   labelShow.value = false;
   emit('handleRouter');
 }

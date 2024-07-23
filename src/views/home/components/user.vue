@@ -20,7 +20,7 @@ const text = "前端之路渐行渐远，退路早已遥遥无期。"; // 要显
 let index = 0;
 
 function typeWriter() {
-  if (index < text.length) {
+  if (index < text.length && textRef.value) {
     textRef.value.innerHTML += text.charAt(index);
     index++;
     setTimeout(typeWriter, 1000); // 设置打字速度，单位是毫秒
