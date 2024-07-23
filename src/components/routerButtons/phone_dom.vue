@@ -1,24 +1,31 @@
 <script setup>
 import { light, labelShow } from "@/store/index";
-import methods from '@/utils/customMethod'
+import methods from '@/utils/customMethod';
 
-defineProps({
+const {handleLinkFn} = defineProps({
   handleLinkFn: {
     type: Function,
-    default: () => () => { }
+    default: () => () => { },
   },
   changeLightFn: {
     type: Function,
-    default: () => () => { }
-  }
-})
+    default: () => () => { },
+  },
+});
 
-const emit = defineEmits(['handleRouter'])
+const emit = defineEmits(['handleRouter']);
 
+// 点击功能按钮实现功能操作
+const handleFuncFn = (type) => {
+  handleLinkFn(type);
+  labelShow.value = false;
+}
+
+// 点击文章按钮跳往文章页面
 const handleRouterFn = (path) => {
   methods.$goRouter(path, '/articleList/');
   labelShow.value = false;
-  emit('handleRouter')
+  emit('handleRouter');
 }
 </script>
 
@@ -50,14 +57,14 @@ const handleRouterFn = (path) => {
       <div title="前往随机文章"
         class="phone-dome__item">
         <i class="iconfont icon-suiji"
-          @click.stop="handleLinkFn('random')"></i>
+          @click.stop="handleFuncFn('random')"></i>
         <span>随机文章</span>
       </div>
 
       <div title="刀刀博客小站"
         class="phone-dome__item">
         <i class="iconfont icon-fujianguanli"
-          @click.stop="handleLinkFn('link')"></i>
+          @click.stop="handleFuncFn('link')"></i>
         <span>刀刀小站外链</span>
       </div>
     </div>
