@@ -1,0 +1,1 @@
+import{_ as c,o as s,c as o,p as t,a,b as d}from"./index-CH98or-N.js";const _={},n=e=>(t("data-v-d5651fc7"),e=e(),a(),e),r={class:"ifrname-box banner"},i=n(()=>d("div",{class:"title"},"前端搬砖人每天都努力",-1)),p=[i];function f(e,l){return s(),o("div",r,p)}const m=c(_,[["render",f],["__scopeId","data-v-d5651fc7"]]);export{m as default};

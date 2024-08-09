@@ -159,8 +159,8 @@ const routerFn = (item) => {
     flex-wrap: wrap;
 
     .article-item {
-      width: 30%;
-      margin-right: 5%;
+      width: 31%;
+      margin-right: 3.5%;
       box-shadow: 0px 0px 3px var(--primary-border);
 
       &:nth-child(3n) {
@@ -262,7 +262,7 @@ const routerFn = (item) => {
 
     .article-item-img {
       .article-item {
-        margin-right: 2rem;
+        margin-right: 1.53rem;
         box-shadow: 0px 0px 0.1875rem var(--primary-border);
 
         .article-item-link {

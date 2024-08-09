@@ -101,12 +101,13 @@ const getWeatherImg = type => {
 // 获取天气数据
 const weatherList = ref([]);
 const handleWeather = (code = "440100") => {
+  var hash = md5(`city=${code}&key=c687eb90870c9b75cf7c54d1124e202394e7c15646c6d906d5394365bda8777e`)
   axios
     .get(
-      `https://restapi.amap.com/v3/weather/weatherInfo?key=c687eb90870c9b75cf7c54d1124e2023&city=${code}&extensions=all`
+      `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
     )
     .then((res) => {
-      weatherList.value = res.data.forecasts[0].casts.map(item => {
+      weatherList.value = res.data.lives.map(item => {
         return {
           ...item,
           weatherImg: getWeatherImg(item.dayweather)
@@ -124,7 +125,9 @@ const getHelloFn = () => {
   let now = new Date();
   const hour = now.getHours();
   const weather = weatherList.value[0]?.dayweather;
-  waetherImg.value = weather && weather.includes("雨") ? '/blogweb/images/rain.webp' : '/blogweb/images/sunny.webp';
+  waetherImg.value = weather && weather.includes("雨")
+    ? '/blogweb/images/rain.webp' : weather && weather.includes("云")
+    ? '/blogweb/images/cloudy.webp' : '/blogweb/images/sunny.webp';
 
   // 根据时间与天气获取欢迎词
   if (hour >= 6 && hour < 12) {

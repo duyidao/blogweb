@@ -106,6 +106,7 @@ const handleRouterFn = (path) => {
     width: 100%;
     font-size: 1rem;
     margin-bottom: 1.55rem;
+    text-align: left;
   }
 
   .phone-dome__list {
