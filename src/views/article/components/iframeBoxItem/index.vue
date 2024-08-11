@@ -1,0 +1,148 @@
+<script setup>
+import Code from './code.vue';
+
+defineProps({
+    title: {
+        type: String,
+        default: '标题'
+    }
+})
+
+// 双向绑定的代码样式
+const code = defineModel()
+
+const handleChange = (value) => {
+    console.log('value', value);
+    // code.value = value
+}
+
+const showCode = ref(false)
+const handleClick = () => {
+    showCode.value = !showCode.value;
+}
+</script>
+
+<template>
+    <div class="iframe-box-item">
+        <div class="iframe-box-title">
+            <span>{{ title }}</span>
+            <my-button class="iframe-box-button"
+                :word="showCode ? '保留效果' : '让我试试'"
+                @click="handleClick" />
+        </div>
+        <div class="iframe-box-content">
+            <Code v-show="showCode"
+                class="code"
+                v-model="code"
+                @change="handleChange">
+            </Code>
+            <div :class="{ 'effect': true, 'showCode': showCode }">
+                <slot></slot>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.iframe-box-item {
+    width: 100%;
+
+    .iframe-box-title {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 20px;
+        margin: 20px 0;
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1px solid var(--primary-border);
+        color: var(--primary-info);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: var(--primary-border);
+        }
+
+        .iframe-box-title-small {
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .iframe-box-button {
+            margin-left: 20px;
+            box-shadow: 0 0 11px -6px rgb(35, 167, 243);
+        }
+    }
+
+    .iframe-box-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 100px;
+
+        :deep(.cm-editor) {
+            width: 53%;
+        }
+
+        .effect {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+
+            &.showCode {
+                justify-content: center;
+                align-items: center;
+                width: 43%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .iframe-box-item {
+
+        .iframe-box-title {
+            display: flex;
+            align-items: center;
+            height: 3.125rem;
+            line-height: 3.125rem;
+            padding-left: 1.25rem;
+            margin: 1.25rem 0;
+            font-size: 1.25rem;
+            border-bottom-width: .0625rem;
+
+            &::before {
+                width: .5rem;
+                height: 1.875rem;
+                border-radius: .25rem;
+            }
+
+            .iframe-box-title-small {
+                font-size: .875rem;
+                margin-left: .625rem;
+            }
+
+            .iframe-box-button {
+                margin-left: 1.25rem;
+                box-shadow: 0 0 .6875rem -0.375rem #000;
+            }
+        }
+
+        .iframe-box-content {
+            min-height: 6.25rem;
+        }
+    }
+}
+</style>

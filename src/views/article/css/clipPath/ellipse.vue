@@ -1,11 +1,27 @@
 <script setup>
+defineProps({
+    style: String
+});
 
+const imgRef = ref(null);
+
+const handleMouseEnter = () => {
+    imgRef.value.classList.add('enter');
+};
+
+const handleMouseLeave = () => {
+    imgRef.value.classList.remove('enter');
+};
 </script>
 
 <template>
-    <div class="box">
-        <img src="@/assets/img/cat.png"
-            alt="">
+    <div class="box"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
+        <img ref="imgRef"
+            :style="{'--ellipse': style}"
+            src="@/assets/img/cat.png"
+            alt="ellipse img">
     </div>
 </template>
 
@@ -15,10 +31,14 @@
     height: 100px;
 
     img {
+        display: block;
         width: 100%;
         height: 100%;
-        display: block;
-        animation: wink 3s infinite;
+        transition: all .3s;
+
+        &.enter {
+            clip-path: var(--ellipse);
+        }
     }
 }
 
@@ -41,6 +61,13 @@
 
     1000% {
         clip-path: ellipse(100% 40% at 50% 50%);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .box {
+        width: 6.25rem;
+        height: 6.25rem;
     }
 }
 </style>

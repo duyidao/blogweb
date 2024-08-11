@@ -48,35 +48,6 @@
   width: 100%;
   border-radius: 10px;
 
-  .iframe-box-title {
-    position: relative;
-    height: 50px;
-    line-height: 50px;
-    padding-left: 20px;
-    margin: 20px 0;
-    font-size: 20px;
-    font-weight: bold;
-    border-bottom: 1px solid var(--primary-border);
-    color: var(--primary-info);
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      width: 8px;
-      height: 30px;
-      border-radius: 4px;
-      background-color: var(--primary-border);
-    }
-
-    .iframe-box-title-small {
-      font-size: 14px;
-      margin-left: 10px;
-    }
-  }
-
   .list-style-circle {
     li {
       margin-left: 20px;
@@ -89,26 +60,6 @@
 @media screen and (max-width: 768px) {
   .ifrname-box {
     border-radius: .625rem;
-
-    .iframe-box-title {
-      height: 3.125rem;
-      line-height: 3.125rem;
-      padding-left: 1.25rem;
-      margin: 1.25rem 0;
-      font-size: 1.25rem;
-      border-bottom: .0625rem solid var(--primary-border);
-
-      &::before {
-        width: .5rem;
-        height: 1.875rem;
-        border-radius: .25rem;
-      }
-
-      .iframe-box-title-small {
-        font-size: .875rem;
-        margin-left: .625rem;
-      }
-    }
 
     .list-style-circle li {
       margin-left: 1.25rem;

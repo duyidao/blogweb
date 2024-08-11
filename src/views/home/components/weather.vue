@@ -4,10 +4,13 @@ import { adcodeList } from "@/store/adcode.js";
 import duoyun from '/images/duoyun.svg'
 import yin from '/images/yin.svg'
 import zhongyu from '/images/zhongyu.svg'
+import wanshangzhongyu from '/images/wanshangzhongyu.svg'
 import xiaoyu from '/images/xiaoyu.svg'
+import wanshangxiaoyu from '/images/wanshangxiaoyu.svg'
 import dayu from '/images/dayu.svg'
 import leizhenyu from '/images/leizhenyu.svg'
 import qing from '/images/qing.svg'
+import wanshang from '/images/wanshang.svg'
 import zhenyu from '/images/zhengyu.svg'
 
 const addComp = ref({});
@@ -76,17 +79,19 @@ function onError(error) {
 }
 
 const getWeatherImg = type => {
+  const hour = new Date().getHours();
+  console.log('hour', hour);
   switch (type) {
     case '晴':
-      return qing
+      return hour > 17 ? wanshang : qing
     case '阴':
       return yin
     case '多云':
       return duoyun
     case '小雨':
-      return xiaoyu
+      return hour > 17 ? wanshangxiaoyu : xiaoyu
     case '中雨':
-      return zhongyu
+      return hour > 17 ? wanshangzhongyu : zhongyu
     case '大雨':
       return dayu
     case '雷阵雨':
@@ -101,13 +106,13 @@ const getWeatherImg = type => {
 // 获取天气数据
 const weatherList = ref([]);
 const handleWeather = (code = "440100") => {
-  var hash = md5(`city=${code}&key=c687eb90870c9b75cf7c54d1124e202394e7c15646c6d906d5394365bda8777e`)
+  var hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
   axios
     .get(
-      `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
+      `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
     )
     .then((res) => {
-      weatherList.value = res.data.lives.map(item => {
+      weatherList.value = res.data.forecasts[0].casts.map(item => {
         return {
           ...item,
           weatherImg: getWeatherImg(item.dayweather)

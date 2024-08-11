@@ -1,21 +1,36 @@
 <script setup>
+defineProps({
+    style: String
+});
 
+const imgRef = ref(null);
+
+const handleMouseEnter = () => {
+    imgRef.value.classList.add('enter');
+};
+
+const handleMouseLeave = () => {
+    imgRef.value.classList.remove('enter');
+};
 </script>
 
 <template>
-    <div class="box">
+    <div class="box"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
         <img src="@/assets/img/music/shape.webp"
             alt="">
         <img src="@/assets/img/music/shi.webp"
-            alt="">
+            alt=""
+            :style="{'--polygon': style}">
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     cursor: pointer;
 
     img {
@@ -31,7 +46,14 @@
     }
 
     &:hover img:nth-child(2) {
-        clip-path: polygon(-30% 0, 100% 0, 110% 50%, 100% 100%, -30% 100%);
+        clip-path: var(--polygon);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        width: 9.375rem;
+        height: 9.375rem;
     }
 }
 </style>

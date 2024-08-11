@@ -1,21 +1,42 @@
 <script setup>
+defineProps({
+    style: String
+});
 
+const pRef = ref(null);
+
+const handleMouseEnter = () => {
+    pRef.value.classList.add('enter');
+};
+
+const handleMouseLeave = () => {
+    pRef.value.classList.remove('enter');
+};
 </script>
 
 <template>
-    <div class="box">
-        <p class="word">A cute cat</p>
+    <div class="box"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
+        <p ref="pRef"
+            class="word"
+            :style="{ '--clip': style }">
+            A cute cat
+        </p>
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
     position: relative;
-    width: 250px;
-    height: 100px;
-    background: url('@/assets/img/cat.png') no-repeat center 100%/100%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    background: url('@/assets/img/cat.png') no-repeat 100%/100%;
 
     p.word {
+        position: relative;
+        top: 50%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -23,18 +44,27 @@
         color: #fff !important;
         font-size: 30px;
         line-height: 100px;
-        animation: fall 3s infinite;
+        transition: all .3s;
+        transform: translateY(-100%);
+        clip-path: inset(100% 0% 0% 0%);
+
+        &.enter {
+            top: 50%;
+            transform: translateY(-50%);
+            clip-path: var(--clip);
+        }
     }
 }
 
-@keyframes fall {
-    0% {
-        clip-path: inset(100% 0% 0% 0%);
-        transform: translateY(-100%);
-    }
+@media screen and (max-width: 600px) {
+    .box {
+        width: 12.5rem;
+        height: 12.5rem;
 
-    100% {
-        clip-path: inset(0% 0% 0% 0%);
+        p.word {
+            font-size: 1.875rem;
+            line-height: 6.25rem;
+        }
     }
 }
 </style>

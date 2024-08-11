@@ -3,6 +3,7 @@ import { generateRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { type } from "@/store/index.js";
 import { useMeta } from "vue-meta";
+import TypeSwitch from './components/typeSwitch/index.vue';
 
 const router = useRouter();
 const routeList = ref([]);

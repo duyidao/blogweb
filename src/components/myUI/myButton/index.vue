@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { screenWidth, convertToRem } from '@/store/index';
+
 const props = defineProps({
   word: {
     type: String,
@@ -24,8 +26,8 @@ const myButtonRef = ref(null);
 const mousemoveFn = (dom, e) => {
   let x =e.pageX - dom.getBoundingClientRect().left;
   let y =e.pageY - dom.getBoundingClientRect().top;
-  dom.style.setProperty("--x", x + "px");
-  dom.style.setProperty("--y", y + "px");
+  dom.style.setProperty("--x", screenWidth.value > 768 ? x + "px" : convertToRem(x));
+  dom.style.setProperty("--y", screenWidth.value > 768 ? y + "px" : convertToRem(y));
 };
 
 onMounted(() => {

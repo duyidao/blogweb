@@ -1,30 +1,54 @@
 <script setup>
+defineProps({
+    style: String
+});
 
+const imgRef = ref(null);
+
+const handleMouseEnter = () => {
+    imgRef.value.classList.add('enter');
+};
+
+const handleMouseLeave = () => {
+    imgRef.value.classList.remove('enter');
+};
 </script>
 
 <template>
     <div class="box">
-        <img src="@/assets/img/cat.png"
-            alt="">
+        <img
+            ref="imgRef"
+            :style="{'--polygon': style}"
+            src="@/assets/img/cat.png"
+            alt="polygon img"
+            @mouseenter="handleMouseEnter"
+            @mouseleave="handleMouseLeave">
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     cursor: pointer;
 
     img {
+        display: block;
         width: 100%;
         height: 100%;
-        display: block;
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         transition: .5s;
+        clip-path: var(--polygon);
 
-        &:hover {
-            clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
+        &.enter {
+            clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%) !important;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        width: 9.375rem;
+        height: 9.375rem;
     }
 }
 </style>
