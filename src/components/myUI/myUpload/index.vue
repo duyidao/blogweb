@@ -66,7 +66,7 @@ const remove = (item) => {
 <template>
     <div class="upload">
         <div ref="uploadRef"
-            class="my-upload transition-color"
+            class="my-upload "
             @click.stop="handleUpload">
             <input ref="fileRef"
                 :accept="accept"
@@ -79,13 +79,13 @@ const remove = (item) => {
                 width="35"
                 height="35" />
             <span v-if="!$slots.default"
-                class="transition-color">{{ info }}</span>
+                class="">{{ info }}</span>
             <template v-else>
                 <slot></slot>
             </template>
         </div>
         <div v-if="needList" class="upload-list">
-            <div v-for="item in choseFile" :key="item.name" class="upload-item transition-color">
+            <div v-for="item in choseFile" :key="item.name" class="upload-item ">
                 <span>{{ item.name.length <= 35 ? item.name : item.name.slice(0, 25) + '.....' + item.name.substr(-4) }}</span>
                 <span class="icon" @click.stop="remove(item)"></span>
             </div>

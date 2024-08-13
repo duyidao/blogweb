@@ -14,11 +14,11 @@ const clickFn = () => {
 </script>
 
 <template>
-    <div class="ifrname-box box transition-color">
-        <button class="transition-color" @click.stop="clickFn">获取网络状态</button>
-        <div class="transition-color">当前网络环境：{{ info.type || '-' }}</div>
-        <div class="transition-color">当前延迟：{{ info.rtt || 0 }}ms</div>
-        <div class="transition-color">当前带宽速度：{{ info.downlink || 0 }}</div>
+    <div class="ifrname-box box ">
+        <button class="" @click.stop="clickFn">获取网络状态</button>
+        <div class="">当前网络环境：{{ info.type || '-' }}</div>
+        <div class="">当前延迟：{{ info.rtt || 0 }}ms</div>
+        <div class="">当前带宽速度：{{ info.downlink || 0 }}</div>
     </div>
 </template>
 

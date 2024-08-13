@@ -72,10 +72,15 @@ const handleGiteeFn = () => {
 <template>
   <div class="catalogue">
     <div class="catalogue-title">
-      <p class="catalogue-title-big transition-color">
+      <p class="catalogue-title-big">
         {{ routeNow.title }}
       </p>
-      <p class="catalogue-title-info transition-color">{{ routeNow.info }}</p>
+      <div class="catalogue-title-info">
+        <p>{{ routeNow.info }}</p>
+        <ul>
+          <li v-for="(item, index) in routeNow.tags" :key="index">{{ item }}</li>
+        </ul>
+      </div>
     </div>
     <div class="catalogue-body">
       <main class="catalogue-content">
@@ -93,14 +98,14 @@ const handleGiteeFn = () => {
           <!-- gitee直达 -->
           <div class="gitee" @click.stop="handleGiteeFn">
             <div class="card">
-              <div class="card-face card-front transition-color">
+              <div class="card-face card-front ">
                 <p class="card-title">
                   <SvgIcon name="gitee" width="35px" height="35px" />
                   <span>Gitee</span>
                 </p>
                 <p class="card-word">前往码云仓库👉</p>
               </div>
-              <p class="card-face card-back transition-color">
+              <p class="card-face card-back ">
                 <SvgIcon name="like" width="35px" height="35px" />
                 <span>关注我</span>
               </p>
@@ -111,7 +116,7 @@ const handleGiteeFn = () => {
           <div class="list transition-border">
             <div class="list-title">
               <SvgIcon name="time" width="30px" height="30px" />
-              <span class="transition-color">其他文章</span>
+              <span class="">其他文章</span>
             </div>
 
             <div class="list-info">
@@ -151,12 +156,33 @@ const handleGiteeFn = () => {
       font-weight: bold;
       margin-bottom: 30px;
       color: var(--catalogue-title);
+      font-family: 'black';
     }
 
     .catalogue-title-info {
+      display: flex;
+      align-items: center;
       font-size: 14px;
-      font-style: italic;
+      font-family: 'sans';
       color: var(--catalogue-title);
+
+      p {
+        margin-right: 75px;
+      }
+
+      ul {
+        display: flex;
+        align-items: center;
+
+        li {
+          margin-right: 16px;
+
+          &::before {
+            content: '▶️';
+            padding-right: 5px;
+          }
+        }
+      }
     }
   }
 }
@@ -276,31 +302,6 @@ const handleGiteeFn = () => {
         overflow: hidden;
         z-index: 2;
 
-        // &::before {
-        //   content: "";
-        //   position: absolute;
-        //   width: 200%;
-        //   height: 200%;
-        //   left: -50%;
-        //   top: -50%;
-        //   background-color: var(--detail-border);
-        //   background-image: conic-gradient(
-        //     transparent,
-        //     var(--detail-animate),
-        //     transparent 30%
-        //   );
-        //   z-index: -2;
-        //   animation: rotate 5s linear infinite;
-        // }
-        // &::after {
-        //   content: "";
-        //   position: absolute;
-        //   inset: 1vmin;
-        //   background-color: var(--catalogue-bg);
-        //   border-radius: 20px;
-        //   z-index: -1;
-        // }
-
         svg {
           fill: var(--primary-info);
         }
@@ -393,6 +394,20 @@ const handleGiteeFn = () => {
 
       .catalogue-title-info {
         font-size: 0.875rem;
+
+        p {
+          margin-right: 4.6875rem;
+        }
+
+        ul {
+          li {
+            margin-right: 1rem;
+
+            &::before {
+              padding-right: .3125rem;
+            }
+          }
+        }
       }
     }
 

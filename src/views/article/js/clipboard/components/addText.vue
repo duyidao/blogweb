@@ -12,16 +12,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="pasteRef" class="transition-color">
+  <div ref="pasteRef" class="">
     <ol>
-      <li class="transition-color">
+      <li class="">
         <p>获取浏览器cookie值</p>
         <code
           >const cookie = name => `; ${document.cookie}`.split(`;
           ${name}=`).pop().split(';').shift(); cookie('_ga');</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>将RGB转换为16进制</p>
         <code
           >const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8)
@@ -29,7 +29,7 @@ onMounted(() => {
           #0033ff</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>
           复制到剪切板（使用 navigator.clipboard.writeText
           轻松将任何文本复制到剪贴板上）
@@ -40,7 +40,7 @@ onMounted(() => {
           World");</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>检查日期是否有效</p>
         <code
           >const isDateValid = (...val) => !Number.isNaN(new
@@ -48,7 +48,7 @@ onMounted(() => {
           Result: true</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>找出一年中的某一天（即给出一个日期，程序给出属于本年的第多少天）</p>
         <code
           >const dayOfYear = (date) => Math.floor((date - new
@@ -56,14 +56,14 @@ onMounted(() => {
           Date()); // Result: 272
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>将字符串首字母大写</p>
         <code
           >const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
           capitalize("follow for more") // Result: Follow for more</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>计算两个日期之间相差的天数</p>
         <code
           >const dayDif = (date1, date2) => Math.ceil(Math.abs(date1.getTime() -
@@ -73,7 +73,7 @@ onMounted(() => {
           dayDif(new Date("2020-10-21"), new Date("2021-10-22")) // Result: 366
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>清除所有cookie</p>
         <code
           >const clearCookies = document.cookie.split(';').forEach(cookie =>
@@ -81,7 +81,7 @@ onMounted(() => {
           `=;expires=${new Date(0).toUTCString()};path=/`));</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>生成随机16进制</p>
         <code
           >const randomHex = () => `#${Math.floor(Math.random() *
@@ -89,7 +89,7 @@ onMounted(() => {
           Result: #92b008</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>数组去重</p>
         <code
           >const removeDuplicates = (arr) => [...new Set(arr)];
@@ -97,7 +97,7 @@ onMounted(() => {
           [ 1, 2, 3, 4, 5, 6 ]</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>从URL中获取查询参数</p>
         <code
           >const getParameters = (URL) => {
@@ -113,7 +113,7 @@ onMounted(() => {
           }
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>从日期中获取“时分秒”格式的时间</p>
         <code
           >const timeFromDate = date => date.toTimeString().slice(0, 8);
@@ -122,32 +122,32 @@ onMounted(() => {
           Result: "17:30:00"
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>确认奇偶数</p>
         <code
           >//通过数据%2来判断并返回布尔类型 const isEven = num => num % 2 === 0;
           console.log(isEven(2)); // Result: True
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>求平值</p>
         <code
           >const average = (...args) => args.reduce((a, b) => a + b) /
           args.length; average(1, 2, 3, 4); // Result: 2.5</code
         >
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>回到顶部（适用于网页右下角快捷返回功能）</p>
         <code> const goToTop = () => window.scrollTo(0, 0); goToTop(); </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>反转字符串</p>
         <code
           >const reverse = str => str.split('').reverse().join('');
           reverse('hello world'); // Result: 'dlrow olleh'
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>检查数组是否为空</p>
         <code
           >//通过对数组长度判断来确定是否为空 const isNotEmpty = arr =>
@@ -155,21 +155,21 @@ onMounted(() => {
           Result: true
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>获取用户选定的文本</p>
         <code>
           const getSelectedText = () => window.getSelection().toString();
           getSelectedText();
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>打乱数组</p>
         <code>
           const shuffleArray = (arr) => arr.sort(() => 0.5 - Math.random());
           console.log(shuffleArray([1, 2, 3, 4])); // Result: [ 1, 4, 3, 2 ]
         </code>
       </li>
-      <li class="transition-color">
+      <li class="">
         <p>检查用户是否处于暗模式</p>
         <code>
           const isDarkMode = window.matchMedia &&

@@ -20,22 +20,22 @@ const height = computed(() => screenWidth.value > 768 ? '20px' : 20)
 </script>
 
 <template>
-    <div class="article-type transition-color">
-        <div class="article-title transition-color">
+    <div class="article-type ">
+        <div class="article-title ">
             <span v-if="!$slots.default">{{ title }}</span>
             <slot v-else></slot>
         </div>
 
         <div class="article-change">
             <div :class="{ 'article-change-item': true, 'active': type === 'list' }"
-                class="transition-color"
+                class=""
                 @click.stop="handleTypeChange('list')">
                 <SvgIcon :width="width"
                     :height="height"
                     name="list-type" />
             </div>
             <div :class="{ 'article-change-item': true, 'active': type === 'img' }"
-                class="transition-color"
+                class=""
                 @click.stop="handleTypeChange('img')">
                 <SvgIcon :width="width"
                     :height="height"

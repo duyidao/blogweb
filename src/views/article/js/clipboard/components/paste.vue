@@ -11,7 +11,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="pasteRef" class="transition-color"></div>
+  <div ref="pasteRef" class=""></div>
 </template>
 
 <style scoped>

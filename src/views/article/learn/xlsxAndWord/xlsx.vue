@@ -30,7 +30,7 @@ export default {
         <div class="word-upload">
             <myUpload needList @change="onChangeFn" />
         </div>
-        <div class="xlsx transition-color"
+        <div class="xlsx "
             v-html="excelHTML"></div>
     </div>
 </template>

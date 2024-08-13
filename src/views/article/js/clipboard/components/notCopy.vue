@@ -10,7 +10,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="notcopyRef" class="transition-color">
+  <div ref="notcopyRef" class="">
     此div内的文本不可复制，复制后粘贴会显示 “自定义内容”
   </div>
 </template>

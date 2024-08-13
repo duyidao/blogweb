@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    style: String
+    styleCode: String
 });
 
 const pRef = ref(null);
@@ -20,7 +20,7 @@ const handleMouseLeave = () => {
         @mouseleave="handleMouseLeave">
         <p ref="pRef"
             class="word"
-            :style="{ '--clip': style }">
+            :style="{ '--clip': styleCode }">
             A cute cat
         </p>
     </div>

@@ -79,13 +79,13 @@ document.addEventListener("visibilitychange", function () {
   width: 100%;
 
   .content {
-    padding: 20px 20px;
+    padding: 0 20px 20px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .blog .content {
-    padding: 1.25rem 1.25rem;
+    padding: 0 1.25rem 1.25rem;
   }
 }
 </style>

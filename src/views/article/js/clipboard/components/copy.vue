@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="transition-color" ref="contentRef" contenteditable></div>
+  <div class="" ref="contentRef" contenteditable></div>
 </template>
 
 <style scoped>

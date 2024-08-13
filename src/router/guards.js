@@ -13,6 +13,7 @@ const beforeEachCallback = async (to, from, next) => {
         title: to.meta.title, // 标题
         info: to.meta.info, // 描述
         img: to.meta.img, // 图片
+        tags: to.meta.tags, // 标签
     };
     next();
 };

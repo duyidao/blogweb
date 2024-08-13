@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    style: String
+    styleCode: String
 });
 
 const imgRef = ref(null);
@@ -21,8 +21,9 @@ const handleMouseLeave = () => {
         <img src="@/assets/img/music/shape.webp"
             alt="">
         <img src="@/assets/img/music/shi.webp"
+            ref="imgRef"
             alt=""
-            :style="{'--polygon': style}">
+            :style="{'--polygon': styleCode}">
     </div>
 </template>
 

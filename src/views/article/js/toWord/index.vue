@@ -70,13 +70,13 @@ const handleChange = () => {
 <template>
   <div class="ifrname-box box">
     <div class="input">
-        <input class="transition-color" type="number" v-model="num" name="num" id="num" placeholder="请输入要转化的数字">
-        <button class="transition-color" @click.stop="handleChange">转换</button>
+        <input class="" type="number" v-model="num" name="num" id="num" placeholder="请输入要转化的数字">
+        <button class="" @click.stop="handleChange">转换</button>
     </div>
     <div class="list">
         <div v-for="(item,index) in changeList" :key="index" class="item">
-            <div class="item-num transition-color">数字：{{ item.num }}</div>
-            <div class="item-word transition-color">转换后：{{ item.word }}</div>
+            <div class="item-num ">数字：{{ item.num }}</div>
+            <div class="item-word ">转换后：{{ item.word }}</div>
         </div>
     </div>
   </div>

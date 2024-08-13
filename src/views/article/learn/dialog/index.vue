@@ -13,7 +13,7 @@ const showFn = () => {
 <template>
     <div class="ifrname-box box">
         <div>
-            <button class="transition-color" @click.stop="showFn">点击唤起弹窗</button>
+            <button class="" @click.stop="showFn">点击唤起弹窗</button>
         </div>
         <Dialog v-model:show="show"
             v-model:fullDialog="full"

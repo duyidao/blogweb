@@ -1,22 +1,34 @@
 <script setup>
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
+    styleCode: String
+});
+
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
+});
 </script>
 
 <template>
     <div class="box">
-        <img src="./firefox-logo.svg" alt="">
+        <img src="./firefox-logo.svg"
+            :style="{'--blur': styleValue}"
+            alt="grayscale img">
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
 
     img {
-        height: 30%;
-        width: 30%;
+        height: 100%;
+        width: 100%;
         background: transparent;
-        filter: blur(15px);
+        filter: var(--blur);
     }
 }
 </style>

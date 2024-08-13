@@ -92,7 +92,7 @@ const fileReaderChange = (e, type) => {
                             <myUpload info="上传文件，file类型"
                                 @change="fileChange" />
                         </div>
-                        <div class="content transition-color">
+                        <div class="content ">
                             <div>文件名: {{ selectedFiles.name || '-' }}</div>
                             <div>文件类型: {{ selectedFiles.type || '-' }}</div>
                             <div>文件大小: {{ selectedFiles.size || 0 }}bytes</div>
@@ -105,7 +105,7 @@ const fileReaderChange = (e, type) => {
                             <myUpload info="上传文件，blob类型"
                                 @change="blobChange" />
                         </div>
-                        <div class="content transition-color">
+                        <div class="content ">
                             <div>文件名: {{ blobFiles.name }}</div>
                             <div>文件类型: {{ blobFiles.type }}</div>
                             <div>文件大小: {{ blobFiles.size }}bytes</div>

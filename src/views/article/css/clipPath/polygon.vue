@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    style: String
+    styleCode: String
 });
 
 const imgRef = ref(null);
@@ -18,7 +18,7 @@ const handleMouseLeave = () => {
     <div class="box">
         <img
             ref="imgRef"
-            :style="{'--polygon': style}"
+            :style="{'--polygon': styleCode}"
             src="@/assets/img/cat.png"
             alt="polygon img"
             @mouseenter="handleMouseEnter"

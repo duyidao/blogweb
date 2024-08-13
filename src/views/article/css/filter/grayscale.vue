@@ -1,51 +1,33 @@
 <script setup>
-const model = defineModel();
+import methods from '@/utils/customMethod.js'
 
-const loseDeg = () => {
-    model.value -= 10
-}
+const props = defineProps({
+    styleCode: String
+});
 
-const addDeg = () => {
-    model.value += 10
-}
-
-const reset = () => {
-    model.value = 0
-}
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
+});
 </script>
 
 <template>
     <div class="box">
-        <div class="btns">
-            <button @click="loseDeg">- 10灰度</button>
-            <button @click="addDeg">+ 10灰度</button>
-            <button @click="reset">恢复</button>
-        </div>
         <img src="./firefox-logo.svg"
-            :style="{ '--grayscale': model + '%' }"
-            alt="">
+            :style="{ '--grayscale': styleValue }"
+            alt="grayscale img">
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 100%;
-    height: 100%;
-
-    .btns {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-
-        button {
-            margin-right: 15px;
-        }
-    }
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
 
     img {
-        height: 30%;
-        width: 30%;
-        filter: grayscale(var(--grayscale));
+        height: 100%;
+        width: 100%;
+        filter: var(--grayscale);
     }
 }
 </style>

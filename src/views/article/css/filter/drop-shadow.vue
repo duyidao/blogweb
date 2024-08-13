@@ -1,23 +1,34 @@
-<script setup lang="ts">
+<script setup>
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
+  styleCode: String
+});
+
+const styleValue = computed(() => {
+  return methods.extractCSSValue(props.styleCode);
+});
 </script>
 
 <template>
   <div class="box">
     <img src="./firefox-logo.svg"
-      alt="">
+      :style="{ '--drop': styleValue }"
+      alt="drop-shadow img">
   </div>
 </template>
 
 <style lang="less" scoped>
-.box {
-  width: 100%;
-  height: 100%;
+  .box {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
 
-  img {
-    height: 30%;
-    width: 30%;
-    background: transparent;
-    filter: drop-shadow(15px 15px 15px orange);
+    img {
+      height: 100%;
+      width: 100%;
+      background: transparent;
+      filter: var(--drop);
+    }
   }
-}
 </style>

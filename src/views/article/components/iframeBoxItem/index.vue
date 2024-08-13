@@ -5,7 +5,15 @@ defineProps({
     title: {
         type: String,
         default: '标题'
-    }
+    },
+    subtitle: {
+        type: String,
+        default: ''
+    },
+    needCode: {
+        type: Boolean,
+        default: true
+    },
 })
 
 // 双向绑定的代码样式
@@ -26,16 +34,20 @@ const handleClick = () => {
     <div class="iframe-box-item">
         <div class="iframe-box-title">
             <span>{{ title }}</span>
-            <my-button class="iframe-box-button"
+            <span v-if="subtitle" class="iframe-box-title-small">{{ subtitle }}</span>
+            <my-button v-if="needCode"
+                class="iframe-box-button"
                 :word="showCode ? '保留效果' : '让我试试'"
                 @click="handleClick" />
         </div>
         <div class="iframe-box-content">
-            <Code v-show="showCode"
-                class="code"
-                v-model="code"
-                @change="handleChange">
-            </Code>
+            <template v-if="needCode">
+                <Code v-show="showCode"
+                    class="code"
+                    v-model="code"
+                    @change="handleChange">
+                </Code>
+            </template>
             <div :class="{ 'effect': true, 'showCode': showCode }">
                 <slot></slot>
             </div>

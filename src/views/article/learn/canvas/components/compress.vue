@@ -62,7 +62,7 @@ export default {
         <div class="compress-upload">
             <myUpload @change="onChangeFn" />
         </div>
-        <div class="info transition-color">原图大小：{{ imgInfo.size }}，压缩后大小：{{ imgInfo.blobsize || 0 }}</div>
+        <div class="info ">原图大小：{{ imgInfo.size }}，压缩后大小：{{ imgInfo.blobsize || 0 }}</div>
         <img ref="imgRef"
             :src="imgUrl" />
     </div>

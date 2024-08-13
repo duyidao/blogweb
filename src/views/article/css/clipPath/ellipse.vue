@@ -1,6 +1,6 @@
 <script setup>
 defineProps({
-    style: String
+    styleCode: String
 });
 
 const imgRef = ref(null);
@@ -19,7 +19,7 @@ const handleMouseLeave = () => {
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave">
         <img ref="imgRef"
-            :style="{'--ellipse': style}"
+            :style="{'--ellipse': styleCode}"
             src="@/assets/img/cat.png"
             alt="ellipse img">
     </div>
@@ -34,6 +34,7 @@ const handleMouseLeave = () => {
         display: block;
         width: 100%;
         height: 100%;
+        clip-path: ellipse(50% 40% at 50% 50%);
         transition: all .3s;
 
         &.enter {

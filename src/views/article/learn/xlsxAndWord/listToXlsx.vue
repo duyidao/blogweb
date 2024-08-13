@@ -43,11 +43,11 @@ export default {
 
 <template>
     <div class="xlsx">
-        <div class="input transition-color">
+        <div class="input ">
             <label for="name">
                 名称：
                 <input v-model="info.name"
-                    class="transition-color"
+                    class=""
                     type="text"
                     name="name"
                     id="name">
@@ -55,7 +55,7 @@ export default {
             <label for="age">
                 年龄：
                 <input v-model="info.age"
-                    class="transition-color"
+                    class=""
                     type="text"
                     name="age"
                     id="age">
@@ -63,20 +63,20 @@ export default {
             <label for="level">
                 等级：
                 <input v-model="info.level"
-                    class="transition-color"
+                    class=""
                     type="text"
                     name="level"
                     id="level">
             </label>
             <div class="buttons">
-                <button class="transition-color"
+                <button class=""
                     @click.stop="clickFn">数据添加到表格</button>
-                <button class="transition-color"
+                <button class=""
                     @click.stop="exportFn">表格数据导出xlsx</button>
             </div>
         </div>
         <table ref="tableRef"
-            class="table-list transition-color">
+            class="table-list ">
             <thead>
                 <tr>
                     <th>名称</th>
