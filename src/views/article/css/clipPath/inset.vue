@@ -1,6 +1,12 @@
 <script setup>
-defineProps({
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
     styleCode: String
+});
+
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
 });
 
 const pRef = ref(null);
@@ -20,7 +26,7 @@ const handleMouseLeave = () => {
         @mouseleave="handleMouseLeave">
         <p ref="pRef"
             class="word"
-            :style="{ '--clip': styleCode }">
+            :style="{ '--clip': styleValue }">
             A cute cat
         </p>
     </div>

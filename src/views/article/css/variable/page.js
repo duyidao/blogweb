@@ -5,4 +5,5 @@ export default {
     info: '变量搭配计算自动调整元素尺寸',
     img: cssImg,
     menuOrder: 2,
+    tags: ['变量计算']
 }

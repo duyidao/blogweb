@@ -1,6 +1,12 @@
 <script setup>
-defineProps({
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
     styleCode: String
+});
+
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
 });
 
 const imgRef = ref(null);
@@ -19,7 +25,7 @@ const handleMouseLeave = () => {
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave">
         <img ref="imgRef"
-            :style="{'--ellipse': styleCode}"
+            :style="{'--ellipse': styleValue}"
             src="@/assets/img/cat.png"
             alt="ellipse img">
     </div>

@@ -30,4 +30,11 @@ const styleValue = computed(() => {
         filter: var(--contrast);
     }
 }
+
+@media screen and (max-width: 768px) {
+    .box {
+        width: 9.375rem;
+        height: 9.375rem;
+    }
+}
 </style>

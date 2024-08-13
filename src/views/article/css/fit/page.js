@@ -5,4 +5,5 @@ export default {
     info: '文字填充适应背景色',
     img: cssImg,
     menuOrder: 2,
+    tags: ['文字特效', '适应填充'],
 }

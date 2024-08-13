@@ -1,6 +1,12 @@
 <script setup>
-defineProps({
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
     styleCode: String
+});
+
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
 });
 
 const imgRef = ref(null);
@@ -18,7 +24,7 @@ const handleMouseLeave = () => {
     <div class="box">
         <img
             ref="imgRef"
-            :style="{'--polygon': styleCode}"
+            :style="{'--polygon': styleValue}"
             src="@/assets/img/cat.png"
             alt="polygon img"
             @mouseenter="handleMouseEnter"

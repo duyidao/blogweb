@@ -23,7 +23,6 @@ const emit = defineEmits(['change'])
 
 const { language, disabled, style } = toRefs(props)
 
-const fullScreen = ref(false);
 const lang = { javascript, css }[language.value];
 const extensions = [lang(), oneDark]
 const code = defineModel()
@@ -44,6 +43,6 @@ const handleChange = e => {
         :tabSize="2"
         :fullScreen="true"
         :extensions="extensions"
-        @input="handleChange">
+        @change="handleChange">
     </Codemirror>
 </template>

@@ -18,7 +18,8 @@ const styleValue = computed(() => {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="less"
+  scoped>
   .box {
     width: 150px;
     height: 150px;
@@ -29,6 +30,13 @@ const styleValue = computed(() => {
       width: 100%;
       background: transparent;
       filter: var(--drop);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .box {
+      width: 9.375rem;
+      height: 9.375rem;
     }
   }
 </style>

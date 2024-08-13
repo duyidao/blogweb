@@ -5,4 +5,5 @@ export default {
     info: '吸附属性实现轮播图效果',
     img: cssImg,
     menuOrder: 2,
+    tags: ['轮播', '吸附'],
 }

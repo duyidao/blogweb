@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script setup>
 </script>
 
 <template>
     <div class="box">
-        <div v-for="item in 3" :key=item class="item">{{ item }}</div>
+        <div v-for="item in 3" :key="item" class="item">{{ item }}</div>
     </div>
 </template>
 
@@ -40,6 +40,16 @@
 
         &:last-child {
             background-color: orange;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .box {
+        height: 8rem;
+
+        .item {
+            font-size: 2.5rem;
         }
     }
 }

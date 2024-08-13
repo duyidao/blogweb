@@ -1,6 +1,12 @@
 <script setup>
-defineProps({
+import methods from '@/utils/customMethod.js'
+
+const props = defineProps({
     styleCode: String
+});
+
+const styleValue = computed(() => {
+    return methods.extractCSSValue(props.styleCode);
 });
 
 const imgRef = ref(null);
@@ -23,7 +29,7 @@ const handleMouseLeave = () => {
         <img src="@/assets/img/music/shi.webp"
             ref="imgRef"
             alt=""
-            :style="{'--polygon': styleCode}">
+            :style="{'--polygon': styleValue}">
     </div>
 </template>
 

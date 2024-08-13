@@ -1,4 +1,5 @@
 <script setup>
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
 import Slide from './slide.vue'
 import Swiper from './swiper.vue'
 </script>
@@ -6,17 +7,15 @@ import Swiper from './swiper.vue'
 <template>
     <div class="ifrname-box"
         id="ifrname-box">
-        <div class="polygon">
-            <div class="iframe-box-title">纵向轮播图</div>
+        <IframeBoxItem title="纵向轮播图"
+            :needCode="false">
             <Slide />
-        </div>
-        <div class="ellipse">
-            <div class="iframe-box-title">
-                轮播图
-                <span class="iframe-box-title-small">在移动端左右滑动查看效果</span>
-            </div>
+        </IframeBoxItem>
+        <IframeBoxItem title="轮播图"
+            subtitle="在移动端左右滑动查看效果"
+            :needCode="false">
             <Swiper />
-        </div>
+        </IframeBoxItem>
     </div>
 </template>
 

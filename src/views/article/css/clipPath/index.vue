@@ -5,10 +5,10 @@ import Polygon from './polygon.vue';
 import Polygons from './polygons.vue';
 import Inset from './inset.vue';
 
-const polygonCode = ref('polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)');
-const ellipseCode = ref(`ellipse(50% 10% at 50% 50%)`);
-const insetCode = ref(`inset(0% 0% 0% 0%)`);
-const polygonsCode = ref('polygon(-30% 0, 100% 0, 110% 50%, 100% 100%, -30% 100%)');
+const polygonCode = ref('clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)');
+const ellipseCode = ref(`clip-path: ellipse(50% 10% at 50% 50%)`);
+const insetCode = ref(`clip-path: inset(0% 0% 0% 0%)`);
+const polygonsCode = ref('clip-path: polygon(-30% 0, 100% 0, 110% 50%, 100% 100%, -30% 100%)');
 </script>
 
 <template>
