@@ -1,34 +1,42 @@
-<script setup lang="ts">
+<script setup>
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
 </script>
 
 <template>
     <div class="ifrname-box box">
-        <div class="title-1">标题一： fit-content。添加更多的内容查看当内容超出父盒子时的效果。斤斤计较急急急急急急急</div>
-        <div class="title-2">标题二： max-content。添加更多的内容查看当内容超出父盒子时的效果。斤斤计较急急急急急急急</div>
-        <div class="title-3">标题三： min-content。添加更多的内容查看当内容超出父盒子时的效果</div>
+        <IframeBoxItem title="fit-content" :needCode="false">
+            <div class="title-1">[class$="1"]、[class$="2"]、[class$="3"] 选择所有类名以 "1"、"2" 或 "3" 结尾的元素。$= 表示属性值以指定的字符串结束。</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            title="max-content"
+            subtitle="父组件不能设置width 100%，不然无效果"
+            :needCode="false">
+            <div class="title-2">[class$="1"]、[class$="2"]、[class$="3"] 选择所有类名以 "1"、"2" 或 "3" 结尾的元素。$= 表示属性值以指定的字符串结束。</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="min-content" :needCode="false">
+            <div class="title-3">[class$="1"]、[class$="2"]、[class$="3"] 选择所有类名以 "1"、"2" 或 "3" 结尾的元素。$= 表示属性值以指定的字符串结束。</div>
+        </IframeBoxItem>
     </div>
 </template>
 
 <style lang="less" scoped>
 .box {
     width: 100%;
-    padding: 15px;
 
-    div {
-        margin-bottom: 10px;
-        background-color: rgb(143, 163, 252);
+    [class^="title-"] {
+        background-color: skyblue;
+    }
 
-        &.title-1 {
-            width: fit-content;
-        }
+    [class$="1"] {
+        width: fit-content;
+    }
 
-        &.title-2 {
-            width: max-content;
-        }
+    [class$="2"] {
+        width: max-content;
+    }
 
-        &.title-3 {
-            width: min-content;
-        }
+    [class$="3"] {
+        width: min-content;
     }
 }
 </style>

@@ -30,6 +30,7 @@ onMounted(() => {
 
 <style scoped>
 div {
+  width: 100%;
   padding: 15px;
   border: 1px solid var(--primary-info);
   color: var(--primary-info);
