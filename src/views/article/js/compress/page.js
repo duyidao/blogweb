@@ -5,4 +5,5 @@ export default {
     info: 'Canvas压缩图片画质',
     img: jsImg,
     menuOrder: 2,
+    tags: ['压缩', 'canvas'],
 }

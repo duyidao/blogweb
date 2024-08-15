@@ -1,1 +1,0 @@
-import{g as t,U as n,o,c as i}from"./index-BgdlN5G7.js";const m={__name:"index",setup(c){const e=()=>{document.hidden?document.title="页面离开咯":document.title="页面回来咯"};return t(()=>{document.addEventListener("visibilitychange",e)}),n(()=>{document.title="刀刀博客小站",document.removeEventListener("visibilitychange",e)}),(d,s)=>(o(),i("div",null,"页面可见度"))}};export{m as default};

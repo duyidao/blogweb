@@ -105,7 +105,6 @@ const handleClick = () => {
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            min-height: 100px;
 
             :deep(.cm-editor) {
                 width: 53%;
@@ -166,7 +165,6 @@ const handleClick = () => {
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                min-height: 6.25rem;
 
                 :deep(.cm-editor) {
                     width: 100%;

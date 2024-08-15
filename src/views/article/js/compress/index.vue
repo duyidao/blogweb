@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
 
 const props = defineProps({
   // 压缩质量
@@ -22,7 +22,7 @@ const IMG_TYPE = {
 
 // 选择文件
 const changeFn = (e) => {
-  imgFileObj.value = e.target.files[0]
+  imgFileObj.value = e;
 
   // 文件格式不正确
   if (!imgFileObj.value || !IMG_TYPE[imgFileObj.value.type]) {
@@ -108,42 +108,73 @@ const setImgFileEmptyFn = () => {
 
 <template>
   <div class="ifrname-box">
-    <input type="file"
-      name="file"
-      id="imgFile"
-      placeholder="请选择图片"
-      ref="imgFile"
-      @change="changeFn" />
-    <div class="box">
-      <img v-if="originImgSrc"
-        :src="originImgSrc"
-        title="未压缩" alt="未压缩" />
-      <img v-if="compressedImgSrc"
-        :src="compressedImgSrc"
-        title="压缩后" alt="压缩后"  />
-    </div>
+    <IframeBoxItem title="图片压缩"
+      subtitle="请选择jpg格式图片"
+      column
+      :needCode="false">
+      <my-upload id="imgFile"
+        placeholder="请选择图片"
+        ref="imgFile"
+        @change="changeFn" />
+      <div class="box">
+        <div class="box-item">
+          <p>未压缩</p>
+          <img v-if="originImgSrc"
+            :src="originImgSrc"
+            title="未压缩"
+            alt="未压缩" />
+        </div>
+        <div class="box-item">
+          <p>压缩后</p>
+          <img v-if="compressedImgSrc"
+            :src="compressedImgSrc"
+            title="压缩后"
+            alt="压缩后" />
+        </div>
+      </div>
+    </IframeBoxItem>
   </div>
 </template>
 
-<style lang="less" scoped>
-.box {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-
-  img {
-    display: inline-block;
-    width: 300px;
+<style lang="less"
+  scoped>
+  #imgFile {
+    width: 100%;
   }
-}
 
-@media screen and (max-width: 768px) {
   .box {
-    margin-top: .9375rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
 
-    img {
-      width: 18.5rem;
+    .box-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 45%;
+
+      p {
+        margin-bottom: 10px;
+        font-family: 'sans';
+      }
+
+      img {
+        display: inline-block;
+        width: 100%;
+      }
     }
   }
-}
+
+  @media screen and (max-width: 768px) {
+    .box {
+      margin-top: .9375rem;
+
+      .box-item {
+        p {
+          margin-bottom: .625rem;
+        }
+      }
+    }
+  }
 </style>

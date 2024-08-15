@@ -153,7 +153,6 @@ const handleGiteeFn = () => {
 
     .catalogue-title-big {
       font-size: 40px;
-      font-weight: bold;
       margin-bottom: 30px;
       color: var(--catalogue-title);
       font-family: 'black';
