@@ -30,37 +30,39 @@ const clickFn = () => {
 </script>
 
 <template>
-  <div class="ifrname-box">
-    <IframeBoxItem title="拾色器"
-      column
-      :needCode="false">
-      <div class="box">
-        <button @click.stop="clickFn">打开拾色器</button>
-        <div class="spanRef"
-          v-if="colorVal"
-          ref="spanRef">
-          <span>{{ colorVal }}</span>
-        </div>
+  <IframeBoxItem title="拾色器"
+    column
+    class="ifrname-box box"
+    :needCode="false">
+    <div class="box">
+      <button @click.stop="clickFn">打开拾色器</button>
+      <div class="spanRef"
+        v-if="colorVal"
+        ref="spanRef">
+        <span>{{ colorVal }}</span>
       </div>
-    </IframeBoxItem>
-  </div>
+    </div>
+  </IframeBoxItem>
 </template>
 
-<style lang="less"
-  scoped>
-  .spanRef {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 3.125rem;
-    border-radius: 1rem;
-    margin-top: 1.25rem;
+<style lang="less" scoped>
+.box {
+  text-align: center;
+  width: 100%;
+}
+.spanRef {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3.125rem;
+  border-radius: 1rem;
+  margin-top: 1.25rem;
 
-    span {
-      font-size: 13px;
-      color: #fff;
-      mix-blend-mode: difference;
-    }
+  span {
+    font-size: 13px;
+    color: #fff;
+    mix-blend-mode: difference;
   }
+}
 </style>

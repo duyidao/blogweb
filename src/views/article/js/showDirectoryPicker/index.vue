@@ -1,7 +1,8 @@
 <script setup>
-import File from './file.vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+import File from './file.vue';
 
-const root = ref([])
+const root = ref([]);
 
 // 格式化数据
 const processHandle = async (handle) => {
@@ -20,7 +21,7 @@ const processHandle = async (handle) => {
     return handle
 }
 
-const fileFind = ref(false)
+const fileFind = ref(false);
 // 点击获取文件按钮
 const showDirectoryPickerFn = async () => {
     try {
@@ -34,26 +35,35 @@ const showDirectoryPickerFn = async () => {
     }
 }
 
-const fileContent = ref('')
+const fileContent = ref('');
+const fileType = ref('javascript');
+const iframeBox = ref(null);
 
 // 点击文件，获取文件内容
 const clickFn = async (index) => {
-    let fileData = root.value.children
+    let fileData = root.value.children;
     for (let i = 0; i < index.length; i++) {
-        if (i < index.length - 1) fileData = fileData[index[i]].children
-        else fileData = fileData[index[i]]
+        if (i < index.length - 1) fileData = fileData[index[i]].children;
+        else fileData = fileData[index[i]];
     }
-    const file = await fileData.getFile()
-    const reader = new FileReader()
+    const file = await fileData.getFile();
+    fileType.value = file.type.split('/')[1];
+    const reader = new FileReader();
     reader.onload = e => {
-        fileContent.value = e.target.result
+        fileContent.value = e.target.result;
+        iframeBox.value.showCode = true;
     }
-    reader.readAsText(file, 'utf-8')
+    reader.readAsText(file, 'utf-8');
 }
 </script>
 
 <template>
-    <div class="ifrname-box box">
+    <IframeBoxItem column
+        ref="iframeBox"
+        class="ifrname-box box"
+        :needCode="false"
+        :type="fileType"
+        v-model="fileContent">
         <button @click.stop="showDirectoryPickerFn">获取文件夹</button>
         <template v-if="!fileFind">
             <div class="box-info"
@@ -61,48 +71,41 @@ const clickFn = async (index) => {
                 <File class="file"
                     :items="root.children"
                     @click="clickFn" />
-                <div class="content">{{ fileContent }}</div>
             </div>
         </template>
-        <div v-else class="loading">
+        <div v-else
+            class="loading">
             加载中，请稍后...
         </div>
-    </div>
+    </IframeBoxItem>
 </template>
 
-<style lang="less"
-    scoped>
-    .box {
-        text-align: center;
+<style lang="less" scoped>
+.box {
+    width: 100%;
 
-        .box-info {
-            display: flex;
-            justify-content: space-between;
+    .box-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
 
-            .file {
-                width: 30%;
-            }
-
-            .content {
-                flex: 1;
-                display: block;
-                height: 100%;
-                background-color: antiquewhite;
-            }
-        }
-
-        .loading {
-            color: var(--primary-info);
+        .file {
+            width: 100%;
         }
     }
 
+    .loading {
+        color: var(--primary-info);
+    }
+}
+
+button {
+    margin: 0 auto 20px;
+}
+
+@media screen and (max-width: 768px) {
     button {
-        margin: 0 auto 20px;
+        margin: 0 auto 1.25rem;
     }
-
-    @media screen and (max-width: 768px) {
-        button {
-            margin: 0 auto 1.25rem;
-        }
-    }
+}
 </style>

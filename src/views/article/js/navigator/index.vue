@@ -1,8 +1,9 @@
 <script setup>
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
 const info = ref({})
 
 const clickFn = () => {
-    if(navigator.onLine) {
+    if (navigator.onLine) {
         console.log('navigator.connection', navigator.connection);
         info.value = {
             type: navigator.connection.type || navigator.connection.effectiveType,
@@ -14,12 +15,16 @@ const clickFn = () => {
 </script>
 
 <template>
-    <div class="ifrname-box box ">
-        <button class="" @click.stop="clickFn">获取网络状态</button>
-        <div class="">当前网络环境：{{ info.type || '-' }}</div>
-        <div class="">当前延迟：{{ info.rtt || 0 }}ms</div>
-        <div class="">当前带宽速度：{{ info.downlink || 0 }}</div>
-    </div>
+    <IframeBoxItem class="ifrname-box"
+        title="拾色器"
+        :needCode="false">
+        <div class="box">
+            <button @click.stop="clickFn">获取网络状态</button>
+            <div class="">当前网络环境：{{ info.type || '-' }}</div>
+            <div class="">当前延迟：{{ info.rtt || 0 }}ms</div>
+            <div class="">当前带宽速度：{{ info.downlink || 0 }}</div>
+        </div>
+    </IframeBoxItem>
 </template>
 
 <style lang="less" scoped>
@@ -27,7 +32,7 @@ const clickFn = () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    width: 100%;
 
     button {
         margin: 0 auto 20px;
@@ -42,8 +47,6 @@ const clickFn = () => {
 
 @media screen and (max-width: 768px) {
     .box {
-        padding-top: 1.25rem;
-
         button {
             margin: 0 auto 1.25rem;
         }

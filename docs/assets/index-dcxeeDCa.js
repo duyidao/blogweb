@@ -1,0 +1,2 @@
+import l from"./index-BJGdsuHK.js";import{_ as n,r,o as c,c as d,e as i,w as m,u as o,i as _,b as s,n as f}from"./index-yhPPJ2kp.js";const u={class:"ifrname-box"},p={class:"banner"},x={__name:"index",setup(b){const e=r(`color: #c7c6c5;
+mix-blend-mode: difference;`);return(v,a)=>(c(),d("div",u,[i(l,{modelValue:o(e),"onUpdate:modelValue":a[0]||(a[0]=t=>_(e)?e.value=t:null),title:"文字填充"},{default:m(()=>[s("div",p,[s("div",{style:f(o(e)),class:"title"},"前端搬砖人    每天都努力",4)])]),_:1},8,["modelValue"])]))}},I=n(x,[["__scopeId","data-v-1a981b1a"]]);export{I as default};

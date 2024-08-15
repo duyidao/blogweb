@@ -18,19 +18,23 @@ defineProps({
         type: Boolean,
         default: false
     },
-})
+    type: {
+        type: String,
+        default: 'css'
+    },
+});
 
 // 双向绑定的代码样式
-const code = defineModel()
+const code = defineModel();
 
-const handleChange = (value) => {
-    console.log('value', value);
-}
-
-const showCode = ref(false)
+const showCode = ref(false);
 const handleClick = () => {
     showCode.value = !showCode.value;
 }
+
+defineExpose({
+    showCode,
+});
 </script>
 
 <template>
@@ -45,13 +49,11 @@ const handleClick = () => {
                 @click="handleClick" />
         </div>
         <div class="iframe-box-content">
-            <template v-if="needCode">
-                <Code v-show="showCode"
-                    class="code"
-                    v-model="code"
-                    @change="handleChange">
-                </Code>
-            </template>
+            <Code v-show="showCode"
+                class="code"
+                :language="type"
+                v-model="code">
+            </Code>
             <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
                 <slot></slot>
             </div>

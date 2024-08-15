@@ -18,14 +18,18 @@ const props = defineProps({
         type: [Object],
         default: () => ({})
     }
-})
-const emit = defineEmits(['change'])
+});
+const emit = defineEmits(['change']);
 
-const { language, disabled, style } = toRefs(props)
+const { language, disabled, style } = toRefs(props);
 
-const lang = { javascript, css }[language.value];
-const extensions = [lang(), oneDark]
-const code = defineModel()
+const lang = ref(null);
+const extensions = ref(null);
+watch(() => language.value, (newVal) => {
+    lang.value = { javascript, css }[language.value];
+    extensions.value = [lang.value(), oneDark];
+}, { immediate: true });
+const code = defineModel();
 const comStyle = computed(() => ({ ...style.value, ...{ height: screenWidth.value > 768 ? '300px' : '18.75rem' } }));
 
 const handleChange = e => {

@@ -107,74 +107,72 @@ const setImgFileEmptyFn = () => {
 </script>
 
 <template>
-  <div class="ifrname-box">
-    <IframeBoxItem title="图片压缩"
-      subtitle="请选择jpg格式图片"
-      column
-      :needCode="false">
-      <my-upload id="imgFile"
-        placeholder="请选择图片"
-        ref="imgFile"
-        @change="changeFn" />
-      <div class="box">
-        <div class="box-item">
-          <p>未压缩</p>
-          <img v-if="originImgSrc"
-            :src="originImgSrc"
-            title="未压缩"
-            alt="未压缩" />
-        </div>
-        <div class="box-item">
-          <p>压缩后</p>
-          <img v-if="compressedImgSrc"
-            :src="compressedImgSrc"
-            title="压缩后"
-            alt="压缩后" />
-        </div>
+  <IframeBoxItem title="图片压缩"
+    subtitle="请选择jpg格式图片"
+    class="ifrname-box"
+    column
+    :needCode="false">
+    <my-upload id="imgFile"
+      placeholder="请选择图片"
+      ref="imgFile"
+      @change="changeFn" />
+    <div class="box">
+      <div class="box-item">
+        <p>未压缩</p>
+        <img v-if="originImgSrc"
+          :src="originImgSrc"
+          title="未压缩"
+          alt="未压缩" />
       </div>
-    </IframeBoxItem>
-  </div>
+      <div class="box-item">
+        <p>压缩后</p>
+        <img v-if="compressedImgSrc"
+          :src="compressedImgSrc"
+          title="压缩后"
+          alt="压缩后" />
+      </div>
+    </div>
+  </IframeBoxItem>
 </template>
 
-<style lang="less"
-  scoped>
-  #imgFile {
-    width: 100%;
-  }
+<style lang="less" scoped>
+#imgFile {
+  width: 100%;
+}
 
-  .box {
+.box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+
+  .box-item {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 15px;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+
+    p {
+      margin-bottom: 10px;
+      font-family: 'sans';
+    }
+
+    img {
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    margin-top: .9375rem;
 
     .box-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 45%;
-
       p {
-        margin-bottom: 10px;
-        font-family: 'sans';
-      }
-
-      img {
-        display: inline-block;
-        width: 100%;
+        margin-bottom: .625rem;
       }
     }
   }
-
-  @media screen and (max-width: 768px) {
-    .box {
-      margin-top: .9375rem;
-
-      .box-item {
-        p {
-          margin-bottom: .625rem;
-        }
-      }
-    }
-  }
+}
 </style>
