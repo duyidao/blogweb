@@ -1,17 +1,18 @@
 <script setup>
-import Dialog from './dialog.vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+import Dialog from './dialog.vue';
 
-const show = ref(false)
-const full = ref(false)
+const show = ref(false);
+const full = ref(false);
 
 const showFn = () => {
-    show.value = true
-    document.body.style.overflowY = 'hidden'
+    show.value = true;
+    document.body.style.overflowY = 'hidden';
 }
 </script>
 
 <template>
-    <div class="ifrname-box box">
+    <IframeBoxItem title="弹窗组件" :needCode="false" class="ifrname-box">
         <div>
             <button class="" @click.stop="showFn">点击唤起弹窗</button>
         </div>
@@ -31,7 +32,7 @@ const showFn = () => {
                 </div>
             </template>
         </Dialog>
-    </div>
+    </IframeBoxItem>
 </template>
 
 <style lang="less" scoped>

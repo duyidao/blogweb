@@ -1,4 +1,5 @@
 <script setup>
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
 const fn = () => {
   if (document.hidden) {
     document.title = "页面离开咯";
@@ -7,19 +8,20 @@ const fn = () => {
   }
 }
 onMounted(() => {
-    document.addEventListener("visibilitychange", fn)
+  document.addEventListener("visibilitychange", fn)
 })
 
 onUnmounted(() => {
-    document.title = '刀刀博客小站'
-    document.removeEventListener("visibilitychange", fn)
+  document.title = '刀刀博客小站'
+  document.removeEventListener("visibilitychange", fn)
 })
 </script>
 
 <template>
-  <div>页面可见度</div>
+  <IframeBoxItem title="页面可见度"
+    :needCode="false">
+    页面可见度
+  </IframeBoxItem>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

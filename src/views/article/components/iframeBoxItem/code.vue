@@ -2,6 +2,7 @@
 import { Codemirror } from 'vue-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { css } from '@codemirror/lang-css';
+import { vue } from '@codemirror/lang-vue';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { screenWidth } from "@/store/index.js";
 
@@ -26,7 +27,7 @@ const { language, disabled, style } = toRefs(props);
 const lang = ref(null);
 const extensions = ref(null);
 watch(() => language.value, (newVal) => {
-    lang.value = { javascript, css }[language.value];
+    lang.value = { javascript, css, vue }[language.value];
     extensions.value = [lang.value(), oneDark];
 }, { immediate: true });
 const code = defineModel();

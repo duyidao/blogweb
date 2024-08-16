@@ -1,31 +1,42 @@
-<script setup lang="ts">
-import ifComp from './components/if.vue';
-import methodComp from './components/method.vue';
-import jsxComp from './components/jsx.vue';
-import mapComp from './components/map.vue';
+<script setup>
+    import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+    import ifComp from './components/if.vue';
+    import methodComp from './components/method.vue';
+    import jsxComp from './components/jsx.vue';
+    import mapComp from './components/map.vue';
 </script>
 
 <template>
-  <div class="ifrname-box jsx-comp">
-        <div class="box">
-            <div class="iframe-box-title">v-if</div>
+    <div class="ifrname-box jsx-comp">
+        <IframeBoxItem title="v-if"
+            :needCode="false"
+            column
+            class="box">
             <ifComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">函数返回</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="函数返回"
+            :needCode="false"
+            column
+            class="box">
             <methodComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">jsx</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="jsx"
+            :needCode="false"
+            column
+            class="box">
             <jsxComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">修改源数据</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="修改源数据"
+            :needCode="false"
+            column
+            class="box">
             <mapComp />
-        </div>
+        </IframeBoxItem>
     </div>
 </template>
 
 <style scoped>
-
+.box {
+    width: 100%;
+}
 </style>

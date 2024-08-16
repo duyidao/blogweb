@@ -1,17 +1,17 @@
 <script>
-// import html2canvas from 'html2canvas'
-// import { saveAs } from 'file-saver'
+import html2canvas from 'html2canvas'
+import { saveAs } from 'file-saver'
 
 export default {
     setup() {
         const imgUrl = ref('')
 
         const saveScreen = () => {
-            // html2canvas(document.body).then(res => {
-            //     res.toBlob((blob) => {
-            //         saveAs(blob, 'screen.png')
-            //     })
-            // })
+            html2canvas(document.body).then(res => {
+                res.toBlob((blob) => {
+                    saveAs(blob, 'screen.png')
+                })
+            })
         }
 
         return {
@@ -34,6 +34,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     
     button {
         margin-bottom: 20px;

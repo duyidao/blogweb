@@ -93,6 +93,15 @@ watch(
 );
 </script>
 
+<script>
+// 定义组件选项，包括名称
+const componentOptions = defineComponent({
+  name: 'RouterButton', // 设置组件名称
+});
+
+export default componentOptions;
+</script>
+
 <template>
   <div class="router-buttons">
     <!-- 左侧logo -->

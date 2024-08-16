@@ -1,26 +1,27 @@
 <script setup>
-import oneAndAllComp from './oneAndAll.vue'
-import slice from './slice.vue'
-import breakpoint from './breakpoint.vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+import oneAndAllComp from './oneAndAll.vue';
+import slice from './slice.vue';
+import breakpoint from './breakpoint.vue';
 
 // file
-const selectedFiles = ref({})
+const selectedFiles = ref({});
 const fileChange = e => {
-    selectedFiles.value = e
+    selectedFiles.value = e;
 }
 
 // blob
-const blobFiles = ref({})
+const blobFiles = ref({});
 const blobChange = e => {
-    const file = e
-    const blob = new Blob([file], { type: file.type })
-    blobFiles.value = { size: blob.size, type: blob.type, name: file.name }
+    const file = e;
+    const blob = new Blob([file], { type: file.type });
+    blobFiles.value = { size: blob.size, type: blob.type, name: file.name };
 }
 
 // formData
-const formData = ref({})
+const formData = ref({});
 const formDataChange = e => {
-    formData.value = new FormData()
+    formData.value = new FormData();
     formData.value.append("file", e);
     formData.value.append("username", "John");
     formData.value.append("age", 30);
@@ -28,7 +29,7 @@ const formDataChange = e => {
 }
 
 // fileReader
-const result = ref(null)
+const result = ref(null);
 const fileReaderChange = (e, type) => {
     let file = e.target.files[0];
 
@@ -83,8 +84,10 @@ const fileReaderChange = (e, type) => {
 
 <template>
     <div class="ifrname-box">
-        <div class="upload-box">
-            <div class="iframe-box-title">前置知识</div>
+        <IframeBoxItem
+            class="upload-box"
+            :needCode="false"
+            title="前置知识">
             <ul class="list-style-circle">
                 <li class="flex-column">
                     <div class="file">
@@ -142,19 +145,25 @@ const fileReaderChange = (e, type) => {
                     </div>
                 </li>
             </ul>
-        </div>
-        <div class="upload-box">
-            <div class="iframe-box-title">单文件上传</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="upload-box"
+            :needCode="false"
+            title="单文件上传">
             <oneAndAllComp />
-        </div>
-        <div class="upload-box">
-            <div class="iframe-box-title">切片上传</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="upload-box"
+            :needCode="false"
+            title="切片上传">
             <slice :size="10 * 1024 * 1024" />
-        </div>
-        <div class="upload-box">
-            <div class="iframe-box-title">断点续传</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="upload-box"
+            :needCode="false"
+            title="断点续传">
             <breakpoint />
-        </div>
+        </IframeBoxItem>
     </div>
 </template>
 

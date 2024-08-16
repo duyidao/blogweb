@@ -1,28 +1,25 @@
 <script setup>
-import compress from './components/compress.vue'
-import tailor from './components/tailor.vue'
-import screenshot from './components/screenshot.vue'
-import filterComp from './components/filter.vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+import compress from './components/compress.vue';
+import tailor from './components/tailor.vue';
+import screenshot from './components/screenshot.vue';
+import filterComp from './components/filter.vue';
 </script>
 
 <template>
     <div class="ifrname-box box">
-        <div class="box-item">
-            <div class="iframe-box-title">图片压缩</div>
+        <IframeBoxItem title="图片压缩" :needCode="false">
             <compress />
-        </div>
-        <div class="box-item">
-            <div class="iframe-box-title">页面截图</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="页面截图" :needCode="false">
             <screenshot />
-        </div>
-        <div class="box-item">
-            <div class="iframe-box-title">滤镜</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="滤镜" :needCode="false">
             <filterComp />
-        </div>
-        <div class="box-item">
-            <div class="iframe-box-title">图片裁剪</div>
+        </IframeBoxItem>
+        <IframeBoxItem title="图片裁剪" :needCode="false">
             <tailor />
-        </div>
+        </IframeBoxItem>
     </div>
 </template>
 

@@ -58,6 +58,7 @@ const onChangeFn = e => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     .tailor-upload {
         width: 300px;

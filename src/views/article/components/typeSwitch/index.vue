@@ -19,6 +19,15 @@ const width = computed(() => screenWidth.value > 768 ? '20px' : 20)
 const height = computed(() => screenWidth.value > 768 ? '20px' : 20)
 </script>
 
+<script>
+// 定义组件选项，包括名称
+const componentOptions = defineComponent({
+  name: 'TypeSwitch', // 设置组件名称
+});
+
+export default componentOptions;
+</script>
+
 <template>
     <div class="article-type ">
         <div class="article-title ">

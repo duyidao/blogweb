@@ -1,18 +1,20 @@
-<script setup lang="jsx">
-import {signProp} from './dialog.jsx'
+<script setup
+  lang="jsx">
+  import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+  import { signProp } from './dialog.jsx'
 
-const clickFn = () => {
+  const clickFn = () => {
     signProp('我是内容文本', {
-        confirm: () => {},
-        cancel: () => {}
+      confirm: () => { },
+      cancel: () => { }
     })
-}
+  }
 </script>
 
 <template>
-  <button @click="clickFn">click me</button>
+  <IframeBoxItem title="重复小组件" :needCode="false">
+    <button @click="clickFn">click me</button>
+  </IframeBoxItem>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

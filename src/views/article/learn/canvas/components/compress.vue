@@ -68,40 +68,42 @@ export default {
     </div>
 </template>
 
-<style lang="less" scoped>
-.compress {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .compress-upload {
-        width: 300px;
-    }
-
-    img {
-        width: 300px;
-    }
-
-    .info {
-        color: var(--primary-info);
-        margin: 20px 0;
-    }
-}
-
-@media screen and (max-width: 768px) {
+<style lang="less"
+    scoped>
     .compress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
 
         .compress-upload {
-            width: 18.75rem;
+            width: 300px;
         }
 
         img {
-            width: 18.75rem;
+            width: 300px;
         }
 
         .info {
-            margin: 1.25rem 0;
+            color: var(--primary-info);
+            margin: 20px 0;
         }
     }
-}
+
+    @media screen and (max-width: 768px) {
+        .compress {
+
+            .compress-upload {
+                width: 18.75rem;
+            }
+
+            img {
+                width: 18.75rem;
+            }
+
+            .info {
+                margin: 1.25rem 0;
+            }
+        }
+    }
 </style>

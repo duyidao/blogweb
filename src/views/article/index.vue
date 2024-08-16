@@ -48,6 +48,15 @@ const routerFn = (item) => {
 };
 </script>
 
+<script>
+// 定义组件选项，包括名称
+const componentOptions = defineComponent({
+  name: 'ArticleList', // 设置组件名称
+});
+
+export default componentOptions;
+</script>
+
 <template>
   <div style="width: 100%">
     <div class="article-list">

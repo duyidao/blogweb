@@ -4,4 +4,5 @@ export default {
     info: '自定义函数，实现数字转中文的功能',
     img: jsImg,
     menuOrder: 2,
+    tags: ['数字转中文'],
 }

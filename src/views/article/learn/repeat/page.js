@@ -4,4 +4,5 @@ export default {
     info: '通过JSX实现重复小组件处理',
     img: learnImg,
     menuOrder: 2,
+    tags: ['封装', 'jsx'],
 }

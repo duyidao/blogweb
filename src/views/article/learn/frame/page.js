@@ -4,4 +4,5 @@ export default {
     info: 'Canvas提取出视频的画面帧',
     img: learnImg,
     menuOrder: 2,
+    tags: ['画面帧'],
 }

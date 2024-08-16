@@ -58,6 +58,7 @@ const addFn = () => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 
     .filter-upload {
         width: 300px;

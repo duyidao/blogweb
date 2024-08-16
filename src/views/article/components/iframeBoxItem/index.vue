@@ -37,6 +37,15 @@ defineExpose({
 });
 </script>
 
+<script>
+// 定义组件选项，包括名称
+const componentOptions = defineComponent({
+  name: 'IframeBoxItem', // 设置组件名称
+});
+
+export default componentOptions;
+</script>
+
 <template>
     <div class="iframe-box-item">
         <div class="iframe-box-title">

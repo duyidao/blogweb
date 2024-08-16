@@ -108,7 +108,7 @@ function TextComponent({title, index, goods}) {
 
 <template>
     <button @click="() => {num += 1}">
-        点击事件触发，createStyle与createText函数依旧触发：{{ num }}
+        点击事件触发，createStyle与createText函数不会触发：{{ num }}
     </button>
     <div class="if" v-for="(item, index) in data" :key="index">
         <div class="if-title">{{ item.title }}</div>

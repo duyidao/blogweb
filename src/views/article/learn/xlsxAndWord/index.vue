@@ -1,36 +1,45 @@
 <script setup>
-import xlsxComp from './xlsx.vue'
-import listToXlsxComp from './listToXlsx.vue'
-import xlsxRead from './xlsxRead.vue'
-import wordComp from './word.vue'
-import wordMannon from './wordMannon.vue'
+import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+import xlsxComp from './xlsx.vue';
+import listToXlsxComp from './listToXlsx.vue';
+import xlsxRead from './xlsxRead.vue';
+import wordComp from './word.vue';
+import wordMannon from './wordMannon.vue';
 </script>
 
 <template>
     <div class="ifrname-box xlsx-word">
-        <div class="box">
-            <div class="iframe-box-title">excel转为表格</div>
+        <IframeBoxItem
+            class="box"
+            :needCode="false"
+            title="excel转为表格">
             <xlsxComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">表格转为excel</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="box"
+            :needCode="false"
+            title="表格转为excel">
             <listToXlsxComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">
-                在线预览excel
-                <span class="iframe-box-title-small">选择一个xlsx，模拟前端从后端接口获取xlsx数据</span>
-            </div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="box"
+            :needCode="false"
+            title="在线预览excel"
+            subtitle="选择一个xlsx，模拟前端从后端接口获取xlsx数据">
             <xlsxRead />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">word组件预览</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="box"
+            :needCode="false"
+            title="word组件预览">
             <wordComp />
-        </div>
-        <div class="box">
-            <div class="iframe-box-title">word mammon预览</div>
+        </IframeBoxItem>
+        <IframeBoxItem
+            class="box"
+            :needCode="false"
+            title="word mammon预览">
             <wordMannon />
-        </div>
+        </IframeBoxItem>
     </div>
 </template>
 

@@ -47,7 +47,7 @@ const clickFn = async (index) => {
         else fileData = fileData[index[i]];
     }
     const file = await fileData.getFile();
-    fileType.value = file.type.split('/')[1];
+    fileType.value = file.type.split('/')[1] || file.name.split('.')[1];
     const reader = new FileReader();
     reader.onload = e => {
         fileContent.value = e.target.result;
@@ -63,6 +63,7 @@ const clickFn = async (index) => {
         class="ifrname-box box"
         :needCode="false"
         :type="fileType"
+        title="文件夹获取"
         v-model="fileContent">
         <button @click.stop="showDirectoryPickerFn">获取文件夹</button>
         <template v-if="!fileFind">
