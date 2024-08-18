@@ -1,7 +1,7 @@
 <script setup>
 import { light, screenWidth, scrollAngle, scrollProgress, labelShow } from "@/store/index";
 import { generateRoutes } from "@/router/index";
-import methods from '@/utils/customMethod'
+import methods from '@/utils/customMethod';
 import PhoneDom from "./phone_dom.vue";
 
 // logo展示文字还是按钮

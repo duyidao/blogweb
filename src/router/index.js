@@ -36,6 +36,11 @@ export const routes = [
         ]
     },
     {
+        path: '/effect/:type',
+        name: 'effect',
+        component: () => import('@/views/effect/index.vue'),
+    },
+    {
         path: '/404',
         name: 'NoPage404',
         component: () => import('@/views/404/index.vue'), // 404 页面组件

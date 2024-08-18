@@ -3,6 +3,8 @@ import { screenWidth, scrollProgress, scrollAngle } from "@/store/index.js";
 import { useMeta } from "vue-meta";
 import { loading } from '@/store/router'
 
+const route = useRoute();
+
 onMounted(() => {
   useMeta({
     title: "刀刀小站效果展示 - 刀刀博客",
@@ -60,7 +62,7 @@ document.addEventListener("visibilitychange", function () {
 
 <template>
   <div class="blog" v-close="false">
-    <RouterButtons />
+    <RouterButtons v-if="!route.path.includes('404')" />
 
     <router-view class="content"></router-view>
 

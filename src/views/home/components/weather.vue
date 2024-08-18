@@ -80,7 +80,6 @@ function onError(error) {
 
 const getWeatherImg = type => {
   const hour = new Date().getHours();
-  console.log('hour', hour);
   switch (type) {
     case '晴':
       return hour > 17 ? wanshang : qing
@@ -94,6 +93,8 @@ const getWeatherImg = type => {
       return hour > 17 ? wanshangzhongyu : zhongyu
     case '大雨':
     case '中雨-大雨':
+    case '暴雨':
+    case '大雨-暴雨':
       return dayu
     case '雷阵雨':
       return leizhenyu
@@ -107,7 +108,7 @@ const getWeatherImg = type => {
 // 获取天气数据
 const weatherList = ref([]);
 const handleWeather = (code = "440100") => {
-  var hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
+  let hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
   axios
     .get(
       `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
@@ -190,14 +191,14 @@ onUnmounted(() => {
       </p>
       <div class="weather-today__content">
         <div class="today__content__info">
-          <img :src="weatherList[0]?.weatherImg"
+          <img :src="weatherList[0]?.weatherImg || qing"
             alt="" />
           <div class="today__content">
             <div class="today__content__daytemp">
               {{ weatherList[0]?.daytemp || 0 }}°
             </div>
             <div class="today__content__weather">
-              {{ weatherList[0]?.dayweather }}
+              {{ weatherList[0]?.dayweather || '晴' }}
             </div>
           </div>
         </div>
