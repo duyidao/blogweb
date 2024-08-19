@@ -1,0 +1,1 @@
+import{_ as o,g as t,O as n,c as s,f as c,P as r,o as a}from"./index-CST3UOYx.js";const $=t({name:"Effect"}),_={},p={class:"effect"};function f(i,d,m,l,u,x){const e=n("router-view");return a(),s("div",p,[c(e),r(" 123 ")])}const h=o(_,[["render",f]]);export{$ as componentOptions,h as default};

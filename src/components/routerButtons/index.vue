@@ -1,6 +1,6 @@
 <script setup>
 import { light, screenWidth, scrollAngle, scrollProgress, labelShow } from "@/store/index";
-import { generateRoutes } from "@/router/index";
+import { generateArticleRoutes } from "@/router/index";
 import methods from '@/utils/customMethod';
 import PhoneDom from "./phone_dom.vue";
 
@@ -64,8 +64,8 @@ const handleLinkFn = (type) => {
       window.open("https://duyidao.github.io/");
       break;
     case "random":
-      const num = Math.floor(Math.random() * generateRoutes.length);
-      methods.$goRouter(generateRoutes[num].path, '/detail/');
+      const num = Math.floor(Math.random() * generateArticleRoutes.length);
+      methods.$goRouter(generateArticleRoutes[num].path, '/detail/');
       break;
     default:
       break;
@@ -99,7 +99,7 @@ const componentOptions = defineComponent({
   name: 'RouterButton', // 设置组件名称
 });
 
-export default componentOptions;
+export {componentOptions};
 </script>
 
 <template>
@@ -210,7 +210,7 @@ export default componentOptions;
     cursor: pointer;
 
     .logo__text {
-      font-family: "仿宋";
+      font-family: "dao";
       font-weight: 600;
       font-size: 25px;
       letter-spacing: 2px;

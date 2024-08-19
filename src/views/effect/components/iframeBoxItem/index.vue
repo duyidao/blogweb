@@ -54,18 +54,18 @@ export {componentOptions};
                 class="iframe-box-title-small">{{ subtitle }}</span>
             <my-button v-if="needCode"
                 class="iframe-box-button"
-                :word="showCode ? '保留效果' : '让我试试'"
+                :word="showCode ? '隐藏源码' : '源码展示'"
                 @click="handleClick" />
         </div>
         <div class="iframe-box-content">
+            <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
+                <slot></slot>
+            </div>
             <Code v-show="showCode"
                 class="code"
                 :language="type"
                 v-model="code">
             </Code>
-            <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
-                <slot></slot>
-            </div>
         </div>
     </div>
 </template>
@@ -192,7 +192,7 @@ export {componentOptions};
                         justify-content: center;
                         align-items: center;
                         width: 100%;
-                        margin-top: 1rem;
+                        margin-bottom: 1rem;
                     }
                 }
             }

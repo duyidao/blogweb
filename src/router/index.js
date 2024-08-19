@@ -6,9 +6,11 @@ import { beforeEachCallback, afterEachCallback } from './guards.js';
 const pages = import.meta.glob('../views/**/page.js', {
     eager: true, // 只获取导出结果
     import: 'default', // 获取默认导出
-})
-const comps = import.meta.glob('../views/**/index.vue')
-export const generateRoutes = generateRoutesFn(pages, comps)   // 生成路由
+});
+const comps = import.meta.glob('../views/**/index.vue');
+
+export const generateArticleRoutes = generateRoutesFn(pages, comps, 'article')   // 生成article模块的路由
+export const generateEffectRoutes = generateRoutesFn(pages, comps, 'effect')   // 生成effect模块的路由
 
 export const routes = [
     {
@@ -24,21 +26,38 @@ export const routes = [
         name: 'article',
         component: () => import('@/views/article/index.vue'),
         meta: {
-            title: '列表',
+            title: '文章列表',
         }
     },
     {
         path: '/detail',
-        name: 'detail',
+        name: 'article_detail',
         component: () => import('@/views/article/detail.vue'),
+        meta: {
+            title: '文章内容详情',
+        },
         children: [
-            ...generateRoutes
+            ...generateArticleRoutes
         ]
     },
     {
-        path: '/effect/:type',
+        path: '/effect',
         name: 'effect',
         component: () => import('@/views/effect/index.vue'),
+        meta: {
+            title: '效果列表',
+        }
+    },
+    {
+        path: '/info',
+        name: 'effect_info',
+        component: () => import('@/views/effect/info.vue'),
+        meta: {
+            title: '效果内容',
+        },
+        children: [
+            ...generateEffectRoutes,
+        ]
     },
     {
         path: '/404',
@@ -51,7 +70,9 @@ export const routes = [
         redirect: '/404', // 重定向到 404 页面
         hidden: true, // 可选，隐藏该路由
     },
-]
+];
+
+console.log('routes', routes);
 
 const router = createRouter({
     history: createWebHashHistory(),

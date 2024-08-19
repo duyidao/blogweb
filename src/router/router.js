@@ -1,6 +1,6 @@
-export const generateRoutesFn = (pages, comps) => {
+export const generateRoutesFn = (pages, comps, typeName) => {
     // 页面数组路由级别排序
-    const sortedArray = Object.entries(pages);
+    const sortedArray = Object.entries(pages).filter(item => item[0].includes(typeName));
 
     const routes = [];
     /**
@@ -11,7 +11,7 @@ export const generateRoutesFn = (pages, comps) => {
      */
     function addRoute(path, page) {
         const compPath = path.replace('page.js', 'index.vue');
-        path = path.replace('../views/article/', '').replace('/page.js', '');
+        path = path.replace(`../views/${typeName}/`, '').replace('/page.js', '');
         const name = path.split('/').filter(Boolean).join('-');
         const route = {
             path,

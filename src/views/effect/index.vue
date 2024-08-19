@@ -8,11 +8,14 @@ const componentOptions = defineComponent({
   name: 'Effect', // 设置组件名称
 });
 
-export default componentOptions;
+export {componentOptions};
 </script>
 
 <template>
-  <h1>Hello vue3</h1>
+  <div class="effect">
+    <router-view />
+    123
+  </div>
 </template>
 
 <style scoped>

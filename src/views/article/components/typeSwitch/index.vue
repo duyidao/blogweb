@@ -25,7 +25,7 @@ const componentOptions = defineComponent({
   name: 'TypeSwitch', // 设置组件名称
 });
 
-export default componentOptions;
+export {componentOptions};
 </script>
 
 <template>

@@ -1,1 +1,0 @@
-import{_ as e,c as n,g as o,o as t}from"./index-CUZwWocw.js";const c=o({name:"Effect"}),s=c;function a(r,p,f,_,l,i){return t(),n("h1",null,"Hello vue3")}const d=e(s,[["render",a]]);export{d as default};

@@ -1,5 +1,5 @@
 <script setup>
-import { generateRoutes } from "@/router/index";
+import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { useMeta } from "vue-meta";
 
@@ -48,7 +48,7 @@ watch(
   () => routeNow.value,
   (to, from) => {
     if (!to.path.includes("detail")) return;
-    let arr = generateRoutes
+    let arr = generateArticleRoutes
       .filter((item) => item.path.includes(to.detailType))
       .filter((item) => !to.path.includes(item.path));
     routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr;
@@ -75,7 +75,7 @@ const componentOptions = defineComponent({
   name: 'ArticleDetail', // 设置组件名称
 });
 
-export default componentOptions;
+export {componentOptions};
 </script>
 
 <template>

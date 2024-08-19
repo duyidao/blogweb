@@ -1,5 +1,5 @@
 <script setup>
-import { generateRoutes } from "@/router/index";
+import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { type } from "@/store/index.js";
 import { useMeta } from "vue-meta";
@@ -28,7 +28,7 @@ watch(
   () => routeNow.value,
   (to, from) => {
     if (!to.path.includes("article")) return;
-    let arr = generateRoutes.filter((item) =>
+    let arr = generateArticleRoutes.filter((item) =>
       item.path.includes(to.articleType)
     );
     routeList.value = arr;
@@ -54,7 +54,7 @@ const componentOptions = defineComponent({
   name: 'ArticleList', // 设置组件名称
 });
 
-export default componentOptions;
+export {componentOptions};
 </script>
 
 <template>
