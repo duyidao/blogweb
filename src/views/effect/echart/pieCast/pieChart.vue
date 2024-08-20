@@ -1,4 +1,5 @@
 <script setup>
+import {useUnit} from '@/store/rem.js';
 // 绘制图表
 const props = defineProps({
     data: {
@@ -7,6 +8,10 @@ const props = defineProps({
     },
 });
 
+const legendMap = new Map();
+
+const {ratio} = useUnit();
+// echart的option配置项设置
 const option = ref({
     tooltip: {
         trigger: 'item',
@@ -31,14 +36,36 @@ const option = ref({
         align: 'left',
         textStyle: {
             color: '#7b70f7',
-            fontSize: 14,
+            rich: {
+                name: {
+                    width: 70 * ratio.value,
+                    fontWeight: 700,
+                    fontSize: 14 * ratio.value,
+                    fontFamily: 'fang',
+                    align: 'left',
+                },
+                value: {
+                    width: 50 * ratio.value,
+                    fontSize: 14 * ratio.value,
+                    fontWeight: 700,
+                    fontFamily: 'fang',
+                    align: 'right',
+                },
+            },
+        },
+        formatter: e => {
+            if (legendMap.has(e)) return `{name|${legendMap.get(e).name}} {value|${legendMap.get(e).value}%}`;
+
+            let obj = { name: e, value: props.data.find(item => item.name === e).value };
+            legendMap.set(e, obj);
+            return `{name|${obj.name}} {value|${obj.value}%}`;
         },
     },
     series: [
         {
             name: '货车通行占比（单位：%）',
             type: 'pie',
-            radius: ['60%', '70%'],
+            radius: ['55%', '65%'],
             center: ['35%', '50%'],
             avoidLabelOverlap: false,
             label: {
@@ -52,19 +79,19 @@ const option = ref({
                     rich: {
                         title: {
                             fontFamily: 'sans',
-                            fontSize: 30,
-                            color: '#000000',
-                            lineHeight: 30,
+                            fontSize: 30 * ratio.value,
+                            color: '#999',
+                            lineHeight: 50 * ratio.value,
                             fontWeight: 500,
-                            letterSpace: 1.5,
+                            letterSpace: 1.5 * ratio.value,
                         },
                         car: {
                             fontFamily: 'sans',
-                            fontSize: 16,
-                            color: '#000000',
-                            lineHeight: 40,
+                            fontSize: 16 * ratio.value,
+                            color: '#999',
+                            lineHeight: 40 * ratio.value,
                             fontWeight: 500,
-                            letterSpace: 1.5,
+                            letterSpace: 1.5 * ratio.value,
                         },
                     },
                 },
@@ -76,7 +103,7 @@ const option = ref({
             emphasis: {
                 label: {
                     show: false,
-                    fontSize: 20,
+                    fontSize: 20 * ratio.value,
                     fontWeight: 'bold',
                 },
             },
@@ -86,8 +113,11 @@ const option = ref({
             data: [],
         },
     ],
-})
+});
 
+console.log('option', option);
+
+// 如果data发生变化则重新更新option
 watch(
     () => props.data,
     (val) => {
@@ -99,23 +129,80 @@ watch(
     { immediate: true, deep: true }
 );
 
-const pieChart = ref(null);
+// 开启定时器轮播
+const timer = ref(null);
+const highlightIndex = ref(0);
+const downplayIndex = ref(-1);
+const intervalStartFn = () => {
+    if (timer.value) {
+        clearInterval(timer.value);
+        timer.value = null;
+    }
+    const formatterChange = () => {
+        if (!pieChart.value) return;
+        pieChart.value.myChart.dispatchAction({
+            type: 'highlight',
+            seriesIndex: 0, // 第一个系列
+            dataIndex: highlightIndex.value,
+        });
+        pieChart.value.myChart.dispatchAction({
+            type: 'downplay',
+            seriesIndex: 0, // 第一个系列
+            dataIndex: downplayIndex.value,
+        });
 
-onMounted(() => {
-    console.log(pieChart.value.myChart);
+        // 中部自定义内容调整
+        const obj = props.data[highlightIndex.value];
+        option.value.series[0].label.normal.formatter = '{title|' + obj.value + '%}' + '\n' + '{car|' + obj.name + obj.value + '辆}';
+
+        // 激活与非激活索引自增1
+        highlightIndex.value = highlightIndex.value >= props.data.length - 1 ? 0 : highlightIndex.value + 1;
+        downplayIndex.value = downplayIndex.value >= props.data.length - 1 ? 0 : downplayIndex.value + 1;
+    };
+    formatterChange();
+    timer.value = setInterval(() => {
+        formatterChange();
+    }, 3000);
+};
+
+// 为echart绑定图例选中和取消选择事件
+const pieChart = ref(null);
+const pieChartAddEventFn = () => {
     pieChart.value.myChart.on('highlight', function (params) {
-        console.log('highlight', params);
         if (params.name) {
-            const obj = props.data.find(item => item.name === params.name);
-            console.log('obj', obj);
-            option.value.series[0].label.normal.formatter = '{title|' + obj.value + '%}' + '\n' + '{car|' + obj.name + obj.flowValue + '辆}';
-            console.log('option.value', option.value);
+            clearInterval(timer.value);
+            timer.value = null;
+
+            props.data.forEach((item, index) => {
+                if (item.name !== params.name) {
+                    pieChart.value.myChart.dispatchAction({
+                        type: 'downplay',
+                        seriesIndex: 0, // 第一个系列
+                        dataIndex: index,
+                    });
+                }
+                else {
+                    option.value.series[0].label.normal.formatter = '{title|' + item.value + '%}' + '\n' + '{car|' + item.name + item.value + '辆}';
+                }
+            });
         }
     });
     pieChart.value.myChart.on('downplay', function (params) {
-        console.log('downplay', params);
+        if (params.name) {
+            intervalStartFn();
+        }
     });
-})
+};
+
+onMounted(() => {
+    intervalStartFn();
+    pieChartAddEventFn();
+});
+
+onUnmounted(() => {
+    clearInterval(timer.value);
+    timer.value = null;
+});
 </script>
 
 <template>
@@ -127,6 +214,12 @@ onMounted(() => {
 <style scoped>
 .pie_chart {
     width: 100%;
-    height: 500px;
+    height: 380px;
+}
+
+@media screen and (max-width: 768px) {
+    .pie_chart {
+        height: 23.75rem;
+    }
 }
 </style>

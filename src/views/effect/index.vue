@@ -1,5 +1,11 @@
 <script setup>
+import {generateEffectRoutes} from '@/router/index.js';
+import methods from '@/utils/customMethod';
 
+const handleInfoFn = item => {
+  console.log('item', item);
+  methods.$goRouter(item.path, '/info/');
+}
 </script>
 
 <script>
@@ -13,8 +19,7 @@ export {componentOptions};
 
 <template>
   <div class="effect">
-    <router-view />
-    123
+    <div v-for="item in generateEffectRoutes" :key="item.path" @click="handleInfoFn(item)">{{ item }}</div>
   </div>
 </template>
 

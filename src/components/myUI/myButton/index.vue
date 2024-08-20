@@ -1,5 +1,6 @@
-<script setup lang="ts">
-import { screenWidth, convertToRem } from '@/store/index';
+<script setup>
+import { screenWidth } from '@/store/index';
+import { useUnit } from '@/store/rem.js';
 
 const props = defineProps({
   word: {
@@ -23,11 +24,13 @@ const click = () => {
 
 const myButtonRef = ref(null);
 
+const {ratio} = useUnit();
+
 const mousemoveFn = (dom, e) => {
   let x =e.pageX - dom.getBoundingClientRect().left;
   let y =e.pageY - dom.getBoundingClientRect().top;
-  dom.style.setProperty("--x", screenWidth.value > 768 ? x + "px" : convertToRem(x));
-  dom.style.setProperty("--y", screenWidth.value > 768 ? y + "px" : convertToRem(y));
+  dom.style.setProperty("--x", screenWidth.value > 768 ? x + "px" : x * ratio.value + 'px');
+  dom.style.setProperty("--y", screenWidth.value > 768 ? y + "px" : y * ratio.value + 'px');
 };
 
 onMounted(() => {

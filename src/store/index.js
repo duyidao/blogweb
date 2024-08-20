@@ -10,11 +10,6 @@ export const light = ref(true);
 // 移动端右侧drop是否显示
 export const labelShow = ref(false);
 
-// px转rem函数方法
-export const convertToRem = (size) => {
-    return `${size / 16}rem`
-}
-
 // 获取当前浏览器滚动进度
 export const scrollProgress = ref(0);
 export const scrollAngle = ref(0);

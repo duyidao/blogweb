@@ -31,7 +31,7 @@ watch(() => language.value, (newVal) => {
     extensions.value = [lang.value(), oneDark];
 }, { immediate: true });
 const code = defineModel();
-const comStyle = computed(() => ({ ...style.value, ...{ height: screenWidth.value > 768 ? '300px' : '18.75rem' } }));
+const comStyle = computed(() => ({ ...style.value, ...{ height: screenWidth.value > 768 ? '350px' : '24.55rem' } }));
 
 const handleChange = e => {
     emit('change', e);

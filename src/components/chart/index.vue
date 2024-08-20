@@ -46,7 +46,6 @@ const onResize = () => {
 };
 onMounted(() => {
     myChart.value = echarts.init(chartRef.value);
-    console.log('myChart.value', myChart.value);
     // 绘制图表
     myChart.value.setOption(props.option);
     window.addEventListener('resize', onResize);

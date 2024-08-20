@@ -1,5 +1,8 @@
 <script setup>
-import {screenWidth, convertToRem, light} from '@/store/index';
+import { screenWidth, light } from '@/store/index';
+import { useUnit } from '@/store/rem.js';
+
+const {ratio} = useUnit();
 
 const candleFireStyle = ref({
   height: '0',
@@ -7,8 +10,8 @@ const candleFireStyle = ref({
 })
 
 const windowResizeFn = () => {
-  candleFireStyle.value.width = light.value ? '0' : screenWidth.value > 768 ? '16px' : convertToRem(16)
-  candleFireStyle.value.height = light.value ? '0' : screenWidth.value > 768 ? '20px' : convertToRem(20)
+  candleFireStyle.value.width = light.value ? '0' : screenWidth.value > 768 ? '16px' : 16 * ratio.value + 'px';
+  candleFireStyle.value.height = light.value ? '0' : screenWidth.value > 768 ? '20px' : 20 * ratio.value + 'px';
 }
 
 watch(() => light.value, () => {

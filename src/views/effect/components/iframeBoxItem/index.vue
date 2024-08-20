@@ -113,12 +113,12 @@ export {componentOptions};
 
         .iframe-box-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
             width: 100%;
 
             :deep(.cm-editor) {
-                width: 53%;
+                width: 100%;
             }
 
             .effect {
@@ -127,16 +127,6 @@ export {componentOptions};
                 align-items: center;
                 width: 100%;
                 height: 100%;
-
-                &.column {
-                    flex-direction: column;
-                }
-
-                &.showCode {
-                    justify-content: center;
-                    align-items: center;
-                    width: 43%;
-                }
             }
         }
     }
@@ -172,22 +162,7 @@ export {componentOptions};
             }
 
             .iframe-box-content {
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-between;
-                width: 100%;
-
-                :deep(.cm-editor) {
-                    width: 100%;
-                }
-
                 .effect {
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-                    width: 100%;
-                    height: 100%;
-
                     &.showCode {
                         justify-content: center;
                         align-items: center;

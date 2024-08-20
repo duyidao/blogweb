@@ -41,10 +41,17 @@ const routerBtnList = ref([
       },
     ],
   },
-  // {
-  //   name: "关于我",
-  //   icon: 'icon-yonghu'
-  // },
+  {
+    name: "效果列表",
+    icon: 'icon-yonghu',
+    children: [
+      {
+        name: "EChart",
+        base: "/effect/",
+        path: "echart",
+      },
+    ],
+  },
 ]);
 const showItemFn = (index, type) => {
   showBtn.value[index] = type;

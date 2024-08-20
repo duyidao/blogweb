@@ -22,8 +22,8 @@ const handleFuncFn = (type) => {
 }
 
 // 点击文章按钮跳往文章页面
-const handleRouterFn = (path) => {
-  methods.$goRouter(path, '/article/');
+const handleRouterFn = (path, front = '/article/') => {
+  methods.$goRouter(path, front);
   labelShow.value = false;
   emit('handleRouter');
 }
@@ -48,6 +48,16 @@ const handleRouterFn = (path) => {
         @click.stop="handleRouterFn('learn')">
         <i class="iconfont icon-xuexi"></i>
         <span>Learn</span>
+      </div>
+    </div>
+
+    <!-- 效果列表 -->
+    <div class="phone-dom__title">效果列表</div>
+    <div class="phone-dome__list">
+      <div class="phone-dome__item"
+        @click.stop="handleRouterFn('echart', '/effect/')">
+        <!-- <i class="iconfont icon-css"></i> -->
+        <span>EChart</span>
       </div>
     </div>
 
