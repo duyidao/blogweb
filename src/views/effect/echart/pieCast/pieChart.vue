@@ -1,5 +1,6 @@
 <script setup>
-import {useUnit} from '@/store/rem.js';
+import { useUnit } from '@/store/rem.js';
+import { screenWidth } from '@/store/index.js';
 // 绘制图表
 const props = defineProps({
     data: {
@@ -38,15 +39,15 @@ const option = ref({
             color: '#7b70f7',
             rich: {
                 name: {
-                    width: 70 * ratio.value,
+                    width: screenWidth.value > 768 ? 70 : 70 * ratio.value,
                     fontWeight: 700,
-                    fontSize: 14 * ratio.value,
+                    fontSize: screenWidth.value > 768 ? 14 : 14 * ratio.value,
                     fontFamily: 'fang',
                     align: 'left',
                 },
                 value: {
-                    width: 50 * ratio.value,
-                    fontSize: 14 * ratio.value,
+                    width: screenWidth.value > 768 ? 50 : 50 * ratio.value,
+                    fontSize: screenWidth.value > 768 ? 14 : 14 * ratio.value,
                     fontWeight: 700,
                     fontFamily: 'fang',
                     align: 'right',
@@ -79,19 +80,19 @@ const option = ref({
                     rich: {
                         title: {
                             fontFamily: 'sans',
-                            fontSize: 30 * ratio.value,
+                            fontSize: screenWidth.value > 768 ? 30: 30 * ratio.value,
                             color: '#999',
-                            lineHeight: 50 * ratio.value,
+                            lineHeight: screenWidth.value > 768 ? 50 : 50 * ratio.value,
                             fontWeight: 500,
-                            letterSpace: 1.5 * ratio.value,
+                            letterSpace: screenWidth.value > 768 ? 1.5 : 1.5 * ratio.value,
                         },
                         car: {
                             fontFamily: 'sans',
-                            fontSize: 16 * ratio.value,
+                            fontSize: screenWidth.value > 768 ? 16 : 16 * ratio.value,
                             color: '#999',
-                            lineHeight: 40 * ratio.value,
+                            lineHeight: screenWidth.value > 768 ? 40 : 40 * ratio.value,
                             fontWeight: 500,
-                            letterSpace: 1.5 * ratio.value,
+                            letterSpace: screenWidth.value > 768 ? 1.5 : 1.5 * ratio.value,
                         },
                     },
                 },
@@ -103,7 +104,7 @@ const option = ref({
             emphasis: {
                 label: {
                     show: false,
-                    fontSize: 20 * ratio.value,
+                    fontSize: screenWidth.value > 768 ? 20 : 20 * ratio.value,
                     fontWeight: 'bold',
                 },
             },
@@ -114,8 +115,6 @@ const option = ref({
         },
     ],
 });
-
-console.log('option', option);
 
 // 如果data发生变化则重新更新option
 watch(
