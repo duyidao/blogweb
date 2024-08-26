@@ -184,7 +184,9 @@ onUnmounted(() => {
         <template v-else>
           <span>{{ addComp.province }}</span>
           <span>{{ addComp.city }}</span>
-          <span class="end">{{ addComp.district }}</span>
+          <span>{{ addComp.district }}</span>
+          <span>{{ addComp.street }}</span>
+          <span class="end">{{ addComp.streetNumber }}</span>
         </template>
         <span>{{ userPoint.longitude }}</span>
         <span>{{ userPoint.latitude }}</span>
