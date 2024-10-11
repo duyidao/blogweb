@@ -9,11 +9,6 @@ const goHome = () => {
 <template>
   <div class="bg-purple">
     <div class="stars">
-      <div class="custom-navbar">
-        <div class="brand-logo">
-          <p>刀刀小站</p>
-        </div>
-      </div>
       <div class="central-body">
         <img class="image-404"
           src="http://salehriaz.com/404Page/img/404.svg"
