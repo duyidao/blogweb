@@ -58,10 +58,10 @@ const handleRouterFn = (path, front = '/article/') => {
       <template #default>
         <div class="phone-dom">
           <!-- 文章列表 -->
-          <div class="phone-dom__title">文章列表</div>
+          <div class="phone-dom__title">刀刀博客文章效果列表</div>
           <div class="phone-dome__list">
             <div class="phone-dome__item"
-              v-for="item in routerBtnList.find(item => item.name === '文章列表').children"
+              v-for="item in routerBtnList.find(item => item.name === '刀刀博客效果').children"
               :key="item.path"
               :class="{ 'active': route.path.includes(item.path) }"
               @click.stop="handleRouterFn(item.path)">
@@ -72,10 +72,10 @@ const handleRouterFn = (path, front = '/article/') => {
           </div>
 
           <!-- 效果列表 -->
-          <div class="phone-dom__title">效果列表</div>
+          <div class="phone-dom__title">项目学习需求效果列表</div>
           <div class="phone-dome__list">
             <div class="phone-dome__item"
-              v-for="item in routerBtnList.find(item => item.name === '效果列表').children"
+              v-for="item in routerBtnList.find(item => item.name === '项目需求效果').children"
               :key="item.path"
               :class="{ 'active': route.path.includes(item.path) }"
               @click.stop="handleRouterFn(item.path, '/effect/')">

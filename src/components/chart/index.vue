@@ -5,12 +5,12 @@ import * as echarts from 'echarts/core';
 import { BarChart, PieChart } from 'echarts/charts';
 // 引入标题，提示框，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import {
-    TitleComponent,
-    LegendComponent,
-    TooltipComponent,
-    GridComponent,
-    DatasetComponent,
-    TransformComponent
+  TitleComponent,
+  LegendComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
 } from 'echarts/components';
 // 标签自动布局、全局过渡动画等特性
 import { LabelLayout, UniversalTransition } from 'echarts/features';
@@ -19,63 +19,62 @@ import { CanvasRenderer } from 'echarts/renderers';
 
 // 注册必须的组件
 echarts.use([
-    TitleComponent,
-    LegendComponent,
-    TooltipComponent,
-    GridComponent,
-    DatasetComponent,
-    TransformComponent,
-    BarChart,
-    PieChart,
-    LabelLayout,
-    UniversalTransition,
-    CanvasRenderer
+  TitleComponent,
+  LegendComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  BarChart,
+  PieChart,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer
 ]);
 
 const props = defineProps({
-    option: {
-        type: Object,
-        default: () => ({}),
-    },
+  option: {
+    type: Object,
+    default: () => ({}),
+  },
 });
 
 const myChart = ref(null);
 const chartRef = ref(null);
 const onResize = () => {
-    myChart.value.resize();
+  myChart.value.resize();
 };
 onMounted(() => {
-    myChart.value = echarts.init(chartRef.value);
-    // 绘制图表
-    myChart.value.setOption(props.option);
-    window.addEventListener('resize', onResize);
+  myChart.value = echarts.init(chartRef.value);
+  // 绘制图表
+  myChart.value.setOption(props.option);
+  window.addEventListener('resize', onResize);
 });
 
 watch(
-    () => props.option,
-    (newValue, oldValue) => {
-        myChart.value.setOption(newValue);
-    },
-    { deep: true }
+  () => props.option,
+  (newValue, oldValue) => {
+    myChart.value.setOption(newValue);
+  },
+  { deep: true }
 );
 
 onUnmounted(() => {
-    window.removeEventListener('resize', onResize);
+  window.removeEventListener('resize', onResize);
 });
 
 defineExpose({
-    myChart,
+  myChart,
 });
 </script>
 
 <template>
-    <div ref="chartRef"
-        class="all_chart"></div>
+  <div ref="chartRef" class="all_chart"></div>
 </template>
 
 <style scoped>
 .pie_chart {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -5,7 +5,7 @@ export const loading = ref(false); // 加载中
 // 路由导航栏按钮
 export const routerBtnList = ref([
     {
-      name: "文章列表",
+      name: "刀刀博客效果",
       icon: "icon-liebiao",
       children: [
         {
@@ -29,7 +29,7 @@ export const routerBtnList = ref([
       ],
     },
     {
-      name: "效果列表",
+      name: "项目需求效果",
       icon: 'icon-yonghu',
       icon: "icon-xiaoguo",
       children: [
