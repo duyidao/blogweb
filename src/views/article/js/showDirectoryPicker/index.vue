@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 import File from './file.vue';
 
 const root = ref([]);
@@ -58,7 +58,7 @@ const clickFn = async (index) => {
 </script>
 
 <template>
-    <IframeBoxItem column
+    <IframeItem column
         ref="iframeBox"
         class="ifrname-box box"
         :needCode="false"
@@ -78,7 +78,7 @@ const clickFn = async (index) => {
             class="loading">
             加载中，请稍后...
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less" scoped>

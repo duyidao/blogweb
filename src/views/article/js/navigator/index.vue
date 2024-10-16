@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 const info = ref({})
 
 const clickFn = () => {
@@ -15,7 +15,7 @@ const clickFn = () => {
 </script>
 
 <template>
-    <IframeBoxItem class="ifrname-box"
+    <IframeItem class="ifrname-box"
         title="拾色器"
         :needCode="false">
         <div class="box">
@@ -24,7 +24,7 @@ const clickFn = () => {
             <div class="">当前延迟：{{ info.rtt || 0 }}ms</div>
             <div class="">当前带宽速度：{{ info.downlink || 0 }}</div>
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less" scoped>

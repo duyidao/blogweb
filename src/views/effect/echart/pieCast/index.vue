@@ -1,5 +1,4 @@
 <script setup>
-import IframeBoxItem from '@/views/effect/components/iframeBoxItem/index.vue';
 import PieChart from './pieChart.vue';
 
 const data = ref([
@@ -214,11 +213,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <IframeBoxItem title="饼图轮播"
+  <IframeItem title="饼图轮播"
     v-model="code"
     type="javascript">
     <pie-chart :data="data" />
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style scoped></style>

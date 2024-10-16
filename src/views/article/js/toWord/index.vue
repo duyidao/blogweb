@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 const num = ref(120001003);
 
 const numMap = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
@@ -69,7 +69,7 @@ const handleChange = () => {
 </script>
 
 <template>
-    <IframeBoxItem title="数字转中文"
+    <IframeItem title="数字转中文"
         :needCode="false"
         column
         class="ifrname-box box">
@@ -91,7 +91,7 @@ const handleChange = () => {
                 <div class="item-word ">转换后：{{ item.word }}</div>
             </div>
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less"

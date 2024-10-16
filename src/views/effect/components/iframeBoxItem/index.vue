@@ -1,5 +1,5 @@
 <script setup>
-import Code from './code.vue';
+// import Code from './code.vue';
 
 defineProps({
     title: {
@@ -40,7 +40,7 @@ defineExpose({
 <script>
 // 定义组件选项，包括名称
 const componentOptions = defineComponent({
-  name: 'IframeBoxItem', // 设置组件名称
+  name: 'IframeItem', // 设置组件名称
 });
 
 export {componentOptions};
@@ -64,6 +64,7 @@ export {componentOptions};
             <Code v-show="showCode"
                 class="code"
                 :language="type"
+                height="400"
                 v-model="code">
             </Code>
         </div>

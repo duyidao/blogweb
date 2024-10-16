@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 
 const colorVal = ref('')
 const spanRef = ref(null)
@@ -30,7 +30,7 @@ const clickFn = () => {
 </script>
 
 <template>
-  <IframeBoxItem title="拾色器"
+  <IframeItem title="拾色器"
     column
     class="ifrname-box box"
     :needCode="false">
@@ -42,7 +42,7 @@ const clickFn = () => {
         <span>{{ colorVal }}</span>
       </div>
     </div>
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style lang="less" scoped>

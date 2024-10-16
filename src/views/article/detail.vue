@@ -87,7 +87,10 @@ export {componentOptions};
       <div class="catalogue-title-info">
         <p>{{ routeNow.info }}</p>
         <ul>
-          <li v-for="(item, index) in routeNow.tags" :key="index">{{ item }}</li>
+          <li v-for="(item, index) in routeNow.tags" :key="index">
+            <i class="iconfont icon-tuli"></i>
+            <span>{{ item }}</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -185,9 +188,8 @@ export {componentOptions};
         li {
           margin-right: 16px;
 
-          &::before {
-            content: '▶️';
-            padding-right: 5px;
+          i {
+            margin-right: 5px;
           }
         }
       }
@@ -411,8 +413,8 @@ export {componentOptions};
           li {
             margin-right: 1rem;
 
-            &::before {
-              padding-right: .3125rem;
+            i {
+              margin-right: .3125rem;
             }
           }
         }

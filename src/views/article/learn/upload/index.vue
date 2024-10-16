@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 import oneAndAllComp from './oneAndAll.vue';
 import slice from './slice.vue';
 import breakpoint from './breakpoint.vue';
@@ -84,7 +84,7 @@ const fileReaderChange = (e, type) => {
 
 <template>
     <div class="ifrname-box">
-        <IframeBoxItem
+        <IframeItem
             class="upload-box"
             :needCode="false"
             title="前置知识">
@@ -145,25 +145,25 @@ const fileReaderChange = (e, type) => {
                     </div>
                 </li>
             </ul>
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             class="upload-box"
             :needCode="false"
             title="单文件上传">
             <oneAndAllComp />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             class="upload-box"
             :needCode="false"
             title="切片上传">
             <slice :size="10 * 1024 * 1024" />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             class="upload-box"
             :needCode="false"
             title="断点续传">
             <breakpoint />
-        </IframeBoxItem>
+        </IframeItem>
     </div>
 </template>
 

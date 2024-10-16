@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 import bgImg from "@/assets/img/cat.png";
 
 const inputValue = ref("Logo");
@@ -24,7 +24,7 @@ const changeFn = (e) => {
 </script>
 
 <template>
-  <IframeBoxItem title="纹理适配" :needCode="false" column>
+  <IframeItem title="纹理适配" :needCode="false" column>
     <my-upload style="width: 100%;" @change="changeFn" />
     <div class="input__list">
       <my-input v-model="inputValue" />
@@ -101,7 +101,7 @@ const changeFn = (e) => {
         {{ inputValue }}
       </text>
     </svg>
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style lang="less" scoped>

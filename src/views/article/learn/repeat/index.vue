@@ -1,6 +1,6 @@
 <script setup
   lang="jsx">
-  import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+  
   import { signProp } from './dialog.jsx'
 
   const clickFn = () => {
@@ -12,9 +12,9 @@
 </script>
 
 <template>
-  <IframeBoxItem title="重复小组件" :needCode="false">
+  <IframeItem title="重复小组件" :needCode="false">
     <button @click="clickFn">click me</button>
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style scoped></style>

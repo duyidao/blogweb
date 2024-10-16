@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 
 const props = defineProps({
   // 压缩质量
@@ -107,7 +107,7 @@ const setImgFileEmptyFn = () => {
 </script>
 
 <template>
-  <IframeBoxItem title="图片压缩"
+  <IframeItem title="图片压缩"
     subtitle="请选择jpg格式图片"
     class="ifrname-box"
     column
@@ -132,7 +132,7 @@ const setImgFileEmptyFn = () => {
           alt="压缩后" />
       </div>
     </div>
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style lang="less" scoped>

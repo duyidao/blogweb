@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 const box = ref(null);
 
 const drawVideo = vdo => {
@@ -56,14 +56,14 @@ const onChangeFn = async e => {
 </script>
 
 <template>
-    <IframeBoxItem title="画面帧"
+    <IframeItem title="画面帧"
         column
         :needCode="false"
         class="ifrname-box box">
         <myUpload @change="onChangeFn" />
         <div ref="box"
             class="box-img"></div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less"

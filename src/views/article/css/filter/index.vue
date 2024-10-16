@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 
 import Blur from './blur.vue';
 import Contrast from './contrast.vue';
@@ -41,41 +41,41 @@ const dropShadow = computed(() => {
 <template>
     <div class="ifrname-box"
         id="ifrname-box">
-        <IframeBoxItem
+        <IframeItem
             v-model="contrastCode"
             title="对比度"
             :subtitle="`当前对比度：${ contrast }`"
         >
             <Contrast :styleCode="contrastCode" />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             v-model="degCode"
             title="色相旋转"
             :subtitle="`当前度数：${ deg }`"
         >
             <HueRotate :styleCode="degCode" />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             v-model="blurCode"
             title="模糊"
             :subtitle="`当前模糊度：${ blur }`"
         >
             <Blur :styleCode="blurCode" />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             v-model="grayscaleCode"
             title="灰度图"
             :subtitle="`当前灰度值：${ grayscale }`"
         >
             <Grayscale :styleCode="grayscaleCode" />
-        </IframeBoxItem>
-        <IframeBoxItem
+        </IframeItem>
+        <IframeItem
             v-model="dropShadowCode"
             title="轮廓阴影"
             :subtitle="`当前阴影值：${ dropShadow }`"
         >
             <DropShadow :styleCode="dropShadowCode" />
-        </IframeBoxItem>
+        </IframeItem>
     </div>
 </template>
 

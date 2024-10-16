@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 const width = ref(500)
 const handleSizeChange = (size) => {
     width.value = size.width
@@ -7,7 +7,7 @@ const handleSizeChange = (size) => {
 </script>
 
 <template>
-    <IframeBoxItem title="resize"
+    <IframeItem title="resize"
         :subtitle="`父组件 宽度为${width}`"
         column
         :needCode="false"
@@ -18,7 +18,7 @@ const handleSizeChange = (size) => {
             :style="{ 'width': width - 20 + 'px' }">
             子组件，宽度为{{ width - 20 }}
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less" scoped>

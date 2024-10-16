@@ -1,19 +1,17 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
-
 const code = ref(`color: #c7c6c5;
 mix-blend-mode: difference;`);
 </script>
 
 <template>
   <div class="ifrname-box">
-    <IframeBoxItem v-model="code"
+    <IframeItem v-model="code"
       title="文字填充">
       <div class="banner">
         <div :style="code"
           class="title">前端搬砖人&nbsp;&nbsp;&nbsp;&nbsp;每天都努力</div>
       </div>
-    </IframeBoxItem>
+    </IframeItem>
   </div>
 </template>
 

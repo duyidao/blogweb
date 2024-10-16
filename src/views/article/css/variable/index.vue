@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 onMounted(() => {
     const box = document.querySelector('.setProperty-box')
     const w = box.clientWidth
@@ -8,11 +8,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <IframeBoxItem title="变量计算" class="ifrname-box" :needCode="false">
+    <IframeItem title="变量计算" class="ifrname-box" :needCode="false">
         <div class="setProperty-box">
             <div class="item"></div>
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less" scoped>

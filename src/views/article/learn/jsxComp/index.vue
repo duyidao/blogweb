@@ -1,5 +1,5 @@
 <script setup>
-    import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+    
     import ifComp from './components/if.vue';
     import methodComp from './components/method.vue';
     import jsxComp from './components/jsx.vue';
@@ -8,30 +8,30 @@
 
 <template>
     <div class="ifrname-box jsx-comp">
-        <IframeBoxItem title="v-if"
+        <IframeItem title="v-if"
             :needCode="false"
             column
             class="box">
             <ifComp />
-        </IframeBoxItem>
-        <IframeBoxItem title="函数返回"
+        </IframeItem>
+        <IframeItem title="函数返回"
             :needCode="false"
             column
             class="box">
             <methodComp />
-        </IframeBoxItem>
-        <IframeBoxItem title="jsx"
+        </IframeItem>
+        <IframeItem title="jsx"
             :needCode="false"
             column
             class="box">
             <jsxComp />
-        </IframeBoxItem>
-        <IframeBoxItem title="修改源数据"
+        </IframeItem>
+        <IframeItem title="修改源数据"
             :needCode="false"
             column
             class="box">
             <mapComp />
-        </IframeBoxItem>
+        </IframeItem>
     </div>
 </template>
 

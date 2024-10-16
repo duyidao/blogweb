@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 
 const lineCode = ref(`background-size: 100% 2px;
 background-position: left bottom;`);
@@ -17,7 +17,7 @@ const handleMouseLeave = () => {
 
 <template>
   <div class="ifrname-box banner">
-    <IframeBoxItem title="下划线动画"
+    <IframeItem title="下划线动画"
       v-model="lineCode">
       <div class="line-title"
         ref="divRef"
@@ -26,7 +26,7 @@ const handleMouseLeave = () => {
         @mouseleave="handleMouseLeave">
         前端搬砖人每天都努力
       </div>
-    </IframeBoxItem>
+    </IframeItem>
   </div>
 </template>
 

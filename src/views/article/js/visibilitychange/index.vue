@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 const fn = () => {
   if (document.hidden) {
     document.title = "页面离开咯";
@@ -18,10 +18,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <IframeBoxItem title="页面可见度"
+  <IframeItem title="页面可见度"
     :needCode="false">
     页面可见度
-  </IframeBoxItem>
+  </IframeItem>
 </template>
 
 <style scoped></style>

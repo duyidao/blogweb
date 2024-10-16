@@ -1,5 +1,5 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 import inputComp from './input.vue';
 
 const inputValue = ref('daodao');
@@ -7,7 +7,7 @@ const inputValueNum = ref(11);
 </script>
 
 <template>
-    <IframeBoxItem title="input组件封装"
+    <IframeItem title="input组件封装"
         column
         :needCode="false"
         class="input-info">
@@ -25,7 +25,7 @@ const inputValueNum = ref(11);
             <inputComp type="number"
                 v-model:msg="inputValueNum" />
         </div>
-    </IframeBoxItem>
+    </IframeItem>
 </template>
 
 <style lang="less"

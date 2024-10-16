@@ -1,10 +1,10 @@
 <script setup>
-import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
+
 </script>
 
 <template>
     <div class="ifrname-box">
-        <IframeBoxItem title="光影特效"
+        <IframeItem title="光影特效"
             :needCode="false">
             <div class="box">
                 <span>C</span>
@@ -16,7 +16,7 @@ import IframeBoxItem from '@/views/article/components/iframeBoxItem/index.vue';
                 <span>U</span>
                 <span>L</span>
             </div>
-        </IframeBoxItem>
+        </IframeItem>
     </div>
 </template>
 
