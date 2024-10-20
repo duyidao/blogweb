@@ -1,0 +1,1 @@
+import{_ as o,A as t,$ as n,c as s,k as c,o as r}from"./index-DLqeNj1X.js";const v=t({name:"EffectInfo"}),a={},_={class:"effect"};function f(p,i,m,d,l,u){const e=n("router-view");return r(),s("div",_,[c(e)])}const k=o(a,[["render",f]]);export{v as componentOptions,k as default};

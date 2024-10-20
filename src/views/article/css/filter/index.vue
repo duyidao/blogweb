@@ -1,82 +1,36 @@
 <script setup>
+import { cssChildData, getDict, toCamelCase } from '../../index.js';
 
+const codeData = {
+  contrastCode: 'filter: contrast(100%);',
+  hueRotateCode: `filter: hue-rotate(0deg);`,
+  blurCode: `filter: blur(15px);`,
+  grayscaleCode: 'filter: grayscale(0%);',
+  dropShadowCode: `filter: drop-shadow(15px 15px 15px orange);`,
+};
 
-import Blur from './blur.vue';
-import Contrast from './contrast.vue';
-import DropShadow from './drop-shadow.vue';
-import Grayscale from './grayscale.vue';
-import HueRotate from './hue-rotate.vue';
+const list = getDict('css.filter');
 
-// 对比度相关代码和比例
-const contrastCode = ref('filter: contrast(100%)');
-const contrast = computed(() => {
-    return contrastCode.value.replace('filter: contrast(', '').replace(')', '');
-});
-
-// 色相旋转相关代码和比例
-const degCode = ref('filter: hue-rotate(0deg)');
-const deg = computed(() => {
-    return degCode.value.replace('filter: hue-rotate(', '').replace(')', '');
-});
-
-// 模糊相关代码和比例
-const blurCode = ref('filter: blur(15px)');
-const blur = computed(() => {
-    return blurCode.value.replace('filter: blur(', '').replace(')', '');
-});
-
-// 灰度值相关代码和比例
-const grayscaleCode = ref('filter: grayscale(0%)');
-const grayscale = computed(() => {
-    return grayscaleCode.value.replace('filter: grayscale(', '').replace(')', '');
-});
-
-// 灰度值相关代码和比例
-const dropShadowCode = ref(`filter: drop-shadow(15px 15px 15px orange)`);
-const dropShadow = computed(() => {
-    return dropShadowCode.value.replace('filter: drop-shadow(', '').replace(')', '');
-});
+const componentList = ref([]);
+componentList.value = list.map((item) => ({
+  ...item,
+  model: codeData[toCamelCase(item.name) + 'Code'],
+  component: Object.freeze(cssChildData.value[item.name]),
+}));
 </script>
 
 <template>
-    <div class="ifrname-box"
-        id="ifrname-box">
-        <IframeItem
-            v-model="contrastCode"
-            title="对比度"
-            :subtitle="`当前对比度：${ contrast }`"
-        >
-            <Contrast :styleCode="contrastCode" />
-        </IframeItem>
-        <IframeItem
-            v-model="degCode"
-            title="色相旋转"
-            :subtitle="`当前度数：${ deg }`"
-        >
-            <HueRotate :styleCode="degCode" />
-        </IframeItem>
-        <IframeItem
-            v-model="blurCode"
-            title="模糊"
-            :subtitle="`当前模糊度：${ blur }`"
-        >
-            <Blur :styleCode="blurCode" />
-        </IframeItem>
-        <IframeItem
-            v-model="grayscaleCode"
-            title="灰度图"
-            :subtitle="`当前灰度值：${ grayscale }`"
-        >
-            <Grayscale :styleCode="grayscaleCode" />
-        </IframeItem>
-        <IframeItem
-            v-model="dropShadowCode"
-            title="轮廓阴影"
-            :subtitle="`当前阴影值：${ dropShadow }`"
-        >
-            <DropShadow :styleCode="dropShadowCode" />
-        </IframeItem>
-    </div>
+  <div class="ifrname-box"
+    id="ifrname-box">
+    <IframeItem v-for="item in componentList"
+      :key="item.name"
+      :title="item.title"
+      :subtitle="item.subtitle + item.model.replace(`filter: ${item.name}(`, '').replace(');', '')"
+      v-model="item.model">
+      <component :is="item.component"
+        :styleCode="item.model" />
+    </IframeItem>
+  </div>
 </template>
 
 <style scoped></style>

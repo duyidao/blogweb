@@ -4,12 +4,16 @@ import router from '@/router/index.js';
 import { createMetaManager} from 'vue-meta'
 import 'virtual:svg-icons-register';
 
+// 公共方法
 import directives from './directives/index.js';
 import customMethod from './utils/customMethod.js';
 
+// 样式与字体
 import '@/assets/style/style.less';
 import '@/assets/icon/iconfont.css';
 import '@/assets/icon/iconfont.js';
+
+import '@/views/article/index.js';
 
 const app = createApp(App);
 

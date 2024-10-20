@@ -1,0 +1,1 @@
+.box[data-v-6b07a1d2]{width:150px;height:150px;cursor:pointer}.box img[data-v-6b07a1d2]{display:block;width:100%;height:100%;transition:.5s;clip-path:var(--polygon)}.box img.enter[data-v-6b07a1d2]{clip-path:polygon(100% 0%,100% 100%,0% 100%,0% 0%)!important}@media screen and (max-width: 768px){.box[data-v-6b07a1d2]{width:9.375rem;height:9.375rem}}
