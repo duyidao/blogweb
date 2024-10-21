@@ -21,7 +21,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-    <div class="ifrname-box">
+    <div class="iframe-box">
         <div class="upload-upload">
             <myUpload needList multiple @change="onChangeFn" />
         </div>
@@ -30,7 +30,7 @@ const onSubmit = async () => {
 </template>
 
 <style lang="less" scoped>
-.ifrname-box {
+.iframe-box {
     display: flex;
     flex-direction: column;
     justify-content: center;

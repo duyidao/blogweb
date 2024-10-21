@@ -72,7 +72,7 @@ const handleChange = () => {
     <IframeItem title="数字转中文"
         :needCode="false"
         column
-        class="ifrname-box box">
+        class="iframe-box box">
         <div class="input">
             <input class=""
                 type="number"

@@ -2,59 +2,59 @@
 import methods from '@/utils/customMethod.js'
 
 const props = defineProps({
-    styleCode: String
+  styleCode: String
 });
 
 const styleValue = computed(() => {
-    return methods.extractCSSValue(props.styleCode);
+  return methods.extractCSSValue(props.styleCode);
 });
 
 const imgRef = ref(null);
 
 const handleMouseEnter = () => {
-    imgRef.value.classList.add('enter');
+  imgRef.value.classList.add('enter');
 };
 
 const handleMouseLeave = () => {
-    imgRef.value.classList.remove('enter');
+  imgRef.value.classList.remove('enter');
 };
 </script>
 
 <template>
-    <div class="box">
-        <img
-            ref="imgRef"
-            :style="{'--polygon': styleValue}"
-            src="@/assets/img/cat.png"
-            alt="polygon img"
-            @mouseenter="handleMouseEnter"
-            @mouseleave="handleMouseLeave">
-    </div>
+  <div class="box">
+    <img ref="imgRef"
+      :style="{ '--polygon': styleValue }"
+      src="@/assets/img/cat.png"
+      alt="polygon img"
+      @mouseenter="handleMouseEnter"
+      @mouseleave="handleMouseLeave">
+  </div>
 </template>
 
-<style lang="less" scoped>
-.box {
+<style lang="less"
+  scoped>
+  .box {
     width: 150px;
     height: 150px;
     cursor: pointer;
 
     img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        transition: .5s;
-        clip-path: var(--polygon);
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: .5s;
+      clip-path: var(--polygon);
 
-        &.enter {
-            clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%) !important;
-        }
+      &.enter {
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%) !important;
+      }
     }
-}
+  }
 
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     .box {
-        width: 9.375rem;
-        height: 9.375rem;
+      width: 9.375rem;
+      height: 9.375rem;
     }
-}
+  }
 </style>

@@ -59,7 +59,7 @@ const onChangeFn = async e => {
     <IframeItem title="画面帧"
         column
         :needCode="false"
-        class="ifrname-box box">
+        class="iframe-box box">
         <myUpload @change="onChangeFn" />
         <div ref="box"
             class="box-img"></div>

@@ -20,8 +20,8 @@ componentList.value = list.map((item) => ({
 </script>
 
 <template>
-  <div class="ifrname-box"
-    id="ifrname-box">
+  <div class="iframe-box"
+    id="iframe-box">
     <IframeItem v-for="item in componentList"
       :key="item.name"
       :title="item.title"

@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <div class="ifrname-box jsx-comp">
+    <div class="iframe-box jsx-comp">
         <IframeItem title="v-if"
             :needCode="false"
             column

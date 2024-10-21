@@ -38,7 +38,7 @@ const clickFn = () => {
 </script>
 
 <template>
-  <div class="ifrname-box">
+  <div class="iframe-box">
     <div class="iframe-box-title">
       <span>{{ value.toUpperCase() }}</span>
       <my-button @click="clickFn" word="确认" />
@@ -57,7 +57,7 @@ const clickFn = () => {
 </template>
 
 <style lang="less" scoped>
-.ifrname-box {
+.iframe-box {
   padding: 10px;
 
   :deep(.w-e-hover-bar) {
@@ -111,7 +111,7 @@ const clickFn = () => {
 }
 
 @media screen and (max-width: 768px) {
-  .ifrname-box {
+  .iframe-box {
     padding: 0.625rem;
 
     .iframe-box-content {

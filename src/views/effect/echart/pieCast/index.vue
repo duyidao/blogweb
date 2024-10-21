@@ -215,6 +215,7 @@ onUnmounted(() => {
 <template>
   <IframeItem title="饼图轮播"
     v-model="code"
+    disabled
     type="javascript">
     <pie-chart :data="data" />
   </IframeItem>

@@ -330,12 +330,12 @@ export {componentOptions};
           margin-right: 2.5%;
           box-shadow: 0px 0px 3px var(--primary-border);
 
-          &:nth-child(4n) {
-            margin-right: 0;
-          }
-
           &:nth-child(3n) {
             margin-right: 2.5%;
+          }
+
+          &:nth-child(4n) {
+            margin-right: 0;
           }
 
           .article-item-link {

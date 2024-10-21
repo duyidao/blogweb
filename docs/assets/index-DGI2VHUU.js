@@ -1,1 +1,0 @@
-import e from"./code-qEIzd40Q.js";import{o,c as t,k as r}from"./index-DLqeNj1X.js";const a={class:"ifrname-box"},i={__name:"index",setup(c){return(s,n)=>(o(),t("div",a,[r(e)]))}};export{i as default};

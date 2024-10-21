@@ -32,7 +32,7 @@ const clickFn = () => {
 <template>
   <IframeItem title="拾色器"
     column
-    class="ifrname-box box"
+    class="iframe-box box"
     :needCode="false">
     <div class="box">
       <button @click.stop="clickFn">打开拾色器</button>

@@ -16,7 +16,7 @@ const handleMouseLeave = () => {
 </script>
 
 <template>
-  <div class="ifrname-box banner">
+  <div class="iframe-box banner">
     <IframeItem title="下划线动画"
       v-model="lineCode">
       <div class="line-title"

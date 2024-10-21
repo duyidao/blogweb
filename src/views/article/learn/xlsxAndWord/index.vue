@@ -8,7 +8,7 @@ import wordMannon from './wordMannon.vue';
 </script>
 
 <template>
-    <div class="ifrname-box xlsx-word">
+    <div class="iframe-box xlsx-word">
         <IframeItem
             class="box"
             :needCode="false"

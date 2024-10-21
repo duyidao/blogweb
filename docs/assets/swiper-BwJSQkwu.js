@@ -1,1 +1,0 @@
-import{_ as r,o as s,c as a,F as t,r as c,a as o,y as n}from"./index-DLqeNj1X.js";const _={},d={class:"box"};function i(l,f){return s(),a("div",d,[(s(),a(t,null,c(3,e=>o("div",{key:e,class:"item"},n(e),1)),64))])}const m=r(_,[["render",i],["__scopeId","data-v-2062ab1f"]]);export{m as default};

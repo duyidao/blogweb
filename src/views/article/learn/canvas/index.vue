@@ -7,7 +7,7 @@ import filterComp from './components/filter.vue';
 </script>
 
 <template>
-    <div class="ifrname-box box">
+    <div class="iframe-box box">
         <IframeItem title="图片压缩" :needCode="false">
             <compress />
         </IframeItem>

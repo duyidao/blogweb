@@ -7,7 +7,7 @@ import NotCopyComp from "./components/notCopy.vue";
 </script>
 
 <template>
-  <div class="ifrname-box">
+  <div class="iframe-box">
     <IframeItem title="不允许复制并写入自定义内容" :needCode="false">
       <NotCopyComp />
     </IframeItem>

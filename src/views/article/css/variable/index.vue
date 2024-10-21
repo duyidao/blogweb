@@ -8,7 +8,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <IframeItem title="变量计算" class="ifrname-box" :needCode="false">
+    <IframeItem title="变量计算" class="iframe-box" :needCode="false">
         <div class="setProperty-box">
             <div class="item"></div>
         </div>

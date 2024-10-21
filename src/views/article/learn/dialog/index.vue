@@ -12,7 +12,7 @@ const showFn = () => {
 </script>
 
 <template>
-    <IframeItem title="弹窗组件" :needCode="false" class="ifrname-box">
+    <IframeItem title="弹窗组件" :needCode="false" class="iframe-box">
         <div>
             <button class="" @click.stop="showFn">点击唤起弹窗</button>
         </div>

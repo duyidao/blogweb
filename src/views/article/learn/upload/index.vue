@@ -83,7 +83,7 @@ const fileReaderChange = (e, type) => {
 </script>
 
 <template>
-    <div class="ifrname-box">
+    <div class="iframe-box">
         <IframeItem
             class="upload-box"
             :needCode="false"

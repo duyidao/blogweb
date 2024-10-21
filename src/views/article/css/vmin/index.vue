@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="ifrname-box box">
+  <div class="iframe-box box">
     <img title="vmax" src="@/assets/img/cat.png"
       alt="vmax">
     <img title="vmin" src="@/assets/img/cat.png"

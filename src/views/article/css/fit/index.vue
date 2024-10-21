@@ -4,7 +4,7 @@ mix-blend-mode: difference;`);
 </script>
 
 <template>
-  <div class="ifrname-box">
+  <div class="iframe-box">
     <IframeItem v-model="code"
       title="文字填充">
       <div class="banner">

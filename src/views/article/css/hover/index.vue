@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div id="ifrname-box"
-    class="ifrname-box">
+  <div id="iframe-box"
+    class="iframe-box">
     <div class="link">
       <div class="iframe-box-title">伪类选择器</div>
       <ul>
@@ -146,7 +146,7 @@
 </template>
 
 <style lang="less" scoped>
-#ifrname-box {
+#iframe-box {
 
   p,
   div,

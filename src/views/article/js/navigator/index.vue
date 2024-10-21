@@ -15,7 +15,7 @@ const clickFn = () => {
 </script>
 
 <template>
-    <IframeItem class="ifrname-box"
+    <IframeItem class="iframe-box"
         title="拾色器"
         :needCode="false">
         <div class="box">

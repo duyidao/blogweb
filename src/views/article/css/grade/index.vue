@@ -3,7 +3,7 @@ import Code from './code.vue'
 </script>
 
 <template>
-  <div class="ifrname-box">
+  <div class="iframe-box">
     <Code />
   </div>
 </template>

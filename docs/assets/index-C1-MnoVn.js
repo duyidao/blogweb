@@ -1,1 +1,0 @@
-import{_ as t,o as c,c as a,p as _,d,a as o,e as n}from"./index-DLqeNj1X.js";const p={},s=e=>(_("data-v-021ed218"),e=e(),d(),e),r={class:"below"},i=s(()=>o("p",null,"daodao",-1)),l=s(()=>o("img",{src:n,alt:""},null,-1)),h=[i,l];function f(e,m){return c(),a("div",r,h)}const x=t(p,[["render",f],["__scopeId","data-v-021ed218"]]);export{x as default};

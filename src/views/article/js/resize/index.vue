@@ -12,7 +12,7 @@ const handleSizeChange = (size) => {
         column
         :needCode="false"
         v-resize="handleSizeChange"
-        class="ifrname-box">
+        class="iframe-box">
         <div class="iframe-box-title"><span class="iframe-box-title-small"></span></div>
         <div class="child"
             :style="{ 'width': width - 20 + 'px' }">
@@ -22,7 +22,7 @@ const handleSizeChange = (size) => {
 </template>
 
 <style lang="less" scoped>
-.ifrname-box .child {
+.iframe-box .child {
     margin: 0 auto;
     height: 6.25rem;
     background-color: antiquewhite;

@@ -109,7 +109,7 @@ const setImgFileEmptyFn = () => {
 <template>
   <IframeItem title="图片压缩"
     subtitle="请选择jpg格式图片"
-    class="ifrname-box"
+    class="iframe-box"
     column
     :needCode="false">
     <my-upload id="imgFile"

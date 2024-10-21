@@ -13,7 +13,7 @@ const clickFn = () => {
     <IframeItem title="迅雷下载"
         :needCode="false"
         column
-        class="ifrname-box box">
+        class="iframe-box box">
         <button @click.stop="clickFn">迅雷下载</button>
         <a href="https://ts1.cn.mm.bing.net/th/id/R-C.748160bf925a7acb3ba1c9514bbc60db?rik=AYY%2bJ9WcXYIMgw&riu=http%3a%2f%2fseopic.699pic.com%2fphoto%2f50017%2f0822.jpg_wh1200.jpg&ehk=CMVcdZMU6xxsjVjafO70cFcmJvD62suFC1ytk8UuAUk%3d&risl=&pid=ImgRaw&r=0"
             target="_blank">下载链接1</a>

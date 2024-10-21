@@ -60,7 +60,7 @@ const clickFn = async (index) => {
 <template>
     <IframeItem column
         ref="iframeBox"
-        class="ifrname-box box"
+        class="iframe-box box"
         :needCode="false"
         :type="fileType"
         title="文件夹获取"
