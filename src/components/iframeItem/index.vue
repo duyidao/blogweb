@@ -41,9 +41,12 @@ defineProps({
 // 双向绑定的代码样式
 const code = defineModel();
 
+const emit = defineEmits(['click']);
+
 const showCode = ref(false);
 const handleClick = () => {
   showCode.value = !showCode.value;
+  emit('click');
 }
 
 defineExpose({

@@ -146,13 +146,13 @@ const goRouter = (item, index) => {
         position: absolute;
         top: 43px;
         left: 50%;
-        transform: translate(-50%, 60%) scale(0.1);
+        transform: translate(-50%, -60%) scale(0.0001);
         padding: 10px 20px 10px;
         background-color: #eaeaea;
         opacity: 0;
         transition: all 0.3s;
         will-change: transform;
-        z-index: 999;
+        z-index: 900;
 
         .item-list__item {
           display: inline-block;

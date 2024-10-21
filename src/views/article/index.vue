@@ -32,6 +32,8 @@ watch(
       item.path.includes(to.articleType)
     );
     routeList.value = arr;
+    console.log('to, from', to, from);
+    console.log('routeList.value', routeList.value);
   },
   {
     immediate: true,

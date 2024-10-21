@@ -102,7 +102,7 @@ const code = ref(`<svg viewBox="0 0 500 300">
     v-model="code"
     disabled
     height="450"
-    typr="html"
+    type="vue"
     column>
     <my-upload style="width: 100%;"
       @change="changeFn" />
