@@ -113,7 +113,7 @@ componentList.value = list.map((item) => ({
       buttonTitle="源码展示"
       showButtonTitle="隐藏源码"
       type="vue"
-      height="400"
+      :height="item.height"
       disabled>
       <component :is="item.component"/>
     </IframeItem>
