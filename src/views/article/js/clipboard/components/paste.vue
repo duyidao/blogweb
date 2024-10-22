@@ -2,10 +2,11 @@
 const pasteRef = ref();
 
 onMounted(() => {
-  console.log("navigator.clipboard", navigator.clipboard);
   navigator.clipboard &&
     navigator.clipboard.readText().then((text) => {
       pasteRef.value.innerHTML = text;
+    }).catch((err) => {
+      pasteRef.value.innerHTML = '报错信息：' + err;
     });
 });
 </script>

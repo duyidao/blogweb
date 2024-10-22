@@ -55,5 +55,25 @@ export default {
         title: '轮播图',
       },
     ],
+  },
+  js: {
+    clipboard: [
+      {
+        name: 'addText',
+        title: '复制一段话后面加内容',
+      },
+      {
+        name: 'notCopy',
+        title: '不允许复制并写入自定义内容',
+      },
+      {
+        name: 'paste',
+        title: '刷新后粘贴剪切板内容',
+      },
+      {
+        name: 'copy',
+        title: '粘贴文件',
+      },
+    ],
   }
 };

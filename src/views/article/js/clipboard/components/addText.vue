@@ -1,9 +1,8 @@
-<script setup lang="ts">
-const pasteRef = ref();
+<script setup>
+const pasteRef = ref(null);
 
 onMounted(() => {
   pasteRef.value.addEventListener("copy", function (e) {
-    console.log("e", e.target.innerHTML, navigator);
     navigator.clipboard.writeText(
       e.target.innerHTML + `来源：刀刀小站<br/>每天都要更努力`
     );
@@ -183,27 +182,37 @@ onMounted(() => {
 
 <style lang="less" scoped>
 div {
-  padding: 16px 32px;
+  padding: 16px 0;
   border: 1px solid var(--primary-info);
   color: var(--primary-info);
   border-radius: 20px;
 
-  li {
-    list-style: auto;
-    line-height: 1.5;
-    font-size: 14px;
-    color: var(--primary-info);
+  ol {
+    width: 100%;
+    height: 400px;
+    padding: 0 32px;
+    overflow-y: scroll;
+    li {
+      list-style: auto;
+      line-height: 1.5;
+      font-size: 14px;
+      color: var(--primary-info);
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
   div {
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     border: .0625rem solid var(--primary-info);
     border-radius: 1.25rem;
 
-    li {
-      font-size: 0.875rem;
+    ol {
+      height: 25rem;
+      padding: 0 2rem;
+      li {
+        font-size: 0.875rem;
+      }
     }
   }
 }

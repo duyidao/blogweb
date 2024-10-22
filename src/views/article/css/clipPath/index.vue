@@ -9,13 +9,13 @@ const codeData = {
 };
 
 const list = getDict('css.clipPath');
-
+console.log('list', list, cssChildData.value, cssChildData.value[list[0].name]);
 const componentList = shallowRef([]);
 componentList.value = list.map((item) => ({
   ...item,
   model: codeData[item.name + 'Code'],
   component: Object.freeze(cssChildData.value[item.name]),
-}));;
+}));
 </script>
 
 <template>

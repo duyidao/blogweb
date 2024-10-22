@@ -2,13 +2,7 @@ import { defineAsyncComponent } from 'vue';
 import dict from './dict.js';
 
 // 获取全部子组件
-const childComp = import.meta.glob([`./css/**/**.vue`, `./js/**/**.vue`, `./learn/**/**.vue`]);
-const reg = /\.\/\w+\/\w+\/index.vue/g;
-
-// 过滤出非index.vue的子组件
-const filterIndexComp = Object.entries(childComp).filter(([key, value]) => {
-  return !key.match(reg);
-});
+const childComp = import.meta.glob([`./**/**/components/**.vue`]);
 
 export const cssChildData = shallowRef({});
 export const jsChildData = shallowRef({});
@@ -16,10 +10,10 @@ export const learnChildData = shallowRef({});
 
 // 获取名称的函数
 const getCompNameFn = (key) => {
-  return key.replace(/\.\/\w+\/\w+\/(\b[a-zA-Z]+(-[a-zA-Z]+)*\b).vue/, '$1');
+  return key.replace(/\.\/\w+\/\w+\/components\/(\b[a-zA-Z]+(-[a-zA-Z]+)*\b).vue/, '$1');
 };
 
-filterIndexComp.forEach(([path, component]) => {
+Object.entries(childComp).forEach(([path, component]) => {
   const name = getCompNameFn(path);
   
   if (path.includes('css')) {

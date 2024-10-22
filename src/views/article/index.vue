@@ -28,12 +28,9 @@ watch(
   () => routeNow.value,
   (to, from) => {
     if (!to.path.includes("article")) return;
-    let arr = generateArticleRoutes.filter((item) =>
-      item.path.includes(to.articleType)
+    routeList.value = generateArticleRoutes.filter((item) =>
+      item.path.startsWith(to.articleType)
     );
-    routeList.value = arr;
-    console.log('to, from', to, from);
-    console.log('routeList.value', routeList.value);
   },
   {
     immediate: true,
