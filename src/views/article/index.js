@@ -16,12 +16,12 @@ const getCompNameFn = (key) => {
 Object.entries(childComp).forEach(([path, component]) => {
   const name = getCompNameFn(path);
   
-  if (path.includes('css')) {
+  if (path.startsWith('./css')) {
     let asyncComponent = cssChildData.value[name] || null;
     asyncComponent = defineAsyncComponent(component);
     cssChildData.value[name] = asyncComponent;
   }
-  else if (path.includes('js')) {
+  else if (path.startsWith('./js')) {
     let asyncComponent = jsChildData.value[name] || null;
     asyncComponent = defineAsyncComponent(component);
     jsChildData.value[name] = asyncComponent;

@@ -1,8 +1,4 @@
 <script setup>
-import FileComp from "./components/copy.vue";
-import PasteComp from "./components/paste.vue";
-import AddTextComp from "./components/addText.vue";
-import NotCopyComp from "./components/notCopy.vue";
 import { jsChildData, getDict } from '../../index.js';
 
 const codeData = {
@@ -111,7 +107,7 @@ componentList.value = list.map((item) => ({
       :title="item.title"
       v-model="item.model"
       buttonTitle="源码展示"
-      showButtonTitle="隐藏源码"
+      showCodeButtonTitle="隐藏源码"
       type="vue"
       :height="item.height"
       disabled>

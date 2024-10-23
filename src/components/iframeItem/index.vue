@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     default: '标题'
@@ -36,6 +36,10 @@ defineProps({
     type: String,
     default: '300'
   },
+  domControl: {
+    type: Object,
+    default: () => null
+  }
 });
 
 // 双向绑定的代码样式
@@ -46,7 +50,13 @@ const emit = defineEmits(['click']);
 const showCode = ref(false);
 const handleClick = () => {
   showCode.value = !showCode.value;
-  emit('click');
+  // 是否需要调用slot组件的子组件方法
+  if (props.domControl && props.domControl.ref) {
+    nextTick(() => {
+      props.domControl.ref[props.domControl.chartName]?.onResize();
+    });
+  }
+  emit('click', showCode.value);
 }
 
 defineExpose({
@@ -83,7 +93,7 @@ export { componentOptions };
         :language="type"
         :height="height"
         v-model="code"
-        :disabled="disabled"/>
+        :disabled="disabled" />
     </div>
   </div>
 </template>

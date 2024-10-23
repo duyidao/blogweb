@@ -210,14 +210,39 @@ onUnmounted(() => {
     clearInterval(timer.value);
     timer.value = null;
 });`);
+
+const pieChartRef = ref(null);
+const domControlData = ref({
+  ref: pieChartRef.value,
+  chartName: 'pieChart',
+})
+
+setTimeout(() => {
+  data.value = [
+    {
+      value: 40, name: '货车通行',
+      flowValue: '40%', flowName: '货车车流量',
+    },
+    {
+      value: 50, name: '其他车通行',
+      flowValue: '50%', flowName: '其他车车流量',
+    },
+    {
+      value: 10, name: '客车通行',
+      flowValue: '10%', flowName: '客车车流量',
+    },
+  ]
+}, 5000);
 </script>
 
 <template>
   <IframeItem title="饼图轮播"
     v-model="code"
     disabled
-    type="javascript">
-    <pie-chart :data="data" />
+    type="javascript"
+    :domControl="domControlData">
+    <pie-chart ref="pieChartRef"
+      :data="data" />
   </IframeItem>
 </template>
 

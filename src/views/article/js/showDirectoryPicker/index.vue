@@ -1,5 +1,5 @@
 <script setup>
-import File from './file.vue';
+import File from './components/file.vue';
 
 const root = ref([]);
 
@@ -63,6 +63,7 @@ const clickFn = async (index) => {
     :needCode="false"
     :type="fileType"
     title="文件夹获取"
+    height="600"
     v-model="fileContent">
     <button @click.stop="showDirectoryPickerFn">获取文件夹</button>
     <template v-if="!fileFind">

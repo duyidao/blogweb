@@ -65,6 +65,7 @@ onUnmounted(() => {
 
 defineExpose({
   myChart,
+  onResize,
 });
 </script>
 
