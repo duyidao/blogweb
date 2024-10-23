@@ -1,7 +1,8 @@
 <script setup>
-import { light, screenWidth, scrollAngle, scrollProgress, labelShow } from "@/store/index";
+import { light, screenWidth, labelShow } from "@/store/index";
 import { routerBtnList } from '@/store/router.js';
 import methods from '@/utils/customMethod';
+import scrollAngle from './scrollAngle.vue';
 
 const { handleLinkFn } = defineProps({
   handleLinkFn: {
@@ -54,15 +55,7 @@ const goRouter = (item, index) => {
   <!-- 右侧其他 -->
   <div style="display: flex; align-items: center;">
     <!-- 滚动条 -->
-    <div v-if="!isNaN(scrollProgress)"
-      ref="scrollAngleRef"
-      id="scroll-angle"
-      :style="{
-      background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${light.value ? '#000' : '#616161'
-        } ${scrollAngle}deg`}"
-    >
-      {{ scrollProgress }}
-    </div>
+    <scrollAngle />
 
     <!-- 外链 -->
     <div class="router-buttons__btns">
@@ -87,135 +80,134 @@ const goRouter = (item, index) => {
   </div>
 </template>
 
-<style lang="less"
-  scoped>
-  @import "./darkBtn.css";
+<style lang="less" scoped>
+@import "./darkBtn.css";
 
-  .router-buttons__list {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+.router-buttons__list {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-    .router-buttons__item {
-      position: relative;
-      margin-right: 15px;
+  .router-buttons__item {
+    position: relative;
+    margin-right: 15px;
 
-      &.item-list-active {
-        &::after {
-          opacity: 1;
-          transform: translate(-50%, 0) scale(1);
-        }
-
-        .item-list {
-          transform: translate(-50%, 0) scale(1);
-          opacity: 1;
-        }
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        background-color: transparent;
-      }
-
+    &.item-list-active {
       &::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translate(-50%, 150%) scale(0.1);
-        opacity: 0;
-        border-bottom: 10px solid #eaeaea;
-        border-top: 10px solid transparent;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        transition: all 0.3s;
-      }
-
-      &:last-child {
-        margin-right: 0;
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
       }
 
       .item-list {
-        position: absolute;
-        top: 43px;
-        left: 50%;
-        transform: translate(-50%, -60%) scale(0.0001);
-        padding: 10px 20px 10px;
-        background-color: #eaeaea;
-        opacity: 0;
-        transition: all 0.3s;
-        will-change: transform;
-        z-index: 900;
-
-        .item-list__item {
-          display: inline-block;
-          width: 100%;
-          margin-right: 15px;
-          margin-bottom: 15px;
-
-          &:last-child {
-            margin-right: 0;
-            margin-bottom: 0;
-          }
-        }
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
       }
     }
-  }
-
-  #scroll-angle {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    color: var(--catalogue-word);
-    margin-right: 15px;
-    z-index: 5;
 
     &::before {
       content: "";
       position: absolute;
-      inset: 3px;
-      background-color: var(--body-bg);
-      z-index: -1;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-color: transparent;
     }
-  }
 
-  .router-buttons__btns {
-    display: flex;
-    align-items: center;
-    margin-right: -75px;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translate(-50%, 150%) scale(0.1);
+      opacity: 0;
+      border-bottom: 10px solid #eaeaea;
+      border-top: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      transition: all 0.3s;
+    }
 
-    .router-buttons__link {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-      margin-right: -65px;
+    &:last-child {
+      margin-right: 0;
+    }
 
-      &__item {
-        padding: 5px;
-        color: var(--primary-bg);
-        border-radius: 8px;
-        margin-left: 14px;
-        cursor: pointer;
+    .item-list {
+      position: absolute;
+      top: 43px;
+      left: 50%;
+      transform: translate(-50%, -60%) scale(0.0001);
+      padding: 10px 20px 10px;
+      background-color: var(--router-btn-bg);
+      opacity: 0;
+      transition: all 0.3s;
+      will-change: transform;
+      z-index: 900;
 
-        :deep(.iconfont) {
-          font-size: 28px;
-        }
+      .item-list__item {
+        display: inline-block;
+        width: 100%;
+        margin-right: 15px;
+        margin-bottom: 15px;
 
-        &:first-child {
-          margin-left: 0;
+        &:last-child {
+          margin-right: 0;
+          margin-bottom: 0;
         }
       }
     }
   }
+}
+
+#scroll-angle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  color: var(--catalogue-word);
+  margin-right: 15px;
+  z-index: 5;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    background-color: var(--body-bg);
+    z-index: -1;
+  }
+}
+
+.router-buttons__btns {
+  display: flex;
+  align-items: center;
+  margin-right: -75px;
+
+  .router-buttons__link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin-right: -65px;
+
+    &__item {
+      padding: 5px;
+      color: var(--primary-bg);
+      border-radius: 8px;
+      margin-left: 14px;
+      cursor: pointer;
+
+      :deep(.iconfont) {
+        font-size: 28px;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
 </style>

@@ -1,7 +1,8 @@
 <script setup>
-import { light, labelShow, scrollProgress, scrollAngle } from "@/store/index";
+import { light, labelShow } from "@/store/index";
 import { routerBtnList } from '@/store/router.js';
 import methods from '@/utils/customMethod';
+import scrollAngle from './scrollAngle.vue';
 
 const { handleLinkFn } = defineProps({
   handleLinkFn: {
@@ -36,15 +37,7 @@ const handleRouterFn = (path, front = '/article/') => {
   <!-- 移动端 -->
   <div class="router-button__btns__phone">
     <!-- 滚动条 -->
-    <div v-if="!isNaN(scrollProgress)"
-      ref="scrollAngleRef"
-      id="scroll-angle"
-      :style="{
-      background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${light.value ? '#000' : '#616161'
-        } ${scrollAngle}deg`,
-    }">
-      {{ scrollProgress }}
-    </div>
+    <scrollAngle />
 
     <!-- 展开按钮 -->
     <i v-close="true"
@@ -119,124 +112,123 @@ const handleRouterFn = (path, front = '/article/') => {
   </div>
 </template>
 
-<style lang="less"
-  scoped>
-  @import "./darkBtn.css";
+<style lang="less" scoped>
+@import "./darkBtn.css";
 
-  .router-button__btns__phone {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex: 1;
-    margin-top: 0.125rem;
+.router-button__btns__phone {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  margin-top: 0.125rem;
 
-    :deep(.iconfont) {
-      font-size: 1.5625rem !important;
-      cursor: pointer;
+  :deep(.iconfont) {
+    font-size: 1.5625rem !important;
+    cursor: pointer;
 
-      &:hover {
-        color: var(--primary-bg);
+    &:hover {
+      color: var(--primary-bg);
+    }
+  }
+
+  .phone-dom {
+    height: 100%;
+
+    .phone-dom__father {
+      position: relative;
+      width: 100%;
+      height: 2.5rem;
+
+      #dark-btn {
+        position: absolute;
+        top: -90%;
+        left: -20%;
       }
     }
 
-    .phone-dom {
-      height: 100%;
+    .phone-dom__title {
+      width: 100%;
+      font-size: 1rem;
+      margin-bottom: 1.55rem;
+      text-align: left;
+    }
 
-      .phone-dom__father {
-        position: relative;
-        width: 100%;
-        height: 2.5rem;
+    .phone-dome__list {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      overflow-y: auto;
+      margin-bottom: 1rem;
 
-        #dark-btn {
-          position: absolute;
-          top: -90%;
-          left: -20%;
-        }
-      }
-
-      .phone-dom__title {
-        width: 100%;
-        font-size: 1rem;
-        margin-bottom: 1.55rem;
-        text-align: left;
-      }
-
-      .phone-dome__list {
+      .phone-dome__item {
         display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        overflow-y: auto;
-        margin-bottom: 1rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        padding: .625rem 0;
+        margin-right: 5%;
+        margin-bottom: .9375rem;
+        border: .0625rem solid var(--primary-font);
+        border-radius: .5rem;
+        cursor: pointer;
 
-        .phone-dome__item {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: 30%;
-          padding: .625rem 0;
-          margin-right: 5%;
-          margin-bottom: .9375rem;
-          border: .0625rem solid var(--primary-font);
-          border-radius: .5rem;
-          cursor: pointer;
+        &.active {
+          border: .0625rem solid #303F9F;
+          background-color: #303F9F;
+          color: #fff;
 
-          &.active {
-            border: .0625rem solid #303F9F;
-            background-color: #303F9F;
-            color: #fff;
-
-            i {
-              color: #fff !important;
-            }
+          i {
+            color: #fff !important;
           }
+        }
 
-          &:nth-child(3) {
-            margin-right: 0;
+        &:nth-child(3) {
+          margin-right: 0;
+        }
+
+        &:hover {
+          border: .0625rem solid #303F9F;
+          background-color: #303F9F;
+          color: #fff;
+
+          i {
+            color: #fff !important;
           }
+        }
 
-          &:hover {
-            border: .0625rem solid #303F9F;
-            background-color: #303F9F;
-            color: #fff;
-
-            i {
-              color: #fff !important;
-            }
-          }
-
-          span {
-            font-size: 1.15rem;
-            margin-top: .75rem;
-          }
+        span {
+          font-size: 1.15rem;
+          margin-top: .75rem;
         }
       }
     }
-
-    .phone-dom__link__item {
-      display: inline-block;
-      padding: .3125rem .625rem;
-      border: .0625rem solid var(--primary-font);
-    }
   }
 
-  #scroll-angle {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.875rem;
-    height: 1.875rem;
-    color: var(--catalogue-word);
-    margin-right: .9375rem;
-    z-index: 5;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: .1875rem;
-      background-color: var(--body-bg);
-      z-index: -1;
-    }
+  .phone-dom__link__item {
+    display: inline-block;
+    padding: .3125rem .625rem;
+    border: .0625rem solid var(--primary-font);
   }
+}
+
+#scroll-angle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  color: var(--catalogue-word);
+  margin-right: .9375rem;
+  z-index: 5;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: .1875rem;
+    background-color: var(--body-bg);
+    z-index: -1;
+  }
+}
 </style>
