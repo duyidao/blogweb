@@ -1,20 +1,22 @@
 <script setup>
 defineProps({
-    loading: {
-        type: Boolean,
-        default: false
-    }
+  loading: {
+    type: Boolean,
+    default: false
+  }
 })
 </script>
 
 <template>
-    <div v-if="loading" class="loading">
-        <div class="my-loading"></div>
-    </div>
+  <div v-if="loading"
+    class="loading">
+    <div class="my-loading"></div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-.loading {
+<style lang="less"
+  scoped>
+  .loading {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,9 +27,9 @@ defineProps({
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.6);
     z-index: 9999;
-}
+  }
 
-.my-loading {
+  .my-loading {
     position: relative;
     width: 50px;
     height: 50px;
@@ -38,15 +40,15 @@ defineProps({
     border-radius: 100%;
 
     animation: circle infinite 0.75s linear;
-}
+  }
 
-@keyframes circle {
+  @keyframes circle {
     0% {
-        transform: rotate(0);
+      transform: rotate(0);
     }
 
     100% {
-        transform: rotate(360deg);
+      transform: rotate(360deg);
     }
-}
+  }
 </style>

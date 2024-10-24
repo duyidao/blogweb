@@ -14,6 +14,9 @@ import coverShape from '@/assets/img/music/shape.webp'
 import musicSoFar from '@/assets/music/so_far_away.mp3'
 import lrcSoFar from '@/assets/music/so far away.js'
 import coverSoFar from '@/assets/img/music/so far away.webp'
+import musicSomething from '@/assets/music/something.mp3'
+import lrcSomething from '@/assets/music/something.js'
+import coverSomething from '@/assets/img/music/something.webp'
 
 const musicRef = ref(null);
 const ap = ref(null)
@@ -51,11 +54,18 @@ onMounted(() => {
         cover: coverLike
       },
       {
-        name: 'so far away',
+        name: 'So far away',
         artist: 'Martin Garrix',
         url: musicSoFar,
         lrc: lrcSoFar,
         cover: coverSoFar
+      },
+      {
+        name: 'Something just like this',
+        artist: 'The Chainsmokers',
+        url: musicSomething,
+        lrc: lrcSomething,
+        cover: coverSomething
       },
     ]
   });
@@ -94,6 +104,9 @@ watch(() => light.value, () => {
       line-height: 20px;
     }
 
+    .aplayer-lrc {
+      height: 40px;
+    }
 
     button {
       min-width: 0;

@@ -146,7 +146,7 @@ export {componentOptions};
                   </div>
                 </div>
               </template>
-              <None text="暂无其他文章，敬请期待更新~" v-else />
+              <my-empty text="暂无其他文章，敬请期待更新~" v-else />
             </div>
           </div>
         </div>
