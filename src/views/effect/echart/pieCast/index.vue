@@ -236,14 +236,14 @@ setTimeout(() => {
 </script>
 
 <template>
-  <IframeItem title="饼图轮播"
+  <IframeItemCode title="饼图轮播"
     v-model="code"
     disabled
     type="javascript"
     :domControl="domControlData">
     <pie-chart ref="pieChartRef"
       :data="data" />
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style scoped></style>

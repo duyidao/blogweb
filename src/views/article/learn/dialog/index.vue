@@ -179,7 +179,7 @@ button {
 </script>
 
 <template>
-  <IframeItem title="弹窗组件"
+  <IframeItemCode title="弹窗组件"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
     v-model="code"
@@ -206,7 +206,7 @@ button {
         </div>
       </template>
     </Dialog>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less"

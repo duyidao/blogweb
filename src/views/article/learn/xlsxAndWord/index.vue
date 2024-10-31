@@ -138,7 +138,7 @@ componentList.value = list.map((item) => ({
 
 <template>
   <div class="iframe-box xlsx-word">
-    <IframeItem v-for="item in componentList"
+    <IframeItemCode v-for="item in componentList"
       :key="item.name"
       :title="item.title"
       :subtitle="item.subtitle"
@@ -150,7 +150,7 @@ componentList.value = list.map((item) => ({
       disabled
       column>
       <component :is="item.component"/>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

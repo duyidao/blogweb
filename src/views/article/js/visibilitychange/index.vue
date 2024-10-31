@@ -33,14 +33,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <IframeItem title="页面可见度"
+  <IframeItemCode title="页面可见度"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
     v-model="code"
     type="javascript"
     disabled>
     页面可见度
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style scoped></style>

@@ -38,13 +38,13 @@ const goRouter = (item, index) => {
       :class="{ 'item-list-active': item.children?.length && showBtn[index] }"
       @mouseenter="showItemFn(index, true)"
       @mouseleave="showItemFn(index, false)">
-      <my-button :word="item.name"
+      <mouse-glow-button :word="item.name"
         :iconName="item.icon" />
       <div class="item-list">
         <div v-for="(e, i) in item.children"
           :key="i"
           class="item-list__item">
-          <my-button :iconName="e.icon"
+          <mouse-glow-button :iconName="e.icon"
             :word="e.name"
             @click="goRouter(e, index)" />
         </div>
@@ -53,7 +53,7 @@ const goRouter = (item, index) => {
   </div>
 
   <!-- 右侧其他 -->
-  <div style="display: flex; align-items: center;">
+  <div style="display: flex; align-items: center; height: 100%;">
     <!-- 滚动条 -->
     <scrollAngle />
 
@@ -161,30 +161,11 @@ const goRouter = (item, index) => {
   }
 }
 
-#scroll-angle {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  color: var(--catalogue-word);
-  margin-right: 15px;
-  z-index: 5;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 3px;
-    background-color: var(--body-bg);
-    z-index: -1;
-  }
-}
-
 .router-buttons__btns {
   display: flex;
   align-items: center;
   margin-right: -75px;
+  height: 100%;
 
   .router-buttons__link {
     display: flex;

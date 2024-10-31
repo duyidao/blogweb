@@ -79,7 +79,7 @@ export { componentOptions };
       <span>{{ title }}</span>
       <span v-if="subtitle"
         class="iframe-box-title-small">{{ subtitle }}</span>
-      <my-button v-if="needCode"
+      <mouse-glow-button v-if="needCode"
         class="iframe-box-button"
         :word="showCode ? showCodeButtonTitle : buttonTitle"
         @click="handleClick" />

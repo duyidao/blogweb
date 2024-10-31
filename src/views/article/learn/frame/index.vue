@@ -107,7 +107,7 @@ const onChangeFn = async e => {
 </script>
 
 <template>
-  <IframeItem title="画面帧"
+  <IframeItemCode title="画面帧"
     column
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
@@ -119,7 +119,7 @@ const onChangeFn = async e => {
     <myUpload @change="onChangeFn" />
     <div ref="box"
       class="box-img"></div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less"

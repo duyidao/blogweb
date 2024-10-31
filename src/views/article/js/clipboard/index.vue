@@ -102,7 +102,7 @@ componentList.value = list.map((item) => ({
 
 <template>
   <div class="iframe-box">
-    <IframeItem v-for="item in componentList"
+    <IframeItemCode v-for="item in componentList"
       :key="item.name"
       :title="item.title"
       v-model="item.model"
@@ -112,7 +112,7 @@ componentList.value = list.map((item) => ({
       :height="item.height"
       disabled>
       <component :is="item.component"/>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

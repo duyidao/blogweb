@@ -96,7 +96,7 @@ const code = ref(`<svg viewBox="0 0 500 300">
 </script>
 
 <template>
-  <IframeItem title="纹理适配"
+  <IframeItemCode title="纹理适配"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
     v-model="code"
@@ -168,7 +168,7 @@ const code = ref(`<svg viewBox="0 0 500 300">
         {{ inputValue }}
       </text>
     </svg>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less"

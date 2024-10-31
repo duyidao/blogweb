@@ -479,7 +479,7 @@ componentList.value = list.map((item) => ({
 
 <template>
   <div class="iframe-box jsx-comp">
-    <IframeItem v-for="item in componentList"
+    <IframeItemCode v-for="item in componentList"
       :key="item.name"
       :title="item.title"
       buttonTitle="源码展示"
@@ -490,7 +490,7 @@ componentList.value = list.map((item) => ({
       disabled
       column>
       <component :is="item.component"/>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

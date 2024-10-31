@@ -136,7 +136,7 @@ const handleChange = () => {
 </script>
 
 <template>
-  <IframeItem title="数字转中文"
+  <IframeItemCode title="数字转中文"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
     v-model="code"
@@ -162,7 +162,7 @@ const handleChange = () => {
         <div class="item-word ">转换后：{{ item.word }}</div>
       </div>
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

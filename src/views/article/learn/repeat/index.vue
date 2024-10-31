@@ -36,7 +36,7 @@ export const signProp = (content, handler) => {
 </script>
 
 <template>
-  <IframeItem title="重复小组件"
+  <IframeItemCode title="重复小组件"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
     v-model="code"
@@ -44,7 +44,7 @@ export const signProp = (content, handler) => {
     height="480"
     disabled>
     <button @click="clickFn">click me</button>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style scoped></style>

@@ -58,7 +58,7 @@ const code = ref(`  @keyframes spread {
 
 <template>
   <div class="iframe-box">
-    <IframeItem v-model="code"
+    <IframeItemCode v-model="code"
       buttonTitle="源码展示"
       showCodeButtonTitle="隐藏源码"
       :disabled="true"
@@ -73,7 +73,7 @@ const code = ref(`  @keyframes spread {
         <span>U</span>
         <span>L</span>
       </div>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

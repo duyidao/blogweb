@@ -5,16 +5,6 @@ import methods from '@/utils/customMethod';
 import PhoneDom from "./phone_dom.vue";
 import PCDom from "./pc_dom.vue";
 
-// logo展示文字还是按钮
-const logoHover = ref(true);
-const mouseenterFn = () => {
-  if (screenWidth.value < 768) return;
-  logoHover.value = false;
-};
-const mouseleaveFn = () => {
-  logoHover.value = true;
-};
-
 // 点击跳转项目外路由
 const handleLinkFn = (type) => {
   switch (type) {
@@ -60,18 +50,13 @@ export { componentOptions };
 <template>
   <div class="router-buttons">
     <!-- 左侧logo -->
-    <div class="router-buttons__logo"
-      @mouseenter="mouseenterFn"
-      @mouseleave="mouseleaveFn"
-      @click="methods.$goRouter('/')">
-      <span v-if="logoHover"
-        class="logo__text">
+    <div class="router-buttons__logo">
+      <span
+        class="logo__text"
+        title="首页"
+        @click="methods.$goRouter('/')">
         刀刀小站
       </span>
-      <my-button v-else
-        full
-        iconName="icon-shouye"
-        @click="methods.$goRouter('/')" />
     </div>
 
     <!-- pc端展示 -->
@@ -104,13 +89,13 @@ export { componentOptions };
     z-index: 9990;
 
     .router-buttons__logo {
-      width: 120px;
+      width: 140px;
       cursor: pointer;
 
       .logo__text {
         font-family: "dao";
         font-weight: 600;
-        font-size: 25px;
+        font-size: 30px;
         letter-spacing: 2px;
         color: var(--primary-bg);
       }

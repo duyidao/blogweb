@@ -52,7 +52,7 @@ const code = ref(`const clickFn = () => {
 </script>
 
 <template>
-  <IframeItem title="拾色器"
+  <IframeItemCode title="拾色器"
     class="iframe-box"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
@@ -66,7 +66,7 @@ const code = ref(`const clickFn = () => {
       ref="spanRef">
       <span>{{ colorVal }}</span>
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

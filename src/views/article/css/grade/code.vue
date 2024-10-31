@@ -41,7 +41,7 @@ const clickFn = () => {
   <div class="iframe-box">
     <div class="iframe-box-title">
       <span>{{ value.toUpperCase() }}</span>
-      <my-button @click="clickFn" word="确认" />
+      <mouse-glow-button @click="clickFn" word="确认" />
     </div>
     <div class="iframe-box-content">
       <Editor

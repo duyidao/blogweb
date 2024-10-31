@@ -5,7 +5,7 @@ const vminCode = ref(`width: 100vmin;`);
 
 <template>
   <div class="iframe-box box">
-    <IframeItem title="vmax"
+    <IframeItemCode title="vmax"
       class="iframe-box"
       v-model="vmaxCode">
       <div class="box-img">
@@ -15,8 +15,8 @@ const vminCode = ref(`width: 100vmin;`);
           :style="vmaxCode"
           alt="vmax">
       </div>
-    </IframeItem>
-    <IframeItem title="wmin"
+    </IframeItemCode>
+    <IframeItemCode title="wmin"
       class="iframe-box"
       v-model="vminCode">
       <div class="box-img">
@@ -25,7 +25,7 @@ const vminCode = ref(`width: 100vmin;`);
           :style="vminCode"
           alt="vmin">
       </div>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

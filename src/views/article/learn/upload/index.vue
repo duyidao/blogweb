@@ -145,7 +145,7 @@ const fileReaderChange = (e, type) => {
 
 <template>
   <div class="iframe-box">
-    <IframeItem class="upload-box"
+    <IframeItemCode class="upload-box"
       :needCode="false"
       title="前置知识">
       <ul class="list-style-circle">
@@ -205,8 +205,8 @@ const fileReaderChange = (e, type) => {
           </div>
         </li>
       </ul>
-    </IframeItem>
-    <IframeItem v-for="item in componentList"
+    </IframeItemCode>
+    <IframeItemCode v-for="item in componentList"
       :key="item.name"
       :title="item.title"
       buttonTitle="源码展示"
@@ -217,7 +217,7 @@ const fileReaderChange = (e, type) => {
       disabled
       column>
       <component :is="item.component"/>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

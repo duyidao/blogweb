@@ -57,7 +57,7 @@ const clickFn = async (index) => {
 </script>
 
 <template>
-  <IframeItem column
+  <IframeItemCode column
     ref="iframeBox"
     class="iframe-box box"
     :needCode="false"
@@ -78,7 +78,7 @@ const clickFn = async (index) => {
       class="loading">
       加载中，请稍后...
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

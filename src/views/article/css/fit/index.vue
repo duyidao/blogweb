@@ -5,13 +5,13 @@ mix-blend-mode: difference;`);
 
 <template>
   <div class="iframe-box">
-    <IframeItem v-model="code"
+    <IframeItemCode v-model="code"
       title="文字填充">
       <div class="banner">
         <div :style="code"
           class="title">前端搬砖人&nbsp;&nbsp;&nbsp;&nbsp;每天都努力</div>
       </div>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

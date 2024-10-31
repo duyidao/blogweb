@@ -63,7 +63,7 @@ const init = () => {
 </script>
 
 <template>
-  <IframeItem title="变量计算"
+  <IframeItemCode title="变量计算"
     class="iframe-box"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
@@ -74,7 +74,7 @@ const init = () => {
     <div ref="boxRef" class="setProperty-box">
       <div class="item"></div>
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

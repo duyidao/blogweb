@@ -78,7 +78,7 @@ const blurFn = (e) => {
 </script>
 
 <template>
-  <IframeItem title="input组件封装"
+  <IframeItemCode title="input组件封装"
     column
     v-model="code"
     disabled
@@ -100,7 +100,7 @@ const blurFn = (e) => {
       <inputComp type="number"
         v-model:msg="inputValueNum" />
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less"

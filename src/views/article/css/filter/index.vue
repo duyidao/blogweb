@@ -22,14 +22,14 @@ componentList.value = list.map((item) => ({
 <template>
   <div class="iframe-box"
     id="iframe-box">
-    <IframeItem v-for="item in componentList"
+    <IframeItemCode v-for="item in componentList"
       :key="item.name"
       :title="item.title"
       :subtitle="item.subtitle + item.model.replace(`filter: ${item.name}(`, '').replace(');', '')"
       v-model="item.model">
       <component :is="item.component"
         :styleCode="item.model" />
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

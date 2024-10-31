@@ -24,4 +24,9 @@ export {componentOptions};
 </template>
 
 <style lang="less" scoped>
+.effect {
+  > div {
+    cursor: pointer;
+  }
+}
 </style>

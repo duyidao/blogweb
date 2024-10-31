@@ -17,7 +17,7 @@ const handleMouseLeave = () => {
 
 <template>
   <div class="iframe-box banner">
-    <IframeItem title="下划线动画"
+    <IframeItemCode title="下划线动画"
       v-model="lineCode">
       <div class="line-title"
         ref="divRef"
@@ -26,7 +26,7 @@ const handleMouseLeave = () => {
         @mouseleave="handleMouseLeave">
         前端搬砖人每天都努力
       </div>
-    </IframeItem>
+    </IframeItemCode>
   </div>
 </template>
 

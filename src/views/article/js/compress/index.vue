@@ -209,7 +209,7 @@ const setImgFileEmptyFn = () => {
 </script>
 
 <template>
-  <IframeItem title="图片压缩"
+  <IframeItemCode title="图片压缩"
     subtitle="请选择jpg格式图片"
     class="iframe-box"
     buttonTitle="源码展示"
@@ -238,7 +238,7 @@ const setImgFileEmptyFn = () => {
           alt="压缩后" />
       </div>
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

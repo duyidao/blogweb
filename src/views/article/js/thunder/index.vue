@@ -26,7 +26,7 @@ const clickFn = () => {
 </script>
 
 <template>
-  <IframeItem title="迅雷下载"
+  <IframeItemCode title="迅雷下载"
     column
     class="iframe-box box"
     buttonTitle="源码展示"
@@ -39,7 +39,7 @@ const clickFn = () => {
       target="_blank">下载链接1</a>
     <a href="https://ts1.cn.mm.bing.net/th/id/R-C.57384e4c2dd256a755578f00845e60af?rik=uy9%2bvT4%2b7Rur%2fA&riu=http%3a%2f%2fimg06file.tooopen.com%2fimages%2f20171224%2ftooopen_sy_231021357463.jpg&ehk=whpCWn%2byPBvtGi1%2boY1sEBq%2frEUaP6w2N5bnBQsLWdo%3d&risl=&pid=ImgRaw&r=0"
       target="_blank">下载链接2</a>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style scoped>

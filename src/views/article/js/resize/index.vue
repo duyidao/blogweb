@@ -34,7 +34,7 @@ export default {
 </script>
 
 <template>
-  <IframeItem title="resize"
+  <IframeItemCode title="resize"
     :subtitle="`父组件 宽度为${width}`"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
@@ -49,7 +49,7 @@ export default {
       :style="{ 'width': width - 20 + 'px' }">
       子组件，宽度为{{ width - 20 }}
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

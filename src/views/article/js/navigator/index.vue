@@ -24,7 +24,7 @@ const code = `const clickFn = () => {
 </script>
 
 <template>
-  <IframeItem class="iframe-box"
+  <IframeItemCode class="iframe-box"
     title="拾色器"
     buttonTitle="源码展示"
     showCodeButtonTitle="隐藏源码"
@@ -38,7 +38,7 @@ const code = `const clickFn = () => {
       <div class="">当前延迟：{{ info.rtt || 0 }}ms</div>
       <div class="">当前带宽速度：{{ info.downlink || 0 }}</div>
     </div>
-  </IframeItem>
+  </IframeItemCode>
 </template>
 
 <style lang="less" scoped>

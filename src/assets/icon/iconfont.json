@@ -6,6 +6,41 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "36238101",
+      "name": "标题边框图",
+      "font_class": "biaotibiankuangtu",
+      "unicode": "e904",
+      "unicode_decimal": 59652
+    },
+    {
+      "icon_id": "1160125",
+      "name": "css",
+      "font_class": "css",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "9155326",
+      "name": "图例",
+      "font_class": "tuli",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "940010",
+      "name": "效果",
+      "font_class": "xiaoguo",
+      "unicode": "e778",
+      "unicode_decimal": 59256
+    },
+    {
+      "icon_id": "1263223",
+      "name": "echart",
+      "font_class": "echart",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
       "icon_id": "729521",
       "name": "返回顶部 (3)",
       "font_class": "fanhuidingbu3",
@@ -74,13 +109,6 @@
       "font_class": "xuexi",
       "unicode": "e63b",
       "unicode_decimal": 58939
-    },
-    {
-      "icon_id": "16459945",
-      "name": "css",
-      "font_class": "css",
-      "unicode": "ec3a",
-      "unicode_decimal": 60474
     },
     {
       "icon_id": "1107033",

@@ -8,13 +8,13 @@ const imgCode = ref(`-webkit-box-reflect: below 15px linear-gradient(transparent
   <div class="below">
     <div class="iframe-box"
       id="iframe-box">
-      <IframeItem v-model="pCode" title="文字倒影">
+      <IframeItemCode v-model="pCode" title="文字倒影">
         <p :style="pCode">daodao</p>
-      </IframeItem>
-      <IframeItem v-model="imgCode" title="图片倒影">
+      </IframeItemCode>
+      <IframeItemCode v-model="imgCode" title="图片倒影">
         <img :style="imgCode" src="@/assets/img/css/fit.jpg"
           alt="图片倒影">
-      </IframeItem>
+      </IframeItemCode>
     </div>
   </div>
 </template>
