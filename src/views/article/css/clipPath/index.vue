@@ -9,8 +9,8 @@ const codeData = {
 };
 
 const list = getDict('css.clipPath');
-console.log('list', list, cssChildData.value, cssChildData.value[list[0].name]);
-const componentList = shallowRef([]);
+const componentList = ref([]);
+
 componentList.value = list.map((item) => ({
   ...item,
   model: codeData[item.name + 'Code'],

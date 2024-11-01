@@ -34,8 +34,8 @@ const handleMouseLeave = () => {
 <style lang="less"
   scoped>
   .box {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     cursor: pointer;
 
     img {
@@ -53,8 +53,8 @@ const handleMouseLeave = () => {
 
   @media screen and (max-width: 768px) {
     .box {
-      width: 9.375rem;
-      height: 9.375rem;
+      width: 12.5rem;
+      height: 12.5rem;
     }
   }
 </style>

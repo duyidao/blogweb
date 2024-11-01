@@ -26,12 +26,15 @@ const effectRef = shallowRef(null);
   padding: 20px;
   border: 50px solid transparent;
   border-image-source: url("./border.svg");
+  font-size: 14px;
+  color: aqua;
 }
 
 @media screen and (max-width: 768px) {
   .box {
     padding: 1.25rem;
     border-width: 3.125rem;
+    font-size: 0.875rem;
   }
 }
 </style>

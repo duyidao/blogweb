@@ -7,11 +7,6 @@ const { width, height } = defineProps({
   },
   //svg矢量图的名字
   name: String,
-  //svg图标的颜色
-  color: {
-    type: String,
-    default: ""
-  },
   //svg宽度
   width: {
     type: [String, Number],
@@ -33,8 +28,7 @@ const heightUnit = computed(() => typeof height === 'string' && height.includes(
 <template>
   <svg :style="{ '--width': widthUnit, '--height': heightUnit }"
     ref="svgRef">
-    <use :xlink:href="prefix + name"
-      :fill="color"></use>
+    <use :xlink:href="prefix + name"></use>
   </svg>
 </template>
 
