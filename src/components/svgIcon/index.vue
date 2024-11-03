@@ -26,7 +26,7 @@ const heightUnit = computed(() => typeof height === 'string' && height.includes(
 </script>
 
 <template>
-  <svg :style="{ '--width': widthUnit, '--height': heightUnit }"
+  <svg v-bind="$attrs" :style="{ '--width': widthUnit, '--height': heightUnit }"
     ref="svgRef">
     <use :xlink:href="prefix + name"></use>
   </svg>

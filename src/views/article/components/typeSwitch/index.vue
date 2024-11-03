@@ -7,7 +7,6 @@ const activeIndex = computed(() => route.path.split('/')[2] === 'css' ? 0: 1);
 
 const handleLinkFn = (item, index) => {
   if (!item.base || !item.path) return;
-  activeIndex.value = index;
   methods.$goRouter(item.path, item.base);
 }
 </script>

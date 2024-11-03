@@ -2,7 +2,9 @@
 import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { useMeta } from "vue-meta";
+import methods from '@/utils/customMethod';
 
+const route = useRoute();
 const routeList = ref([]);
 
 // 从数组中筛选出6个数据
@@ -67,6 +69,10 @@ const handleGiteeFn = () => {
   a.click();
   a.remove();
 };
+
+const handleBackFn = () => {
+  methods.$goRouter(route.path.split('/')[2], '/article/');
+}
 </script>
 
 <script>
@@ -83,6 +89,7 @@ export {componentOptions};
     <div class="catalogue-title">
       <p class="catalogue-title-big">
         {{ routeNow.title }}
+        <svg-icon title="返回上一页" name="zuojiantou" @click="handleBackFn"></svg-icon>
       </p>
       <div class="catalogue-title-info">
         <p>{{ routeNow.info }}</p>
@@ -168,6 +175,15 @@ export {componentOptions};
       margin-bottom: 30px;
       color: var(--catalogue-title);
       font-family: 'black';
+
+      svg {
+        width: 30px;
+        height: 30px;
+        fill: var(--catalogue-title);
+        border: 1px solid var(--catalogue-title);
+        border-radius: 50%;
+        cursor: pointer;
+      }
     }
 
     .catalogue-title-info {
@@ -399,6 +415,13 @@ export {componentOptions};
       .catalogue-title-big {
         font-size: 2.5rem;
         margin-bottom: 1.875rem;
+
+        svg {
+          width: 1.325rem;
+          height: 1.325rem;
+          border-width: .0625rem;
+          padding: .15rem;
+        }
       }
 
       .catalogue-title-info {

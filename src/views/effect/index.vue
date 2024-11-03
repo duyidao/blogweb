@@ -19,14 +19,27 @@ export {componentOptions};
 
 <template>
   <div class="effect">
-    <div v-for="item in generateEffectRoutes" :key="item.path" @click="handleInfoFn(item)">{{ item }}</div>
+    <div v-for="item in generateEffectRoutes" :key="item.path" @click="handleInfoFn(item)">
+      <img :src="item.meta.img" alt="">
+      <div>
+        {{ item.meta.title }}
+      </div>
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 .effect {
-  > div {
-    cursor: pointer;
-  }
+  column-count: 4;
+    column-gap: 20px;
+    grid-template-rows: masonry;
+    gap: 20px;
+
+    > div {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      cursor: pointer;
+    }
 }
 </style>
