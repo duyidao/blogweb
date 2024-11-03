@@ -116,4 +116,10 @@ componentList.value = list.map((item) => ({
   </div>
 </template>
 
-<style scoped></style>
+<style lang="less" scoped>
+.iframe-box {
+  div, li {
+    color: var(--drop-bg);
+  }
+}
+</style>

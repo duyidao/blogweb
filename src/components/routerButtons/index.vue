@@ -83,7 +83,7 @@ export { componentOptions };
     align-items: center;
     width: 100%;
     height: 60px;
-    margin: 0 0 40px;
+    margin: 0 0 25px;
     background-color: var(--body-bg);
     padding: 0 20px;
     z-index: 9990;
@@ -93,11 +93,23 @@ export { componentOptions };
       cursor: pointer;
 
       .logo__text {
+        position: relative;
         font-family: "dao";
         font-weight: 600;
-        font-size: 30px;
+        font-size: 32px;
         letter-spacing: 2px;
         color: var(--primary-bg);
+
+        &::after {
+          content: '刀刀小站';
+          position: absolute;
+          left: 0;
+          color: #000;
+          transform: translate(-16px, 5px) scaleY(0.5) skew(50deg);
+          z-index: -1;
+          mask: linear-gradient(transparent, #000);
+          filter: blur(4px);
+        }
       }
     }
   }

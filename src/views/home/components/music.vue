@@ -90,7 +90,6 @@ watch(() => light.value, () => {
   font-family: "黑体";
   font-size: 25px;
   box-shadow: 0 0 8px 1px #ccc;
-  overflow-y: scroll;
   margin: 0;
 
   &.aplayer {
@@ -111,6 +110,12 @@ watch(() => light.value, () => {
     button {
       min-width: 0;
     }
+  }
+
+  :deep(.aplayer-list) {
+    height: 190px;
+
+    overflow-y: scroll;
   }
 }
 
@@ -185,10 +190,10 @@ watch(() => light.value, () => {
     }
 
     :deep(.aplayer-list) {
-      max-height: 15.625rem !important;
+      height: 11.875rem !important;
 
       ol {
-        max-height: 15.625rem;
+        max-height: 11.875rem;
 
         li {
           height: 2rem;

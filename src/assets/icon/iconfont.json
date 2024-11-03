@@ -6,6 +6,13 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "29823461",
+      "name": "图例",
+      "font_class": "tuli1",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
       "icon_id": "2815741",
       "name": "右箭头",
       "font_class": "youjiantou",

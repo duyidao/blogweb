@@ -216,7 +216,7 @@ onUnmounted(() => {
           <img :src="item.weatherImg"
             alt="">
           <div>
-            <div class="weather-daytemp">{{ item.daytemp }}℃</div>
+            <div class="weather-daytemp"><span>{{ item.daytemp }}</span>℃</div>
             <div class="weather-dayweather">{{ item.dayweather }}</div>
           </div>
         </div>
@@ -290,6 +290,7 @@ onUnmounted(() => {
           font-size: 40px;
           font-weight: 600;
           margin-bottom: 10px;
+          font-family: 'robo';
         }
 
         .today__content__weather {
@@ -322,6 +323,7 @@ onUnmounted(() => {
       .weather-date {
         font-size: 18px;
         font-weight: 600;
+        font-family: 'robo';
       }
 
       .weather-msg {
@@ -335,10 +337,16 @@ onUnmounted(() => {
           margin-right: 15px;
         }
 
+        .weather-daytemp span {
+          font-size: 16px;
+          margin-right: 4px;
+        }
+
         >div {
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
+          font-family: 'robo';
           height: 100%;
         }
       }
@@ -415,6 +423,11 @@ onUnmounted(() => {
         .weather-msg {
           height: 3.125rem;
           margin-top: .9375rem;
+
+          .weather-daytemp span {
+            font-size: 1rem;
+            margin-right: .25rem;
+          }
 
           img {
             height: 3.125rem;

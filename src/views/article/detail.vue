@@ -88,7 +88,7 @@ export {componentOptions};
         <p>{{ routeNow.info }}</p>
         <ul>
           <li v-for="(item, index) in routeNow.tags" :key="index">
-            <i class="iconfont icon-tuli"></i>
+            <svg-icon width="14px" name="tuli1"></svg-icon>
             <span>{{ item }}</span>
           </li>
         </ul>
@@ -161,7 +161,7 @@ export {componentOptions};
   height: 100%;
 
   .catalogue-title {
-    margin: 20px 0 50px;
+    margin: 0 0 35px;
 
     .catalogue-title-big {
       font-size: 40px;
@@ -171,25 +171,24 @@ export {componentOptions};
     }
 
     .catalogue-title-info {
-      display: flex;
-      align-items: center;
       font-size: 14px;
       font-family: 'sans';
       color: var(--catalogue-title);
 
-      p {
-        margin-right: 75px;
-      }
-
       ul {
         display: flex;
         align-items: center;
+        justify-content: end;
+        margin-top: 10px;
 
         li {
+          display: flex;
+          align-items: center;
           margin-right: 16px;
 
-          i {
+          svg {
             margin-right: 5px;
+            fill: var(--catalogue-title);
           }
         }
       }
@@ -395,7 +394,7 @@ export {componentOptions};
 @media screen and (max-width: 1200px) {
   .catalogue {
     .catalogue-title {
-      margin: 1.25rem 0 3.125rem;
+      margin: 0 0 2.1875rem;
 
       .catalogue-title-big {
         font-size: 2.5rem;
@@ -405,16 +404,13 @@ export {componentOptions};
       .catalogue-title-info {
         font-size: 0.875rem;
 
-        p {
-          margin-right: 4.6875rem;
-        }
-
         ul {
+          margin-top: .625rem;
           li {
             margin-right: 1rem;
 
-            i {
-              margin-right: .3125rem;
+            svg {
+              margin-right: 5px;
             }
           }
         }

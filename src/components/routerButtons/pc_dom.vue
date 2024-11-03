@@ -23,9 +23,10 @@ const showItemFn = (index, type) => {
 
 // 点击跳转项目内路由
 const goRouter = (item, index) => {
-  if (!item.base || !item.path) return;
-  methods.$goRouter(item.path, item.base);
-  showItemFn(index, false);
+  const { base, path } = item.children[0];
+
+  if (!base || !path) return;
+  methods.$goRouter(path, base);
 };
 </script>
 
@@ -39,8 +40,9 @@ const goRouter = (item, index) => {
       @mouseenter="showItemFn(index, true)"
       @mouseleave="showItemFn(index, false)">
       <mouse-glow-button :word="item.name"
-        :iconName="item.icon" />
-      <div class="item-list">
+        :iconName="item.icon"
+        @click="goRouter(item, index)" />
+      <!-- <div class="item-list">
         <div v-for="(e, i) in item.children"
           :key="i"
           class="item-list__item">
@@ -48,7 +50,7 @@ const goRouter = (item, index) => {
             :word="e.name"
             @click="goRouter(e, index)" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

@@ -6,6 +6,7 @@ export const loading = ref(false); // 加载中
 export const routerBtnList = ref([
     {
       name: "刀刀博客效果",
+      title: '刀刀博客文档效果',
       icon: "icon-liebiao",
       children: [
         {
@@ -13,18 +14,14 @@ export const routerBtnList = ref([
           base: "/article/",
           path: "css",
           icon: "icon-css",
+          subtitle: '样式效果实现，搭配源码食用；修改属性参数，查看最新效果',
         },
         {
           name: "Javascript",
           base: "/article/",
           path: "js",
           icon: "icon-js",
-        },
-        {
-          name: "Learn",
-          base: "/article/",
-          path: "learn",
-          icon: "icon-xuexi",
+          subtitle: 'Web API 妙用多，灵活巧用效果现',
         },
       ],
     },

@@ -182,11 +182,6 @@ onMounted(() => {
 
 <style lang="less" scoped>
 div {
-  padding: 16px 0;
-  border: 1px solid var(--primary-info);
-  color: var(--primary-info);
-  border-radius: 20px;
-
   ol {
     width: 100%;
     height: 400px;
@@ -196,17 +191,12 @@ div {
       list-style: auto;
       line-height: 1.5;
       font-size: 14px;
-      color: var(--primary-info);
     }
   }
 }
 
 @media screen and (max-width: 768px) {
   div {
-    padding: 1rem 0;
-    border: .0625rem solid var(--primary-info);
-    border-radius: 1.25rem;
-
     ol {
       height: 25rem;
       padding: 0 2rem;

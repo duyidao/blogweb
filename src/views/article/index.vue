@@ -3,6 +3,7 @@ import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { type } from "@/store/index.js";
 import { useMeta } from "vue-meta";
+import methods from '@/utils/customMethod';
 import TypeSwitch from './components/typeSwitch/index.vue';
 
 const router = useRouter();
@@ -41,9 +42,7 @@ watch(
 const articleItemArr = ref([]);
 
 const routerFn = (item) => {
-  router.push({
-    path: "/detail/" + item.path,
-  });
+  methods.$goRouter(item.path, "/detail/");
 };
 </script>
 
@@ -59,15 +58,15 @@ export {componentOptions};
 <template>
   <div style="width: 100%">
     <div class="article-list">
-      <TypeSwitch :title="`${routeNow.articleType} 相关模块`"
-        v-model="type" />
+      <TypeSwitch />
       <div :class="{
         'article-item-list': type === 'list',
         'article-item-img': type === 'img',
       }">
         <div v-for="(item, index) in routeList"
           :key="index"
-          class="article-item  transition-transform">
+          v-slide-in
+          class="article-item">
           <div class="article-item-link"
             @click.stop="routerFn(item)">
             <img :src="item.meta.img"
@@ -80,7 +79,10 @@ export {componentOptions};
               <div class="content-tag-list">
                 <span v-for="(tag, index) in item.meta.tags"
                   :key="index"
-                  class="content-tag">{{ tag }}</span>
+                  class="content-tag">
+                  <svg-icon name="tuli"></svg-icon>
+                  {{ tag }}
+                </span>
               </div>
             </div>
           </div>
@@ -94,12 +96,10 @@ export {componentOptions};
   scoped>
   .article-list {
     width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
 
     .article-item {
-      animation: slide-in 0.6s 0.4s backwards;
-      will-change: transform;
-      visibility: visible;
-      overflow: hidden;
       border-radius: 10px;
       background-color: var(--catalogue-bg);
       margin-bottom: 20px;
@@ -114,10 +114,19 @@ export {componentOptions};
         text-align: right;
 
         .content-tag {
+          display: flex;
+          align-items: center;
           font-family: 'sans';
           font-size: 12px !important;
           margin-left: 10px !important;
           color: var(--catalogue-word) !important;
+
+          svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--catalogue-word);
+            margin-right: 5px;
+          }
         }
       }
     }
@@ -139,7 +148,6 @@ export {componentOptions};
         }
 
         .content {
-          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -156,7 +164,6 @@ export {componentOptions};
             }
 
             &.content-info {
-              flex: 1;
               margin: 15px 0;
               font-size: 16px;
               overflow: hidden;
@@ -215,7 +222,6 @@ export {componentOptions};
               }
 
               &.content-info {
-                flex: 1;
                 margin: 12px 0;
                 font-size: 16px;
                 overflow: hidden;
@@ -240,6 +246,12 @@ export {componentOptions};
           .content-tag {
             font-size: .75rem !important;
             margin-left: .625rem !important;
+
+            svg {
+              width: .875rem;
+              height: .875rem;
+              margin-right: .3125rem;
+            }
           }
         }
       }
@@ -311,7 +323,7 @@ export {componentOptions};
     }
   }
 
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1300px) {
     .article-list {
       .article-item-list {
         flex-direction: row;
@@ -376,7 +388,7 @@ export {componentOptions};
     }
   }
 
-  @media screen and (min-width: 1600px) {
+  @media screen and (min-width: 1500px) {
     .article-list {
       .article-item-img {
         .article-item {
@@ -395,62 +407,12 @@ export {componentOptions};
     }
   }
 
-  @media screen and (min-width: 1800px) {
-    .article-list {
-      .article-item-img {
-        .article-item {
-          width: 14.58%;
-
-          &:nth-child(6n) {
-            margin-right: 0 !important;
-          }
-
-          &:nth-child(3n),
-          &:nth-child(4n),
-          &:nth-child(5n) {
-            margin-right: 2.5%;
-          }
-        }
-      }
-    }
-  }
-
-  @media screen and (min-width: 2100px) {
-    .article-list {
-      .article-item-list {
-        .article-item {
-          width: 33%;
-        }
-      }
-    }
-  }
-
   @media screen and (min-width: 800px) {
     .article-item {
       &:hover {
         transform: translate(0, -3px);
         box-shadow: 0px 0px 3px var(--primary-border);
       }
-    }
-  }
-
-  .article-item-show {
-    animation-name: slide-up-animation;
-    animation-duration: 0.3s;
-    /* 设置动画持续时间 */
-    animation-delay: 0.5s;
-    animation-iteration-count: 1;
-  }
-
-  @keyframes slide-in {
-    0% {
-      transform: translateY(20px);
-      opacity: 0;
-    }
-
-    100% {
-      transform: translateY(0);
-      opacity: 1;
     }
   }
 </style>

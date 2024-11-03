@@ -6,7 +6,6 @@ const childComp = import.meta.glob([`./**/**/components/**.vue`]);
 
 export const cssChildData = shallowRef({});
 export const jsChildData = shallowRef({});
-export const learnChildData = shallowRef({});
 
 // 获取名称的函数
 const getCompNameFn = (key) => {
@@ -25,11 +24,6 @@ Object.entries(childComp).forEach(([path, component]) => {
     let asyncComponent = jsChildData.value[name] || null;
     asyncComponent = defineAsyncComponent(component);
     jsChildData.value[name] = asyncComponent;
-  }
-  else {
-    let asyncComponent = learnChildData.value[name] || null;
-    asyncComponent = defineAsyncComponent(component);
-    learnChildData.value[name] = asyncComponent;
   }
 });
 
