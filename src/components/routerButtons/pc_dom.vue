@@ -42,15 +42,6 @@ const goRouter = (item, index) => {
       <mouse-glow-button :word="item.name"
         :iconName="item.icon"
         @click="goRouter(item, index)" />
-      <!-- <div class="item-list">
-        <div v-for="(e, i) in item.children"
-          :key="i"
-          class="item-list__item">
-          <mouse-glow-button :iconName="e.icon"
-            :word="e.name"
-            @click="goRouter(e, index)" />
-        </div>
-      </div> -->
     </div>
   </div>
 
@@ -96,18 +87,6 @@ const goRouter = (item, index) => {
     position: relative;
     margin-right: 15px;
 
-    &.item-list-active {
-      &::after {
-        opacity: 1;
-        transform: translate(-50%, 0) scale(1);
-      }
-
-      .item-list {
-        transform: translate(-50%, 0) scale(1);
-        opacity: 1;
-      }
-    }
-
     &::before {
       content: "";
       position: absolute;
@@ -118,47 +97,8 @@ const goRouter = (item, index) => {
       background-color: transparent;
     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translate(-50%, 150%) scale(0.1);
-      opacity: 0;
-      border-bottom: 10px solid #eaeaea;
-      border-top: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      transition: all 0.3s;
-    }
-
     &:last-child {
       margin-right: 0;
-    }
-
-    .item-list {
-      position: absolute;
-      top: 43px;
-      left: 50%;
-      transform: translate(-50%, -60%) scale(0.0001);
-      padding: 10px 20px 10px;
-      background-color: var(--router-btn-bg);
-      opacity: 0;
-      transition: all 0.3s;
-      will-change: transform;
-      z-index: 900;
-
-      .item-list__item {
-        display: inline-block;
-        width: 100%;
-        margin-right: 15px;
-        margin-bottom: 15px;
-
-        &:last-child {
-          margin-right: 0;
-          margin-bottom: 0;
-        }
-      }
     }
   }
 }

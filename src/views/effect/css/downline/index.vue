@@ -1,6 +1,4 @@
 <script setup>
-
-
 const lineCode = ref(`background-size: 100% 2px;
 background-position: left bottom;`);
 
