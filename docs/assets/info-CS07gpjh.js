@@ -1,1 +1,0 @@
-import{_ as o,v as t,a7 as n,c as s,e as c,o as r}from"./index-DevRhvlj.js";const $=t({name:"EffectInfo"}),a={},_={class:"effect"};function f(p,i,m,d,l,u){const e=n("router-view");return r(),s("div",_,[c(e)])}const x=o(a,[["render",f]]);export{$ as componentOptions,x as default};

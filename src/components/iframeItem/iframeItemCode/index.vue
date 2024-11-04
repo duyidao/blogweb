@@ -84,8 +84,7 @@ export { componentOptions };
   <div class="iframe-box-item">
     <div class="iframe-box-title">
       <div>
-        <svg-icon color="#304bc0"
-          name="biaotibiankuangtu"></svg-icon>
+        <svg-icon width="20" height="20" name="biaotibiankuangtu"></svg-icon>
         <span>{{ title }}</span>
         <span v-if="subtitle"
           class="iframe-box-title-small">{{ subtitle }}</span>

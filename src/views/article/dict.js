@@ -1,5 +1,17 @@
 export default {
   css: {
+    below: [
+      {
+        name: 'text',
+        title: '文字倒影',
+        height: '100',
+      },
+      {
+        name: 'img',
+        title: '图片倒影',
+        height: '300',
+      },
+    ],
     clipPath: [
       {
         name: 'polygon',
@@ -53,6 +65,18 @@ export default {
       {
         name: 'swiper',
         title: '轮播图',
+      },
+    ],
+    vmin: [
+      {
+        name: 'vmin',
+        title: 'vmin',
+        height: '385',
+      },
+      {
+        name: 'vmax',
+        title: 'vmax',
+        height: '500',
       },
     ],
   },

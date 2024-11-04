@@ -1,4 +1,9 @@
 <script setup>
+import { screenWidth } from '@/store/index';
+import { useUnit } from '@/store/rem';
+
+const { px2rem } = useUnit();
+
 const { width, height } = defineProps({
   //xlink:href属性值的前缀
   prefix: {
@@ -17,17 +22,14 @@ const { width, height } = defineProps({
     type: [String, Number],
     default: '16'
   }
-})
+});
 
-const svgRef = ref(null)
-
-const widthUnit = computed(() => typeof width === 'string' && width.includes('px') ? width : width / 16 + 'rem')
-const heightUnit = computed(() => typeof height === 'string' && height.includes('px') ? height : height / 16 + 'rem')
+const widthUnit = computed(() => screenWidth.value > 768 ? width + 'px' : px2rem(width));
+const heightUnit = computed(() => screenWidth.value > 768 ? height + 'px' : px2rem(height));
 </script>
 
 <template>
-  <svg v-bind="$attrs" :style="{ '--width': widthUnit, '--height': heightUnit }"
-    ref="svgRef">
+  <svg v-bind="$attrs" :style="{ '--width': widthUnit, '--height': heightUnit }">
     <use :xlink:href="prefix + name"></use>
   </svg>
 </template>

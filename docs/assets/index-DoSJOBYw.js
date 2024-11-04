@@ -1,0 +1,1 @@
+import e from"./feTurbulence-BdMka_ku.js";import{o,c as r,j as t}from"./index--v0BcMfS.js";import"./peter-BaLBoidy.js";const c={class:"iframe-box"},p={__name:"index",setup(a){return(s,n)=>(o(),r("div",c,[t(e)]))}};export{p as default};

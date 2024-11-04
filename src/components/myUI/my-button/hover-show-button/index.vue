@@ -24,7 +24,7 @@ const click = () => {
   <div class="hover-show-button"
     @click.stop="click">
     <span class="hover-show-button__circle">
-      <svg-icon :name="iconName"></svg-icon>
+      <svg-icon width="20" height="20" :name="iconName"></svg-icon>
     </span>
     <span class="hover-show-button__text">{{ word }}</span>
   </div>

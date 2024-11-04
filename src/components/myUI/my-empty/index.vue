@@ -9,8 +9,8 @@ defineProps({
 
 <template>
   <div class="none">
-    <SvgIcon width="50px"
-      height="50px"
+    <svg-icon width="50"
+      height="50"
       name="none" />
     <p v-if="!$slots.default"
       class="none-text">{{ text }}</p>

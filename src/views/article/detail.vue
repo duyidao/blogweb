@@ -91,7 +91,8 @@ export { componentOptions };
         <ul>
           <li v-for="(item, index) in routeNow.tags"
             :key="index">
-            <svg-icon width="14px"
+            <svg-icon width="14"
+              height="14"
               name="tuli1"></svg-icon>
             <span>{{ item }}</span>
           </li>
@@ -126,17 +127,17 @@ export { componentOptions };
             <div class="card">
               <div class="card-face card-front ">
                 <p class="card-title">
-                  <SvgIcon name="gitee"
-                    width="35px"
-                    height="35px" />
+                  <svg-icon name="gitee"
+                    width="35"
+                    height="35" />
                   <span>Gitee</span>
                 </p>
                 <p class="card-word">前往码云仓库👉</p>
               </div>
               <p class="card-face card-back ">
-                <SvgIcon name="like"
-                  width="35px"
-                  height="35px" />
+                <svg-icon name="like"
+                  width="35"
+                  height="35" />
                 <span>关注我</span>
               </p>
             </div>
@@ -145,9 +146,9 @@ export { componentOptions };
           <!-- 其他目录列表 -->
           <div class="list transition-border">
             <div class="list-title">
-              <SvgIcon name="time"
-                width="30px"
-                height="30px" />
+              <svg-icon name="time"
+                width="30"
+                height="30" />
               <span class="">其他文章</span>
             </div>
 
@@ -159,9 +160,9 @@ export { componentOptions };
                   @click="$goRouter(item.path, '/detail/')">
                   <p class="list-item-title">{{ item.meta.title }}</p>
                   <div class="list-item-info">
-                    <SvgIcon name="article"
-                      width="16px"
-                      height="16px" />
+                    <svg-icon name="article"
+                      width="16"
+                      height="16" />
                     <p class="list-item-content">{{ item.meta.info }}</p>
                   </div>
                 </div>

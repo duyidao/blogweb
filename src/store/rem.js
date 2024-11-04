@@ -1,24 +1,24 @@
 export function useUnit(base = 750) {
-    const ratio = ref(window.innerWidth / base);
+  const ratio = ref(window.innerWidth / base);
 
-    function updateRatio() {
-        ratio.value = window.innerWidth / base;
-    }
+  function updateRatio() {
+    ratio.value = window.innerWidth / base;
+  }
 
-    onMounted(() => {
-        window.addEventListener('resize', updateRatio);
-    });
+  onMounted(() => {
+    window.addEventListener('resize', updateRatio);
+  });
 
-    onUnmounted(() => {
-        window.removeEventListener('resize', updateRatio);
-    });
+  onUnmounted(() => {
+    window.removeEventListener('resize', updateRatio);
+  });
 
-    function px2rem(px, unit = 'rem') {
-        return Number((px / 16).toFixed(5)) + unit;
-    }
+  function px2rem(px, unit = 'rem') {
+    return Number((px / 16).toFixed(5)) + unit;
+  }
 
-    return {
-        px2rem,
-        ratio,
-    };
+  return {
+    px2rem,
+    ratio,
+  };
 }

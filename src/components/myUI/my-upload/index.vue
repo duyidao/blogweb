@@ -75,7 +75,7 @@ const remove = (item) => {
         id=""
         :multiple="multiple"
         @change="handleChange">
-      <SvgIcon name="file"
+      <svg-icon name="file"
         width="35"
         height="35" />
       <span v-if="!$slots.default"

@@ -1,30 +1,30 @@
 <script setup>
-const vmaxCode = ref(`width: 100vmax;`);
-const vminCode = ref(`width: 100vmin;`);
+import { cssChildData, getDict } from '../../index.js';
+
+const codeData = {
+  vmaxCode: 'width: 100vmax;',
+  vminCode: `width: 100vmin;`,
+};
+
+const list = getDict('css.vmin');
+
+const componentList = ref([]);
+componentList.value = list.map((item) => ({
+  ...item,
+  model: codeData[item.name + 'Code'],
+  component: Object.freeze(cssChildData.value[item.name]),
+}));
 </script>
 
 <template>
   <div class="iframe-box box">
-    <IframeItemCode title="vmax"
-      class="iframe-box"
-      v-model="vmaxCode">
-      <div class="box-img">
-        <img title="vmax"
-          class="vmax"
-          src="@/assets/img/js/copy.jpg"
-          :style="vmaxCode"
-          alt="vmax">
-      </div>
-    </IframeItemCode>
-    <IframeItemCode title="wmin"
-      class="iframe-box"
-      v-model="vminCode">
-      <div class="box-img">
-        <img title="vmin"
-          src="@/assets/img/js/copy.jpg"
-          :style="vminCode"
-          alt="vmin">
-      </div>
+    <IframeItemCode v-for="item in componentList"
+      :key="item.name"
+      :title="item.title"
+      v-model="item.model"
+      :height="item.height">
+      <component :is="item.component"
+        :code="item.model" />
     </IframeItemCode>
   </div>
 </template>
