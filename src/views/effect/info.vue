@@ -13,7 +13,7 @@ export {componentOptions};
 
 <template>
   <div class="effect">
-    <router-view />
+    <router-view :key="$route.fullPath" />
   </div>
 </template>
 

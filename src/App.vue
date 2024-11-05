@@ -64,7 +64,7 @@ document.addEventListener("visibilitychange", function () {
   <div class="blog" v-close="false">
     <RouterButtons v-if="!route.path.includes('404')" />
 
-    <router-view class="content"></router-view>
+    <router-view :key="route.fullPath" class="content"/>
 
     <!-- 路由切换进度条 -->
     <my-loading :loading="loading" />

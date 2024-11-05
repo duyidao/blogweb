@@ -71,8 +71,22 @@ const handleGiteeFn = () => {
 };
 
 const handleBackFn = () => {
-  methods.$goRouter(route.path.split('/')[2], '/article/');
+  methods.$goRouter(route.path.split('/')[2], '/article/', 'replace');
 }
+
+const breadList = computed(() => ([
+  {
+    name: "首页",
+    to: "/",
+  },
+  {
+    name: "文章列表",
+    to: "/article/" + routeNow.value.detailType,
+  },
+  {
+    name: routeNow.value.title,
+  },
+]));
 </script>
 
 <script>
@@ -87,7 +101,8 @@ export { componentOptions };
 <template>
   <div class="catalogue">
     <div class="catalogue-title">
-      <div class="a">
+      <div class="catalogue-title-nav">
+        <my-breadcrumb :list="breadList" />
         <ul>
           <li v-for="(item, index) in routeNow.tags"
             :key="index">
@@ -101,6 +116,8 @@ export { componentOptions };
       <p class="catalogue-title-big">
         {{ routeNow.title }}
         <svg-icon title="返回上一页"
+          width="20"
+          height="20"
           name="zuojiantou"
           @click="handleBackFn"></svg-icon>
       </p>
@@ -211,8 +228,6 @@ export { componentOptions };
         font-family: 'black';
 
         svg {
-          width: 30px;
-          height: 30px;
           fill: var(--catalogue-title);
           border: 1px solid var(--catalogue-title);
           border-radius: 50%;
@@ -444,8 +459,6 @@ export { componentOptions };
           margin-bottom: 1.875rem;
 
           svg {
-            width: 1.325rem;
-            height: 1.325rem;
             border-width: .0625rem;
             padding: .15rem;
           }

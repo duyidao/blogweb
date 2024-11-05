@@ -1,0 +1,1 @@
+import{_ as n,l as s,a5 as c,c as r,h as a,o as e}from"./index-D7Q_uCMS.js";const h=s({name:"EffectInfo"}),f={},p={class:"effect"};function _(o,i,l,m,u,d){const t=c("router-view");return e(),r("div",p,[(e(),a(t,{key:o.$route.fullPath}))])}const k=n(f,[["render",_]]);export{h as componentOptions,k as default};

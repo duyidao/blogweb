@@ -1,1 +1,0 @@
-import{_ as o,l as t,a5 as n,c as s,j as c,o as r}from"./index--v0BcMfS.js";const $=t({name:"EffectInfo"}),a={},_={class:"effect"};function f(p,i,m,d,l,u){const e=n("router-view");return r(),s("div",_,[c(e)])}const x=o(a,[["render",f]]);export{$ as componentOptions,x as default};
