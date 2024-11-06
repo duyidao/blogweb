@@ -14,15 +14,15 @@ export {componentOptions};
 </script>
 
 <template>
-  <IframeItemCode title="flex布局">
+  <IframeItemModel type="css" title="flex布局">
     <Flex/>
-  </IframeItemCode>
-  <IframeItemCode title="columnCount布局">
+  </IframeItemModel>
+  <IframeItemModel type="css" title="columnCount布局">
     <ColumnCount/>
-  </IframeItemCode>
-  <IframeItemCode title="grid布局">
+  </IframeItemModel>
+  <IframeItemModel type="css" title="grid布局">
     <Grid/>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style lang="less" scoped>

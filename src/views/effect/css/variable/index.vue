@@ -7,6 +7,7 @@ const init = () => {
 };
 
 onMounted(() => {
+  init();
   window.addEventListener('resize', () => {
     init();
   });
@@ -17,12 +18,6 @@ onUnmounted(() => {
     init();
   });
 });
-
-const clickFn = () => {
-  nextTick(() => {
-    init();
-  });
-}
 
 const code = ref(`\<script\>
 const init = () => {
@@ -63,18 +58,14 @@ const init = () => {
 </script>
 
 <template>
-  <IframeItemCode title="变量计算"
+  <IframeItemModel title="变量计算"
     class="iframe-box"
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    v-model="code"
-    disabled
-    type="vue"
-    @click="clickFn">
+    :code="code"
+    type="vue">
     <div ref="boxRef" class="setProperty-box">
       <div class="item"></div>
     </div>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style lang="less" scoped>

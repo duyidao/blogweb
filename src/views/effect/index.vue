@@ -203,7 +203,7 @@ export { componentOptions };
         text-align: center;
         font-size: 16px;
         font-weight: bold;
-        background-color: var(--detail-animate);
+        background-color: var(--effect-animate);
         backdrop-filter: blur(10px);
         color: orange;
         transition: all .3s;

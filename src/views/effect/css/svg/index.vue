@@ -22,157 +22,158 @@ const changeFn = (e) => {
 }
 
 const code = ref(`<svg viewBox="0 0 500 300">
-      <defs>
-        <filter id="conform">
-          <feImage
-            :href="fileValue"
-            result="ORIGIN_IMAGE"
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"
-          ></feImage>
-          <feColorMatrix
-            in="ORIGIN_IMAGE"
-            type="saturate"
-            values="0"
-            result="GRAY_IMAGE"
-          ></feColorMatrix>
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="GRAY_IMAGE"
-            scale="15"
-            xChannelSelector="R"
-            yChannelSelector="R"
-            result="TEXTURED_TEXT"
-          ></feDisplacementMap>
-          <feImage
-            :href="fileValue"
-            in="TEXTURED_TEXT"
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"
-            result="BG"
-          ></feImage>
-          <feColorMatrix
-            in="TEXTURED_TEXT"
-            type="matrix"
-            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
-            result="OPACITY_TEXT"
-          ></feColorMatrix>
-          <feBlend
-            in="BG"
-            in2="OPACITY_TEXT"
-            mode="multiply"
-            result="BLENDED_TEXT"
-          ></feBlend>
-        </filter>
-      </defs>
-      <image
+  <defs>
+    <filter id="conform">
+      <feImage
         :href="fileValue"
+        result="ORIGIN_IMAGE"
         x="0"
         y="0"
         width="100%"
         height="100%"
         preserveAspectRatio="none"
-      ></image>
-      <text
-        x="50%"
-        y="50%"
-        font-size="10em"
-        font-weight="bold"
-        text-anchor="middle"
-        alignment-baseline="middle"
-        :fill="colorValue"
-        filter="url(#conform)"
-      >
-        {{ inputValue }}
-      </text>
-    </svg>
-`);
-</script>
-
-<template>
-  <IframeItemCode title="纹理适配"
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    v-model="code"
-    disabled
-    height="450"
-    type="vue"
-    column>
-    <my-upload style="width: 100%;"
-      @change="changeFn" />
-    <div class="input__list">
-      <my-input v-model="inputValue" />
-      <input v-model="colorValue"
-        type="color"
-        name=""
-        id="" />
-    </div>
-    <svg viewBox="0 0 500 300">
-      <defs>
-        <filter id="conform">
-          <feImage :href="fileValue"
-            result="ORIGIN_IMAGE"
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"></feImage>
-          <feColorMatrix in="ORIGIN_IMAGE"
-            type="saturate"
-            values="0"
-            result="GRAY_IMAGE"></feColorMatrix>
-          <feDisplacementMap in="SourceGraphic"
-            in2="GRAY_IMAGE"
-            scale="15"
-            xChannelSelector="R"
-            yChannelSelector="R"
-            result="TEXTURED_TEXT"></feDisplacementMap>
-          <feImage :href="fileValue"
-            in="TEXTURED_TEXT"
-            x="0"
-            y="0"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"
-            result="BG"></feImage>
-          <feColorMatrix in="TEXTURED_TEXT"
-            type="matrix"
-            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
-            result="OPACITY_TEXT"></feColorMatrix>
-          <feBlend in="BG"
-            in2="OPACITY_TEXT"
-            mode="multiply"
-            result="BLENDED_TEXT"></feBlend>
-        </filter>
-      </defs>
-      <image :href="fileValue"
+      ></feImage>
+      <feColorMatrix
+        in="ORIGIN_IMAGE"
+        type="saturate"
+        values="0"
+        result="GRAY_IMAGE"
+      ></feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="GRAY_IMAGE"
+        scale="15"
+        xChannelSelector="R"
+        yChannelSelector="R"
+        result="TEXTURED_TEXT"
+      ></feDisplacementMap>
+      <feImage
+        :href="fileValue"
+        in="TEXTURED_TEXT"
         x="0"
         y="0"
         width="100%"
         height="100%"
-        preserveAspectRatio="none"></image>
-      <text x="50%"
-        y="50%"
-        font-size="10em"
-        font-weight="bold"
-        text-anchor="middle"
-        alignment-baseline="middle"
-        :fill="colorValue"
-        filter="url(#conform)">
-        {{ inputValue }}
-      </text>
-    </svg>
-  </IframeItemCode>
+        preserveAspectRatio="none"
+        result="BG"
+      ></feImage>
+      <feColorMatrix
+        in="TEXTURED_TEXT"
+        type="matrix"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+        result="OPACITY_TEXT"
+      ></feColorMatrix>
+      <feBlend
+        in="BG"
+        in2="OPACITY_TEXT"
+        mode="multiply"
+        result="BLENDED_TEXT"
+      ></feBlend>
+    </filter>
+  </defs>
+  <image
+    :href="fileValue"
+    x="0"
+    y="0"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="none"
+  ></image>
+  <text
+    x="50%"
+    y="50%"
+    font-size="10em"
+    font-weight="bold"
+    text-anchor="middle"
+    alignment-baseline="middle"
+    :fill="colorValue"
+    filter="url(#conform)"
+  >
+    {{ inputValue }}
+  </text>
+</svg>
+`);
+</script>
+
+<template>
+  <IframeItemModel title="纹理适配"
+    :code="code"
+    type="vue">
+    <div class="svg__container">
+      <my-upload style="width: 100%;"
+        @change="changeFn" />
+      <div class="input__list">
+        <my-input v-model="inputValue" />
+        <input v-model="colorValue"
+          type="color"
+          name=""
+          id="" />
+      </div>
+      <svg viewBox="0 0 500 300">
+        <defs>
+          <filter id="conform">
+            <feImage :href="fileValue"
+              result="ORIGIN_IMAGE"
+              x="0"
+              y="0"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"></feImage>
+            <feColorMatrix in="ORIGIN_IMAGE"
+              type="saturate"
+              values="0"
+              result="GRAY_IMAGE"></feColorMatrix>
+            <feDisplacementMap in="SourceGraphic"
+              in2="GRAY_IMAGE"
+              scale="15"
+              xChannelSelector="R"
+              yChannelSelector="R"
+              result="TEXTURED_TEXT"></feDisplacementMap>
+            <feImage :href="fileValue"
+              in="TEXTURED_TEXT"
+              x="0"
+              y="0"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"
+              result="BG"></feImage>
+            <feColorMatrix in="TEXTURED_TEXT"
+              type="matrix"
+              values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+              result="OPACITY_TEXT"></feColorMatrix>
+            <feBlend in="BG"
+              in2="OPACITY_TEXT"
+              mode="multiply"
+              result="BLENDED_TEXT"></feBlend>
+          </filter>
+        </defs>
+        <image :href="fileValue"
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="none"></image>
+        <text x="50%"
+          y="50%"
+          font-size="10em"
+          font-weight="bold"
+          text-anchor="middle"
+          alignment-baseline="middle"
+          :fill="colorValue"
+          filter="url(#conform)">
+          {{ inputValue }}
+        </text>
+      </svg>
+    </div>
+  </IframeItemModel>
 </template>
 
 <style lang="less"
   scoped>
+  .svg__container {
+    display: flex;
+    flex-direction: column;
+  }
   .input__list {
     display: flex;
     align-items: center;

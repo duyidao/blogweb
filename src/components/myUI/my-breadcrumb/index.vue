@@ -16,28 +16,33 @@ const handleClick = (to, i) => {
 
 <template>
   <div class="my-breadcrumb">
-    <span v-for="(item, index) in list" :key="item.to" @click="handleClick(item.to, index)">{{ item.name }}</span>
+    <span v-for="(item, index) in list"
+      :key="item.to"
+      @click="handleClick(item.to, index)">{{ item.name }}</span>
   </div>
 </template>
 
-<style lang="less" scoped>
-.my-breadcrumb {
-  display: flex;
-  align-items: center;
+<style lang="less"
+  scoped>
+  .my-breadcrumb {
+    display: flex;
+    align-items: center;
 
-  span {
-    &:last-child {
-      opacity: 0.5;
-    }
-    &:not(:last-child) {
-    margin-right: 6px;
-    cursor: pointer;
+    span {
+      font-size: 15px;
+      &:last-child {
+        opacity: 0.5;
+      }
 
-    &::after {
-      content: '/';
-      margin-left: 6px;
+      &:not(:last-child) {
+        margin-right: 6px;
+        cursor: pointer;
+
+        &::after {
+          content: '/';
+          margin-left: 6px;
+        }
+      }
     }
   }
-  }
-}
 </style>

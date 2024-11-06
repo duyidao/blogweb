@@ -5,43 +5,45 @@
 :root {
   animation: adjust 3s linear;
   animation-timeline: scroll();
-  --primary-bg: #303F9F;
-  --primary-border: #BBDEFB;
+  --primary-bg: #0AA9DB; // 主题色
+  --primary-border: #077395; // 主题边框、背景
   --primary-info: #1a2a3a;
+  --primary-font: #000; // 默认字体色
+
+  --body-bg: #f4f2ed; // 博客项目背景
   --normal-word: #ffffff;
-  --home-word-normal: #3F51B533;
-  --home-word-hover: #3F51B580;
-  --article-title: #333333;
-  --body-bg: #f1f1f1;
-  --router-btn-bg: #dedede;
+
+  --article-title: #333333; // 文章列表大标题
   --catalogue-bg: #ffffff;
-  --catalogue-word: #3F51B5;
-  --catalogue-title: #304bc0;
-  --article-bg: rgba(#304bc0, .5);
-  --catalogue-info: #0e2981;
-  --detail-border: #ddd;
-  --detail-animate: #303F9F33;
-  --primary-font: #000;
-  --drop-bg: #e1e1e1;
-  --drop-shadow: #ccc;
+  --catalogue-word: #27b3df;
+  --catalogue-title: #099bc9; // 后续需要修改
+  --article-bg: rgba(#22a3ca, .5);
+
+  --detail-tag-bg: #27b3df; // 详情页标签背景
+  --detail-tag-word: #fff; // 详情页标签文字
+
+  --effect-animate: #303F9F33; // 瀑布流字体颜色，后续修改
+  --effect-info-title: #27b3df; // 效果大标题
+  --effect-info-subtitle: #088eb8; // 效果小标题
+  --effect-info-bg: rgba(#0AA9DB, .4); // 效果背景色
+  --effect-dialog-svg: #1FB4A2; // 效果弹窗svg图标颜色
+  --effect-dialog-text: #157a6e; // 效果弹窗文本颜色
+  
+  --drop-bg: #e1e1e1; // 后续需要修改
+  --drop-shadow: #ccc; // 后续需要修改
 }
 
 :root.dark {
-  --primary-bg: #919191;
-  --primary-border: #BDBDBD;
+  --primary-bg: #28C2F0;
+  --primary-border: #1b84a3;
   --primary-info: #F5F5F5;
   --normal-word: #cccccc;
-  --home-word-normal: #cccccc33;
-  --home-word-hover: #cccccc80;
   --article-title: #999999;
-  --router-btn-bg: #777;
-  --body-bg: #313131;
+  --body-bg: #12161a;
   --catalogue-bg: #424242;
-  --catalogue-word: #9f9f9f;
-  --catalogue-title: #4e769b;
+  --catalogue-word: #42c9f2;
+  --catalogue-title: #25b2dd;
   --article-bg: rgba(#999, .5);
-  --catalogue-info: #878ea0;
-  --detail-border: #555;
   --detail-animate: #BBDEFB33;
   --primary-font: #aaa;
   --drop-bg: #444;

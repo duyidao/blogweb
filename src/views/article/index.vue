@@ -105,6 +105,7 @@ export {componentOptions};
       margin-bottom: 20px;
       transition: all .3s;
       cursor: pointer;
+      overflow: hidden;
 
       .content-tag-list {
         display: flex;
@@ -188,7 +189,7 @@ export {componentOptions};
       .article-item {
         width: 31%;
         margin-right: 3.5%;
-        box-shadow: 0px 0px 3px var(--primary-border);
+        box-shadow: 0px 0px 10px -6px var(--primary-border);
 
         &:nth-child(3n) {
           margin-right: 0;
@@ -292,7 +293,7 @@ export {componentOptions};
       .article-item-img {
         .article-item {
           margin-right: 1.53rem;
-          box-shadow: 0px 0px 0.1875rem var(--primary-border);
+          box-shadow: 0px 0px .625rem -0.375rem var(--primary-border);
 
           .article-item-link {
             img {
@@ -339,7 +340,6 @@ export {componentOptions};
         .article-item {
           width: 23.1%;
           margin-right: 2.5%;
-          box-shadow: 0px 0px 3px var(--primary-border);
 
           &:nth-child(3n) {
             margin-right: 2.5%;
@@ -411,7 +411,6 @@ export {componentOptions};
     .article-item {
       &:hover {
         transform: translate(0, -3px);
-        box-shadow: 0px 0px 3px var(--primary-border);
       }
     }
   }

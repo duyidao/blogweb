@@ -58,13 +58,17 @@ document.addEventListener("visibilitychange", function () {
     }, 10000);
   }
 });
+
+const key = computed(() => {
+  return route.path + Math.random();
+});
 </script>
 
 <template>
   <div class="blog" v-close="false">
     <RouterButtons v-if="!route.path.includes('404')" />
 
-    <router-view :key="route.fullPath" class="content"/>
+    <router-view :key="key" class="content"/>
 
     <!-- 路由切换进度条 -->
     <my-loading :loading="loading" />

@@ -6,11 +6,11 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
-      "icon_id": "42342831",
-      "name": "放大",
-      "font_class": "fangda1",
-      "unicode": "e619",
-      "unicode_decimal": 58905
+      "icon_id": "1365",
+      "name": "缩小",
+      "font_class": "suoxiao",
+      "unicode": "e608",
+      "unicode_decimal": 58888
     },
     {
       "icon_id": "1366",

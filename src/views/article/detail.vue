@@ -101,28 +101,16 @@ export { componentOptions };
 <template>
   <div class="catalogue">
     <div class="catalogue-title">
-      <div class="catalogue-title-nav">
-        <my-breadcrumb :list="breadList" />
+      <my-breadcrumb class="catalogue-title-nav" :list="breadList" />
+      <div class="catalogue-title-big">
+        <p class="catalogue-title-text">{{ routeNow.title }}</p>
+        <p class="catalogue-title-subtext">{{ routeNow.info }}</p>
         <ul>
           <li v-for="(item, index) in routeNow.tags"
             :key="index">
-            <svg-icon width="14"
-              height="14"
-              name="tuli1"></svg-icon>
             <span>{{ item }}</span>
           </li>
         </ul>
-      </div>
-      <p class="catalogue-title-big">
-        {{ routeNow.title }}
-        <svg-icon title="返回上一页"
-          width="20"
-          height="20"
-          name="zuojiantou"
-          @click="handleBackFn"></svg-icon>
-      </p>
-      <div class="catalogue-title-info">
-        <p>{{ routeNow.info }}</p>
       </div>
     </div>
     <div class="catalogue-body">
@@ -204,40 +192,48 @@ export { componentOptions };
       margin: 0 0 30px;
       color: var(--catalogue-title);
 
+      .catalogue-title-big {
+        margin-bottom: 20px;
+        text-align: center;
+
+        .catalogue-title-text {
+          font-size: 40px;
+          font-family: 'black';
+
+          &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            margin: 10px auto;
+            background-color: var(--catalogue-title);
+          }
+        }
+
+        .catalogue-title-subtext {
+        font-size: 14px;
+        font-family: 'sans';
+        margin-bottom: 10px;
+      }
+
       ul {
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: center;
         margin-bottom: 10px;
 
         li {
-          display: flex;
-          align-items: center;
-          margin-right: 16px;
+          background-color: var(--detail-tag-bg);
+          color: var(--detail-tag-word);
+          margin-right: 8px;
+          padding: 4px 8px;
+          font-size: 12px;
 
-          svg {
-            margin-right: 5px;
-            fill: var(--catalogue-title);
-          }
+          &:last-child {
+            margin-right: 0;
+           }
         }
       }
-
-      .catalogue-title-big {
-        font-size: 40px;
-        margin-bottom: 24px;
-        font-family: 'black';
-
-        svg {
-          fill: var(--catalogue-title);
-          border: 1px solid var(--catalogue-title);
-          border-radius: 50%;
-          cursor: pointer;
-        }
-      }
-
-      .catalogue-title-info {
-        font-size: 14px;
-        font-family: 'sans';
       }
     }
   }
@@ -457,11 +453,6 @@ export { componentOptions };
         .catalogue-title-big {
           font-size: 2.5rem;
           margin-bottom: 1.875rem;
-
-          svg {
-            border-width: .0625rem;
-            padding: .15rem;
-          }
         }
 
         .catalogue-title-info {

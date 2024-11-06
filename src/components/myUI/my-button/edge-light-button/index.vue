@@ -3,156 +3,79 @@
 </script>
 
 <template>
-  <div :class="{ full }"
-    ref="myButtonRef"
-    @click.stop="click">
-    <i v-if="iconName"
-      class="iconfont"
-      :class="iconName"></i>
-    <span :class="{ hasMargin: iconName }">{{ word }}</span>
-  </div>
+  <a class="edge-light-button">源码展示</a>
 </template>
 
 <style lang="less"
   scoped>
-  div {
+  .edge-light-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    padding: 0 26px;
-    min-width: 80px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    background-color: var(--catalogue-bg);
-    color: var(--primary-info);
-    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-family: 'robo';
+    color: var(--primary-bg);
     overflow: hidden;
-    transition: all 0.5s;
+    transition: all 0.3s;
     cursor: pointer;
 
-    &.full {
-      background-color: var(--primary-bg);
-      color: var(--catalogue-bg);
-
-      i,
-      span {
-        color: var(--normal-word);
-      }
-
-      &:hover {
-        color: var(--catalogue-title);
-        text-shadow: 0 0 20px var(--catalogue-bg), 0 0 50px var(--catalogue-bg);
-      }
-
-      &::before {
-        background: radial-gradient(var(--catalogue-bg),
-            transparent,
-            transparent);
-      }
-
-      &::after {
-        background-color: var(--catalogue-title);
-        border-radius: 30px;
-        inset: 3px;
-      }
-    }
-
-    span,
-    i {
-      position: relative;
-      letter-spacing: 2px;
-      z-index: 5;
-    }
-
-    span {
-      font-size: 14px;
-
-      &.hasMargin {
-        margin-left: 5px;
-      }
-    }
-
-    &:hover {
-      color: var(--catalogue-title);
-      text-shadow: 0 0 20px var(--catalogue-title),
-        0 0 50px var(--catalogue-title);
-
-      &::before {
-        opacity: 1;
-      }
-    }
-
     &::before {
-      content: "";
+      content: '';
       position: absolute;
-      top: var(--y);
-      left: var(--x);
-      transform: translate(-50%, -50%);
-      width: 160px;
-      height: 160px;
-      opacity: 0;
-      background: radial-gradient(var(--catalogue-title),
-          transparent,
-          transparent);
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid var(--primary-bg);
+      border-top: 2px solid var(--primary-bg);
+      transition: all 0.3s;
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
-      background-color: var(--catalogue-bg);
-      border-radius: 30px;
-      inset: 2px;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--primary-bg);
+      border-bottom: 2px solid var(--primary-bg);
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      background-color: var(--primary-bg);
+      color: var(--normal-word);
+      -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, .2));
+      transition-delay: .3s;
+
+      &::after,
+      &::before {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   @media screen and (max-width: 768px) {
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 1.625rem;
-      min-width: 5rem;
-      height: 2.1875rem;
-      line-height: 2.1875rem;
-      border-radius: 1.875rem;
-
-      &.full {
-        &:hover {
-          text-shadow: 0 0 1.25rem var(--catalogue-bg),
-            0 0 3.125rem var(--catalogue-bg);
-        }
-
-        &::after {
-          border-radius: 1.875rem;
-          inset: 0.125rem;
-        }
-      }
-
-      span,
-      i {
-        letter-spacing: 0.125rem;
-      }
-
-      span {
-        font-size: 0.875rem;
-
-        &.hasMargin {
-          margin-left: 0.3125rem;
-        }
-      }
-
-      &:hover {
-        text-shadow: 0 0 1.25rem var(--catalogue-title),
-          0 0 3.125rem var(--catalogue-title);
-      }
+    .edge-light-button {
+      font-size: 1.125rem;
 
       &::before {
-        width: 9.375rem;
-        height: 9.375rem;
+        width: .625rem;
+        height: .625rem;
+        border-left-width: .125rem;
+        border-top-width: .125rem;
       }
 
       &::after {
-        border-radius: 1.875rem;
-        inset: 0.125rem;
+        width: .625rem;
+        height: .625rem;
+        border-right-width: .125rem;
+        border-bottom-width: .125rem;
       }
     }
   }

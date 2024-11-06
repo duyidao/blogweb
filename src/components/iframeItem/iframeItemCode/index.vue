@@ -82,7 +82,7 @@ export { componentOptions };
 
 <template>
   <div class="iframe-box-item">
-    <div class="iframe-box-title">
+    <header class="iframe-box-title">
       <div>
         <svg-icon width="20" height="20" name="biaotibiankuangtu"></svg-icon>
         <span>{{ title }}</span>
@@ -92,8 +92,8 @@ export { componentOptions };
       <hover-show-button v-if="needCode"
         :word="showCode ? showCodeButtonTitle : buttonTitle"
         @click="handleClick" />
-    </div>
-    <div class="iframe-box-content"
+    </header>
+    <main class="iframe-box-content"
       :style="{ '--height': elementHeight }">
       <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
         <slot></slot>
@@ -104,7 +104,7 @@ export { componentOptions };
         :height="height"
         v-model="code"
         :disabled="disabled" />
-    </div>
+    </main>
   </div>
 </template>
 

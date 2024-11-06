@@ -48,7 +48,7 @@ export { componentOptions };
 </script>
 
 <template>
-  <div class="router-buttons">
+  <header class="router-buttons">
     <!-- 左侧logo -->
     <div class="router-buttons__logo">
       <span
@@ -68,7 +68,7 @@ export { componentOptions };
     <PhoneDom v-else
       :handleLinkFn="handleLinkFn"
       :changeLightFn="changeLightFn" />
-  </div>
+  </header>
 </template>
 
 <style lang="less"
@@ -83,7 +83,7 @@ export { componentOptions };
     align-items: center;
     width: 100%;
     height: 60px;
-    margin: 0 0 25px;
+    margin: 0 0 20px;
     background-color: var(--body-bg);
     padding: 0 20px;
     z-index: 9990;
@@ -118,7 +118,7 @@ export { componentOptions };
     .router-buttons {
       height: 4.5rem;
       padding: 1.25rem 1.25rem;
-      margin: 0 0 1.35rem;
+      margin: 0 0 1.25rem;
 
       .router-buttons__logo {
         width: 7.5rem;
