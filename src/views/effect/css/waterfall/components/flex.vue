@@ -1,7 +1,5 @@
 <script setup>
 import {generateArticleRoutes} from '@/router/index.js';
-
-console.log('generateArticleRoutes', generateArticleRoutes);
 </script>
 
 <script>

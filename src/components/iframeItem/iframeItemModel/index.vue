@@ -7,22 +7,8 @@ const props = defineProps({
     type: String,
     default: '标题',
   },
-  code: {
-    type: String,
-    default: '',
-  },
-  type: {
-    type: String,
-    default: 'javascript',
-  },
-  disabled: {
-    type: Boolean,
-    default: true,
-  },
 });
 
-
-const modelCode = computed(() => props.code);
 
 const handleBackFn = () => {
   methods.$goRouter('/effect/echart');

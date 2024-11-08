@@ -1,4 +1,5 @@
 <script setup>
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 import bgImg from "@/assets/img/cat.png";
 
 const inputValue = ref("Logo");
@@ -21,7 +22,8 @@ const changeFn = (e) => {
   reader.readAsDataURL(e);
 }
 
-const code = ref(`<svg viewBox="0 0 500 300">
+onMounted(() => {
+  codeList.value = [`<svg viewBox="0 0 500 300">
   <defs>
     <filter id="conform">
       <feImage
@@ -92,13 +94,24 @@ const code = ref(`<svg viewBox="0 0 500 300">
     {{ inputValue }}
   </text>
 </svg>
-`);
+`];
+  modelInfo.value = {
+    type: 'vue',
+    activeIndex: 0,
+  };
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+  modelInfo.value = {
+    type: 'javascript',
+    activeIndex: 0,
+  };
+});
 </script>
 
 <template>
-  <IframeItemModel title="纹理适配"
-    :code="code"
-    type="vue">
+  <IframeItemModel title="纹理适配">
     <div class="svg__container">
       <my-upload style="width: 100%;"
         @change="changeFn" />

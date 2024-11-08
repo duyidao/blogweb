@@ -1,5 +1,8 @@
 <script setup>
-const code = ref(`@keyframes spread {
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
+
+onMounted(() => {
+  codeList.value = [`@keyframes spread {
   to {
     color: skyblue;
     text-shadow: 20px 0 70px skyblue;
@@ -42,14 +45,25 @@ const code = ref(`@keyframes spread {
     animation-delay: 1.4s;
   }
 }
-`);
+`];
+  modelInfo.value = {
+    type: 'css',
+    activeIndex: 0,
+  };
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+  modelInfo.value = {
+    type: 'javascript',
+    activeIndex: 0,
+  };
+});
 </script>
 
 <template>
   <div class="iframe-box">
-    <IframeItemModel :code="code"
-      type="css"
-      title="光影特效">
+    <IframeItemModel title="光影特效">
       <div class="box">
         <span>C</span>
         <span>O</span>

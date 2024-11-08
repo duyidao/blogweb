@@ -1,4 +1,5 @@
 <script setup>
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 const boxRef = ref(null);
 
 const init = () => {
@@ -11,15 +12,7 @@ onMounted(() => {
   window.addEventListener('resize', () => {
     init();
   });
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', () => {
-    init();
-  });
-});
-
-const code = ref(`\<script\>
+  codeList.value = [`\<script\>
 const init = () => {
   const w = boxRef.value.clientWidth;
   boxRef.value.style.setProperty('--w', w + 'px');
@@ -54,14 +47,28 @@ const init = () => {
       }
     }
   }
-\<\/style\>`);
+\<\/style\>`];
+  modelInfo.value = {
+    type: 'vue',
+    activeIndex: 0,
+  };
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', () => {
+    init();
+  });
+  codeList.value = [''];
+  modelInfo.value = {
+    type: 'javascript',
+    activeIndex: 0,
+  };
+});
 </script>
 
 <template>
   <IframeItemModel title="变量计算"
-    class="iframe-box"
-    :code="code"
-    type="vue">
+    class="iframe-box">
     <div ref="boxRef" class="setProperty-box">
       <div class="item"></div>
     </div>

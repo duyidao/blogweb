@@ -1,7 +1,12 @@
 <script setup>
 import { routeNow } from '@/store/router.js';
+import { codeList, modelInfo } from '@/store/effect.js';
 
 const show = ref(false);
+
+const codeShow = computed(() => {
+  return codeList.value[modelInfo.value.activeIndex].value || codeList.value[modelInfo.value.activeIndex];
+})
 </script>
 
 <script>
@@ -35,9 +40,9 @@ export { componentOptions };
 
     <my-dialog v-model="show" :title="routeNow.title + '源码展示'">
       <Code class="code"
-        :language="type"
-        v-model="modelCode"
-        :disabled="disabled" />
+        :language="modelInfo.type"
+        v-model="codeShow"
+        disabled />
     </my-dialog>
   </div>
 </template>

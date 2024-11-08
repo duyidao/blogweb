@@ -1,5 +1,19 @@
 export default {
   css: {
+    waterfall: [
+      {
+        name: 'columnCount',
+        title: '分列布局',
+      },
+      {
+        name: 'flex',
+        title: 'flex布局',
+      },
+      {
+        name: 'grid',
+        title: 'grid布局',
+      },
+    ],
   },
   learn: {
     canvas: [

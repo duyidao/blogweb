@@ -1,7 +1,9 @@
 <script setup>
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 import FeTurbulence from './components/feTurbulence.vue';
 
-const code = `\<script setup\>
+onMounted(() => {
+  codeList.value = [`\<script setup\>
 import gsap from 'gsap';
 
 const tbRef = ref(null)
@@ -96,13 +98,24 @@ onUnmounted(() => {
       </defs>
     </svg>
   </div>
-</template>`
+</template>`];
+  modelInfo.value = {
+    type: 'vue',
+    activeIndex: 0,
+  };
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+  modelInfo.value = {
+    type: 'javascript',
+    activeIndex: 0,
+  };
+});
 </script>
 
 <template>
-  <IframeItemModel title="纹理适配"
-    :code="code"
-    type="vue">
+  <IframeItemModel title="纹理适配">
     <FeTurbulence/>
   </IframeItemModel>
 </template>

@@ -1,3 +1,6 @@
-export const info = ref({});
+export const codeList = ref(['']);
 
-export const show = ref(false);
+export const modelInfo = ref({
+  type: 'javascript',
+  activeIndex: 0,
+});

@@ -1,1 +1,0 @@
-import e from"./feTurbulence-DILlnFHU.js";import{o,c as r,j as t}from"./index-D7Q_uCMS.js";import"./peter-BaLBoidy.js";const c={class:"iframe-box"},p={__name:"index",setup(a){return(s,n)=>(o(),r("div",c,[t(e)]))}};export{p as default};

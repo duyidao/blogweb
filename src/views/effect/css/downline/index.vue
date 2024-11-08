@@ -1,11 +1,26 @@
 <script setup>
-const lineCode = ref(`background-size: 100% 2px;
-background-position: left bottom;`);
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 
 const divRef = ref(null);
+onMounted(() => {
+  codeList.value = [`background-size: 100% 2px;
+background-position: left bottom;`];
+  modelInfo.value = {
+    type: 'css',
+    activeIndex: 0,
+  };
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+  modelInfo.value = {
+    type: 'javascript',
+    activeIndex: 0,
+  };
+});
 
 const handleMouseEnter = () => {
-  divRef.value.style.cssText = lineCode.value;
+  divRef.value.style.cssText = codeList.value[0];
 };
 
 const handleMouseLeave = () => {
@@ -15,9 +30,7 @@ const handleMouseLeave = () => {
 
 <template>
   <div class="iframe-box banner">
-    <IframeItemModel title="下划线动画"
-      :code="lineCode"
-      type="css">
+    <IframeItemModel title="下划线动画">
       <div class="line-title"
         ref="divRef"
         @mouseenter="handleMouseEnter"
