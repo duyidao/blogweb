@@ -1,10 +1,12 @@
 <script setup>
+import { codeList } from '@/store/effect.js'; // 引入代码列表
 import inputComp from './input.vue';
 
 const inputValue = ref('daodao');
 const inputValueNum = ref(11);
 
-const code = `const {searchAction} = defineProps({
+onMounted(() => {
+  codeList.value = [`const {searchAction} = defineProps({
   // 双向绑定的输入框内容
   msg: {
     type: [String, Number],
@@ -74,17 +76,16 @@ const focusFn = (e) => {
 
 const blurFn = (e) => {
   emit('blur', e.target.value)
-}`;
+}`];
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
-  <IframeItemCode title="input组件封装"
-    column
-    v-model="code"
-    disabled
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    height="420"
+  <IframeItemModel title="input组件封装"
     class="input-info">
     <div class="input-info-item">
       <span class="">文本输入框，父组件内容 {{ inputValue }}</span>
@@ -100,7 +101,7 @@ const blurFn = (e) => {
       <inputComp type="number"
         v-model:msg="inputValueNum" />
     </div>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style lang="less"
@@ -108,6 +109,10 @@ const blurFn = (e) => {
   .input-info {
     margin-top: 20px;
     padding: 0 15px;
+
+    :deep(.iframe-item-model__content__info) {
+      flex-direction: column;
+    }
 
     .input-info-item {
       display: flex;

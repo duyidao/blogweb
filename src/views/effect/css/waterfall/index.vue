@@ -101,6 +101,7 @@ componentList.value = list.map((item) => ({
 onMounted(() => {
   codeList.value = list.map((item) => ({name: item.title + '源码', value: codeData[item.name + 'Code']}));
   modelInfo.value = {
+    ...modelInfo.value,
     type: 'vue',
     activeIndex: 0,
   };
@@ -109,6 +110,7 @@ onMounted(() => {
 onUnmounted(() => {
   codeList.value = [''];
   modelInfo.value = {
+    ...modelInfo.value,
     type: 'javascript',
     activeIndex: 0,
   };

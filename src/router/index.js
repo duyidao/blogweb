@@ -41,7 +41,7 @@ export const routes = [
         ]
     },
     {
-        path: '/effect/:type',
+        path: '/effect/list',
         name: 'effect',
         component: () => import('@/views/effect/index.vue'),
         meta: {

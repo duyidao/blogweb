@@ -94,6 +94,9 @@ export { componentOptions };
 
 <style lang="less"
   scoped>
+  .effect {
+    max-width: 1600px;
+    margin: 0 auto;
   .effect-control {
     display: flex;
     justify-content: space-between;
@@ -186,6 +189,10 @@ export { componentOptions };
       cursor: pointer;
       overflow: hidden;
 
+      img {
+        width: 100%;
+      }
+
       &.active {
         .effect-item__title {
           transform: translateY(0);
@@ -211,4 +218,5 @@ export { componentOptions };
       }
     }
   }
+}
 </style>

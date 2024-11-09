@@ -33,7 +33,7 @@ export const routerBtnList = ref([
         {
           name: "EChart",
           base: "/effect/",
-          path: "echart",
+          path: "list",
           icon: "icon-echart",
         },
       ],

@@ -1,4 +1,5 @@
 <script setup>
+import { codeList } from '@/store/effect.js'; // 引入代码列表
 import PieChart from './pieChart.vue';
 
 const data = ref([
@@ -12,11 +13,35 @@ const data = ref([
   },
 ])
 
-const code = ref(`const props = defineProps({
-    data: {
-        type: Array,
-        default: () => ([]),
+const pieChartRef = ref(null);
+const domControlData = ref({
+  ref: pieChartRef.value,
+  chartName: 'pieChart',
+})
+
+setTimeout(() => {
+  data.value = [
+    {
+      value: 40, name: '货车通行',
+      flowValue: '40%', flowName: '货车车流量',
     },
+    {
+      value: 50, name: '其他车通行',
+      flowValue: '50%', flowName: '其他车车流量',
+    },
+    {
+      value: 10, name: '客车通行',
+      flowValue: '10%', flowName: '客车车流量',
+    },
+  ]
+}, 5000);
+
+onMounted(() => {
+  codeList.value = [`const props = defineProps({
+  data: {
+    type: Array,
+    default: () => ([]),
+  },
 });
 
 const legendMap = new Map();
@@ -71,69 +96,69 @@ const option = ref({
       },
   },
   series: [
-      {
-          name: '货车通行占比（单位：%）',
-          type: 'pie',
-          radius: ['55%', '65%'],
-          center: ['35%', '50%'],
-          avoidLabelOverlap: false,
-          label: {
-              show: false,
-              position: 'left',
-              normal: {
-                  show: true,
-                  position: 'center',
-                  color: '#4c4a4a',
-                  formatter: '{title|' + 0 + '%}' + '\n' + '{car|货车通行' + 0 + '辆}',
-                  rich: {
-                      title: {
-                          fontFamily: 'sans',
-                          fontSize: 30,
-                          color: '#000000',
-                          lineHeight: 30,
-                          fontWeight: 500,
-                          letterSpace: 1.5,
-                      },
-                      car: {
-                          fontFamily: 'sans',
-                          fontSize: 16,
-                          color: '#000000',
-                          lineHeight: 40,
-                          fontWeight: 500,
-                          letterSpace: 1.5,
-                      },
-                  },
-              },
-              // 中间文字显示
-              emphasis: {
-                  show: true,
-              },
+    {
+    name: '货车通行占比（单位：%）',
+    type: 'pie',
+    radius: ['55%', '65%'],
+    center: ['35%', '50%'],
+    avoidLabelOverlap: false,
+    label: {
+        show: false,
+        position: 'left',
+        normal: {
+        show: true,
+        position: 'center',
+        color: '#4c4a4a',
+        formatter: '{title|' + 0 + '%}' + '\n' + '{car|货车通行' +0 + '辆}',
+        rich: {
+          title: {
+              fontFamily: 'sans',
+              fontSize: 30,
+              color: '#000000',
+              lineHeight: 30,
+              fontWeight: 500,
+              letterSpace: 1.5,
+            },
+            car: {
+              fontFamily: 'sans',
+              fontSize: 16,
+              color: '#000000',
+              lineHeight: 40,
+              fontWeight: 500,
+              letterSpace: 1.5,
+            },
           },
-          emphasis: {
-              label: {
-                  show: false,
-                  fontSize: 20,
-                  fontWeight: 'bold',
-              },
-          },
-          labelLine: {
-              show: false,
-          },
-          data: [],
+        },
+        // 中间文字显示
+        emphasis: {
+            show: true,
+        },
+    },
+      emphasis: {
+      label: {
+        show: false,
+        fontSize: 20,
+        fontWeight: 'bold',
       },
+      },
+      labelLine: {
+        show: false,
+      },
+      data: [],
+    },
   ],
 })
 
 // 如果data发生变化则重新更新option
 watch(
-    () => props.data,
-    (val) => {
-        if (val.length > 0) {
-            option.value.series[0].data = val;
-            option.value.series[0].label.normal.formatter = '{title|' + val[0].value + '%}' + '\n' + '{car|' + val[0].name + val[0].flowValue + '辆}';
-        }
-    },
-    { immediate: true, deep: true }
+  () => props.data,
+  (val) => {
+    if (val.length > 0) {
+      option.value.series[0].data = val;
+      option.value.series[0].label.normal.formatter = '{title|' + val[0].value + '%}' + '\n' + '{car|' + val[0].name + val[0].flowValue + '辆}';
+    }
+  },
+  { immediate: true, deep: true }
 );
 
 // 开启定时器轮播
@@ -142,108 +167,86 @@ const highlightIndex = ref(0);
 const downplayIndex = ref(-1);
 const intervalStartFn = () => {
     if (timer.value) {
-        clearInterval(timer.value);
-        timer.value = null;
+      clearInterval(timer.value);
+      timer.value = null;
     }
     const formatterChange = () => {
-        if (!pieChart.value) return;
-        pieChart.value.myChart.dispatchAction({
-            type: 'highlight',
-            seriesIndex: 0, // 第一个系列
-            dataIndex: highlightIndex.value,
-        });
-        pieChart.value.myChart.dispatchAction({
-            type: 'downplay',
-            seriesIndex: 0, // 第一个系列
-            dataIndex: downplayIndex.value,
-        });
+      if (!pieChart.value) return;
+      pieChart.value.myChart.dispatchAction({
+          type: 'highlight',
+          seriesIndex: 0, // 第一个系列
+          dataIndex: highlightIndex.value,
+      });
+      pieChart.value.myChart.dispatchAction({
+        type: 'downplay',
+        seriesIndex: 0, // 第一个系列
+        dataIndex: downplayIndex.value,
+      });
 
-        // 中部自定义内容调整
-        const obj = props.data[highlightIndex.value];
-        option.value.series[0].label.normal.formatter = '{title|' + obj.value + '%}' + '\n' + '{car|' + obj.name + obj.value + '辆}';
+      // 中部自定义内容调整
+      const obj = props.data[highlightIndex.value];
+      option.value.series[0].label.normal.formatter = '{title|' + obj.value + '%}' + '\n' + '{car|' + obj.name + obj.value + '辆}';
 
-        // 激活与非激活索引自增1
-        highlightIndex.value = highlightIndex.value >= props.data.length - 1 ? 0 : highlightIndex.value + 1;
-        downplayIndex.value = downplayIndex.value >= props.data.length - 1 ? 0 : downplayIndex.value + 1;
+      // 激活与非激活索引自增1
+      highlightIndex.value = highlightIndex.value >= props.data.length - 1 ? 0 : highlightIndex.value + 1;
+      downplayIndex.value = downplayIndex.value >= props.data.length - 1 ? 0 : downplayIndex.value + 1;
     };
     formatterChange();
     timer.value = setInterval(() => {
-        formatterChange();
+      formatterChange();
     }, 3000);
 };
 
 // 为echart绑定图例选中和取消选择事件
 const pieChart = ref(null);
 const pieChartAddEventFn = () => {
-    pieChart.value.myChart.on('highlight', function (params) {
-        if (params.name) {
-            clearInterval(timer.value);
-            timer.value = null;
+  pieChart.value.myChart.on('highlight', function (params) {
+      if (params.name) {
+        clearInterval(timer.value);
+        timer.value = null;
 
-            props.data.forEach((item, index) => {
-                if (item.name !== params.name) {
-                    pieChart.value.myChart.dispatchAction({
-                        type: 'downplay',
-                        seriesIndex: 0, // 第一个系列
-                        dataIndex: index,
-                    });
-                }
-                else {
-                    option.value.series[0].label.normal.formatter = '{title|' + item.value + '%}' + '\n' + '{car|' + item.name + item.value + '辆}';
-                }
+        props.data.forEach((item, index) => {
+          if (item.name !== params.name) {
+            pieChart.value.myChart.dispatchAction({
+              type: 'downplay',
+              seriesIndex: 0, // 第一个系列
+              dataIndex: index,
             });
-        }
-    });
-    pieChart.value.myChart.on('downplay', function (params) {
-        if (params.name) {
-            intervalStartFn();
-        }
-    });
+          }
+          else {
+            option.value.series[0].label.normal.formatter = '{title|' + item.value + '%}' + '\n' + '{car|' + item.name + item.value + '辆}';
+          }
+        });
+      }
+  });
+  pieChart.value.myChart.on('downplay', function (params) {
+    if (params.name) {
+      intervalStartFn();
+    }
+  });
 };
 
 onMounted(() => {
-    intervalStartFn();
-    pieChartAddEventFn();
+  intervalStartFn();
+  pieChartAddEventFn();
 });
 
 onUnmounted(() => {
-    clearInterval(timer.value);
-    timer.value = null;
-});`);
+  clearInterval(timer.value);
+  timer.value = null;
+});`];
+});
 
-const pieChartRef = ref(null);
-const domControlData = ref({
-  ref: pieChartRef.value,
-  chartName: 'pieChart',
-})
-
-setTimeout(() => {
-  data.value = [
-    {
-      value: 40, name: '货车通行',
-      flowValue: '40%', flowName: '货车车流量',
-    },
-    {
-      value: 50, name: '其他车通行',
-      flowValue: '50%', flowName: '其他车车流量',
-    },
-    {
-      value: 10, name: '客车通行',
-      flowValue: '10%', flowName: '客车车流量',
-    },
-  ]
-}, 5000);
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
-  <IframeItemCode title="饼图轮播"
-    v-model="code"
-    disabled
-    type="javascript"
-    :domControl="domControlData">
+  <IframeItemModel title="饼图轮播">
     <pie-chart ref="pieChartRef"
       :data="data" />
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style scoped></style>

@@ -1,12 +1,19 @@
 <script setup>
+import methods from '@/utils/customMethod.js';
 import { routeNow } from '@/store/router.js';
 import { codeList, modelInfo } from '@/store/effect.js';
 
 const show = ref(false);
 
+// 计算属性获取当前显示的代码
 const codeShow = computed(() => {
-  return codeList.value[modelInfo.value.activeIndex].value || codeList.value[modelInfo.value.activeIndex];
+  return codeList.value[modelInfo.value.activeIndex]?.value || codeList.value[modelInfo.value.activeIndex];
 })
+
+// 点击返回按钮
+const handleBackFn = () => {
+  methods.$goRouter('/effect/list')
+}
 </script>
 
 <script>

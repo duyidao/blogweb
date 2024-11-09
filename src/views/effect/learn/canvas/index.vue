@@ -1,4 +1,5 @@
 <script setup>
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 import { learnChildData, getDict } from '../../index.js';
 
 const codeData = {
@@ -107,20 +108,23 @@ componentList.value = list.map((item) => ({
   model: codeData[item.name + 'Code'],
   component: Object.freeze(learnChildData.value[item.name]),
 }));
+
+onMounted(() => {
+  codeList.value = list.map((item) => ({name: item.title + '源码', value: codeData[item.name + 'Code']}));
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
   <div class="iframe-box box">
-    <IframeItemCode v-for="item in componentList"
+    <IframeItemModel v-for="item in componentList"
       :key="item.name"
-      :title="item.title"
-      buttonTitle="源码展示"
-      showCodeButtonTitle="隐藏源码"
-      v-model="item.model"
-      type="javascript"
-      disabled>
+      :title="item.title">
       <component :is="item.component"/>
-    </IframeItemCode>
+    </IframeItemModel>
   </div>
 </template>
 

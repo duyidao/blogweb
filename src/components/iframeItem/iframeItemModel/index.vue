@@ -11,7 +11,7 @@ const props = defineProps({
 
 
 const handleBackFn = () => {
-  methods.$goRouter('/effect/echart');
+  methods.$goRouter('/effect/list');
 };
 </script>
 
@@ -42,7 +42,7 @@ const handleBackFn = () => {
     &__content {
       min-height: calc(100vh - 224px);
       background-color: var(--effect-info-bg);
-      padding: 6px;
+      padding: 6px 6px 15px;
       border: 4px solid transparent;
       border-image: linear-gradient(to bottom, transparent 95%, #0AA9DB) 4;
       border-radius: 4px;
@@ -96,7 +96,7 @@ const handleBackFn = () => {
 
       &__content {
         min-height: calc(100vh - 14rem);
-        padding: .375rem;
+        padding: .375rem .375rem .9375rem;
         border-width: .25rem;
         border-radius: .25rem;
 

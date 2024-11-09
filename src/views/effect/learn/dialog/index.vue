@@ -1,4 +1,5 @@
 <script setup>
+import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 import Dialog from './dialog.vue';
 
 const show = ref(false);
@@ -9,7 +10,8 @@ const showFn = () => {
   document.body.style.overflowY = 'hidden';
 }
 
-const code = `\<script setup>
+onMounted(() => {
+  codeList.value = [`\<script setup>
 const props = defineProps({
   width: [String, Number],
   marginTop: [String, Number],
@@ -175,16 +177,24 @@ const fullFn = () => {
 button {
   margin-right: 15px;
 }
-</style>`;
+</style>`];
+  modelInfo.value = {
+    ...modelInfo.value,
+    type: 'vue',
+  };
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+  modelInfo.value = {
+    ...modelInfo.value,
+    type: 'javascript',
+  };
+});
 </script>
 
 <template>
-  <IframeItemCode title="弹窗组件"
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    v-model="code"
-    type="vue"
-    disabled
+  <IframeItemModel title="弹窗组件"
     class="iframe-box">
     <div>
       <button class=""
@@ -206,7 +216,7 @@ button {
         </div>
       </template>
     </Dialog>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style lang="less"

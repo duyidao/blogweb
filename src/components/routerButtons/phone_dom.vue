@@ -71,7 +71,7 @@ const handleRouterFn = (path, front = '/article/') => {
               v-for="item in routerBtnList.find(item => item.name === '项目需求效果').children"
               :key="item.path"
               :class="{ 'active': route.path.includes(item.path) }"
-              @click.stop="handleRouterFn(item.path, '/effect/')">
+              @click.stop="handleRouterFn('/effect/list')">
               <i class="iconfont"
                 :class="item.icon"></i>
               <span>{{ item.name }}</span>

@@ -1,4 +1,5 @@
 <script setup>
+import { codeList } from '@/store/effect.js'; // 引入代码列表
 const box = ref(null);
 
 const drawVideo = vdo => {
@@ -53,7 +54,8 @@ const onChangeFn = async e => {
   }
 }
 
-const code = `const drawVideo = vdo => {
+onMounted(() => {
+  codeList.value = [`const drawVideo = vdo => {
   return new Promise(resolve => {
     const cvs = document.createElement('canvas');
     const ctx = cvs.getContext('2d');
@@ -103,30 +105,28 @@ const onChangeFn = async e => {
     const res = await captureFrame(e, (i + 50) * 1);
     captureImg(res.url);
   }
-}`;
+}`];
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
-  <IframeItemCode title="画面帧"
-    column
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    v-model="code"
-    type="javascript"
-    disabled
-    height="650"
+  <IframeItemModel title="画面帧"
     class="iframe-box box">
     <myUpload @change="onChangeFn" />
     <div ref="box"
       class="box-img"></div>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style lang="less"
   scoped>
   .box {
     :deep(.upload) {
-      width: 100%;
+      width: 60%;
     }
 
     :deep(canvas) {
@@ -134,6 +134,10 @@ const onChangeFn = async e => {
       width: 100%;
       margin-top: 20px;
       object-fit: cover;
+    }
+
+    :deep(.iframe-item-model__content__info) {
+      flex-direction: column;
     }
 
     .box-img {

@@ -1,5 +1,6 @@
 <script setup
   lang="jsx">
+  import { codeList } from '@/store/effect.js'; // 引入代码列表
   import { signProp } from './dialog.jsx'
 
   const clickFn = () => {
@@ -9,15 +10,16 @@
     })
   }
 
-  const code = `import {render} from 'vue'
+onMounted(() => {
+  codeList.value = [`import \{render\} from 'vue'
 
-export const signProp = (content, handler) => {
+export const signProp = \(content, handler\) \=\> \{
     let div = document.createElement('div')
     let pop = <div class="dialog-cover">
   	<div class="dialog-cover-content">
-      <div class="content">{content}</div>
+      <div class="content">\{content\}</div>
         <div class="btns">
-      	  <button onClick={() => {
+      	  <button onClick=\{\(\) \=\> \{
             document.body.removeChild(div) // 这里需要真实dom，虚拟dom会报错
             handler.cancel && handler.cancel()
           }}>不同意</button>
@@ -32,19 +34,18 @@ export const signProp = (content, handler) => {
   // 参数一：要渲染的虚拟dom；参数二，要渲染到那个真实dom上
   render(pop, div)
   document.body.appendChild(div)
-}`;
+}`];
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
-  <IframeItemCode title="重复小组件"
-    buttonTitle="源码展示"
-    showCodeButtonTitle="隐藏源码"
-    v-model="code"
-    type="javascript"
-    height="480"
-    disabled>
+  <IframeItemModel title="重复小组件">
     <button @click="clickFn">click me</button>
-  </IframeItemCode>
+  </IframeItemModel>
 </template>
 
 <style scoped></style>

@@ -1,0 +1,72 @@
+import{_ as y}from"./index-C8Gud45B.js";import{_ as v,S as A,C as x,O as I,o as p,c as g,r as c,v as G,P as M,h as V,w as X,a as e,j as m,u as n,k as h,E as C,p as D,d as w}from"./index-CelIiyEc.js";import{_ as B}from"./index-x-Od_m6G.js";import{c as T,m as E}from"./effect-CHfcYbuv.js";import{_ as S}from"./cat-CkzGrFVi.js";import"./index-DbchxMog.js";const U={__name:"index",props:{modelValue:{},modelModifiers:{}},emits:["update:modelValue"],setup(a){const t=A(a,"modelValue");return(s,o)=>x((p(),g("input",{"onUpdate:modelValue":o[0]||(o[0]=r=>t.value=r),placeholder:"请输入内容",type:"text"},null,512)),[[I,t.value]])}},O=v(U,[["__scopeId","data-v-a0bf9230"]]),i=a=>(D("data-v-28ee8fbe"),a=a(),w(),a),N={class:"svg__container"},Y={class:"input__list"},b={viewBox:"0 0 500 300"},L={id:"conform"},P=["href"],k=i(()=>e("feColorMatrix",{in:"ORIGIN_IMAGE",type:"saturate",values:"0",result:"GRAY_IMAGE"},null,-1)),j=i(()=>e("feDisplacementMap",{in:"SourceGraphic",in2:"GRAY_IMAGE",scale:"15",xChannelSelector:"R",yChannelSelector:"R",result:"TEXTURED_TEXT"},null,-1)),z=["href"],F=i(()=>e("feColorMatrix",{in:"TEXTURED_TEXT",type:"matrix",values:"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0",result:"OPACITY_TEXT"},null,-1)),$=i(()=>e("feBlend",{in:"BG",in2:"OPACITY_TEXT",mode:"multiply",result:"BLENDED_TEXT"},null,-1)),q=["href"],H=["fill"],J={__name:"index",setup(a){const t=c("Logo"),s=c("#ff0000"),o=c(S),r=f=>{const l=new FileReader;l.addEventListener("load",u=>{const d=u.target.result;o.value=d}),l.readAsDataURL(f)};return G(()=>{T.value=[`<svg viewBox="0 0 500 300">
+  <defs>
+    <filter id="conform">
+      <feImage
+        :href="fileValue"
+        result="ORIGIN_IMAGE"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+      ></feImage>
+      <feColorMatrix
+        in="ORIGIN_IMAGE"
+        type="saturate"
+        values="0"
+        result="GRAY_IMAGE"
+      ></feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="GRAY_IMAGE"
+        scale="15"
+        xChannelSelector="R"
+        yChannelSelector="R"
+        result="TEXTURED_TEXT"
+      ></feDisplacementMap>
+      <feImage
+        :href="fileValue"
+        in="TEXTURED_TEXT"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+        result="BG"
+      ></feImage>
+      <feColorMatrix
+        in="TEXTURED_TEXT"
+        type="matrix"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+        result="OPACITY_TEXT"
+      ></feColorMatrix>
+      <feBlend
+        in="BG"
+        in2="OPACITY_TEXT"
+        mode="multiply"
+        result="BLENDED_TEXT"
+      ></feBlend>
+    </filter>
+  </defs>
+  <image
+    :href="fileValue"
+    x="0"
+    y="0"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="none"
+  ></image>
+  <text
+    x="50%"
+    y="50%"
+    font-size="10em"
+    font-weight="bold"
+    text-anchor="middle"
+    alignment-baseline="middle"
+    :fill="colorValue"
+    filter="url(#conform)"
+  >
+    {{ inputValue }}
+  </text>
+</svg>
+`],E.value={type:"vue",activeIndex:0}}),M(()=>{T.value=[""],E.value={type:"javascript",activeIndex:0}}),(f,l)=>{const u=B,d=O,R=y;return p(),V(R,{title:"纹理适配"},{default:X(()=>[e("div",N,[m(u,{style:{width:"100%"},onChange:r}),e("div",Y,[m(d,{modelValue:n(t),"onUpdate:modelValue":l[0]||(l[0]=_=>h(t)?t.value=_:null)},null,8,["modelValue"]),x(e("input",{"onUpdate:modelValue":l[1]||(l[1]=_=>h(s)?s.value=_:null),type:"color",name:"",id:""},null,512),[[I,n(s)]])]),(p(),g("svg",b,[e("defs",null,[e("filter",L,[e("feImage",{href:n(o),result:"ORIGIN_IMAGE",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,P),k,j,e("feImage",{href:n(o),in:"TEXTURED_TEXT",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none",result:"BG"},null,8,z),F,$])]),e("image",{href:n(o),x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,q),e("text",{x:"50%",y:"50%","font-size":"10em","font-weight":"bold","text-anchor":"middle","alignment-baseline":"middle",fill:n(s),filter:"url(#conform)"},C(n(t)),9,H)]))])]),_:1})}}},oe=v(J,[["__scopeId","data-v-28ee8fbe"]]);export{oe as default};

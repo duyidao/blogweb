@@ -1,4 +1,5 @@
 <script setup>
+import { codeList } from '@/store/effect.js'; // 引入代码列表
 import { learnChildData, getDict } from '../../index.js';
 
 const codeData = {
@@ -141,12 +142,19 @@ const fileReaderChange = (e, type) => {
       break;
   }
 }
+
+onMounted(() => {
+  codeList.value = list.map((item) => ({name: item.title + '源码', value: codeData[item.name + 'Code']}));
+});
+
+onUnmounted(() => {
+  codeList.value = [''];
+});
 </script>
 
 <template>
   <div class="iframe-box">
-    <IframeItemCode class="upload-box"
-      :needCode="false"
+    <IframeItemModel class="upload-box"
       title="前置知识">
       <ul class="list-style-circle">
         <li class="flex-column">
@@ -205,19 +213,12 @@ const fileReaderChange = (e, type) => {
           </div>
         </li>
       </ul>
-    </IframeItemCode>
-    <IframeItemCode v-for="item in componentList"
+    </IframeItemModel>
+    <IframeItemModel v-for="item in componentList"
       :key="item.name"
-      :title="item.title"
-      buttonTitle="源码展示"
-      showCodeButtonTitle="隐藏源码"
-      v-model="item.model"
-      type="javascript"
-      height="450"
-      disabled
-      column>
+      :title="item.title">
       <component :is="item.component"/>
-    </IframeItemCode>
+    </IframeItemModel>
   </div>
 </template>
 
