@@ -96,6 +96,7 @@ onMounted(() => {
 </svg>
 `];
   modelInfo.value = {
+    ...modelInfo.value,
     type: 'vue',
     activeIndex: 0,
   };
@@ -104,6 +105,7 @@ onMounted(() => {
 onUnmounted(() => {
   codeList.value = [''];
   modelInfo.value = {
+    ...modelInfo.value,
     type: 'javascript',
     activeIndex: 0,
   };
