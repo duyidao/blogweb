@@ -13,12 +13,6 @@ const data = ref([
   },
 ])
 
-const pieChartRef = ref(null);
-const domControlData = ref({
-  ref: pieChartRef.value,
-  chartName: 'pieChart',
-})
-
 setTimeout(() => {
   data.value = [
     {
@@ -244,8 +238,7 @@ onUnmounted(() => {
 
 <template>
   <IframeItemModel title="饼图轮播">
-    <pie-chart ref="pieChartRef"
-      :data="data" />
+    <pie-chart :data="data" />
   </IframeItemModel>
 </template>
 

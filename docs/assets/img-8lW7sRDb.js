@@ -1,0 +1,1 @@
+import{o as t,c as a,n as o,aa as r}from"./index-DSusb5t4.js";const n={__name:"img",props:{code:{type:String,default:""}},setup(e){return(c,s)=>(t(),a("img",{style:o(e.code),src:r,alt:"图片倒影"},null,4))}};export{n as default};

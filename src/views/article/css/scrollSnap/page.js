@@ -1,7 +1,7 @@
 import cssImg from '@/assets/img/css/scroll-nap.jpg'
 
 export default {
-    title: 'Scroll Snap',
+    title: 'scroll-snap 实现吸附',
     info: '吸附属性实现轮播图效果',
     img: cssImg,
     menuOrder: 2,

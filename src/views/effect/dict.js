@@ -14,6 +14,16 @@ export default {
         title: 'grid布局',
       },
     ],
+    scrollBar: [
+      {
+        name: 'linearBorder',
+        title: '线性渐变边框进度条',
+      },
+      {
+        name: 'ripple',
+        title: '水波纹进度条',
+      }
+    ]
   },
   learn: {
     canvas: [
