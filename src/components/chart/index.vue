@@ -8,8 +8,8 @@ const props = defineProps({
   },
 });
 
-const myChart = ref(null);
-const chartRef = ref(null);
+const myChart = shallowRef(null);
+const chartRef = shallowRef(null);
 const onResize = () => {
   myChart.value.resize();
 };
