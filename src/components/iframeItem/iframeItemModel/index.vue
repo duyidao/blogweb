@@ -8,11 +8,6 @@ const props = defineProps({
     default: '标题',
   },
 });
-
-
-const handleBackFn = () => {
-  methods.$goRouter('/effect/list');
-};
 </script>
 
 <template>
@@ -40,7 +35,6 @@ const handleBackFn = () => {
     }
 
     &__content {
-      min-height: calc(100vh - 224px);
       background-color: var(--effect-info-bg);
       padding: 6px 6px 15px;
       border: 4px solid transparent;
@@ -85,7 +79,6 @@ const handleBackFn = () => {
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: calc(100vh - 294px);
       }
     }
   }
@@ -95,7 +88,6 @@ const handleBackFn = () => {
       margin-bottom: 1.25rem;
 
       &__content {
-        min-height: calc(100vh - 14rem);
         padding: .375rem .375rem .9375rem;
         border-width: .25rem;
         border-radius: .25rem;
@@ -120,10 +112,6 @@ const handleBackFn = () => {
             margin-left: .25rem;
             letter-spacing: .125rem;
           }
-        }
-
-        &__info {
-          min-height: calc(100vh - 18.375rem);
         }
       }
     }

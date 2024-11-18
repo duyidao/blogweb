@@ -97,126 +97,189 @@ export { componentOptions };
   .effect {
     max-width: 1600px;
     margin: 0 auto;
-  .effect-control {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
-    label {
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: bold;
-      font-family: 'black';
-      color: var(--catalogue-title);
-    }
-
-    &__left {
+    .effect-control {
       display: flex;
+      justify-content: space-between;
       align-items: center;
 
-      input[type="checkbox"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 18px;
-        height: 18px;
-        border: 2px solid #ccc;
-        outline: none;
+      label {
         cursor: pointer;
-        position: relative;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 'black';
+        color: var(--catalogue-title);
       }
 
-      input[type="checkbox"]:checked::before {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: var(--catalogue-title);
-        /* 修改这里的颜色为你想要的勾选颜色 */
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
+      &__left {
+        display: flex;
+        align-items: center;
 
-    &__right {
-      display: flex;
-      align-items: center;
-      .select {
-        position: relative;
-        svg {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          transform: translateY(-50%);
+        input[type="checkbox"] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          border: 2px solid #ccc;
+          outline: none;
+          cursor: pointer;
+          position: relative;
+        }
+
+        input[type="checkbox"]:checked::before {
+          content: "";
           display: block;
-          width: 24px;
+          width: 100%;
           height: 100%;
           background-color: var(--catalogue-title);
-          padding: 4px;
-          border-radius: 4px 0 0 4px;
+          /* 修改这里的颜色为你想要的勾选颜色 */
+          position: absolute;
+          top: 0;
+          left: 0;
         }
       }
-      select {
-        width: 130px;
-        height: 24px;
-        padding-left: 24px;
-        border-radius: 4px;
-        border: 1px solid var(--catalogue-title);
-        color: var(--catalogue-title);
-        font-size: 14px;
-        overflow: hidden;
+
+      &__right {
+        display: flex;
+        align-items: center;
+
+        .select {
+          position: relative;
+
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            display: block;
+            width: 24px;
+            height: 100%;
+            background-color: var(--catalogue-title);
+            padding: 4px;
+            border-radius: 4px 0 0 4px;
+          }
+        }
+
+        select {
+          width: 130px;
+          height: 24px;
+          padding-left: 24px;
+          border-radius: 4px;
+          border: 1px solid var(--catalogue-title);
+          color: var(--catalogue-title);
+          font-size: 14px;
+          overflow: hidden;
+          cursor: pointer;
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
+    }
+
+    .effect-list {
+      column-count: 4;
+      column-gap: 20px;
+      grid-template-rows: masonry;
+      gap: 20px;
+
+      .effect-item {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 20px 0 0;
         cursor: pointer;
+        overflow: hidden;
 
-        &:focus-visible {
-          outline: none;
+        img {
+          width: 100%;
+        }
+
+        &.active {
+          .effect-item__title {
+            transform: translateY(0);
+          }
+        }
+
+        &__title {
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          transform: translateY(50px);
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          background-color: var(--effect-animate);
+          backdrop-filter: blur(10px);
+          color: orange;
+          transition: all .3s;
+          mix-blend-mode: difference;
         }
       }
     }
   }
 
-  .effect-list {
-    column-count: 4;
-    column-gap: 20px;
-    grid-template-rows: masonry;
-    gap: 20px;
+  @media screen and (max-width: 768px) {
+    .effect {
+      max-width: 100vw;
 
-    .effect-item {
-      position: relative;
-      display: block;
-      width: 100%;
-      padding: 20px 0 0;
-      cursor: pointer;
-      overflow: hidden;
+      .effect-control {
 
-      img {
-        width: 100%;
-      }
+        label {
+          font-size: 1.25rem;
+        }
 
-      &.active {
-        .effect-item__title {
-          transform: translateY(0);
+        &__left {
+
+          input[type="checkbox"] {
+            width: 1.125rem;
+            height: 1.125rem;
+            border-width: .125rem;
+          }
+        }
+
+        &__right {
+          .select {
+            svg {
+              width: 1.5rem;
+              padding: .25rem;
+              border-radius: .25rem 0 0 .25rem;
+            }
+          }
+
+          select {
+            width: 8.125rem;
+            height: 1.5rem;
+            padding-left: 1.5rem;
+            border-radius: .25rem;
+            border-width: .0625rem;
+            font-size: .875rem;
+
+          }
         }
       }
 
-      &__title {
-        position: absolute;
-        bottom: 0px;
-        left: 0;
-        transform: translateY(50px);
-        width: 100%;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        background-color: var(--effect-animate);
-        backdrop-filter: blur(10px);
-        color: orange;
-        transition: all .3s;
-        mix-blend-mode: difference;
+      .effect-list {
+        column-gap: 1.25rem;
+        gap: 1.25rem;
+
+        .effect-item {
+          padding: 1.25rem 0 0;
+
+          &__title {
+            transform: translateY(3.125rem);
+            height: 3.125rem;
+            line-height: 3.125rem;
+            font-size: 1rem;
+            backdrop-filter: blur(.625rem);
+          }
+        }
       }
     }
   }
-}
 </style>

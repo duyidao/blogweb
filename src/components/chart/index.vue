@@ -34,6 +34,7 @@ onUnmounted(() => {
 
 defineExpose({
   myChart,
+  chartRef,
   onResize,
 });
 </script>
@@ -43,7 +44,7 @@ defineExpose({
 </template>
 
 <style scoped>
-.pie_chart {
+.all_chart {
   width: 100%;
   height: 100%;
 }

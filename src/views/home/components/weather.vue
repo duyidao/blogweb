@@ -88,6 +88,7 @@ const getWeatherImg = type => {
     case '多云':
       return duoyun
     case '小雨':
+    case '小雨-中雨':
       return hour > 17 ? wanshangxiaoyu : xiaoyu
     case '中雨':
       return hour > 17 ? wanshangzhongyu : zhongyu

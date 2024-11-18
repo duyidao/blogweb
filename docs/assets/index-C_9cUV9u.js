@@ -1,0 +1,72 @@
+import{_ as y}from"./index-YhvpI3G0.js";import{_ as E,S as A,C as x,O as I,o as m,c as g,r as p,v as G,P as M,h as V,w as X,a as e,j as h,u as n,k as T,E as C,p as D,d as w}from"./index-DApQOnrR.js";import{_ as B}from"./index-BNXNzi1R.js";import{c as v,m as i}from"./effect-D8HgqJ1o.js";import{_ as S}from"./cat-CkzGrFVi.js";import"./index-B1dDDnTa.js";const U={__name:"index",props:{modelValue:{},modelModifiers:{}},emits:["update:modelValue"],setup(a){const t=A(a,"modelValue");return(s,o)=>x((m(),g("input",{"onUpdate:modelValue":o[0]||(o[0]=u=>t.value=u),placeholder:"请输入内容",type:"text"},null,512)),[[I,t.value]])}},O=E(U,[["__scopeId","data-v-a0bf9230"]]),r=a=>(D("data-v-aa34e091"),a=a(),w(),a),N={class:"svg__container"},Y={class:"input__list"},L={viewBox:"0 0 500 300"},b={id:"conform"},P=["href"],k=r(()=>e("feColorMatrix",{in:"ORIGIN_IMAGE",type:"saturate",values:"0",result:"GRAY_IMAGE"},null,-1)),j=r(()=>e("feDisplacementMap",{in:"SourceGraphic",in2:"GRAY_IMAGE",scale:"15",xChannelSelector:"R",yChannelSelector:"R",result:"TEXTURED_TEXT"},null,-1)),z=["href"],F=r(()=>e("feColorMatrix",{in:"TEXTURED_TEXT",type:"matrix",values:"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0",result:"OPACITY_TEXT"},null,-1)),$=r(()=>e("feBlend",{in:"BG",in2:"OPACITY_TEXT",mode:"multiply",result:"BLENDED_TEXT"},null,-1)),q=["href"],H=["fill"],J={__name:"index",setup(a){const t=p("Logo"),s=p("#ff0000"),o=p(S),u=f=>{const l=new FileReader;l.addEventListener("load",d=>{const _=d.target.result;o.value=_}),l.readAsDataURL(f)};return G(()=>{v.value=[`<svg viewBox="0 0 500 300">
+  <defs>
+    <filter id="conform">
+      <feImage
+        :href="fileValue"
+        result="ORIGIN_IMAGE"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+      ></feImage>
+      <feColorMatrix
+        in="ORIGIN_IMAGE"
+        type="saturate"
+        values="0"
+        result="GRAY_IMAGE"
+      ></feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="GRAY_IMAGE"
+        scale="15"
+        xChannelSelector="R"
+        yChannelSelector="R"
+        result="TEXTURED_TEXT"
+      ></feDisplacementMap>
+      <feImage
+        :href="fileValue"
+        in="TEXTURED_TEXT"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+        result="BG"
+      ></feImage>
+      <feColorMatrix
+        in="TEXTURED_TEXT"
+        type="matrix"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+        result="OPACITY_TEXT"
+      ></feColorMatrix>
+      <feBlend
+        in="BG"
+        in2="OPACITY_TEXT"
+        mode="multiply"
+        result="BLENDED_TEXT"
+      ></feBlend>
+    </filter>
+  </defs>
+  <image
+    :href="fileValue"
+    x="0"
+    y="0"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="none"
+  ></image>
+  <text
+    x="50%"
+    y="50%"
+    font-size="10em"
+    font-weight="bold"
+    text-anchor="middle"
+    alignment-baseline="middle"
+    :fill="colorValue"
+    filter="url(#conform)"
+  >
+    {{ inputValue }}
+  </text>
+</svg>
+`],i.value={...i.value,type:"vue",activeIndex:0}}),M(()=>{v.value=[""],i.value={...i.value,type:"javascript",activeIndex:0}}),(f,l)=>{const d=B,_=O,R=y;return m(),V(R,{title:"纹理适配"},{default:X(()=>[e("div",N,[h(d,{style:{width:"100%"},onChange:u}),e("div",Y,[h(_,{modelValue:n(t),"onUpdate:modelValue":l[0]||(l[0]=c=>T(t)?t.value=c:null)},null,8,["modelValue"]),x(e("input",{"onUpdate:modelValue":l[1]||(l[1]=c=>T(s)?s.value=c:null),type:"color",name:"",id:""},null,512),[[I,n(s)]])]),(m(),g("svg",L,[e("defs",null,[e("filter",b,[e("feImage",{href:n(o),result:"ORIGIN_IMAGE",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,P),k,j,e("feImage",{href:n(o),in:"TEXTURED_TEXT",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none",result:"BG"},null,8,z),F,$])]),e("image",{href:n(o),x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,q),e("text",{x:"50%",y:"50%","font-size":"10em","font-weight":"bold","text-anchor":"middle","alignment-baseline":"middle",fill:n(s),filter:"url(#conform)"},C(n(t)),9,H)]))])]),_:1})}}},oe=E(J,[["__scopeId","data-v-aa34e091"]]);export{oe as default};
