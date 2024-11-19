@@ -1,7 +1,4 @@
 <script setup>
-import methods from '@/utils/customMethod.js'
-import { routeNow } from '@/store/router.js';
-
 const props = defineProps({
   title: {
     type: String,

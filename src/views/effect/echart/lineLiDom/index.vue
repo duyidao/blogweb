@@ -72,7 +72,7 @@ const init = () => {
     grid: {
       left: '0',
       right: '0',
-      bottom: '1%',
+      bottom: '2%',
       top: '0',
       containLabel: true
     },
@@ -706,6 +706,8 @@ const transformStep = v => {
           top: -5px;
           height: calc(100% - 16px);
           margin-bottom: 27px;
+          font-size: 16px;
+          font-family: 'robo';
         }
 
         >div {

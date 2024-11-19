@@ -1,5 +1,6 @@
 <script setup>
 import { codeList, modelInfo } from '@/store/effect.js';
+import { message } from '@/components/myUI/my-message/index.jsx';
 
 defineProps({
   title: {
@@ -27,10 +28,16 @@ const handleCloseFn = () => {
 
 // 复制
 const handleCopyFn = () => {
-  navigator.clipboard.writeText(modelCode.value).then(() => {
-    console.log('文本已复制到剪贴板');
+  navigator.clipboard.writeText(codeList.value[modelInfo.value.activeIndex]?.value || codeList.value[modelInfo.value.activeIndex]).then(() => {
+    message({
+      type: 'success',
+      message: '复制成功'
+    })
   }, (err) => {
-    console.error('无法复制文本: ', err);
+    message({
+      type: 'error',
+      message: '复制失败。' + err 
+    })
   });
 }
 </script>
