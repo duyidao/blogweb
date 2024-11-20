@@ -43,30 +43,24 @@ export default {
 
 <template>
   <div class="xlsx">
-    <div class="input ">
+    <div class="input">
       <label for="name">
-        名称：
-        <input v-model="info.name"
-          class=""
+        <span>名称：</span>
+        <my-input v-model="info.name"
           type="text"
-          name="name"
-          id="name">
+          placeholder="请输入名称"/>
       </label>
       <label for="age">
-        年龄：
-        <input v-model="info.age"
-          class=""
+        <span>年龄：</span>
+        <my-input v-model="info.age"
           type="text"
-          name="age"
-          id="age">
+          placeholder="请输入年龄"/>
       </label>
       <label for="level">
-        等级：
-        <input v-model="info.level"
-          class=""
+        <span>等级：</span>
+        <my-input v-model="info.level"
           type="text"
-          name="level"
-          id="level">
+          placeholder="请输入等级"/>
       </label>
       <div class="buttons">
         <button class=""
@@ -107,36 +101,36 @@ export default {
       align-items: center;
       color: var(--primary-info);
 
-      label {
+      > label {
         display: flex;
         align-items: center;
-        width: 50%;
+        width: 48%;
+        margin-right: 2%;
+
+        span {
+          width: 80px;
+          font-size: 16px;
+          font-family: 'fans';
+        }
 
         &:nth-child(1),
         &:nth-child(2) {
-          margin-bottom: 10px;
+          margin-bottom: 30px;
         }
-      }
-
-      input {
-        width: 80%;
-        height: 35px;
-        border: 1px solid var(--primary-bg);
-        margin-right: 20px;
-        padding-left: 15px;
-        color: var(--primary-info);
-        background-color: var(--catalogue-bg);
+        &:nth-child(2) {
+          margin-right: 0;
+        }
       }
 
       .buttons {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50%;
+        width: 48%;
 
         button {
-          width: 45%;
-          height: 30px;
+          width: 42%;
+          height: 33.5px;
           margin-right: 15px;
 
           &:last-child {
@@ -160,22 +154,19 @@ export default {
 
         label {
           width: 100%;
-          margin-bottom: .625rem;
-        }
+          margin-bottom: 1.875rem;
 
-        input {
-          height: 2.1875rem;
-          border: .0625rem solid var(--primary-bg);
-          margin-right: 1.25rem;
-          padding-left: .9375rem;
-          font-size: .875rem;
+          span {
+            width: 5rem;
+            font-size: 1rem;
+          }
         }
 
         .buttons {
           width: 90%;
 
           button {
-            height: 1.875rem;
+            height: 2.0938rem;
             margin-right: .9375rem;
             font-size: .875rem;
           }

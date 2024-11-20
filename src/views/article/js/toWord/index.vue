@@ -145,12 +145,12 @@ const handleChange = () => {
     column
     class="iframe-box box">
     <div class="input">
-      <input class=""
+      <my-input
         type="number"
         v-model="num"
         name="num"
         id="num"
-        placeholder="请输入要转化的数字">
+        placeholder="请输入要转化的数字" />
       <button class=""
         @click.stop="handleChange">转换</button>
     </div>
@@ -172,30 +172,19 @@ const handleChange = () => {
     align-items: center;
     margin-bottom: 20px;
 
-    input {
-      width: 300px;
-      height: 30px;
-      border: 1px solid var(--primary-border);
-      padding: 0 10px;
-      color: var(--catalogue-word);
-      background-color: var(--catalogue-bg);
-    }
-
     button {
       margin-left: 10px;
     }
   }
 
   .list {
-    flex-direction: column;
-
     .item {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
 
       >div {
-        color: var(--primary-info);
+        color: var(--normal-word);
 
         &.item-num {
           min-width: 30%;
@@ -213,14 +202,6 @@ const handleChange = () => {
   .box {
     .input {
       margin-bottom: 1.25rem;
-
-      input {
-        width: 18.75rem;
-        height: 1.875rem;
-        border: .0625rem solid var(--primary-border);
-        padding: 0 .625rem;
-        font-size: 1rem;
-      }
 
       button {
         margin-left: .625rem;

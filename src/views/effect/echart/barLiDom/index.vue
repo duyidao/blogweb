@@ -10,12 +10,10 @@ const props = defineProps({
     default: () => ([{
       name: '正常运行设备数量',
       color: 'rgb(88, 255, 220)',
-      colorStops: ['rgb(88, 255, 220)', 'rgba(88, 255, 220, 0.1)'],
       data: [{ name: 'Mon', value: 120 }, { name: 'Tue', value: 132 }, { name: 'Wed', value: 101 }, { name: 'Thu', value: 134 }, { name: 'Fri', value: 90 }, { name: 'Sat', value: 230 }, { name: 'Sun', value: 210 }],
     }, {
       name: '故障清单设备数量',
       color: '#ef8a3a',
-      colorStops: ['#ef8a3a', 'rgba(88, 255, 220, 0.1)'],
       data: [{ name: 'Mon', value: 11 }, { name: 'Tue', value: 243 }, { name: 'Wed', value: 645 }, { name: 'Thu', value: 423 }, { name: 'Fri', value: 349 }, { name: 'Sat', value: 13 }, { name: 'Sun', value: 0 }],
     }]),
   },
@@ -156,6 +154,7 @@ const init = () => {
           textStyle: {
             color: '#fff',
             padding: [2 * ratio.value, 6 * ratio.value],
+            borderWidth: 1 * ratio.value,
           }
         }
       }),
@@ -182,31 +181,26 @@ const init = () => {
     },
     series: props.data?.map(item => ({
       ...item,
-      type: 'line',
-      symbol: 'circle',
-      showSymbol: true,
-      smooth: true, // 平滑曲线
-      connectNulls: true, // 连续空值
-      lineStyle: {
-        color: item.color,
-        width: 2 * ratio.value,
-      },
-      // 折线图区域渐变色设置
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0,
-          y: 0,
-          x2: 0,
-          y2: 1,
-          colorStops: item.colorStops.map((color, index) => ({
-            offset: index,
-            color,
-          })),
-          global: false,
-        },
-      },
+      type: 'bar',
       data: item.data,
+      color: item.color,
+      barWidth: (item.barWidth || 16) * ratio.value,
+      markLine: {
+            silent: true,
+            symbol: 'none',
+            animation: false,
+            data: Array(2).fill(null).map(() => ({
+                yAxis: 0,
+                lineStyle: {
+                    color: props.info.style.white,
+                    type: 'solid',
+                    width: 1,
+                },
+                label: {
+                    show: false,
+                },
+            })),
+        },
     })) || [],
   }
 }

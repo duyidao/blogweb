@@ -7,7 +7,7 @@ import { scrollProgress, scrollAngle, light } from "@/store/index";
   <div v-if="!isNaN(scrollProgress)"
     id="scroll-angle"
     :style="{
-      background: `conic-gradient(from 0deg, #008eff 0%, orange ${scrollAngle}deg, ${light.value ? '#000' : '#616161'
+      background: `conic-gradient(from 0deg, #5dc0eb 0%, #3D5A80 ${scrollAngle}deg, ${light.value ? '#000' : '#616161'
         } ${scrollAngle}deg`,
     }">
     {{ scrollProgress }}
