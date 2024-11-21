@@ -66,7 +66,7 @@ defineProps({
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #e8e8e8;
+    background-color: rgba(#e8e8e8, .7);
     z-index: 99999;
 
     #wifi-loader {

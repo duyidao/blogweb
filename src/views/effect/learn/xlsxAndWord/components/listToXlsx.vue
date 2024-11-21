@@ -152,9 +152,10 @@ export default {
       .input {
         font-size: .875rem;
 
-        label {
+        > label {
           width: 100%;
-          margin-bottom: 1.875rem;
+          margin-bottom: 1.425rem !important;
+          margin-right: 0;
 
           span {
             width: 5rem;
@@ -164,6 +165,7 @@ export default {
 
         .buttons {
           width: 90%;
+          margin: 0 auto 1rem !important;
 
           button {
             height: 2.0938rem;
