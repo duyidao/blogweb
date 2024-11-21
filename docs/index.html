@@ -22,8 +22,11 @@
   <meta property="og:locale"
     content="zh_CN" />
   <title>刀刀博客小站</title>
-  <script type="module" crossorigin src="/blogweb/assets/index-muLKZLWf.js"></script>
-  <link rel="stylesheet" crossorigin href="/blogweb/assets/index-CHBfKOyt.css">
+  <script>
+    window.start = Date.now();
+  </script>
+  <script type="module" crossorigin src="/blogweb/assets/index-DnKoH_B6.js"></script>
+  <link rel="stylesheet" crossorigin href="/blogweb/assets/index-QpEjsiHv.css">
 </head>
 
 <body>
@@ -31,6 +34,17 @@
   <script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=42fr9YjV9zQPGeuHeOD5DpXGY8InSmCI"></script>
   <script src="/blogweb/js/APlayer.min.js"></script>
+  <script>
+    if (performance && performance.timing) {
+      let firstPaint = Date.now()
+      let start= performance.timing.navigationStart
+      console.log(firstPaint - start)
+    }
+    else {
+      let firstPaint = Date.now();
+      console.log(firstPaint - window.start)
+    }
+  </script>
 </body>
 
 </html>

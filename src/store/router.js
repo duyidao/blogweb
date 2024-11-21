@@ -31,7 +31,7 @@ export const routerBtnList = ref([
       icon: "icon-xiaoguo",
       children: [
         {
-          name: "EChart",
+          name: "列表",
           base: "/effect/",
           path: "list",
           icon: "icon-echart",

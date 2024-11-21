@@ -1,4 +1,4 @@
-import echartImg from '@/assets/img/echart/pie-round.png';
+import echartImg from '@/assets/img/echart/dom.png';
 
 export default {
   title: '柱状图Dom渲染',
