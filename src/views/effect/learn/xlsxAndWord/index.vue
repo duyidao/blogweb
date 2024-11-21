@@ -1,7 +1,6 @@
 <script setup>
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 import { learnChildData, getDict } from '../../index.js';
-import A from './components/word.vue';
 
 const codeData = {
   xlsxCode: `import { read, utils } from "xlsx";
@@ -148,10 +147,6 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box xlsx-word">
-    <IframeItemModel
-      title="item.title">
-      <A />
-    </IframeItemModel>
     <IframeItemModel v-for="item in componentList"
       :key="item.name"
       :title="item.title">

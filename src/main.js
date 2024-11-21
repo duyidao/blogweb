@@ -7,6 +7,7 @@ import 'virtual:svg-icons-register';
 // 公共方法
 import directives from './directives/index.js';
 import customMethod from './utils/customMethod.js';
+import './utils/preload.js';
 
 // 样式与字体
 import '@/assets/style/style.less';
