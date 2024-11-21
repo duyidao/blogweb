@@ -1,11 +1,13 @@
 import resize from './resize.js'
 import close from './close.js'
 import slideIn from './slideIn.js'
+import lazy from './lazy.js'
 
 const directives = {
   resize,
   close,
-  slideIn
+  slideIn,
+  lazy,
 }
    
 export default {

@@ -6,7 +6,6 @@ import { useMeta } from "vue-meta";
 import methods from '@/utils/customMethod';
 import TypeSwitch from './components/typeSwitch/index.vue';
 
-const router = useRouter();
 const routeList = ref([]);
 
 onMounted(() => {
@@ -69,7 +68,7 @@ export {componentOptions};
           class="article-item">
           <div class="article-item-link"
             @click.stop="routerFn(item)">
-            <img :src="item.meta.img"
+            <my-image :src="item.meta.img"
               alt="封面图片" />
             <div class="content">
               <div>

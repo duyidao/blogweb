@@ -85,8 +85,7 @@ export { componentOptions };
         @mouseenter="mouseenterFn(item)"
         @mouseleave="mouseleaveFn(item)">
         <p class="effect-item__title">{{ item.meta.title }}</p>
-        <img :src="item.meta.img"
-          alt="">
+        <my-image :src="item.meta.img"/>
       </div>
     </div>
   </div>

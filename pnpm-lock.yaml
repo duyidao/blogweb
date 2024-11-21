@@ -18,11 +18,11 @@ dependencies:
     specifier: ^6.1.2
     version: 6.1.2
   '@vue-office/docx':
-    specifier: ^1.6.0
-    version: 1.6.0(vue-demi@0.14.7)(vue@3.4.21)
+    specifier: ^1.6.2
+    version: 1.6.2(vue-demi@0.14.10)(vue@3.4.21)
   '@vue-office/excel':
     specifier: ^1.7.6
-    version: 1.7.6(vue-demi@0.14.7)(vue@3.4.21)
+    version: 1.7.6(vue-demi@0.14.10)(vue@3.4.21)
   '@vueuse/core':
     specifier: ^11.2.0
     version: 11.2.0(vue@3.4.21)
@@ -1090,8 +1090,8 @@ packages:
       vue: 3.4.21
     dev: true
 
-  /@vue-office/docx@1.6.0(vue-demi@0.14.7)(vue@3.4.21):
-    resolution: {integrity: sha512-OKEapOPq223uszA8mRSOWPhdfBchJa6sIqP46eMrMMe5RSUrG9m3QE/o0JBIaMgxDrtNd7aI9CvF2kDvb7G2hw==}
+  /@vue-office/docx@1.6.2(vue-demi@0.14.10)(vue@3.4.21):
+    resolution: {integrity: sha512-OHAoUHeY8nHjhWvwDhlPx+/rmRkxmqLpvPgtfCEOZ4H1c1LCdJ6eDbdV3152ww8dcdZ7fgGQu3fmSSaI7JwdpQ==}
     requiresBuild: true
     peerDependencies:
       '@vue/composition-api': ^1.7.1
@@ -1102,10 +1102,10 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21
-      vue-demi: 0.14.7(vue@3.4.21)
+      vue-demi: 0.14.10(vue@3.4.21)
     dev: false
 
-  /@vue-office/excel@1.7.6(vue-demi@0.14.7)(vue@3.4.21):
+  /@vue-office/excel@1.7.6(vue-demi@0.14.10)(vue@3.4.21):
     resolution: {integrity: sha512-HbhzudczlmPu5/p6ES4lAQDN6L9kQ0zoZOjDzCYmHxKj9O+IwAjzSwNIEAE1e0lolHQofZvvjtWDMZ/LNvKgTA==}
     requiresBuild: true
     peerDependencies:
@@ -1117,7 +1117,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21
-      vue-demi: 0.14.7(vue@3.4.21)
+      vue-demi: 0.14.10(vue@3.4.21)
     dev: false
 
   /@vue/babel-helper-vue-transform-on@1.2.2:
@@ -2613,7 +2613,7 @@ packages:
     optional: true
 
   /image-size@0.5.5:
-    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
+    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -3737,7 +3737,7 @@ packages:
     dev: true
 
   /source-map@0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
+    resolution: {integrity: sha1-dHIq8y6WFOnCh6jQu95IteLxomM=}
     engines: {node: '>=0.10.0'}
     requiresBuild: true
 
@@ -4257,21 +4257,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21
-
-  /vue-demi@0.14.7(vue@3.4.21):
-    resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.4.21
-    dev: false
 
   /vue-meta@3.0.0-alpha.7(vue@3.4.21):
     resolution: {integrity: sha512-C5JgqeVvqjPvWzJ1+Wpffk5GWxdlskuxP3q7iOQrI7TZ+ofVMDA5RDd1iAvAcPwfbaSrhGd8zda0zu+IfBvSLg==}
