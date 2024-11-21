@@ -126,6 +126,11 @@ export { componentOptions };
         .logo__text {
           font-size: 1.5625rem;
           letter-spacing: 0.125rem;
+
+          &::after {
+            transform: translate(-1rem, .3125rem) scaleY(0.5) skew(50deg);
+            filter: blur(.25rem);
+          }
         }
       }
     }
