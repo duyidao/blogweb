@@ -153,7 +153,7 @@ export default {
         font-size: .875rem;
 
         > label {
-          width: 100%;
+          width: 90%;
           margin-bottom: 1.425rem !important;
           margin-right: 0;
 

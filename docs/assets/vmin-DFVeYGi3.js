@@ -1,1 +1,0 @@
-import{o as t,c as a,a as s,bW as o,n as c}from"./index-DQOh_Shd.js";const n={class:"box-img"},m={__name:"vmin",props:{code:{type:String,default:""}},setup(e){return(r,i)=>(t(),a("div",n,[s("img",{title:"vmin",src:o,style:c(e.code),alt:"vmin"},null,4)]))}};export{m as default};
