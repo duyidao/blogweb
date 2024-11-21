@@ -1,0 +1,1 @@
+import{o as t,c as a,n as o,ae as r}from"./index-ZQOAdrIW.js";const n={__name:"img",props:{code:{type:String,default:""}},setup(e){return(c,s)=>(t(),a("img",{style:o(e.code),src:r,alt:"图片倒影"},null,4))}};export{n as default};

@@ -1,0 +1,1 @@
+import{o as t,c as o,n as a}from"./index-ZQOAdrIW.js";const s={__name:"text",props:{code:{type:String,default:""}},setup(e){return(c,r)=>(t(),o("p",{style:a(e.code)},"daodao",4))}};export{s as default};

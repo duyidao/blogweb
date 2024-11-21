@@ -36,7 +36,8 @@ export default defineConfig({
       ],
     })
   ],
-  base: '/blogweb/',
+  base: './',
+  // base: '/blogweb/',
   publicPath: '/blogweb/',
   build: {
     outDir: 'docs',
