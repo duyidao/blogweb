@@ -13,7 +13,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   build,
   plugins: [
@@ -38,7 +37,6 @@ export default defineConfig({
       ],
     })
   ],
-  // base: './',
   base: '/blogweb/',
   publicPath: '/blogweb/',
   server: {

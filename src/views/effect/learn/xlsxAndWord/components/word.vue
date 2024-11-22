@@ -26,6 +26,9 @@ const onChangeFn = e => {
 
 <style lang="less"
   scoped>
+  .word {
+    width: 100%;
+  }
   .word-upload {
     width: 300px;
     margin: 0 auto 20px;

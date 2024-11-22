@@ -1,4 +1,4 @@
-<script>
+<script setup>
 import { renderAsync } from 'docx-preview'
 
 const wordRef = ref(null)
@@ -14,12 +14,25 @@ const onChangeFn = e => {
       <myUpload needList
         @change="onChangeFn" />
     </div>
-    <div ref="wordRef"></div>
+    <div class="word-content" ref="wordRef"></div>
   </div>
 </template>
 
 <style lang="less"
   scoped>
+  .word {
+    width: 100%;
+
+    .word-content {
+      :deep(section.docx) {
+        width: 100% !important;
+
+        * {
+          max-width: 100% !important;
+        }
+      }
+    }
+  }
   .word-upload {
     width: 300px;
     margin: 0 auto 20px;
