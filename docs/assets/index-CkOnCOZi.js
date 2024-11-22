@@ -1,1 +1,0 @@
-import{_ as a,y as s,B as c,o as r,c as _,a4 as n}from"./index--JrBPAag.js";const o=["data-src","alt"],i={__name:"index",props:{src:{type:String,required:!0},alt:{type:String,default:"占位图片"}},setup(t){return(l,p)=>{const e=s("lazy");return c((r(),_("img",{src:n,"data-src":t.src,alt:t.alt},null,8,o)),[[e]])}}},u=a(i,[["__scopeId","data-v-c38005db"]]);export{u as _};

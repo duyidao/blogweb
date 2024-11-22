@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
 import postcsspxtorem from 'postcss-pxtorem';
+import build from './build.js';
 
 // jsx支持
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -14,6 +15,7 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build,
   plugins: [
     vue(),
     vueJsx(),
@@ -39,9 +41,6 @@ export default defineConfig({
   // base: './',
   base: '/blogweb/',
   publicPath: '/blogweb/',
-  build: {
-    outDir: 'docs',
-  },
   server: {
     port: 3001,
   },
