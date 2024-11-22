@@ -26,10 +26,3 @@ const createPreloadLink = () => {
 }
 
 createPreloadLink();
-
-// createPreloadLink('../assets/img/base/img_err.png');
-// createPreloadLink('../assets/img/base/img_load.png');
-// createPreloadLink('../assets/img/base/left_active.png');
-// createPreloadLink('../assets/img/base/left_inactive.png');
-// createPreloadLink('../assets/img/base/right_inactive.png');
-// createPreloadLink('../assets/img/base/right_active.png');
