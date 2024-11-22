@@ -264,6 +264,7 @@ export { componentOptions };
       }
 
       .effect-list {
+        column-count: 3;
         column-gap: 1.25rem;
         gap: 1.25rem;
 
