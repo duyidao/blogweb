@@ -99,7 +99,7 @@ export { componentOptions };
 </script>
 
 <template>
-  <div class="catalogue">
+  <div class="catalogue" id="catalogue">
     <div class="catalogue-title">
       <my-breadcrumb class="catalogue-title-nav" :list="breadList" />
       <div class="catalogue-title-big">
@@ -434,7 +434,7 @@ export { componentOptions };
   }
 
   @media screen and (max-width: 768px) {
-    .catalogue {
+    #catalogue {
       .catalogue-title {
         margin: 0 0 1.875rem;
 
@@ -443,6 +443,8 @@ export { componentOptions };
 
           li {
             margin-right: 1rem;
+            font-size: .75rem;
+            padding: .25rem .5rem;
 
             svg {
               margin-right: 5px;
@@ -451,8 +453,21 @@ export { componentOptions };
         }
 
         .catalogue-title-big {
-          font-size: 2.5rem;
-          margin-bottom: 1.875rem;
+          .catalogue-title-text {
+            font-size: 2.5rem;
+            margin-top: .6rem;
+
+            &::after {
+              width: 3.125rem;
+              height: .0625rem;
+              margin: .625rem auto;
+            }
+          }
+
+          .catalogue-title-subtext {
+            font-size: .875rem;
+            margin-bottom: .625rem;
+          }
         }
 
         .catalogue-title-info {

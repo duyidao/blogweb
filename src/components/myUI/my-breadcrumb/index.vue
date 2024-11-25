@@ -30,6 +30,7 @@ const handleClick = (to, i) => {
 
     span {
       font-size: 15px;
+
       &:last-child {
         opacity: 0.5;
       }
@@ -41,6 +42,23 @@ const handleClick = (to, i) => {
         &::after {
           content: '/';
           margin-left: 6px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .my-breadcrumb {
+
+      span {
+        font-size: .9375rem;
+
+        &:not(:last-child) {
+          margin-right: .375rem;
+
+          &::after {
+            margin-left: .375rem;
+          }
         }
       }
     }
