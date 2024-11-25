@@ -5,24 +5,40 @@ import left_inactive from '../assets/img/base/left_inactive.png';
 import right_inactive from '../assets/img/base/right_inactive.png';
 import right_active from '../assets/img/base/right_active.png';
 
-const data = {
+const images = [
   img_err,
   img_load,
   left_active,
   left_inactive,
   right_inactive,
   right_active,
-};
+];
 
-const createPreloadLink = () => {
-  Object.keys(data).forEach((key) => {
-    const path = data[key];
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = path;
-    document.head.appendChild(link);
-  })
+const preloadImages = (max = 3) => {
+  const _images = [...images];
+  function loadImage() {
+    const src = _images.shift();
+    return new Promise((resolve, reject) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+      link.onload = resolve;
+      link.onerror = reject;
+      setTimeout(reject, 10000);
+    });
+  }
+
+  function _loadImages() {
+    return loadImage().finally(() => {
+      if (_images.length) _loadImages();
+    });
+  }
+  
+  for (let i = 0; i < max; i++) {
+    _loadImages();
+  }
 }
 
-createPreloadLink();
+preloadImages();

@@ -34,6 +34,7 @@ const handleToTopFn = () => {
   cursor: pointer;
   transition: all .2s linear;
   transform: translateX(calc(var(--scroll-dynamic) * 135%));
+  z-index: 9999;
 
   i {
     font-size: 30px;

@@ -252,6 +252,7 @@ onUnmounted(() => {
     .weather-today__title {
       font-size: 14px;
       margin-bottom: 15px;
+      font-family: 'robo';
 
       span {
         margin-right: 5px;

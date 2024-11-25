@@ -51,6 +51,10 @@ componentList.value = list.map((item) => ({
     p {
       width: 15.625rem;
     }
+
+    :deep(.iframe-box-content) {
+      height: var(--height);
+    }
   }
 }
 </style>
