@@ -5,7 +5,7 @@ import dict from './dict.js';
 const childComp = import.meta.glob([`./**/**/components/**.vue`]);
 
 export const cssChildData = shallowRef({});
-export const learnChildData = shallowRef({});
+export const jsChildData = shallowRef({});
 export const vueChildData = shallowRef({});
 
 // 获取名称的函数
@@ -22,9 +22,9 @@ Object.entries(childComp).forEach(([path, component]) => {
     cssChildData.value[name] = asyncComponent;
   }
   else if (path.startsWith('./learn')) {
-    let asyncComponent = learnChildData.value[name] || null;
+    let asyncComponent = jsChildData.value[name] || null;
     asyncComponent = defineAsyncComponent(component);
-    learnChildData.value[name] = asyncComponent;
+    jsChildData.value[name] = asyncComponent;
   }
   else {
     let asyncComponent = vueChildData.value[name] || null;

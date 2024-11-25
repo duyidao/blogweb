@@ -70,7 +70,7 @@ export { componentOptions };
             id="">
             <option value="all">全部</option>
             <option value="css">CSS</option>
-            <option value="learn">Learn</option>
+            <option value="js">Js</option>
             <option value="echart">Echart</option>
           </select>
         </div>

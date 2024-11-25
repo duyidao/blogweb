@@ -25,7 +25,7 @@ export default {
       }
     ]
   },
-  learn: {
+  js: {
     canvas: [
       {
         name: 'compress',

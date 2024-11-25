@@ -157,7 +157,6 @@ const handleRouterFn = (path, front = '/article/') => {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      overflow-y: auto;
       margin-bottom: 1rem;
 
       .phone-dome__item {
