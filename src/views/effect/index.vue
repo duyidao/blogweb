@@ -71,6 +71,7 @@ export { componentOptions };
             <option value="all">全部</option>
             <option value="css">CSS</option>
             <option value="js">Js</option>
+            <option value="canvas">Canvas</option>
             <option value="echart">Echart</option>
           </select>
         </div>

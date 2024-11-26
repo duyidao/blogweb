@@ -128,7 +128,7 @@ export default {
 }`,
 }
 
-const list = getDict('learn.xlsxAndWord');
+const list = getDict('js.xlsxAndWord');
 const componentList = shallowRef([]);
 componentList.value = list.map((item) => ({
   ...item,

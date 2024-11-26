@@ -21,7 +21,7 @@ Object.entries(childComp).forEach(([path, component]) => {
     asyncComponent = defineAsyncComponent(component);
     cssChildData.value[name] = asyncComponent;
   }
-  else if (path.startsWith('./learn')) {
+  else if (path.startsWith('./js')) {
     let asyncComponent = jsChildData.value[name] || null;
     asyncComponent = defineAsyncComponent(component);
     jsChildData.value[name] = asyncComponent;

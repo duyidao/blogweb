@@ -58,7 +58,7 @@ const onSubmit = async () => {
 }`,
 }
 
-const list = getDict('learn.upload');
+const list = getDict('js.upload');
 const componentList = shallowRef([]);
 componentList.value = list.map((item) => ({
   ...item,

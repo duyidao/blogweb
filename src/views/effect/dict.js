@@ -26,24 +26,6 @@ export default {
     ]
   },
   js: {
-    canvas: [
-      {
-        name: 'compress',
-        title: '图片压缩'
-      },
-      {
-        name: 'screenshot',
-        title: '页面截图'
-      },
-      {
-        name: 'filter',
-        title: '滤镜'
-      },
-      {
-        name: 'tailor',
-        title: '图片裁剪'
-      },
-    ],
     jsxComp: [
       {
         name: 'if',

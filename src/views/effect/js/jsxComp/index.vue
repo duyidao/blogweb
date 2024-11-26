@@ -469,7 +469,7 @@ data.forEach((item, index) => {
 </template>`,
 }
 
-const list = getDict('learn.jsxComp');
+const list = getDict('js.jsxComp');
 const componentList = shallowRef([]);
 componentList.value = list.map((item) => ({
   ...item,
