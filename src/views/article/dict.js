@@ -57,6 +57,16 @@ export default {
         subtitle: '当前阴影值：',
       },
     ],
+    backdropFilter: [
+      {
+        name: 'backdrop-blur',
+        title: '背景模糊'
+      },
+      {
+        name: 'backdrop-grayscale',
+        title: '背景灰度'
+      }
+    ],
     scrollSnap: [
       {
         name: 'slide',
