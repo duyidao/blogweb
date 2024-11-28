@@ -1,4 +1,4 @@
-import learnImg from '@/assets/img/learn/xlsx.png'
+import learnImg from '@/assets/img/js/xlsx.png'
 export default {
     title: '前端操作excel与word',
     info: '前端操作excel与word',

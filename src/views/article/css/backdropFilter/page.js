@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/filter.jpg'
+import cssImg from '@/assets/img/css/backdrop.jpeg'
 
 export default {
   title: 'backdrop-filter 实现背景滤镜效果',
