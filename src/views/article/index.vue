@@ -51,7 +51,7 @@ const componentOptions = defineComponent({
   name: 'ArticleList', // 设置组件名称
 });
 
-export {componentOptions};
+export { componentOptions };
 </script>
 
 <template>
@@ -131,56 +131,6 @@ export {componentOptions};
       }
     }
 
-    .article-item-list {
-      display: flex;
-      flex-direction: column;
-
-      .article-item-link {
-        display: flex;
-
-        img {
-          display: block;
-          width: 350px;
-          height: 200px;
-          border-radius: 10px 0 0 10px;
-          overflow: hidden;
-          margin-right: 15px;
-        }
-
-        .content {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          padding: 12px 0;
-
-          span {
-            font-size: 14px;
-            color: var(--primary-info);
-
-            &.content-title {
-              font-size: 22px;
-              height: 25px;
-              font-weight: bold;
-            }
-
-            &.content-info {
-              margin: 15px 0;
-              font-size: 16px;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              -webkit-line-clamp: 6;
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-            }
-          }
-
-          .content-tag-list {
-            padding-right: 15px;
-          }
-        }
-      }
-    }
-
     .article-item-img {
       display: flex;
       flex-wrap: wrap;
@@ -240,82 +190,64 @@ export {componentOptions};
   @media screen and (max-width: 768px) {
     .article-list {
       .article-item {
-        margin-bottom: 1.25rem;
-
-        .content-tag-list {
-          .content-tag {
-            font-size: .75rem !important;
-            margin-left: .625rem !important;
-
-            svg {
-              width: .875rem;
-              height: .875rem;
-              margin-right: .3125rem;
-            }
-          }
-        }
+        border-radius: 2rem;
+        margin: 2.25rem 0 1.65rem;
+        overflow: unset;
       }
 
       .article-item-list {
+        display: flex;
+        flex-direction: column;
+
         .article-item-link {
+          position: relative;
+          width: 90%;
+          margin: 0 auto;
+
           img {
-            width: 18rem;
-            height: 12.5rem;
-            border-radius: 0.625rem 0 0 0.625rem;
-            margin-right: 0.9375rem;
+            width: 48%;
+            height: 13rem;
+            transform: translateY(-1.95rem);
           }
 
-          .content {
-            padding: 0.75rem 0;
+          .content-title {
+            position: absolute;
+            right: 0;
+            top: 1.25rem;
+            width: 48%;
+            height: calc(13rem - 1.95rem - 1.25rem);
+            font-size: 2rem;
+            font-family: 'dahei';
+            color: var(--catalogue-word);
+            letter-spacing: .2rem;
+            line-height: 1.1;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+              width: 0;
+            }
+          }
+
+          .content-info {
+            display: block;
+            width: 100%;
+            min-height: 1.75rem;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--catalogue-info);
+          }
+
+          .content-tag-list {
+            margin-bottom: 1.25rem;
 
             span {
-              font-size: 0.875rem;
-
-              &.content-title {
-                font-size: 1.375rem;
-                height: 1.5625rem;
-              }
-
-              &.content-info {
-                margin: 0.9375rem 0;
-                font-size: 1rem;
-              }
+              font-size: 1rem;
             }
 
-            .content-tag-list {
-              padding-right: .9375rem;
-            }
-          }
-        }
-      }
-
-      .article-item-img {
-        .article-item {
-          margin-right: 1.53rem;
-          box-shadow: 0px 0px .625rem -0.375rem var(--primary-border);
-
-          .article-item-link {
-            img {
-              height: 10rem;
-            }
-
-            .content {
-              padding: 0.625rem;
-              min-height: 9.375rem;
-
-              span {
-                font-size: 0.875rem;
-
-                &.content-title {
-                  font-size: 1.125rem;
-                  height: 1.5625rem;
-                }
-
-                &.content-info {
-                  margin: 0.75rem 0;
-                  font-size: 1rem;
-                }
-              }
+            svg {
+              width: 1rem;
+              height: 1rem;
+              margin-right: .3rem;
             }
           }
         }
@@ -325,16 +257,6 @@ export {componentOptions};
 
   @media screen and (min-width: 1300px) {
     .article-list {
-      .article-item-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
-        .article-item {
-          width: 49%;
-        }
-      }
-
       .article-item-img {
         .article-item {
           width: 23.1%;

@@ -2,7 +2,7 @@
 export const screenWidth = ref(document.documentElement.clientWidth || document.body.clientWidth);
 
 // 文章列表显示类型
-export const type = ref('img')
+export const type = computed(() => screenWidth.value > 768 ? 'img' : 'list');
 
 // 当前模式（暗黑模式与光亮模式）
 export const light = ref(true);
