@@ -60,6 +60,14 @@ export const routes = [
         ]
     },
     {
+      path: '/project',
+      name: 'project',
+      component: () => import('@/views/project/index.vue'),
+      meta: {
+          title: '项目学习成果',
+      }
+  },
+    {
         path: '/404',
         name: 'NoPage404',
         component: () => import('@/views/404/index.vue'), // 404 页面组件

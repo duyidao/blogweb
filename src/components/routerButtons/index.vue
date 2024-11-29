@@ -1,5 +1,5 @@
 <script setup>
-import { light, screenWidth, scrollAngle, scrollProgress, labelShow } from "@/store/index";
+import { light, screenWidth } from "@/store/index";
 import { generateArticleRoutes } from "@/router/index";
 import methods from '@/utils/customMethod';
 import PhoneDom from "./phone_dom.vue";
@@ -50,11 +50,12 @@ export { componentOptions };
 <template>
   <header class="router-buttons">
     <!-- 左侧logo -->
-    <div class="router-buttons__logo">
-      <span
-        class="logo__text"
-        title="首页"
-        @click="methods.$goRouter('/')">
+    <div class="router-buttons__logo"
+      @click="methods.$goRouter('/')">
+      <img src="/favicon.ico"
+        alt="">
+      <span class="logo__text"
+        title="首页">
         刀刀小站
       </span>
     </div>
@@ -89,8 +90,16 @@ export { componentOptions };
     z-index: 9990;
 
     .router-buttons__logo {
-      width: 140px;
+      display: flex;
+      align-items: center;
+      width: 170px;
       cursor: pointer;
+
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
 
       .logo__text {
         position: relative;
@@ -99,17 +108,6 @@ export { componentOptions };
         font-size: 32px;
         letter-spacing: 2px;
         color: var(--primary-bg);
-
-        &::after {
-          content: '刀刀小站';
-          position: absolute;
-          left: 0;
-          color: #000;
-          transform: translate(-16px, 5px) scaleY(0.5) skew(50deg);
-          z-index: -1;
-          mask: linear-gradient(transparent, #000);
-          filter: blur(4px);
-        }
       }
     }
   }
@@ -121,16 +119,17 @@ export { componentOptions };
       margin: 0 0 1.25rem;
 
       .router-buttons__logo {
-        width: 7.5rem;
+        width: 11.5rem;
+
+        img {
+          width: 2rem;
+          height: 2rem;
+          margin-right: .625rem;
+        }
 
         .logo__text {
-          font-size: 1.5625rem;
-          letter-spacing: 0.125rem;
-
-          &::after {
-            transform: translate(-1rem, .3125rem) scaleY(0.5) skew(50deg);
-            filter: blur(.25rem);
-          }
+          font-size: 1.95rem;
+          letter-spacing: 0.25rem;
         }
       }
     }

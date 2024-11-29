@@ -1,0 +1,1 @@
+import{_ as o,o as t,c as a,a as r,D as c,u as e,ag as s,n as p}from"./index-DiqVLKRI.js";const l={name:"result",for:"completion"},n={__name:"ripple",setup(_){return(i,m)=>(t(),a("div",{class:"ripple",style:p({"--completion":e(s)+"%"})},[r("output",l,c(e(s)),1)],4))}},d=o(n,[["__scopeId","data-v-341e4596"]]);export{d as default};

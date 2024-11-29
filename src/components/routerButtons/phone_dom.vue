@@ -50,36 +50,25 @@ const handleRouterFn = (path, front = '/article/') => {
       width="60%">
       <template #default>
         <div class="phone-dom">
-          <!-- 文章列表 -->
-          <div class="phone-dom__title">刀刀博客文章效果列表</div>
-          <div class="phone-dome__list">
-            <div class="phone-dome__item"
-              v-for="item in routerBtnList.find(item => item.name === '刀刀博客效果').children"
-              :key="item.path"
-              :class="{ 'active': route.path.includes(item.path) }"
-              @click.stop="handleRouterFn(item.path)">
-              <i class="iconfont"
-                :class="item.icon"></i>
-              <span>{{ item.name }}</span>
-            </div>
-          </div>
-
-          <!-- 效果列表 -->
-          <div class="phone-dom__title">项目学习需求效果列表</div>
-          <div class="phone-dome__list">
-            <div class="phone-dome__item"
-              v-for="item in routerBtnList.find(item => item.name === '项目需求效果').children"
-              :key="item.path"
-              :class="{ 'active': route.path.includes(item.path) }"
-              @click.stop="handleRouterFn(item.path, item.base)">
-              <i class="iconfont"
-                :class="item.icon"></i>
-              <span>{{ item.name }}</span>
+          <!-- 列表 -->
+          <div v-for="item in routerBtnList"
+            :key="item.name">
+            <div class="phone-dom__title">{{ item.phoneName }}</div>
+            <div class="phone-dome__list">
+              <div class="phone-dome__item"
+                v-for="e in item.children"
+                :key="e.path"
+                :class="{ 'active': route.path.includes(e.base + e.path) }"
+                @click.stop="handleRouterFn(e.path, e.base)">
+                <i class="iconfont"
+                  :class="e.icon"></i>
+                <span>{{ e.name }}</span>
+              </div>
             </div>
           </div>
 
           <!-- 功能按钮 -->
-          <div class="phone-dom__title">功能按钮</div>
+          <div class="phone-dom__title">功能操作按钮列表</div>
           <div class="phone-dome__list">
             <div title="前往随机文章"
               class="phone-dome__item">
@@ -92,7 +81,7 @@ const handleRouterFn = (path, front = '/article/') => {
               class="phone-dome__item">
               <i class="iconfont icon-fujianguanli"
                 @click.stop="handleFuncFn('link')"></i>
-              <span>刀刀小站外链</span>
+              <span>刀刀博客</span>
             </div>
           </div>
 
@@ -112,122 +101,123 @@ const handleRouterFn = (path, front = '/article/') => {
   </div>
 </template>
 
-<style lang="less" scoped>
-@import "./darkBtn.css";
+<style lang="less"
+  scoped>
+  @import "./darkBtn.css";
 
-.router-button__btns__phone {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex: 1;
-  margin-top: 0.125rem;
+  .router-button__btns__phone {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    margin-top: 0.125rem;
 
-  :deep(.iconfont) {
-    font-size: 1.5625rem !important;
-    cursor: pointer;
+    :deep(.iconfont) {
+      font-size: 1.5625rem !important;
+      cursor: pointer;
 
-    &:hover {
-      color: var(--primary-bg);
-    }
-  }
-
-  .phone-dom {
-    height: 100%;
-
-    .phone-dom__father {
-      position: relative;
-      width: 100%;
-      height: 2.5rem;
-
-      #dark-btn {
-        position: absolute;
-        top: -90%;
-        left: -20%;
+      &:hover {
+        color: var(--primary-bg);
       }
     }
 
-    .phone-dom__title {
-      width: 100%;
-      font-size: 1rem;
-      margin-bottom: 1.55rem;
-      text-align: left;
-    }
+    .phone-dom {
+      height: 100%;
 
-    .phone-dome__list {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      margin-bottom: 1rem;
+      .phone-dom__father {
+        position: relative;
+        width: 100%;
+        height: 2.5rem;
 
-      .phone-dome__item {
+        #dark-btn {
+          position: absolute;
+          top: -90%;
+          left: -20%;
+        }
+      }
+
+      .phone-dom__title {
+        width: 100%;
+        font-size: 1rem;
+        margin-bottom: 1.55rem;
+        text-align: left;
+      }
+
+      .phone-dome__list {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 30%;
-        padding: .625rem 0;
-        margin-right: 5%;
-        margin-bottom: .9375rem;
-        border: .0625rem solid var(--primary-font);
-        border-radius: .5rem;
-        cursor: pointer;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: 1rem;
 
-        &.active {
-          border: .0625rem solid #303F9F;
-          background-color: #303F9F;
-          color: #fff;
+        .phone-dome__item {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 30%;
+          padding: .625rem 0;
+          margin-right: 5%;
+          margin-bottom: .9375rem;
+          border: .0625rem solid var(--primary-font);
+          border-radius: .5rem;
+          cursor: pointer;
 
-          i {
-            color: #fff !important;
+          &.active {
+            border: .0625rem solid #303F9F;
+            background-color: #303F9F;
+            color: #fff;
+
+            i {
+              color: #fff !important;
+            }
           }
-        }
 
-        &:nth-child(3) {
-          margin-right: 0;
-        }
-
-        &:hover {
-          border: .0625rem solid #303F9F;
-          background-color: #303F9F;
-          color: #fff;
-
-          i {
-            color: #fff !important;
+          &:nth-child(3) {
+            margin-right: 0;
           }
-        }
 
-        span {
-          font-size: 1.15rem;
-          margin-top: .75rem;
+          &:hover {
+            border: .0625rem solid #303F9F;
+            background-color: #303F9F;
+            color: #fff;
+
+            i {
+              color: #fff !important;
+            }
+          }
+
+          span {
+            font-size: 1.15rem;
+            margin-top: .75rem;
+          }
         }
       }
     }
+
+    .phone-dom__link__item {
+      display: inline-block;
+      padding: .3125rem .625rem;
+      border: .0625rem solid var(--primary-font);
+    }
   }
 
-  .phone-dom__link__item {
-    display: inline-block;
-    padding: .3125rem .625rem;
-    border: .0625rem solid var(--primary-font);
-  }
-}
+  #scroll-angle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.875rem;
+    height: 1.875rem;
+    color: var(--catalogue-word);
+    margin-right: .9375rem;
+    z-index: 5;
 
-#scroll-angle {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.875rem;
-  height: 1.875rem;
-  color: var(--catalogue-word);
-  margin-right: .9375rem;
-  z-index: 5;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: .1875rem;
-    background-color: var(--body-bg);
-    z-index: -1;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: .1875rem;
+      background-color: var(--body-bg);
+      z-index: -1;
+    }
   }
-}
 </style>
