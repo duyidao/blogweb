@@ -92,12 +92,12 @@ export { componentOptions };
     .router-buttons__logo {
       display: flex;
       align-items: center;
-      width: 170px;
+      width: 180px;
       cursor: pointer;
 
       img {
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
         margin-right: 10px;
       }
 
@@ -105,7 +105,7 @@ export { componentOptions };
         position: relative;
         font-family: "dao";
         font-weight: 600;
-        font-size: 32px;
+        font-size: 30px;
         letter-spacing: 2px;
         color: var(--primary-bg);
       }
@@ -122,13 +122,13 @@ export { componentOptions };
         width: 11.5rem;
 
         img {
-          width: 2rem;
-          height: 2rem;
+          width: 1.625rem;
+          height: 1.625rem;
           margin-right: .625rem;
         }
 
         .logo__text {
-          font-size: 1.95rem;
+          font-size: 1.875rem;
           letter-spacing: 0.25rem;
         }
       }

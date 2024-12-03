@@ -20,11 +20,12 @@ import { scrollProgress, scrollAngle, light } from "@/store/index";
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   color: var(--catalogue-word);
-  margin-right: 15px;
+  margin-right: 14px;
   z-index: 5;
+  font-size: 13px;
 
   &::before {
     content: "";
@@ -37,9 +38,10 @@ import { scrollProgress, scrollAngle, light } from "@/store/index";
 
 @media screen and (max-width: 768px) {
   #scroll-angle {
-    width: 1.875rem;
-    height: 1.875rem;
+    width: 1.625rem;
+    height: 1.625rem;
     margin-right: .9375rem;
+    font-size: .8125rem;
 
     &::before {
       inset: .1875rem;

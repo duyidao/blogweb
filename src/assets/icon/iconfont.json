@@ -6,6 +6,69 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "1344",
+      "name": "夜景",
+      "font_class": "yejing",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "1457",
+      "name": "烈日",
+      "font_class": "lieri",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "10188948",
+      "name": "demo-ring",
+      "font_class": "demo",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "35107370",
+      "name": "二-在线项目列表",
+      "font_class": "online_project",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "26632249",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "2205478",
+      "name": "取消全屏",
+      "font_class": "cancel-full-screen",
+      "unicode": "e758",
+      "unicode_decimal": 59224
+    },
+    {
+      "icon_id": "5387604",
+      "name": "取消全屏",
+      "font_class": "quxiaoquanping",
+      "unicode": "eb10",
+      "unicode_decimal": 60176
+    },
+    {
+      "icon_id": "13604669",
+      "name": "全屏",
+      "font_class": "quanping",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "25537528",
+      "name": "全屏",
+      "font_class": "quanping1",
+      "unicode": "e7cf",
+      "unicode_decimal": 59343
+    },
+    {
       "icon_id": "1365",
       "name": "缩小",
       "font_class": "suoxiao",
@@ -21,7 +84,7 @@
     },
     {
       "icon_id": "40266635",
-      "name": "过滤 ",
+      "name": "过滤",
       "font_class": "a-guangqi_guolv11x",
       "unicode": "e61a",
       "unicode_decimal": 58906
