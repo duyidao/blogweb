@@ -14,7 +14,7 @@ const list = [
     id: 1,
     name: '优医问诊',
     url: 'https://duyidao.github.io/excellent-medical-consultation',
-    logo: 'https://raw.githubusercontent.com/duyidao/excellent-medical-consultation/refs/heads/master/public/favicon.ico',
+    logo: 'https://duyidao.github.io/excellent-medical-consultation/favicon.ico',
     tag: ['Vue3', 'axios', 'vant', 'typescript'],
     img: 'https://pic.imgdb.cn/item/6749828ed0e0a243d4daf7c6.png',
     blog: 'https://duyidao.github.io/myself/%E4%BC%98%E5%8C%BB%E9%97%AE%E8%AF%8A/',
@@ -24,11 +24,22 @@ const list = [
     id: 2,
     name: '小兔鲜',
     url: 'https://duyidao.github.io/rabit/',
-    logo: 'https://raw.githubusercontent.com/duyidao/rabit/refs/heads/master/public/favicon.ico',
+    logo: 'https://duyidao.github.io/rabit/favicon.ico',
     tag: ['Vue3', 'axios', 'element-plus', 'pinia'],
     img: 'https://pic.imgdb.cn/item/67498819d0e0a243d4db0b14.png',
     blog: 'https://duyidao.github.io/myself/%E5%B0%8F%E5%85%94%E9%B2%9C/inweb/all.html',
-    intro: 'B站Vue3项目学习，使用ElementPlus组件库，打造桌面端电商平台项目',
+    intro: 'B站Vue3项目学习，使用ElementPlus组件库，打造网页端电商平台项目',
+  },
+  {
+
+    id: 4,
+    name: '尚医通',
+    url: 'https://duyidao.github.io/doctor/home',
+    logo: 'https://duyidao.github.io/doctor/doctor.svg',
+    tag: ['Vue3', 'Typescript', 'element-plus', 'axios'],
+    img: 'https://pic.imgdb.cn/item/67500a25d0e0a243d4dd1773.png',
+    blog: 'https://duyidao.github.io/myself/%E5%B0%9A%E5%8C%BB%E9%80%9A/',
+    intro: 'B站Vue3项目学习，使用ElementPlus组件库，打造网页端在线医疗项目（由于接口不支持https，拉取代码本地运行更佳）',
   },
 ]
 </script>
