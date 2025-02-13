@@ -4,6 +4,10 @@ import { useUnit } from '@/store/rem.js';
 
 const { px2rem } = useUnit();
 
+defineComponent({
+  name: 'IframeBoxItem', // 设置组件名称
+});
+
 const props = defineProps({
   title: {
     type: String,
@@ -44,6 +48,10 @@ const props = defineProps({
   domControl: {
     type: Object,
     default: () => null
+  },
+  flowImg: {
+    type: String,
+    default: ''
   }
 });
 
@@ -69,15 +77,10 @@ const elementHeight = computed(() => screenWidth.value > 768 ? parseFloat(props.
 defineExpose({
   showCode,
 });
-</script>
 
-<script>
-// 定义组件选项，包括名称
-const componentOptions = defineComponent({
-  name: 'IframeBoxItem', // 设置组件名称
-});
-
-export { componentOptions };
+const handleFlowImgFn = () => {
+  window.open(props.flowImg, '_blank');
+}
 </script>
 
 <template>
@@ -88,6 +91,9 @@ export { componentOptions };
         <span>{{ title }}</span>
         <span v-if="subtitle"
           class="iframe-box-title-small">{{ subtitle }}</span>
+
+        <!-- 流程图按钮 -->
+        <div v-if="flowImg" @click="handleFlowImgFn">流程图</div>
       </div>
       <hover-show-button v-if="needCode"
         :word="showCode ? showCodeButtonTitle : buttonTitle"

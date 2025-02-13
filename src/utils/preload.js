@@ -20,20 +20,23 @@ const preloadImages = (max = 3) => {
     const src = _images.shift();
     return new Promise((resolve, reject) => {
       const link = document.createElement('link');
-      link.rel = 'preload';
+      link.rel = 'prefetch';
       link.as = 'image';
       link.href = src;
       document.head.appendChild(link);
       link.onload = resolve;
       link.onerror = reject;
-      setTimeout(reject, 10000);
     });
   }
 
   function _loadImages() {
-    return loadImage().finally(() => {
-      if (_images.length) _loadImages();
-    });
+    return loadImage()
+      .catch((err) => {
+        console.warn('加载失败：' + err)
+      })
+      .finally(() => {
+        if (_images.length) _loadImages();
+      });
   }
   
   for (let i = 0; i < max; i++) {

@@ -75,6 +75,9 @@ const key = computed(() => {
 
     <!-- 返回顶部 -->
     <my-toTop />
+
+    <!-- 流程图 -->
+    <flow-img />
   </div>
 </template>
 
