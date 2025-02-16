@@ -81,7 +81,7 @@ const handleCopyFn = () => {
     top: 50%;
     left: 50%;
     width: 75%;
-    height: 500px;
+    height: 75vh;
     padding: 15px;
     transform: translate(-50%, -50%);
     background-color: var(--catalogue-bg);

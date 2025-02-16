@@ -4,7 +4,10 @@ const handleSizeChange = (size) => {
   width.value = size.width
 }
 
-const code = `// 配置监视盒子内容盒或边框盒或者 SVGElement 边界尺寸的变化函数
+const code = `// 建立映射表
+const map = new WeakMap()
+
+// 配置监视盒子内容盒或边框盒或者 SVGElement 边界尺寸的变化函数
 const ob = new ResizeObserver((entries) => {
   for (const entry of entries) {
     // 运行 entry.target 对应的回调函数

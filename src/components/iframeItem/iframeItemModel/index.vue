@@ -19,6 +19,7 @@ const props = defineProps({
         <slot></slot>
       </div>
     </main>
+    <div>11</div>
   </div>
 </template>
 
