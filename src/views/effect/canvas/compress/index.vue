@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/toWord.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 
 const imgUrl = ref('');
@@ -91,7 +92,7 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box box">
-    <IframeItemModel title="图片压缩">
+    <IframeItemModel title="图片压缩" :flowImg="flowImg">
       <div class="compress">
         <div class="compress-upload">
           <myUpload @change="onChangeFn" />

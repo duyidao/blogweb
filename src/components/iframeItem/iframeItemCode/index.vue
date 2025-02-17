@@ -93,15 +93,28 @@ const handleFlowImgFn = (type = false) => {
   <div class="iframe-box-item">
     <header class="iframe-box-title">
       <div class="iframe-box-title-main">
-        <svg-icon width="25" height="25" name="biaotibiankuangtu"></svg-icon>
+        <svg-icon
+          width="25"
+          height="25"
+          name="biaotibiankuangtu"
+        />
         <span>{{ title }}</span>
-        <span v-if="subtitle"
-          class="iframe-box-title-small">{{ subtitle }}</span>
+        <span
+          v-if="subtitle"
+          class="iframe-box-title-small"
+        >{{ subtitle }}</span>
 
         <!-- 流程图按钮 -->
-        <i v-if="flowImg" @click="handleFlowImgFn" class="iconfont icon-flowChart" :class="{'show': showFlowImg}" title="查看流程图"></i>
+        <i
+          v-if="flowImg"
+          @click="handleFlowImgFn"
+          class="iconfont icon-flowChart"
+          :class="{'show': showFlowImg}"
+          title="查看流程图"
+        ></i>
       </div>
-      <hover-show-button v-if="needCode"
+      <hover-show-button
+        v-if="needCode"
         :word="showCode ? showCodeButtonTitle : buttonTitle"
         @click="handleClick" />
     </header>
@@ -109,7 +122,12 @@ const handleFlowImgFn = (type = false) => {
     <!-- 内容区域：流程图、代码、效果 -->
     <main class="iframe-box-content"
       :style="{ '--height': elementHeight }">
-      <img @click="handleFlowImgFn(true)" v-show="showFlowImg" :src="flowImg" alt="" title="新页面打开">
+      <img
+        v-show="showFlowImg"
+        :src="flowImg" alt=""
+        title="新页面打开"
+        @click="handleFlowImgFn(true)"
+      />
 
       <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
         <slot></slot>

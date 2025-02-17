@@ -1,10 +1,16 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/canvas/filter.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 
 const imgUrl = ref('');
 const imgRef = ref(null);
 const filter = ref(null);
 
+/**
+ * 处理文件变更的函数
+ *
+ * @param e - 触发文件变更的事件对象
+ */
 const onChangeFn = e => {
   // 预览文件
   let fr = new FileReader();
@@ -75,7 +81,7 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box box">
-    <IframeItemModel title="图片滤镜">
+    <IframeItemModel title="图片滤镜" :flowImg="flowImg">
       <div ref="filter"
         class="filter">
         <div class="filter-upload">

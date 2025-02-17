@@ -1,0 +1,1 @@
+import{_ as s,y as a,B as c,o as r,c as _,Z as n}from"./index-DiFe4JqO.js";const o=["data-src","alt"],i={__name:"index",props:{src:{type:String,required:!0},alt:{type:String,default:"占位图片"}},setup(t){return(l,p)=>{const e=a("lazy");return c((r(),_("img",{src:n,"data-src":t.src,alt:t.alt},null,8,o)),[[e]])}}},u=s(i,[["__scopeId","data-v-c38005db"]]);export{u as _};

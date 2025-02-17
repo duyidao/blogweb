@@ -4,7 +4,14 @@ const props = defineProps({
     type: String,
     default: '标题',
   },
+  flowImg: {
+    type: String,
+    default: '',
+  }
 });
+
+const showFlowImg = ref(false);
+const full = ref(true);
 </script>
 
 <template>
@@ -14,12 +21,32 @@ const props = defineProps({
         <img src="@/assets/img/effect/arrow.png"
           alt="">
         <span>{{ title }}</span>
+        <div
+          v-show="!showFlowImg"
+          class="iframe-item-model__content__btn"
+          @click="showFlowImg = true"
+        >查看流程图</div>
       </div>
       <div class="iframe-item-model__content__info">
         <slot></slot>
       </div>
     </main>
-    <div>11</div>
+    <aside
+      v-show="showFlowImg"
+      class="iframe-item-model__flowImg"
+      :class="{ 'flowImg-small': !full }"
+      @click="full = true"
+    >
+      <div class="control">
+        <span class="iconfont icon-quxiaoquanping" title="缩小" @click.stop="full = false"></span>
+        <span class="iconfont icon-guanbi" title="关闭" @click.stop="showFlowImg = false"></span>
+      </div>
+      <img :src="flowImg" alt="">
+      <div class="mask">
+        <span class="iconfont icon-quanping1" title="全屏"></span>
+        <span>展开全屏</span>
+      </div>
+    </aside>
   </div>
 </template>
 
@@ -30,6 +57,80 @@ const props = defineProps({
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    &__flowImg {
+      position: fixed;
+      left: 0;
+      top: 18vh;
+      // width: 50vw;
+      max-width: 1400px;
+      height: 78vh;
+      background-color: var(--body-bg);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px 20px;
+      border-radius: 0 20px 20px 0;
+      box-shadow: 0 0 10px var(--effect-info-bg);
+      z-index: 9999;
+      transition: all .3s;
+
+      &.flowImg-small {
+        height: 150px;
+        padding: 10px;
+        min-width: 100px;
+
+        .control {
+          display: none;
+        }
+
+        .mask {
+          display: flex;
+          cursor: pointer;
+        }
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .control {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        height: 30px;
+        margin-bottom: 10px;
+
+        span {
+          margin-left: 15px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+
+      .mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, .5);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        font-size: 14px;
+
+        span:first-child {
+          font-size: 32px;
+          margin-bottom: 20px;
+        }
+      }
+
+      img {
+        height: calc(100% - 30px);
+      }
     }
 
     &__content {
@@ -71,6 +172,14 @@ const props = defineProps({
           font-family: 'robo';
           letter-spacing: 2px;
         }
+      }
+
+      &__btn {
+        border: 1px solid var(--primary-font);
+        margin-left: 20px;
+        padding: 5px 10px;
+        border-radius: 8px;
+        cursor: pointer;
       }
 
       &__info {
