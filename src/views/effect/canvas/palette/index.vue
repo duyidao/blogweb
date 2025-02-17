@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/canvas/filter.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 import ColorThief from 'colorthief';
 import img1 from '@/assets/img/music/likeme.webp';
@@ -15,9 +16,7 @@ const hoverIndex = ref(-1);
 const handlerMouseEnter = async (img, i) => {
   hoverIndex.value = i;
   let colors = await colorThief.getColor(img, 5);
-  console.log('colors', colors)
   bgColor.value = `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
-  console.log('bgColor.value', bgColor.value);
 }
 
 const handlerMouseLeave = () => {
@@ -59,7 +58,7 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box box">
-    <IframeItemModel>
+    <IframeItemModel :flowImg="flowImg">
       <div class="palette-imgs" :style="{'--bg': bgColor}">
         <img v-for="(item, index) in imgs"
           :key="item"

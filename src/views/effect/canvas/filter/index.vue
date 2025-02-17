@@ -6,22 +6,6 @@ const imgUrl = ref('');
 const imgRef = ref(null);
 const filter = ref(null);
 
-/**
- * 处理文件变更的函数
- *
- * @param e - 触发文件变更的事件对象
- */
-const onChangeFn = e => {
-  // 预览文件
-  let fr = new FileReader();
-  fr.readAsDataURL(e);
-
-  // 获取图片读完的图片结果（非同步，需要在onload获取）
-  fr.onload = () => {
-    imgUrl.value = fr.result;
-  };
-};
-
 const addFn = () => {
   const filterCanvas = document.createElement('canvas');
   filterCanvas.height = imgRef.value.height || '400px';
@@ -45,6 +29,25 @@ const addFn = () => {
 
   // 重新绘制像素
   ctx.putImageData(imageData, 0, 0);
+};
+
+/**
+ * 处理文件变更的函数
+ *
+ * @param e - 触发文件变更的事件对象
+ */
+const onChangeFn = e => {
+  // 预览文件
+  let fr = new FileReader();
+  fr.readAsDataURL(e);
+
+  // 获取图片读完的图片结果（非同步，需要在onload获取）
+  fr.onload = () => {
+    imgUrl.value = fr.result;
+    setTimeout(() => {
+      addFn();
+    }, 1000);
+  };
 };
 
 onMounted(() => {
@@ -82,17 +85,21 @@ onUnmounted(() => {
 <template>
   <div class="iframe-box box">
     <IframeItemModel title="图片滤镜" :flowImg="flowImg">
-      <div ref="filter"
-        class="filter">
+      <div class="filter">
         <div class="filter-upload">
           <myUpload @change="onChangeFn" />
         </div>
-        <img :src="imgUrl"
-          ref="imgRef" />
-        <button v-if="imgUrl"
-          @click="addFn">
-          点我添加滤镜
-        </button>
+        <div class="info">
+          <div class="info-item">
+            <span>原图效果</span>
+            <img :src="imgUrl"
+              v-if="imgUrl"
+              ref="imgRef" />
+          </div>
+          <div class="info-item" ref="filter">
+            <span>过滤效果</span>
+          </div>
+        </div>
       </div>
     </IframeItemModel>
   </div>
@@ -116,7 +123,27 @@ onUnmounted(() => {
 
     img {
       width: 300px;
-      margin-top: 20px;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      color: var(--primary-info);
+      margin: 40px 0 20px;
+
+      .info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        span {
+          font-size: 16px;
+          font-family: 'sans';
+          margin-bottom: 15px;
+        }
+      }
     }
   }
 

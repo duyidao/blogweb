@@ -1,5 +1,5 @@
 <script setup>
-import flowImg from '@/assets/img/drawbed/js/toWord.png'
+import flowImg from '@/assets/img/drawbed/canvas/compress.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 
 const imgUrl = ref('');
@@ -140,6 +140,7 @@ onUnmounted(() => {
         display: flex;
         flex-direction: column;
         align-items: center;
+        flex: 1;
         span {
           font-size: 16px;
           font-family: 'sans';

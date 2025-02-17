@@ -1,1 +1,0 @@
-.palette-imgs[data-v-d7898837]{display:flex;flex-wrap:wrap;justify-content:space-evenly;background-color:var(--bg);gap:10px}.palette-imgs img[data-v-d7898837]{width:46%;max-width:400px;transition:all .3s;opacity:.75}.palette-imgs img.active[data-v-d7898837]{transform:translateY(-3px);opacity:1;box-shadow:0 0 7px #333}.palette-imgs img.unactive[data-v-d7898837]{opacity:.35}
