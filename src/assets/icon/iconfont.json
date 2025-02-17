@@ -6,6 +6,13 @@
   "description": "刀刀小站博客字体iconfont",
   "glyphs": [
     {
+      "icon_id": "16852660",
+      "name": "流程图",
+      "font_class": "flowChart",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
       "icon_id": "1344",
       "name": "夜景",
       "font_class": "yejing",

@@ -1,4 +1,6 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/visibilitychange.png'
+
 const fn = () => {
   if (document.hidden) {
     document.title = "页面离开咯";
@@ -38,6 +40,7 @@ onUnmounted(() => {
     showCodeButtonTitle="隐藏源码"
     v-model="code"
     type="javascript"
+    :flowImg="flowImg"
     disabled>
     页面可见度
   </IframeItemCode>

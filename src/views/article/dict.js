@@ -1,3 +1,8 @@
+import addTextImg from '@/assets/img/drawbed/js/addText.png';
+import copyImg from '@/assets/img/drawbed/js/copy.png';
+import notcopyImg from '@/assets/img/drawbed/js/notcopy.png';
+import pasteImg from '@/assets/img/drawbed/js/paste.png';
+
 export default {
   css: {
     below: [
@@ -95,18 +100,26 @@ export default {
       {
         name: 'addText',
         title: '复制一段话后面加内容',
+        flowImg: addTextImg,
+        height: '400',
       },
       {
         name: 'notCopy',
         title: '不允许复制并写入自定义内容',
+        flowImg: notcopyImg,
+        height: '200',
       },
       {
         name: 'paste',
         title: '刷新后粘贴剪切板内容',
+        flowImg: pasteImg,
+        height: '300',
       },
       {
         name: 'copy',
         title: '粘贴文件',
+        flowImg: copyImg,
+        height: '200',
       },
     ],
   },

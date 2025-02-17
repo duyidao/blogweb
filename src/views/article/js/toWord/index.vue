@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/toWord.png'
 
 const num = ref(120001003);
 
@@ -143,6 +144,7 @@ const handleChange = () => {
     type="javascript"
     disabled
     column
+    :flowImg="flowImg"
     class="iframe-box box">
     <div class="input">
       <my-input

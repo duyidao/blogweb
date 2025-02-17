@@ -1,4 +1,6 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/eyeDropper.png'
+
 const colorVal = ref('')
 const spanRef = ref(null)
 
@@ -59,6 +61,7 @@ const code = ref(`const clickFn = () => {
     column
     type="javascript"
     v-model="code"
+    :flowImg="flowImg"
     disabled>
     <button @click.stop="clickFn">打开拾色器</button>
     <div class="spanRef"

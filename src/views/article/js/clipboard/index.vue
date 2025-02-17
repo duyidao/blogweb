@@ -1,6 +1,5 @@
 <script setup>
 import { jsChildData, getDict } from '../../index.js';
-import addTextImg from '@/assets/img/drawbed/js/addText.png';
 
 const codeData = {
   addTextCode: `<template>
@@ -79,35 +78,13 @@ onMounted(() => {
 \<\/script\>`,
 };
 
-const getHeight = name => {
-  switch (name) {
-    case 'addText':
-      return '400';
-    case 'notCopy':
-    case 'paste':
-      return '200';
-    default:
-    return '300';
-  }
-}
-
-const componentDataMap = new Map([
-  ['addText', { flowImg: addTextImg, height: '400' }],
-  ['notCopy', { flowImg: addTextImg, height: '200' }],
-  ['paste', { flowImg: addTextImg, height: '300' }],
-  ['copy', { flowImg: addTextImg, height: '200' }],
-])
-
 const list = getDict('js.clipboard');
 const componentList = shallowRef([]);
 componentList.value = list.map((item) => ({
   ...item,
   model: codeData[item.name + 'Code'],
   component: Object.freeze(jsChildData.value[item.name]),
-  height: componentDataMap.get(item.name).height,
-  flowImg: componentDataMap.get(item.name).flowImg,
 }));
-console.log('componentList.value', componentList.value);
 </script>
 
 <template>

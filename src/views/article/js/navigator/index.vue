@@ -1,4 +1,6 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/navigator.png'
+
 const info = ref({})
 
 const clickFn = () => {
@@ -31,6 +33,7 @@ const code = `const clickFn = () => {
     column
     type="javascript"
     v-model="code"
+    :flowImg="flowImg"
     disabled>
     <div class="box">
       <button @click.stop="clickFn">获取网络状态</button>

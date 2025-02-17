@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/showDirectoryPicker.png'
 import File from './components/file.vue';
 
 const root = ref([]);
@@ -64,6 +65,7 @@ const clickFn = async (index) => {
     :type="fileType"
     title="文件夹获取"
     height="600"
+    :flowImg="flowImg"
     v-model="fileContent">
     <button @click.stop="showDirectoryPickerFn">获取文件夹</button>
     <template v-if="!fileFind">

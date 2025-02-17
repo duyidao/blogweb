@@ -78,29 +78,39 @@ defineExpose({
   showCode,
 });
 
-const handleFlowImgFn = () => {
-  window.open(props.flowImg, '_blank');
+const showFlowImg = ref(false);
+const handleFlowImgFn = (type = false) => {
+  if (typeof type !== 'boolean') {
+    screenWidth.value > 768 ? showFlowImg.value = !showFlowImg.value : window.open(props.flowImg, '_blank');
+  }
+  else {
+    type ? window.open(props.flowImg, '_blank') : null;
+  }
 }
 </script>
 
 <template>
   <div class="iframe-box-item">
     <header class="iframe-box-title">
-      <div>
-        <svg-icon width="20" height="20" name="biaotibiankuangtu"></svg-icon>
+      <div class="iframe-box-title-main">
+        <svg-icon width="25" height="25" name="biaotibiankuangtu"></svg-icon>
         <span>{{ title }}</span>
         <span v-if="subtitle"
           class="iframe-box-title-small">{{ subtitle }}</span>
 
         <!-- 流程图按钮 -->
-        <div v-if="flowImg" @click="handleFlowImgFn">流程图</div>
+        <i v-if="flowImg" @click="handleFlowImgFn" class="iconfont icon-flowChart" :class="{'show': showFlowImg}" title="查看流程图"></i>
       </div>
       <hover-show-button v-if="needCode"
         :word="showCode ? showCodeButtonTitle : buttonTitle"
         @click="handleClick" />
     </header>
+
+    <!-- 内容区域：流程图、代码、效果 -->
     <main class="iframe-box-content"
       :style="{ '--height': elementHeight }">
+      <img @click="handleFlowImgFn(true)" v-show="showFlowImg" :src="flowImg" alt="" title="新页面打开">
+
       <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
         <slot></slot>
       </div>
@@ -138,6 +148,24 @@ const handleFlowImgFn = () => {
         display: flex;
         align-items: center;
         height: 100%;
+
+        .icon-flowChart {
+          margin-left: 20px;
+          font-size: 18px;
+          border: 1px solid var(--catalogue-title);
+          background-color: var(--detail-tag-word);
+          border-radius: 50%;
+          padding: 3px;
+          transform: rotate(0deg);
+          transition: all .3s;
+          cursor: pointer;
+
+          &.show {
+            transform: rotate(180deg);
+            background-color: var(--catalogue-title);
+            color: var(--detail-tag-word);
+          }
+        }
       }
 
       svg {
@@ -159,6 +187,12 @@ const handleFlowImgFn = () => {
       height: var(--height);
       background: url('./bg.png') no-repeat center center / 100% 100%;
       padding: 10px;
+
+      img {
+        height: 100%;
+        margin-right: 20px;
+        cursor: pointer;
+      }
 
       :deep(.cm-editor) {
         width: 53%;

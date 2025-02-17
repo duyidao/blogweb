@@ -1,17 +1,15 @@
-<script setup lang="ts">
+<script setup>
 const contentRef = ref();
+
 onMounted(() => {
   contentRef.value.addEventListener("paste", (e) => {
-    console.log("e", e);
     if (e.clipboardData.files.length > 0) {
       e.preventDefault();
 
       const file = e.clipboardData.files[0];
-      console.log("file", file);
 
       const reader = new FileReader();
       reader.onload = function (e) {
-        console.log("reader", e);
         const data = e.target.result;
         console.log("data", data);
         const img = document.createElement("img");

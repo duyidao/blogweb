@@ -1,4 +1,6 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/resize.png'
+
 const width = ref(500)
 const handleSizeChange = (size) => {
   width.value = size.width
@@ -44,6 +46,7 @@ export default {
     column
     type="javascript"
     v-model="code"
+    :flowImg="flowImg"
     disabled
     v-resize="handleSizeChange"
     class="iframe-box">
