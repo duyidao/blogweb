@@ -1,0 +1,1 @@
+import{o as t,c as a,n as c,ac as o}from"./index-DA_VNGs7.js";const n={__name:"img",props:{code:{type:String,default:""}},setup(e){return(r,s)=>(t(),a("img",{style:c(e.code),src:o,alt:"图片倒影"},null,4))}};export{n as default};

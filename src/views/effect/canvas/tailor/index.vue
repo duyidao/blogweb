@@ -27,6 +27,14 @@ const onChangeFn = e => {
   }
 }
 
+const download = () => {
+  const dataUrl = canvasRef.value.toDataURL('image/jpeg')
+  let a = document.createElement('a')
+  a.href = dataUrl
+  a.download = 'img.jpeg'
+  a.click()
+}
+
 onMounted(() => {
   codeList.value = [`const onChangeFn = e => {
   // 预览文件
@@ -70,7 +78,10 @@ onUnmounted(() => {
               ref="imgRef" />
           </div>
           <div class="info-item">
-            <span>裁剪效果</span>
+            <span class="click" @click="download">
+              裁剪效果
+              <span>(点击下载图片)</span>
+            </span>
             <canvas ref="canvasRef"
               height="100"
               width="200"
@@ -112,10 +123,18 @@ onUnmounted(() => {
         flex-direction: column;
         align-items: center;
         flex: 1;
+        
         span {
           font-size: 16px;
           font-family: 'sans';
           margin-bottom: 15px;
+
+          &.click {
+            color: red;
+            border-bottom: 1px solid red;
+            padding-bottom: 4px;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -131,6 +150,25 @@ onUnmounted(() => {
 
       img {
         width: 18.75rem;
+      }
+
+      .info {
+        flex-direction: column;
+        margin: 1.95rem 0 0;
+
+        .info-item {
+          margin-bottom: 1.25rem;
+
+          span {
+            font-size: 1.25rem;
+            margin-bottom: .9375rem;
+
+            &.click {
+              border-bottom-width: .0625rem;
+              padding-bottom: .25rem;
+            }
+          }
+        }
       }
     }
   }

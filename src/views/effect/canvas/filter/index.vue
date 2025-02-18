@@ -5,9 +5,10 @@ import { codeList } from '@/store/effect.js'; // 引入代码列表
 const imgUrl = ref('');
 const imgRef = ref(null);
 const filter = ref(null);
+let filterCanvas = null;
 
 const addFn = () => {
-  const filterCanvas = document.createElement('canvas');
+  filterCanvas = document.createElement('canvas');
   filterCanvas.height = imgRef.value.height || '400px';
   filterCanvas.width = imgRef.value.width;
   filter.value.appendChild(filterCanvas);
@@ -49,6 +50,14 @@ const onChangeFn = e => {
     }, 1000);
   };
 };
+
+const download = () => {
+  const dataUrl = filterCanvas.toDataURL('image/jpeg')
+  let a = document.createElement('a')
+  a.href = dataUrl
+  a.download = 'img.jpeg'
+  a.click()
+}
 
 onMounted(() => {
   codeList.value = [`const addFn = () => {
@@ -97,7 +106,10 @@ onUnmounted(() => {
               ref="imgRef" />
           </div>
           <div class="info-item" ref="filter">
-            <span>过滤效果</span>
+            <span class="click" @click="download">
+              过滤效果
+              <span>(点击下载图片)</span>
+            </span>
           </div>
         </div>
       </div>
@@ -138,10 +150,18 @@ onUnmounted(() => {
         flex-direction: column;
         align-items: center;
         flex: 1;
+        
         span {
           font-size: 16px;
           font-family: 'sans';
           margin-bottom: 15px;
+
+          &.click {
+            color: red;
+            border-bottom: 1px solid red;
+            padding-bottom: 4px;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -159,7 +179,25 @@ onUnmounted(() => {
 
       img {
         width: 18.75rem;
-        margin-top: 1.25rem;
+      }
+
+      .info {
+        flex-direction: column;
+        margin: 2.5rem 0 0;
+
+        .info-item {
+          margin-bottom: 1.25rem;
+
+          span {
+            font-size: 1.25rem;
+            margin-bottom: .9375rem;
+
+            &.click {
+              border-bottom-width: .0625rem;
+              padding-bottom: .25rem;
+            }
+          }
+        }
       }
     }
   }

@@ -9,6 +9,7 @@ const imgInfo = ref({
 });
 const imgRef = ref(null);
 const compress = ref(null);
+let canvas = null;
 
 // 获取图片
 const onChangeFn = e => {
@@ -22,12 +23,11 @@ const onChangeFn = e => {
     imgInfo.value.size = e.total
 
     // 创建canvas真实dom元素
-    let canvas = document.createElement('canvas')
+    canvas = document.createElement('canvas')
 
     setTimeout(() => {
       canvas.height = imgRef.value.height
       canvas.width = imgRef.value.width
-
       compress.value.appendChild(canvas)
 
       // 创建2d上下文
@@ -45,6 +45,14 @@ const onChangeFn = e => {
     }, 1000);
   }
 };
+
+const download = () => {
+  const dataUrl = canvas.toDataURL('image/jpeg')
+  let a = document.createElement('a')
+  a.href = dataUrl
+  a.download = 'img.jpeg'
+  a.click()
+}
 
 onMounted(() => {
   codeList.value = [`const imgUrl = ref('')
@@ -104,7 +112,10 @@ onUnmounted(() => {
               :src="imgUrl" />
           </div>
           <div class="info-item" ref="compress">
-            <span>压缩后大小：{{ imgInfo.blobsize || 0 }}</span>
+            <span class="click" @click="download">
+              压缩后大小：{{ imgInfo.blobsize || 0 }}
+              <span>(点击下载图片)</span>
+            </span>
           </div>
         </div>
       </div>
@@ -141,10 +152,18 @@ onUnmounted(() => {
         flex-direction: column;
         align-items: center;
         flex: 1;
+
         span {
           font-size: 16px;
           font-family: 'sans';
           margin-bottom: 15px;
+
+          &.click {
+            color: red;
+            border-bottom: 1px solid red;
+            padding-bottom: 4px;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -163,7 +182,21 @@ onUnmounted(() => {
 
       .info {
         flex-direction: column;
-        margin: 2.5rem 0 1.25rem;
+        margin: 2.5rem 0 0;
+
+        .info-item {
+          margin-bottom: 1.25rem;
+
+          span {
+            font-size: 1.25rem;
+            margin-bottom: .9375rem;
+
+            &.click {
+              border-bottom-width: .0625rem;
+              padding-bottom: .25rem;
+            }
+          }
+        }
       }
     }
   }
