@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/dialog.png'
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 import Dialog from './dialog.vue';
 
@@ -195,6 +196,7 @@ onUnmounted(() => {
 
 <template>
   <IframeItemModel title="弹窗组件"
+    :flowImg="flowImg"
     class="iframe-box">
     <div>
       <button class=""

@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/css/lightEffect.png'
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 
 onMounted(() => {
@@ -63,7 +64,7 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box">
-    <IframeItemModel title="光影特效">
+    <IframeItemModel title="光影特效" :flowImg="flowImg">
       <div class="box">
         <span>C</span>
         <span>O</span>

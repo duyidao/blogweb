@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/js/input.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 import inputComp from './input.vue';
 
@@ -86,6 +87,7 @@ onUnmounted(() => {
 
 <template>
   <IframeItemModel title="input组件封装"
+    :flowImg="flowImg"
     class="input-info">
     <div class="input-info-item">
       <span class="">文本输入框，父组件内容 {{ inputValue }}</span>

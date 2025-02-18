@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/canvas/video.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 const box = ref(null);
 
@@ -49,7 +50,7 @@ const captureFrame = (vdoFile, time = 0) => {
 const onChangeFn = async e => {
   if (!e) return;
   for (let i = 0; i < 10; i++) {
-    const res = await captureFrame(e, (i + 50) * 1);
+    const res = await captureFrame(e, (i + 500) * 1);
     captureImg(res.url);
   }
 }
@@ -115,6 +116,7 @@ onUnmounted(() => {
 
 <template>
   <IframeItemModel title="画面帧"
+    :flowImg="flowImg"
     class="iframe-box box">
     <myUpload @change="onChangeFn" />
     <div ref="box"
@@ -141,7 +143,35 @@ onUnmounted(() => {
     }
 
     .box-img {
+      display: flex;
+      flex-wrap: wrap;
       width: 100%;
+      margin-top: 20px;
+
+      :deep(img) {
+        width: 32%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .box {
+      .box-img {
+        flex-direction: column;
+        margin-top: 1.25rem;
+
+        :deep(img) {
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 2%;
+        }
+      }
     }
   }
 </style>

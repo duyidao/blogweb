@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/css/variable.png'
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 const boxRef = ref(null);
 
@@ -68,6 +69,7 @@ onUnmounted(() => {
 
 <template>
   <IframeItemModel title="变量计算"
+    :flowImg="flowImg"
     class="iframe-box">
     <div ref="boxRef" class="setProperty-box">
       <div class="item"></div>

@@ -1,15 +1,13 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/css/shadow.png'
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 
 onMounted(() => {
   codeList.value = [`<template>
-  <IframeItemModel>
-    <div class="shadow">Hello vue3</div>
-  </IframeItemModel>
+  <div class="shadow">Hello vue3</div>
 </template>
 
-<style lang="less"
-  scoped>
+<style lang="less" scoped>
   .shadow {
     position: relative;
     display: flex;
@@ -51,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <IframeItemModel title="文字立起">
+  <IframeItemModel title="文字立起" :flowImg="flowImg">
     <div class="shadow">Hello vue3</div>
   </IframeItemModel>
 </template>

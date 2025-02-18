@@ -22,7 +22,7 @@ const full = ref(true);
           alt="">
         <span>{{ title }}</span>
         <div
-          v-show="!showFlowImg"
+          v-show="flowImg && !showFlowImg"
           class="iframe-item-model__content__btn"
           @click="showFlowImg = true"
         >查看流程图</div>
@@ -219,6 +219,15 @@ const full = ref(true);
             margin-left: .25rem;
             letter-spacing: .125rem;
           }
+        }
+
+        &__btn {
+          font-size: .95rem;
+          border-width: .0625rem;
+          margin-left: 1.25rem;
+          padding: .3125rem .625rem;
+          border-radius: .5rem;
+          margin-top: .0725rem;
         }
       }
     }

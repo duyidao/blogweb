@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/canvas/screenshot.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 
 import html2canvas from 'html2canvas';
@@ -31,7 +32,7 @@ onUnmounted(() => {
 
 <template>
   <div class="iframe-box box">
-    <IframeItemModel title="页面截图">
+    <IframeItemModel title="页面截图" :flowImg="flowImg">
       <div class="tailor">
         <button @click="saveScreen">截图</button>
       </div>

@@ -1,4 +1,5 @@
 <script setup>
+import flowImg from '@/assets/img/drawbed/css/downline.png'
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
 
 const divRef = ref(null);
@@ -30,7 +31,7 @@ const handleMouseLeave = () => {
 
 <template>
   <div class="iframe-box banner">
-    <IframeItemModel title="下划线动画">
+    <IframeItemModel title="下划线动画" :flowImg="flowImg">
       <div class="line-title"
         ref="divRef"
         @mouseenter="handleMouseEnter"
