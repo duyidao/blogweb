@@ -9,6 +9,13 @@ export default {
     outDir: 'docs',
     rollupOptions: {
       output: {
+        format: 'amd', // 打包输出格式为cjs
+        manualChunks (id) {
+          if (id.includes('node_modules')) {
+            // 正则匹配特定库，或者使用包名来分割
+            return 'vender'
+          }
+        },
         // https://github.com/rollup/rollup/blob/master/src/utils/sanitizeFileName.ts
         sanitizeFileName(name) {
           const match = DRIVE_LETTER_REGEX.exec(name);
