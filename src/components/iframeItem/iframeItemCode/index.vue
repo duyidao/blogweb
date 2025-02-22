@@ -132,7 +132,7 @@ const handleFlowImgFn = (type = false) => {
       <div :class="{ 'effect': true, 'showCode': showCode, 'column': column }">
         <slot></slot>
       </div>
-      <Code v-show="showCode"
+      <Code v-if="showCode"
         class="code"
         :language="type"
         :height="height"

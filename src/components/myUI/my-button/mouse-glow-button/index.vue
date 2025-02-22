@@ -49,6 +49,7 @@ onBeforeUnmount(() => {
 <template>
   <div :class="{ full }"
     ref="myButtonRef"
+    class="mouse-glow-button"
     @click.stop="click">
     <i v-if="iconName"
       class="iconfont"

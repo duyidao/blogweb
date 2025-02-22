@@ -1,0 +1,1 @@
+define(["exports","./vender-CF49NVAq"],function(o,n){"use strict";function r(e=750){const t=n.ref(window.innerWidth/e);function i(){t.value=window.innerWidth/e}n.onMounted(()=>{window.addEventListener("resize",i)}),n.onUnmounted(()=>{window.removeEventListener("resize",i)});function u(d,s="rem"){return Number((d/16).toFixed(5))+s}return{px2rem:u,ratio:t}}o.useUnit=r});

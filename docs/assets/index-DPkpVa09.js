@@ -1,0 +1,73 @@
+define(["exports","./index-fE1ZY-zZ","./index-CXJm4tYL","./index-DdK_kEZy","./vender-CF49NVAq","./effect-CbHB8Sih","./cat-YRANcJj9","./index-BfVzJLus","./index-BSjz60gr","./rem-Cqtq43AX"],function(_,f,m,h,e,a,x,g,S,U){"use strict";var d=document.createElement("style");d.textContent=`.svg__container[data-v-aa34e091]{display:flex;flex-direction:column}.input__list[data-v-aa34e091]{display:flex;align-items:center;justify-content:center;margin-top:20px}.input__list>input[data-v-aa34e091]{height:35px}.input__list>input[data-v-aa34e091]:last-child{width:40px;margin-left:10px}svg[data-v-aa34e091]{margin-top:20px}@media screen and (max-width: 768px){.input__list[data-v-aa34e091]{margin-top:1.25rem}.input__list>input[data-v-aa34e091]{height:1.875rem}.input__list>input[data-v-aa34e091]:last-child{margin-left:.625rem;width:2.5rem}svg[data-v-aa34e091]{margin-top:1.25rem}}
+`,document.head.appendChild(d);const i=o=>(e.pushScopeId("data-v-aa34e091"),o=o(),e.popScopeId(),o),T={class:"svg__container"},E={class:"input__list"},I={viewBox:"0 0 500 300"},y={id:"conform"},B=["href"],R=i(()=>e.createBaseVNode("feColorMatrix",{in:"ORIGIN_IMAGE",type:"saturate",values:"0",result:"GRAY_IMAGE"},null,-1)),V=i(()=>e.createBaseVNode("feDisplacementMap",{in:"SourceGraphic",in2:"GRAY_IMAGE",scale:"15",xChannelSelector:"R",yChannelSelector:"R",result:"TEXTURED_TEXT"},null,-1)),A=["href"],G=i(()=>e.createBaseVNode("feColorMatrix",{in:"TEXTURED_TEXT",type:"matrix",values:"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0",result:"OPACITY_TEXT"},null,-1)),M=i(()=>e.createBaseVNode("feBlend",{in:"BG",in2:"OPACITY_TEXT",mode:"multiply",result:"BLENDED_TEXT"},null,-1)),N=["href"],w=["fill"],C={__name:"index",setup(o){const l=e.ref("Logo"),n=e.ref("#ff0000"),s=e.ref(x._imports_0),D=p=>{const t=new FileReader;t.addEventListener("load",r=>{const u=r.target.result;s.value=u}),t.readAsDataURL(p)};return e.onMounted(()=>{a.codeList.value=[`<svg viewBox="0 0 500 300">
+  <defs>
+    <filter id="conform">
+      <feImage
+        :href="fileValue"
+        result="ORIGIN_IMAGE"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+      ></feImage>
+      <feColorMatrix
+        in="ORIGIN_IMAGE"
+        type="saturate"
+        values="0"
+        result="GRAY_IMAGE"
+      ></feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="GRAY_IMAGE"
+        scale="15"
+        xChannelSelector="R"
+        yChannelSelector="R"
+        result="TEXTURED_TEXT"
+      ></feDisplacementMap>
+      <feImage
+        :href="fileValue"
+        in="TEXTURED_TEXT"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+        result="BG"
+      ></feImage>
+      <feColorMatrix
+        in="TEXTURED_TEXT"
+        type="matrix"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+        result="OPACITY_TEXT"
+      ></feColorMatrix>
+      <feBlend
+        in="BG"
+        in2="OPACITY_TEXT"
+        mode="multiply"
+        result="BLENDED_TEXT"
+      ></feBlend>
+    </filter>
+  </defs>
+  <image
+    :href="fileValue"
+    x="0"
+    y="0"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="none"
+  ></image>
+  <text
+    x="50%"
+    y="50%"
+    font-size="10em"
+    font-weight="bold"
+    text-anchor="middle"
+    alignment-baseline="middle"
+    :fill="colorValue"
+    filter="url(#conform)"
+  >
+    {{ inputValue }}
+  </text>
+</svg>
+`],a.modelInfo.value={...a.modelInfo.value,type:"vue",activeIndex:0}}),e.onUnmounted(()=>{a.codeList.value=[""],a.modelInfo.value={...a.modelInfo.value,type:"javascript",activeIndex:0}}),(p,t)=>{const r=h.__unplugin_components_0,u=m.__unplugin_components_0,v=f.__unplugin_components_0;return e.openBlock(),e.createBlock(v,{title:"纹理适配"},{default:e.withCtx(()=>[e.createBaseVNode("div",T,[e.createVNode(r,{style:{width:"100%"},onChange:D}),e.createBaseVNode("div",E,[e.createVNode(u,{modelValue:e.unref(l),"onUpdate:modelValue":t[0]||(t[0]=c=>e.isRef(l)?l.value=c:null)},null,8,["modelValue"]),e.withDirectives(e.createBaseVNode("input",{"onUpdate:modelValue":t[1]||(t[1]=c=>e.isRef(n)?n.value=c:null),type:"color",name:"",id:""},null,512),[[e.vModelText,e.unref(n)]])]),(e.openBlock(),e.createElementBlock("svg",I,[e.createBaseVNode("defs",null,[e.createBaseVNode("filter",y,[e.createBaseVNode("feImage",{href:e.unref(s),result:"ORIGIN_IMAGE",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,B),R,V,e.createBaseVNode("feImage",{href:e.unref(s),in:"TEXTURED_TEXT",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none",result:"BG"},null,8,A),G,M])]),e.createBaseVNode("image",{href:e.unref(s),x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,N),e.createBaseVNode("text",{x:"50%",y:"50%","font-size":"10em","font-weight":"bold","text-anchor":"middle","alignment-baseline":"middle",fill:e.unref(n),filter:"url(#conform)"},e.toDisplayString(e.unref(l)),9,w)]))])]),_:1})}}},X=g._export_sfc(C,[["__scopeId","data-v-aa34e091"]]);_.default=X,Object.defineProperty(_,Symbol.toStringTag,{value:"Module"})});

@@ -17,17 +17,25 @@ defineProps({
 const labelRef = ref(null);
 const lineRef = ref(null);
 
+const emits = defineEmits(['focus', 'blur', 'keyup']);
+
 const focus = ref(false);
 if (model.value) {
   focus.value = true;
 }
 const handleFoucsFn = () => {
   focus.value = true;
+  emits('focus', model.value);
 }
 
 const handleBlurFn = () => {
   if (model.value) return;
   focus.value = false;
+  emits('blur', model.value);
+}
+
+const handleKeyupFn = (e) => {
+  emits('keyup', e);
 }
 </script>
 
@@ -40,7 +48,8 @@ const handleBlurFn = () => {
       class="input"
       :type="type"
       @focus="handleFoucsFn"
-      @blur="handleBlurFn" />
+      @blur="handleBlurFn"
+      @keyup="handleKeyupFn" />
     <div class="line"
       ref="lineRef"></div>
   </label>

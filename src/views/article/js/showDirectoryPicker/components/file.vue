@@ -24,8 +24,6 @@ export default defineComponent({
       }
     }))
 
-    console.log('data', data);
-
     const handleClick = (parentIndex, item) => {
       if (item && item.kind === 'directory') {
         item.show = !item.show;
@@ -83,6 +81,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     gap: 5px;
+    color: #ccc;
   }
 
   .file-list-child {

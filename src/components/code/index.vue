@@ -3,6 +3,8 @@ import { Codemirror } from 'vue-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { css } from '@codemirror/lang-css';
 import { vue } from '@codemirror/lang-vue';
+import { html } from '@codemirror/lang-html';
+import { json } from '@codemirror/lang-json';
 import { oneDark } from '@codemirror/theme-one-dark';
 import { screenWidth } from "@/store/index.js";
 import { useUnit } from "@/store/rem.js";
@@ -33,7 +35,7 @@ const lang = ref(null);
 const extensions = ref(null);
 
 watch(() => language.value, () => {
-  lang.value = { javascript, css, vue }[language.value];
+  lang.value = { javascript, css, vue, html, json }[language.value];
   extensions.value = [lang.value(), oneDark];
 }, { immediate: true });
 
