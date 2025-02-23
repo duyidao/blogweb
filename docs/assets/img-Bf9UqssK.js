@@ -1,0 +1,1 @@
+define(["exports","./index-D2dCyH29","./vender-CF49NVAq"],function(t,n,e){"use strict";const c={__name:"img",props:{code:{type:String,default:""}},setup(l){return(o,r)=>(e.openBlock(),e.createElementBlock("img",{style:e.normalizeStyle(l.code),src:n._imports_0$1,alt:"图片倒影"},null,4))}};t.default=c,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})});

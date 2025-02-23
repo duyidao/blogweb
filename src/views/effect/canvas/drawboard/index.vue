@@ -25,12 +25,12 @@ const top = ref(0)
 /**
  * 主画板
  */
- const initImg = () => { 
-  const img = new Image() 
-  img.src = data.baseUrl 
-  img.onload = () => { 
-    mainCtx.drawImage(img, 0, 0, data.size.width, data.size.height) 
-  } 
+const initImg = () => {
+  const img = new Image()
+  img.src = data.baseUrl
+  img.onload = () => {
+    mainCtx.drawImage(img, 0, 0, data.size.width, data.size.height)
+  }
 }
 
 onMounted(() => {
@@ -41,19 +41,19 @@ onMounted(() => {
 })
 
 // 保存
-function save () { 
-  mainCtx.drawImage(float, left.value, top.value, 200, 80) 
-  let imgData = main.toDataURL('image/png') 
+function save() {
+  mainCtx.drawImage(float, left.value, top.value, 200, 80)
+  let imgData = main.toDataURL('image/png')
   let a = document.createElement('a')
   a.href = imgData
-  a.download = 'canvas.png' 
-  a.click() 
-} 
+  a.download = 'canvas.png'
+  a.click()
+}
 
 // 清除
-function backInit () { 
-  mainCtx.clearRect(0, 0, data.size.width, data.size.height) 
-  initImg() 
+function backInit() {
+  mainCtx.clearRect(0, 0, data.size.width, data.size.height)
+  initImg()
 }
 
 /**
@@ -76,41 +76,41 @@ onMounted(() => {
 
 let canSign = false
 // 鼠标点击
-function mouseDown(event) { 
+function mouseDown(event) {
   canSign = true
   // 获取鼠标在画板上的坐标
   const { offsetX, offsetY } = event
   console.log('offsetX, offsetY', offsetX, offsetY);
   // 设置起点
-  signCtx.moveTo(offsetX, offsetY) 
+  signCtx.moveTo(offsetX, offsetY)
   signCtx.strokeStyle = '#000' // 线颜色设置
-} 
+}
 
 // 鼠标移动
-function mouseMove(event) { 
+function mouseMove(event) {
   if (!canSign) return
   // 获取鼠标在画板上的坐标
-  const { offsetX, offsetY } = event 
+  const { offsetX, offsetY } = event
   // 绘制线段
-  signCtx.lineTo(offsetX, offsetY) 
-  signCtx.stroke() 
-} 
+  signCtx.lineTo(offsetX, offsetY)
+  signCtx.stroke()
+}
 
 // 鼠标松开
-function mouseUp() { 
+function mouseUp() {
   canSign = false
   // 绘制线段
-  signCtx.stroke() 
+  signCtx.stroke()
 }
 
 // 清除
-function clearSign () { 
-  signCtx.clearRect(0, 0, 400, 400) 
-} 
+function clearSign() {
+  signCtx.clearRect(0, 0, 400, 400)
+}
 
 // 确认
-function sendSignToFloat () { 
-  floatCtx.drawImage(sign, 0, 0, 200, 80) 
+function sendSignToFloat() {
+  floatCtx.drawImage(sign, 0, 0, 200, 80)
 }
 
 onMounted(() => {
@@ -125,79 +125,100 @@ onUnmounted(() => {
 <template>
   <div class="iframe-box box">
     <IframeItemModel title="文件签名与画板功能"
+      column
       :flowImg="flowImg">
-      <div class="container">
-        <div class="mainboard">
-          <!-- 主画板 -->
-          <canvas id="main"
-            :width="data.size.width"
-            :height="data.size.height"></canvas>
-          <!-- 签名绘制浮层画板 -->
-          <div class="floatboard"
-            :style="{ left: `${left}px`, top: `${top}px` }"
-            @mounsedown="dragMousedown"
-            @mouseup="dragMouseup"
-            @mousemove="dragMousemove">
-            <canvas id="float"
-              width="200"
-              height="80"></canvas>
+      <div style="display: flex; flex-direction: column;">
+        <div class="container">
+          <div class="mainboard">
+            <!-- 主画板 -->
+            <canvas id="main"
+              :width="data.size.width"
+              :height="data.size.height"></canvas>
+            <!-- 签名绘制浮层画板 -->
+            <div class="floatboard"
+              :style="{ left: `${left}px`, top: `${top}px` }"
+              @mounsedown="dragMousedown"
+              @mouseup="dragMouseup"
+              @mousemove="dragMousemove">
+              <canvas id="float"
+                width="200"
+                height="80"></canvas>
+            </div>
           </div>
-          <button @click="save">保存</button>
-          <button @click="backInit">清除</button>
+          <!-- 签名画板 -->
+          <div class="signboard">
+            <canvas id="sign"
+              @mousedown="mouseDown"
+              @mousemove="mouseMove"
+              @mouseup="mouseUp"></canvas>
+            <div style="display: flex; margin-top: 1rem;">
+              <button style="margin-right: 1rem;"
+                @click="sendSignToFloat">确认</button>
+              <button @click="clearSign">清除</button>
+            </div>
+          </div>
         </div>
-        <!-- 签名画板 -->
-        <div class="signboard">
-          <canvas
-            id="sign"
-            @mousedown="mouseDown" @mousemove="mouseMove" @mouseup="mouseUp"></canvas> 
-          <button @click="sendSignToFloat">确认</button>
-          <button @click="clearSign">清除</button>
+        <div style="display: flex; margin-top: 1rem;">
+          <button style="margin-right: 1rem;"
+            @click="save">保存</button>
+          <button @click="backInit">清除</button>
         </div>
       </div>
     </IframeItemModel>
   </div>
 </template>
 
-<style lang="less"
-  scoped>
-  .container {
-    display: flex;
-    width: 100%;
+<style lang="less" scoped>
+.container {
+  display: flex;
+  width: 100%;
 
-    .mainboard {
-      position: relative;
-      #sign {
-        border: 1px solid #000;
-      }
-
-      .floatboard {
-        position: absolute;
-      }
-    }
+  .mainboard {
+    position: relative;
 
     #sign {
       border: 1px solid #000;
     }
+
+    .floatboard {
+      position: absolute;
+    }
   }
 
-  @media screen and (max-width: 768px) {
-    .container {
-      flex-direction: column;
+  .signboard {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
 
-      .mainboard {
+    #sign {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    .mainboard {
+      width: 100% !important;
+
+      #main {
         width: 100% !important;
-
-        #main {
-          width: 100% !important;
-        }
       }
+    }
 
-      .signboard {
-        #sign {
-          width: 100% !important;
-          margin-top: .625rem;
-        }
+    .signboard {
+      margin-left: 0;
+
+      #sign {
+        width: 100% !important;
+        height: 25rem;
+        margin-top: .625rem;
       }
     }
   }
+}
 </style>
