@@ -1,1 +1,0 @@
-define(["exports","./vender-CF49NVAq"],function(t,e){"use strict";const o={__name:"text",props:{code:{type:String,default:""}},setup(c){return(n,a)=>(e.openBlock(),e.createElementBlock("p",{style:e.normalizeStyle(c.code)},"daodao",4))}};t.default=o,Object.defineProperty(t,Symbol.toStringTag,{value:"Module"})});
