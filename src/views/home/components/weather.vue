@@ -1,7 +1,9 @@
 <script setup>
 import axios from "axios";
 import { adcodeList } from "@/store/adcode.js";
-import { preloadMd5, preloadBMap } from '@/utils/scriptPreload.js'
+import { preloadBMap } from '@/utils/scriptPreload.js';
+import { getBMapLocation, getGreetingByTime, ERROR_MSG, WEATHER_IMAGES } from '@/utils/weatherHook.js';
+import md5 from 'blueimp-md5';
 import duoyun from '/images/duoyun.svg'
 import yin from '/images/yin.svg'
 import zhongyu from '/images/zhongyu.svg'
@@ -14,8 +16,52 @@ import qing from '/images/qing.svg'
 import wanshang from '/images/wanshang.svg'
 import zhenyu from '/images/zhengyu.svg'
 
+// 获取天气数据
+const weatherList = ref([]);
 const addComp = ref({});
 const userPoint = ref({});
+
+const interval = ref("");
+const weatherHello = ref("欢迎光临~");
+const waetherImg = ref('/blogweb/images/sunny.webp');
+// 获取欢迎词
+const getHelloFn = () => {
+  let now = new Date();
+  const hour = now.getHours();
+  const weather = weatherList.value[0]?.dayweather;
+  const res = getGreetingByTime(hour, weather);
+  weatherHello.value = res.hello;
+  waetherImg.value = res.weatherImg;
+};
+
+
+let code = "440100";
+
+// 失败时的回调函数，错误提示信息
+function onError(error) {
+  addComp.value = ERROR_MSG[error.code];
+}
+// 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
+async function onSuccess(position) {
+  // 经度
+  userPoint.value.longitude = position.coords.longitude;
+  // 纬度
+  userPoint.value.latitude = position.coords.latitude;
+  // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
+  let point = new BMap.Point(
+    userPoint.value.longitude,
+    userPoint.value.latitude
+  );
+  addComp.value = await getBMapLocation(point);
+  let cityList = adcodeList.find((item) => {
+    return addComp.value.province.includes(item.provice);
+  });
+  if (!cityList) return;
+  let city = cityList.city.find((item) => {
+    return addComp.value.city.includes(item.name);
+  });
+  code = city.adcode;
+}
 // 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
 function getLocation() {
   let options = {
@@ -31,87 +77,11 @@ function getLocation() {
   } else {
     // 否则浏览器不支持geolocation
     addComp.value = "浏览器不支持定位";
-    handleWeather();
   }
 }
-
-// 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
-async function onSuccess(position) {
-  // 经度
-  userPoint.value.longitude = position.coords.longitude;
-  // 纬度
-  userPoint.value.latitude = position.coords.latitude;
-  // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
-  let point = new BMap.Point(
-    userPoint.value.longitude,
-    userPoint.value.latitude
-  );
-  let gc = new BMap.Geocoder();
-  gc.getLocation(point, function (rs) {
-    addComp.value = rs.addressComponents;
-    let cityList = adcodeList.find((item) => {
-      return addComp.value.province.includes(item.provice);
-    });
-    if (!cityList) return;
-    let city = cityList.city.find((item) => {
-      return addComp.value.city.includes(item.name);
-    });
-    handleWeather(city.adcode);
-  });
-}
-
-// 失败时的回调函数，错误提示信息
-function onError(error) {
-  handleWeather();
-  switch (error.code) {
-    case 1:
-      addComp.value = "位置服务被拒绝！";
-      break;
-    case 2:
-      addComp.value = "暂时获取不到位置信息！";
-      break;
-    case 3:
-      addComp.value = "获取信息超时！";
-      break;
-    case 4:
-      addComp.value = "未知错误！";
-      break;
-  }
-}
-
-const getWeatherImg = type => {
+const handleWeather = () => {
   const hour = new Date().getHours();
-  switch (type) {
-    case '晴':
-      return hour > 17 ? wanshang : qing
-    case '阴':
-      return yin
-    case '多云':
-      return duoyun
-    case '小雨':
-    case '小雨-中雨':
-      return hour > 17 ? wanshangxiaoyu : xiaoyu
-    case '中雨':
-      return hour > 17 ? wanshangzhongyu : zhongyu
-    case '大雨':
-    case '中雨-大雨':
-    case '暴雨':
-    case '大雨-暴雨':
-      return dayu
-    case '雷阵雨':
-      return leizhenyu
-    case '阵雨':
-      return zhenyu
-    default:
-      break;
-  }
-}
-
-// 获取天气数据
-const weatherList = ref([]);
-const handleWeather = (code = "440100") => {
   let hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
-  console.log('hash', hash);
   axios
     .get(
       `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
@@ -120,54 +90,24 @@ const handleWeather = (code = "440100") => {
       weatherList.value = res.data.forecasts[0].casts.map(item => {
         return {
           ...item,
-          weatherImg: getWeatherImg(item.dayweather)
+          weatherImg: WEATHER_IMAGES[item.dayweather][hour >= 6 && hour < 18 ? 'day' : 'night']
         }
       });
       getHelloFn();
     });
 };
 
-const interval = ref("");
-const weatherHello = ref("欢迎光临~");
-const waetherImg = ref('/blogweb/images/sunny.webp');
-// 获取欢迎词
-const getHelloFn = () => {
-  let now = new Date();
-  const hour = now.getHours();
-  const weather = weatherList.value[0]?.dayweather;
-  waetherImg.value = weather && weather.includes("雨")
-    ? '/blogweb/images/rain.webp' : weather && weather.includes("云")
-    ? '/blogweb/images/cloudy.webp' : '/blogweb/images/sunny.webp';
-
-  // 根据时间与天气获取欢迎词
-  if (hour >= 6 && hour < 12) {
-    weatherHello.value =
-      weather && weather.includes("雨")
-        ? "早上好，今天有雨，上班记得带伞哦"
-        : "早上好，今天是个好天气，希望一天都有好心情";
-  } else if (hour >= 12 && hour < 14) {
-    weatherHello.value =
-      weather && weather.includes("雨")
-        ? "中午好，外面有雨，去吃饭注意地滑"
-        : "中午好，劳累了一个上午，吃顿好的犒劳自己吧~";
-  } else if (hour >= 14 && hour < 18) {
-    weatherHello.value = "下午好，该继续上午的任务了";
-  } else if (hour >= 18 && hour < 22) {
-    weatherHello.value =
-      weather && weather.includes("雨")
-        ? "晚上好，傍着雨声听听音乐休息一下吧~"
-        : "晚上好，又奋斗了一天，好好放松一下吧~";
-  } else {
-    weatherHello.value = "夜深了，该休息了，明天也是拼搏的一天";
-  }
-};
+const getPositionFn = () => {
+  getLocation()
+  handleWeather()
+}
 
 // 页面载入时请求获取当前地理位置
 onMounted(() => {
   try {
     // html5获取地理位置
-    Promise.all([preloadBMap(), preloadMd5()]).then((res) => {
-      getLocation()
+    preloadBMap().then((res) => {
+      getPositionFn()
     })
     interval.value = setInterval(getHelloFn, 100000);
   } catch (error) {

@@ -1,1 +1,0 @@
-import{i as t}from"./index-BiYuigne.js";import{o,a as r,l as a}from"./vender-BxpIRFvU.js";const n={__name:"img",props:{code:{type:String,default:""}},setup(e){return(l,s)=>(o(),r("img",{style:a(e.code),src:t,alt:"图片倒影"},null,4))}};export{n as default};

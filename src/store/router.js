@@ -9,7 +9,7 @@ export const routerBtnList = ref([
     phoneName: '效果实现源码列表',
     children: [
       {
-        name: "博客效果",
+        name: "博客示例",
         base: "/article/",
         path: "css",
         icon: "icon-liebiao",
