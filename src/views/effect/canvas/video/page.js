@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/frame.jpg';
+import canvasImg from '@/assets/img/canvas/frame.webp';
 
 export default {
   title: '画面帧',

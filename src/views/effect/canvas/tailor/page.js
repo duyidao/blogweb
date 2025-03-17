@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/tailor.png';
+import canvasImg from '@/assets/img/canvas/tailor.webp';
 
 export default {
   title: 'Canvas实现图片裁剪',

@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/scroll.png'
+import cssImg from '@/assets/img/css/scroll.webp'
 
 export default {
   title: '页面滚动进度条',

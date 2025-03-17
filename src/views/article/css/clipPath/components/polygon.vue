@@ -24,7 +24,7 @@ const handleMouseLeave = () => {
   <div class="box">
     <img ref="imgRef"
       :style="{ '--polygon': styleValue }"
-      src="@/assets/img/cat.png"
+      src="@/assets/img/cat.webp"
       alt="polygon img"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave">

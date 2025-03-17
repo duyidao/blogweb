@@ -1,4 +1,4 @@
-import echartImg from '@/assets/img/echart/dom.png';
+import echartImg from '@/assets/img/echart/dom.webp';
 
 export default {
   title: '柱状图Dom渲染',

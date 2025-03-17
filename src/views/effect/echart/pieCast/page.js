@@ -1,4 +1,4 @@
-import echartImg from '@/assets/img/echart/pie-round.png';
+import echartImg from '@/assets/img/echart/pie-round.webp';
 
 export default {
   title: '饼图轮播',

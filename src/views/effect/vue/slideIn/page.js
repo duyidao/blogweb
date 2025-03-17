@@ -1,4 +1,4 @@
-import vueImg from '@/assets/img/vue/10309.png';
+import vueImg from '@/assets/img/vue/10309.webp';
 
 export default {
   title: '盒子上升动画',

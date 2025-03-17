@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/palette.png';
+import canvasImg from '@/assets/img/canvas/palette.webp';
 
 export default {
   title: 'Canvas实现调色盘',

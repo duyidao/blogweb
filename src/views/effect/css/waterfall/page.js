@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/waterfall.png';
+import cssImg from '@/assets/img/css/waterfall.webp';
 
 export default {
   title: '瀑布流布局',

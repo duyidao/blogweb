@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <img src="@/assets/img/base/img_load.png"
+  <img src="@/assets/img/base/img_load.webp"
     v-lazy
     :data-src="src"
     :alt="alt" />

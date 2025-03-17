@@ -39,7 +39,7 @@ const handleMouseLeave = () => {
     width: 200px;
     height: 200px;
     overflow: hidden;
-    background: url('@/assets/img/cat.png') no-repeat 100%/100%;
+    background: url('@/assets/img/cat.webp') no-repeat 100%/100%;
 
     p.word {
       position: relative;

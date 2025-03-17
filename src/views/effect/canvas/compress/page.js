@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/compress.jpg';
+import canvasImg from '@/assets/img/canvas/compress.webp';
 
 export default {
   title: 'Canvas实现图片压缩',

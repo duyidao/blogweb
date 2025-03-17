@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/var.png'
+import cssImg from '@/assets/img/css/var.webp'
 
 export default {
   title: '变量',

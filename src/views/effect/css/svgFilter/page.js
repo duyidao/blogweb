@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/svg-filter.jpeg';
+import cssImg from '@/assets/img/css/svg-filter.webp';
 
 export default {
   title: 'svg滤镜',

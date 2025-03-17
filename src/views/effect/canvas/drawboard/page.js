@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/drawboard.jpg';
+import canvasImg from '@/assets/img/canvas/drawboard.webp';
 
 export default {
   title: 'Canvas实现文件签名与画板功能',

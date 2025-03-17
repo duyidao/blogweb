@@ -1,9 +1,9 @@
-import img_err from '../assets/img/base/img_err.png';
-import img_load from '../assets/img/base/img_load.png';
-import left_active from '../assets/img/base/left_active.png';
-import left_inactive from '../assets/img/base/left_inactive.png';
-import right_inactive from '../assets/img/base/right_inactive.png';
-import right_active from '../assets/img/base/right_active.png';
+import img_err from '../assets/img/base/img_err.webp';
+import img_load from '../assets/img/base/img_load.webp';
+import left_active from '../assets/img/base/left_active.webp';
+import left_inactive from '../assets/img/base/left_inactive.webp';
+import right_inactive from '../assets/img/base/right_inactive.webp';
+import right_active from '../assets/img/base/right_active.webp';
 
 const images = [
   img_err,

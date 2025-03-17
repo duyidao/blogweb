@@ -1,8 +1,8 @@
-import learnImg from '@/assets/img/js/repeat.jpg'
+import learnImg from '@/assets/img/js/repeat.webp'
 export default {
-    title: '重复小组件处理',
-    info: '通过JSX实现重复小组件处理',
-    img: learnImg,
-    menuOrder: 2,
-    tags: ['封装', 'jsx'],
+  title: '重复小组件处理',
+  info: '通过JSX实现重复小组件处理',
+  img: learnImg,
+  menuOrder: 2,
+  tags: ['封装', 'jsx'],
 }

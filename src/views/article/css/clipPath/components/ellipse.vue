@@ -26,7 +26,7 @@ const handleMouseLeave = () => {
     @mouseleave="handleMouseLeave">
     <img ref="imgRef"
       :style="{ '--ellipse': styleValue }"
-      src="@/assets/img/cat.png"
+      src="@/assets/img/cat.webp"
       alt="ellipse img">
   </div>
 </template>

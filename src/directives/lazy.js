@@ -1,4 +1,4 @@
-import imgErr from '@/assets/img/base/img_err.png';
+import imgErr from '@/assets/img/base/img_err.webp';
 
 // IntersectionObserver API
 const ob = new IntersectionObserver((entries) => {

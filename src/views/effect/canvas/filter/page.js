@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/filter.avif';
+import canvasImg from '@/assets/img/canvas/filter.webp';
 
 export default {
   title: 'Canvas实现图片滤镜',

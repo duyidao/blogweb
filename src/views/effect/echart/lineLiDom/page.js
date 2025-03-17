@@ -1,4 +1,4 @@
-import echartImg from '@/assets/img/echart/dom-legend.png'
+import echartImg from '@/assets/img/echart/dom-legend.webp'
 
 export default {
   title: '折线图Dom渲染',

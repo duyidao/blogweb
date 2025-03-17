@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/shadow.jpeg'
+import cssImg from '@/assets/img/css/shadow.webp'
 
 export default {
   title: '文字立起效果',

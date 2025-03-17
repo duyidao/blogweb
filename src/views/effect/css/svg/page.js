@@ -1,4 +1,4 @@
-import cssImg from '@/assets/img/css/wenli.jfif'
+import cssImg from '@/assets/img/css/wenli.webp'
 
 export default {
   title: '文字适配纹理',

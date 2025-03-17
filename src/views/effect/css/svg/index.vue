@@ -1,6 +1,6 @@
 <script setup>
 import { codeList, modelInfo } from '@/store/effect.js'; // 引入代码列表
-import bgImg from "@/assets/img/cat.png";
+import bgImg from "@/assets/img/cat.webp";
 
 const inputValue = ref("Logo");
 const colorValue = ref("#ff0000");

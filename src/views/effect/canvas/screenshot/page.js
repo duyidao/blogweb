@@ -1,4 +1,4 @@
-import canvasImg from '@/assets/img/canvas/screenshot.jpeg';
+import canvasImg from '@/assets/img/canvas/screenshot.webp';
 
 export default {
   title: 'Canvas实现页面截图',

@@ -1,8 +1,8 @@
-import jsImg from '@/assets/img/js/number.jpg'
+import jsImg from '@/assets/img/js/number.webp'
 export default {
-    title: '数字转汉字',
-    info: '自定义函数，实现数字转中文的功能',
-    img: jsImg,
-    menuOrder: 2,
-    tags: ['数字转中文'],
+  title: '数字转汉字',
+  info: '自定义函数，实现数字转中文的功能',
+  img: jsImg,
+  menuOrder: 2,
+  tags: ['数字转中文'],
 }

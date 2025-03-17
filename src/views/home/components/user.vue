@@ -36,7 +36,7 @@ onMounted(() => {
 <template>
   <div class="home-user">
     <div class="home-user-img">
-      <img src="@/assets/img/cat.png"
+      <img src="@/assets/img/cat.webp"
         alt="猫猫头像" />
     </div>
     <div class="home-user-info">
