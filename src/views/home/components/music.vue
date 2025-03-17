@@ -1,5 +1,6 @@
 <script setup>
-import { light } from '@/store/index'
+import { light } from '@/store/index';
+import APlayer from 'aplayer';
 import '@/assets/style/APlayer.min.css';
 import musicShi from '@/assets/music/shi.mp3'
 import lrcShi from '@/assets/music/shi.js'
@@ -17,14 +18,12 @@ import coverSoFar from '@/assets/img/music/so far away.webp'
 import musicSomething from '@/assets/music/something.mp3'
 import lrcSomething from '@/assets/music/something.js'
 import coverSomething from '@/assets/img/music/something.webp'
-import { preloadMusic } from '@/utils/scriptPreload.js';
 
 const musicRef = ref(null);
 const ap = ref(null)
 
 onMounted(() => {
-  preloadMusic().then(res => {
-    ap.value = new APlayer({
+  ap.value = new APlayer({
     container: musicRef.value,
     lrcType: 1,
     theme: light.value ? '#fff' : '#555',
@@ -71,7 +70,6 @@ onMounted(() => {
       },
     ]
   });
-  })
 });
 
 watch(() => light.value, () => {
@@ -84,132 +82,133 @@ watch(() => light.value, () => {
     class="home-music"></div>
 </template>
 
-<style lang="less" scoped>
-.home-music {
-  width: 100%;
-  height: 292px;
-  padding: 10px;
-  border-radius: 12px;
-  font-family: "黑体";
-  font-size: 25px;
-  box-shadow: 0 0 8px 1px #ccc;
-  margin: 0;
-
-  &.aplayer {
-    background-color: transparent;
-  }
-
-  :deep(.aplayer-info) {
-    padding-top: 0;
-
-    .aplayer-music {
-      line-height: 20px;
-    }
-
-    .aplayer-lrc {
-      height: 40px;
-    }
-
-    button {
-      min-width: 0;
-    }
-  }
-
-  :deep(.aplayer-list) {
-    height: 190px;
-
-    overflow-y: scroll;
-  }
-}
-
-@media screen and (max-width: 768px) {
+<style lang="less"
+  scoped>
   .home-music {
     width: 100%;
-    height: 17rem;
-    padding: .625rem;
-    border-radius: .75rem;
-    font-size: 1.5625rem;
-    box-shadow: 0 0 0.25rem #ccc;
-    margin-top: 1.25rem;
-    margin-left: 0;
+    height: 292px;
+    padding: 10px;
+    border-radius: 12px;
+    font-family: "黑体";
+    font-size: 25px;
+    box-shadow: 0 0 8px 1px #ccc;
+    margin: 0;
 
-    :deep(.aplayer-body) {
-      .aplayer-pic {
-        width: 6.625rem;
-        height: 6.625rem;
+    &.aplayer {
+      background-color: transparent;
+    }
+
+    :deep(.aplayer-info) {
+      padding-top: 0;
+
+      .aplayer-music {
+        line-height: 20px;
       }
 
-      .aplayer-info {
-        height: 6.625rem;
-        margin-left: 6.625rem;
-        padding: .625rem .4375rem 0;
+      .aplayer-lrc {
+        height: 40px;
+      }
 
-        .aplayer-music {
-          line-height: 1rem;
-          margin: 0 0 .8125rem .3125rem;
-          padding-bottom: .125rem;
-          height: 1.25rem;
+      button {
+        min-width: 0;
+      }
+    }
 
-          .aplayer-title {
-            font-size: .875rem;
-          }
+    :deep(.aplayer-list) {
+      height: 190px;
 
-          .aplayer-author {
-            font-size: .75rem;
-          }
+      overflow-y: scroll;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .home-music {
+      width: 100%;
+      height: 17rem;
+      padding: .625rem;
+      border-radius: .75rem;
+      font-size: 1.5625rem;
+      box-shadow: 0 0 0.25rem #ccc;
+      margin-top: 1.25rem;
+      margin-left: 0;
+
+      :deep(.aplayer-body) {
+        .aplayer-pic {
+          width: 6.625rem;
+          height: 6.625rem;
         }
 
-        .aplayer-lrc {
-          height: 2.875rem;
-          margin: -0.625rem 0 .4375rem;
+        .aplayer-info {
+          height: 6.625rem;
+          margin-left: 6.625rem;
+          padding: .625rem .4375rem 0;
 
-          p {
-            font-size: .75rem;
+          .aplayer-music {
             line-height: 1rem;
-            min-height: 1rem;
+            margin: 0 0 .8125rem .3125rem;
+            padding-bottom: .125rem;
+            height: 1.25rem;
+
+            .aplayer-title {
+              font-size: .875rem;
+            }
+
+            .aplayer-author {
+              font-size: .75rem;
+            }
+          }
+
+          .aplayer-lrc {
+            height: 2.875rem;
+            margin: -0.625rem 0 .4375rem;
+
+            p {
+              font-size: .75rem;
+              line-height: 1rem;
+              min-height: 1rem;
+            }
+          }
+
+          .aplayer-controller {
+            .aplayer-bar-wrap {
+              margin: 0 0 0 .3125rem;
+              padding: .25rem 0;
+            }
+
+            .aplayer-time {
+              bottom: .25rem;
+              height: 1.0625rem;
+              font-size: .6875rem;
+              padding-left: .4375rem;
+
+              .aplayer-icon {
+                width: .9375rem;
+                height: .9375rem;
+                font-size: .75rem;
+              }
+            }
           }
         }
+      }
 
-        .aplayer-controller {
-          .aplayer-bar-wrap {
-            margin: 0 0 0 .3125rem;
-            padding: .25rem 0;
-          }
+      :deep(.aplayer-list) {
+        height: 11.875rem !important;
 
-          .aplayer-time {
-            bottom: .25rem;
-            height: 1.0625rem;
-            font-size: .6875rem;
-            padding-left: .4375rem;
+        ol {
+          max-height: 11.875rem;
 
-            .aplayer-icon {
-              width: .9375rem;
-              height: .9375rem;
-              font-size: .75rem;
+          li {
+            height: 2rem;
+            line-height: 2rem;
+            padding: 0 .9375rem;
+            font-size: .75rem;
+
+            .aplayer-list-index {
+              margin-right: .75rem;
             }
           }
         }
       }
     }
-
-    :deep(.aplayer-list) {
-      height: 11.875rem !important;
-
-      ol {
-        max-height: 11.875rem;
-
-        li {
-          height: 2rem;
-          line-height: 2rem;
-          padding: 0 .9375rem;
-          font-size: .75rem;
-
-          .aplayer-list-index {
-            margin-right: .75rem;
-          }
-        }
-      }
-    }
   }
-}
 </style>

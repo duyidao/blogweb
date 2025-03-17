@@ -1,0 +1,1 @@
+import{k as t}from"./index-R7MN-9XR.js";import{o,a,b as s,l as r}from"./vender-CcOEkWCz.js";const c={class:"box-img"},_={__name:"vmin",props:{code:{type:String,default:""}},setup(e){return(i,l)=>(o(),a("div",c,[s("img",{title:"vmin",src:t,style:r(e.code),alt:"vmin"},null,4)]))}};export{_ as default};

@@ -25,7 +25,7 @@ export const preloadBMap = () => {
 export const preloadMusic = () => {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = 'js/APlayer.min.js';
+    script.src = '/js/APlayer.min.js';
     script.async = true;
     script.onload = () => resolve();
     script.onerror = () => reject();
