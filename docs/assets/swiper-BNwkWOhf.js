@@ -1,0 +1,1 @@
+import{_ as a}from"./index-2pap1gW7.js";import{o as s,a as t,F as r,v as o,b as c,t as n}from"./vender-CcOEkWCz.js";const _={},d={class:"box"};function i(l,p){return s(),t("div",d,[(s(),t(r,null,o(3,e=>c("div",{key:e,class:"item"},n(e),1)),64))])}const u=a(_,[["render",i],["__scopeId","data-v-6d8de303"]]);export{u as default};

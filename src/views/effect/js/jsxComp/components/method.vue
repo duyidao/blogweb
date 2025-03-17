@@ -121,7 +121,7 @@ const createText = (title, index, good) => {
       <div class="good"
         v-for="(goods, i) in item.goodsData"
         :key="i">
-        <img src="" />
+        <img :src="`https://picsum.photos/80/80?${i}?${index}`" />
         <div class="info"
           :style="createStyle(item.title, i)">{{ createText(item.title, i, goods) }}</div>
       </div>

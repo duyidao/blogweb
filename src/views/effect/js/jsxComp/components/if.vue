@@ -70,7 +70,7 @@ let data = [
       <div class="good"
         v-for="(goods, i) in item.goodsData"
         :key="i">
-        <img src="" />
+        <img :src="`https://picsum.photos/80/80?${i}?${index}`" />
         <div class="info"
           v-if="item.title === '热销排行' && i === 0"
           style="background: red; color: #fff;">Top1</div>

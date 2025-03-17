@@ -217,6 +217,7 @@ const changeLightFn = () => {
       align-items: center;
       height: 100%;
 
+      // 屏幕不够大，展示更多
       &.m {
         display: flex;
         flex-direction: column-reverse;
@@ -302,7 +303,7 @@ const changeLightFn = () => {
             height: 0;
 
             &:checked+.slider:before {
-              transform: translateX(42px);
+              transform: translate(45.5px, -50%);
             }
           }
 
@@ -326,8 +327,9 @@ const changeLightFn = () => {
               font-family: 'iconfont';
               height: 24px;
               width: 24px;
-              left: 3px;
-              bottom: 2px;
+              left: 2.7px;
+              top: 50%;
+              transform: translateY(-50%);
               color: var(--primary-check);
               background-color: var(--normal-word);
               transition: .4s;

@@ -36,7 +36,7 @@ const handleCopyFn = () => {
   }, (err) => {
     message({
       type: 'error',
-      message: '复制失败。' + err 
+      message: '复制失败。' + err
     })
   });
 }
@@ -50,7 +50,7 @@ const handleCopyFn = () => {
       class="my-dialog-code-list">
       <div :title="item.name"
         class="my-dialog-code-list-item"
-        :class="{'active': modelInfo.activeIndex === index}"
+        :class="{ 'active': modelInfo.activeIndex === index }"
         :style="{ '--w': codeList.length }"
         v-for="(item, index) in codeList"
         :key="index"
@@ -135,6 +135,17 @@ const handleCopyFn = () => {
       height: 100vh !important;
     }
 
+    &:not(.full) {
+      header {
+        .title {
+          max-width: 500px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
     header {
       display: flex;
       align-items: center;
@@ -190,6 +201,17 @@ const handleCopyFn = () => {
 
         main {
           height: calc(100% - 8.125rem);
+        }
+      }
+
+      &:not(.full) {
+        header {
+          .title {
+            max-width: 28rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
       }
 

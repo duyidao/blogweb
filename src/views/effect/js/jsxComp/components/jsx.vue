@@ -118,7 +118,7 @@
       <div class="good"
         v-for="(goods, i) in item.goodsData"
         :key="i">
-        <img src="" />
+        <img :src="`https://picsum.photos/80/80?${i}?${index}`" />
         <TextComponent :title="item.title"
           :index="i"
           :goods="goods"></TextComponent>

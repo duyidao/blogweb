@@ -108,7 +108,7 @@ data.forEach((item, index) => {
       <div class="good"
         v-for="(goods, i) in item.goodsData"
         :key="i">
-        <img src="" />
+        <img :src="`https://picsum.photos/80/80?${i}?${index}`" />
         <div class="info"
           :style="goods.styleObj">{{ goods.text }}</div>
       </div>
