@@ -28,10 +28,10 @@ export const WEATHER_IMAGES = {
   
 export const TIME_GREETINGS = {
   morning: { rain: '早上好，今天有雨，出行记得带伞哦', default: '早上好，今天是个好天气，希望一天都有好心情' },
-  afternoon: { rain: '中午好，外面有雨，出行注意脚下安全', default: '中午好，劳累了一个上午，吃顿好的犒劳自己吧~' },
+  afternoon: { rain: '下午好，外面有雨，出行注意脚下安全', default: '下午好，劳累了一个上午，吃顿好的犒劳自己吧~' },
   evening: { rain: '晚上好，傍着雨声听听音乐休息一下吧~', default: '晚上好，又奋斗了一天，好好放松一下吧~' },
-  atnight: '夜深了，该休息了，明天也是拼搏的一天',
-  beforedawn: '凌晨了，不要熬夜，早点休息吧',
+  atnight: { rain: '夜深了，该休息了，明天也是拼搏的一天', default: '夜深了，该休息了，明天也是拼搏的一天' },
+  beforedawn: { rain: '凌晨了，不要熬夜，早点休息吧~', default: '凌晨了，不要熬夜，早点休息吧~' },
 };
 
 export const ERROR_MSG = {
@@ -62,15 +62,17 @@ export const getBMapLocation = (point) => {
  */
 export function getGreetingByTime(hour, weather) {
   const period = 
-    hour < 6 ? 'beforedawn' :
+    hour < 6 && hour >= 3 ? 'beforedawn' :
     hour >= 6 && hour < 12 ? 'morning' :
-    hour === 12 ? 'afternoon' :
-    hour >= 13 && hour < 18 ? 'evening' : 'atnight';
-  const weatherImg = weather && weather.includes("雨")
-  ? '/blogweb/images/rain.webp' : weather && weather.includes("云")
-  ? '/blogweb/images/cloudy.webp' : '/blogweb/images/sunny.webp';
+    hour >= 12 && hour < 18 ? 'afternoon' :
+    hour >= 18 && hour < 24 ? 'evening' : 'atnight';
+  const isRain = weather && weather.includes("雨");
+  const isCloudy = weather && weather.includes("云");
+  const weatherImg = isRain ? '/blogweb/images/rain.webp'
+    : isCloudy ? '/blogweb/images/cloudy.webp'
+    : '/blogweb/images/sunny.webp';
   return {
-    hello: TIME_GREETINGS[period],
+    hello: TIME_GREETINGS[period][isRain ? 'rain' : 'default'],
     weatherImg,
   };
 }

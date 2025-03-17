@@ -1,1 +1,0 @@
-import{_ as s,n as e}from"./index-u6hWLH6A.js";import{o as t,a as r,b as a,t as p,u as o,l}from"./vender-n0v3V56A.js";const c={name:"result",for:"completion"},n={__name:"ripple",setup(_){return(i,m)=>(t(),r("div",{class:"ripple",style:l({"--completion":o(e)+"%"})},[a("output",c,p(o(e)),1)],4))}},d=s(n,[["__scopeId","data-v-341e4596"]]);export{d as default};

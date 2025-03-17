@@ -17,12 +17,14 @@ import coverSoFar from '@/assets/img/music/so far away.webp'
 import musicSomething from '@/assets/music/something.mp3'
 import lrcSomething from '@/assets/music/something.js'
 import coverSomething from '@/assets/img/music/something.webp'
+import { preloadMusic } from '@/utils/scriptPreload.js';
 
 const musicRef = ref(null);
 const ap = ref(null)
 
 onMounted(() => {
-  ap.value = new APlayer({
+  preloadMusic().then(res => {
+    ap.value = new APlayer({
     container: musicRef.value,
     lrcType: 1,
     theme: light.value ? '#fff' : '#555',
@@ -69,6 +71,7 @@ onMounted(() => {
       },
     ]
   });
+  })
 });
 
 watch(() => light.value, () => {

@@ -4,21 +4,11 @@ import { adcodeList } from "@/store/adcode.js";
 import { preloadBMap } from '@/utils/scriptPreload.js';
 import { getBMapLocation, getGreetingByTime, ERROR_MSG, WEATHER_IMAGES } from '@/utils/weatherHook.js';
 import md5 from 'blueimp-md5';
-import duoyun from '/images/duoyun.svg'
-import yin from '/images/yin.svg'
-import zhongyu from '/images/zhongyu.svg'
-import wanshangzhongyu from '/images/wanshangzhongyu.svg'
-import xiaoyu from '/images/xiaoyu.svg'
-import wanshangxiaoyu from '/images/wanshangxiaoyu.svg'
-import dayu from '/images/dayu.svg'
-import leizhenyu from '/images/leizhenyu.svg'
 import qing from '/images/qing.svg'
-import wanshang from '/images/wanshang.svg'
-import zhenyu from '/images/zhengyu.svg'
 
 // 获取天气数据
 const weatherList = ref([]);
-const addComp = ref({});
+const addComp = ref('获取定位中...');
 const userPoint = ref({});
 
 const interval = ref("");
@@ -69,7 +59,6 @@ function getLocation() {
     maximumAge: 1000,
   };
   if (navigator.geolocation) {
-    addComp.value = "正在定位...";
     // 调用html5的geolocation()方法
     // 第一个参数是定位成功后的回调函数，第二个参数是定位失败后的回调函数，第三个参数是定位的一些配置参数
     // 注意：第三个参数里有一个enableHighAccuracy属性，这个属性是用来开启高精度定位的，默认是false，开启后，会消耗更多的电量和流量
@@ -107,7 +96,9 @@ onMounted(() => {
   try {
     // html5获取地理位置
     preloadBMap().then((res) => {
-      getPositionFn()
+      setTimeout(() => {
+        getPositionFn()
+      }, 1000)
     })
     interval.value = setInterval(getHelloFn, 100000);
   } catch (error) {

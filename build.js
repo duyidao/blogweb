@@ -9,6 +9,12 @@ export default {
   outDir: 'docs',
   rollupOptions: {
     output: {
+      /**
+       * 根据模块ID生成自定义分块名称
+       *
+       * @param {string} id 模块ID
+       * @returns {string|undefined} 如果模块属于node_modules，则返回'vender'，否则返回undefined
+       */
       manualChunks (id) {
         if (id.includes('node_modules')) {
           // 正则匹配特定库，或者使用包名来分割
