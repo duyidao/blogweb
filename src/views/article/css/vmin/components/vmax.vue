@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="box-img">
     <img title="vmax"
-      src="@/assets/img/js/copy.jpg"
+      src="@/assets/img/js/copy.webp"
       :style="code"
       alt="vmax">
   </div>

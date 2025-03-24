@@ -98,28 +98,28 @@ export { componentOptions };
         cursor: pointer;
 
         &:first-child {
-          background: url('@/assets/img/base/left_inactive.png') no-repeat center / 100%;
+          background: url('@/assets/img/base/left_inactive.webp') no-repeat center / 100%;
           margin-right: 5px;
 
           &.active {
-            background-image: url('@/assets/img/base/left_active.png');
+            background-image: url('@/assets/img/base/left_active.webp');
           }
         }
 
         &:nth-child(2) {
-          background: url('@/assets/img/base/middle_inactive.png') no-repeat center / 100%;
+          background: url('@/assets/img/base/middle_inactive.webp') no-repeat center / 100%;
 
           &.active {
-            background-image: url('@/assets/img/base/middle_active.png');
+            background-image: url('@/assets/img/base/middle_active.webp');
           }
         }
 
         &:last-child {
-          background: url('@/assets/img/base/right_inactive.png') no-repeat center / 100%;
+          background: url('@/assets/img/base/right_inactive.webp') no-repeat center / 100%;
           margin-left: 5px;
 
           &.active {
-            background-image: url('@/assets/img/base/right_active.png');
+            background-image: url('@/assets/img/base/right_active.webp');
           }
         }
       }

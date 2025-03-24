@@ -18,7 +18,7 @@ const full = ref(true);
   <div class="iframe-item-model">
     <main class="iframe-item-model__content">
       <div class="iframe-item-model__content__title">
-        <img src="@/assets/img/effect/arrow.png"
+        <img src="@/assets/img/effect/arrow.webp"
           alt="">
         <span>{{ title }}</span>
         <div
@@ -159,7 +159,7 @@ const full = ref(true);
           left: 0;
           width: 16px;
           height: 3px;
-          background: url('@/assets/img/effect/rectangle.png') no-repeat center / 100%;
+          background: url('@/assets/img/effect/rectangle.webp') no-repeat center / 100%;
         }
 
         img {

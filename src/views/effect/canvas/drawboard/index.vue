@@ -1,5 +1,5 @@
 <script setup>
-import canvasImg from '@/assets/img/canvas/drawboard.jpg';
+import canvasImg from '@/assets/img/canvas/drawboard.webp';
 import flowImg from '@/assets/img/drawbed/canvas/compress.png'
 import { codeList } from '@/store/effect.js'; // 引入代码列表
 

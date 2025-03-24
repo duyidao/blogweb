@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <img :style="code"
-    src="@/assets/img/css/fit.jpg"
+    src="@/assets/img/css/fit.webp"
     alt="图片倒影">
 </template>
 
