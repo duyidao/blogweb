@@ -1,150 +1,152 @@
 <script setup>
 import axios from "axios";
 import { adcodeList } from "@/store/adcode.js";
-import { preloadBMap } from "@/utils/scriptPreload.js";
-import { 
-  getBMapLocation, 
-  getGreetingByTime, 
-  ERROR_MSG, 
-  WEATHER_IMAGES 
-} from "@/utils/weatherHook.js";
+import { preloadBMap } from '@/utils/scriptPreload.js';
+import { getBMapLocation, getGreetingByTime, ERROR_MSG, WEATHER_IMAGES } from '@/utils/weatherHook.js';
 import md5 from 'blueimp-md5';
 import qing from '/images/qing.svg'
 
-// 响应式数据
-const weatherData = ref({
-  fewDaylist: [], // 未来几天的天气数据
-  todayData: {}, // 当天天气数据
-  location: '获取定位中...', // 位置信息
-  coordinates: {}, // 经纬度信息
-  greeting: '欢迎光临~', // 问候语
-  backgroundImg: '/blogweb/images/sunny.webp' // 背景图片
-})
+// 获取天气数据
+const weatherList = ref([]);
+const addComp = ref('获取定位中...');
+const userPoint = ref({});
 
-const interval = ref(null);
+const interval = ref("");
+const weatherHello = ref("欢迎光临~");
+const waetherImg = ref('/blogweb/images/sunny.webp');
+// 获取欢迎词
+const getHelloFn = () => {
+  let now = new Date();
+  const hour = now.getHours();
+  const weather = weatherList.value[0]?.dayweather;
+  const res = getGreetingByTime(hour, weather);
+  weatherHello.value = res.hello;
+  waetherImg.value = res.weatherImg;
+};
 
-// 定位处理逻辑
-const handleLocation = {
-  onError: (error) => {
-    weatherData.value.location = ERROR_MSG[error.code] || '定位失败';
-  },
 
-  onSuccess: async (position) => {
-    const { longitude, latitude } = position.coords;
-    weatherData.value.coordinates = { longitude, latitude };
-    
-    const point = new BMap.Point(longitude, latitude);
-    const location = await getBMapLocation(point);
-    
-    const provinceData = adcodeList.find(p => 
-      location.province.includes(p.provice)
-    );
-    
-    if (provinceData) {
-      const city = provinceData.city.find(c => 
-        location.city.includes(c.name)
-      );
-      if (city) updateWeatherData(city.adcode, location);
-    }
-  }
+let code = "440100";
+
+// 失败时的回调函数，错误提示信息
+function onError(error) {
+  addComp.value = ERROR_MSG[error.code];
 }
-
-// 数据更新方法
-const updateWeatherData = (code, location) => {
-  weatherData.value.location = `${location.province} ${location.city} ${location.district} ${location.street} ${location.streetNumber} ${location.town}`;
-  fetchWeather(code);
-}
-
-// API请求
-const fetchWeather = async (code) => {
-  try {
-    const hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
-    const { data } = await axios.get(`https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`);
-
-    const currentHour = new Date().getHours();
-    weatherData.value.todayData = {
-      ...data.forecasts[0].casts[0],
-      weatherImg: WEATHER_IMAGES[data.forecasts[0].casts[0].dayweather]?.[currentHour >= 6 && currentHour < 18 ? 'day' : 'night'] || qing
-    }
-    weatherData.value.fewDaylist = data.forecasts[0].casts.map(cast => ({
-      ...cast,
-      weatherImg: WEATHER_IMAGES[cast.dayweather]?.[currentHour >= 6 && currentHour < 18 ? 'day' : 'night'] || qing
-    })).filter((item, index) => index !== 0);
-
-    updateGreeting();
-  } catch (error) {
-    console.error('天气数据获取失败:', error);
-  }
-}
-
-// 问候语更新
-const updateGreeting = () => {
-  const { hour, weather } = {
-    hour: new Date().getHours(),
-    weather: weatherData.value.todayData?.dayweather
-  }
-  const greeting = getGreetingByTime(hour, weather);
-  weatherData.value.greeting = greeting.hello;
-  weatherData.value.backgroundImg = greeting.weatherImg;
-}
-
-// 定位逻辑封装
-const getGeoLocation = () => {
-  if (!navigator.geolocation) {
-    weatherData.value.location = "浏览器不支持定位";
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(
-    handleLocation.onSuccess,
-    handleLocation.onError,
-    { enableHighAccuracy: true, maximumAge: 1000 }
+// 成功时的回调函数，获取定位成功返回的经纬度数据，结合百度那边提供的接口进行具体位置的转换
+async function onSuccess(position) {
+  // 经度
+  userPoint.value.longitude = position.coords.longitude;
+  // 纬度
+  userPoint.value.latitude = position.coords.latitude;
+  // 根据经纬度获取地理位置，不太准确，获取城市区域还是可以的
+  let point = new BMap.Point(
+    userPoint.value.longitude,
+    userPoint.value.latitude
   );
+  addComp.value = await getBMapLocation(point);
+  let cityList = adcodeList.find((item) => {
+    return addComp.value.province.includes(item.provice);
+  });
+  if (!cityList) return;
+  let city = cityList.city.find((item) => {
+    return addComp.value.city.includes(item.name);
+  });
+  code = city.adcode;
+}
+// 创建一个函数，主要功能是在调用html5的geolocation()前，先判断当前浏览器是否支持html5，（PC绝大部分浏览器不支持或者拒绝html5定位）
+function getLocation() {
+  let options = {
+    enableHighAccuracy: true,
+    maximumAge: 1000,
+  };
+  if (navigator.geolocation) {
+    // 调用html5的geolocation()方法
+    // 第一个参数是定位成功后的回调函数，第二个参数是定位失败后的回调函数，第三个参数是定位的一些配置参数
+    // 注意：第三个参数里有一个enableHighAccuracy属性，这个属性是用来开启高精度定位的，默认是false，开启后，会消耗更多的电量和流量
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+  } else {
+    // 否则浏览器不支持geolocation
+    addComp.value = "浏览器不支持定位";
+  }
+}
+const handleWeather = () => {
+  const hour = new Date().getHours();
+  let hash = md5(`city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023d4af823828bdc195310c1e700a262ce6`)
+  axios
+    .get(
+      `https://restapi.amap.com/v3/weather/weatherInfo?city=${code}&extensions=all&key=c687eb90870c9b75cf7c54d1124e2023&sig=${hash}`
+    )
+    .then((res) => {
+      weatherList.value = res.data.forecasts[0].casts.map(item => {
+        return {
+          ...item,
+          weatherImg: WEATHER_IMAGES[item.dayweather][hour >= 6 && hour < 18 ? 'day' : 'night']
+        }
+      });
+      getHelloFn();
+    });
+};
+
+const getPositionFn = () => {
+  getLocation()
+  handleWeather()
 }
 
-// 生命周期
-onMounted(async () => {
+// 页面载入时请求获取当前地理位置
+onMounted(() => {
   try {
-    await preloadBMap();
-    setTimeout(() => {
-      getGeoLocation();
-      fetchWeather('440100'); // 默认广州
-    }, 1000);
-    interval.value = setInterval(updateGreeting, 1000 * 60 * 60 * 2); // 每2小时更新问候语
+    // html5获取地理位置
+    preloadBMap().then((res) => {
+      setTimeout(() => {
+        getPositionFn()
+      }, 1000)
+    })
+    interval.value = setInterval(getHelloFn, 100000);
   } catch (error) {
-    console.error('地图脚本加载失败:', error);
+    console.error('脚本加载失败:', error);
   }
 });
 
-onUnmounted(() => clearInterval(interval.value));
+onUnmounted(() => {
+  clearInterval(interval.value);
+});
 </script>
 
 <template>
   <div class="weather"
-    :style="{ backgroundImage: `url(${weatherData.backgroundImg})` }">
+    :style="{ backgroundImage: `url(${waetherImg})` }">
     <div class="weather-today">
       <p class="weather-today__title">
-        <span class="end">{{ weatherData.location }}</span>
-        <span>{{ weatherData.coordinates?.longitude || 0 }}</span>
-        <span>{{ weatherData.coordinates?.latitude || 0 }}</span>
+        <template v-if="!addComp.province">
+          <span class="end">{{ addComp }}</span>
+        </template>
+        <template v-else>
+          <span>{{ addComp.province }}</span>
+          <span>{{ addComp.city }}</span>
+          <span>{{ addComp.district }}</span>
+          <span>{{ addComp.street }}</span>
+          <span class="end">{{ addComp.streetNumber }}</span>
+        </template>
+        <span>{{ userPoint.longitude }}</span>
+        <span>{{ userPoint.latitude }}</span>
       </p>
       <div class="weather-today__content">
         <div class="today__content__info">
-          <img :src="weatherData.todayData?.weatherImg || qing" alt="" />
+          <img :src="weatherList[0]?.weatherImg || qing"
+            alt="" />
           <div class="today__content">
             <div class="today__content__daytemp">
-              {{ weatherData.todayData?.daytemp || 0 }}°
+              {{ weatherList[0]?.daytemp || 0 }}°
             </div>
             <div class="today__content__weather">
-              {{ weatherData.todayData?.dayweather || '晴' }}
+              {{ weatherList[0]?.dayweather || '晴' }}
             </div>
           </div>
         </div>
-        <div class="today__content__hello">{{ weatherData.greeting }}</div>
+        <div class="today__content__hello">{{ weatherHello }}</div>
       </div>
     </div>
     <div class="weather-list">
-      <div v-for="item in weatherData.fewDaylist"
+      <div v-for="item in weatherList.filter((item, index) => index !== 0)"
         :key="item.date"
         class="weather-item">
         <div class="weather-date">{{ item.date }}</div>
