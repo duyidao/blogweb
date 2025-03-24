@@ -1,74 +1,72 @@
 <script setup>
 import { screenWidth, scrollProgress, scrollAngle } from "@/store/index.js";
-import { useMeta } from "vue-meta";
-import { loading } from '@/store/router'
+import { loading } from '@/store/router';
+import methods from '@/utils/customMethod';
 
 const route = useRoute();
 
-onMounted(() => {
-  useMeta({
-    title: "刀刀小站效果展示 - 刀刀博客",
-    meta: [
-      {
-        name: "keywords",
-        content: "刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端,程序员",
-      },
-      {
-        name: "description",
-        content:
-          "欢迎来到刀刀小站，此模块用于展示博客效果，技术学习永无止尽，做到今天的自己比昨天更优秀，每天都要更努力！",
-      },
-    ],
-  });
-});
+// 优化1：使用组合式函数封装逻辑
+const useResponsive = () => {
+  const fontSize = computed(() => (screenWidth.value / 750) * 16)
+  
+  const updateDimensions = methods.debounce(() => {
+    screenWidth.value = document.documentElement.clientWidth || document.body.clientWidth
+    document.documentElement.style.fontSize = `${fontSize.value}px`
+  }, 200)
 
-const resizeFn = () => {
-  screenWidth.value =
-    document.documentElement.clientWidth || document.body.clientWidth;
-  let fontSize = (document.body.clientWidth / 750) * 16;
-  document.documentElement.style.fontSize = fontSize + "px";
-};
-
-const scrollFn = () => {
-  let scrollTop = document.documentElement.scrollTop;
-  let total = document.documentElement.scrollHeight - window.innerHeight;
-  scrollProgress.value = parseInt(scrollTop / total * 100);
-  scrollAngle.value = window.scrollY / total * 360;
+  return { updateDimensions }
 }
 
+// 优化2：滚动逻辑重构
+const useScrollTracking = () => {
+  const handleScroll = methods.debounce(() => {
+    const scrollTop = document.documentElement.scrollTop
+    const total = document.documentElement.scrollHeight - window.innerHeight
+    scrollProgress.value = parseInt((scrollTop / total) * 100)
+    scrollAngle.value = (window.scrollY / total) * 360
+  }, 200)
+
+  return { handleScroll }
+}
+
+// 优化3：使用watchEffect管理事件监听
+const { updateDimensions } = useResponsive()
+const { handleScroll } = useScrollTracking()
+
 onMounted(() => {
-  resizeFn();
-  scrollFn();
-  window.addEventListener("resize", resizeFn);
-  window.addEventListener('scroll', scrollFn, false);
-});
+  window.addEventListener('resize', updateDimensions)
+  window.addEventListener('scroll', handleScroll)
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", resizeFn);
-  window.removeEventListener('scroll', scrollFn);
-});
+  window.removeEventListener('resize', updateDimensions)
+  window.removeEventListener('scroll', handleScroll)
+})
 
-document.addEventListener("visibilitychange", function () {
-  if (document.hidden) {
-    document.title = "诶(ﾟДﾟ*)ﾉ你要离开了吗";
-  } else {
-    document.title = "嘿(≧∇≦)ﾉ欢迎回来";
-    setTimeout(() => {
-      document.title = '刀刀博客小站'
-    }, 10000);
+// 优化4：页面可见性状态管理
+const visibilityHandler = ref(null)
+watchEffect((onCleanup) => {
+  visibilityHandler.value = () => {
+    if (document.hidden) {
+      document.title = "诶(ﾟДﾟ*)ﾉ你要离开了吗"
+    } else {
+      document.title = "嘿(≧∇≦)ﾉ欢迎回来"
+      setTimeout(() => (document.title = '刀刀博客小站'), 10000)
+    }
   }
-});
+  
+  document.addEventListener('visibilitychange', visibilityHandler.value)
+  onCleanup(() => document.removeEventListener('visibilitychange', visibilityHandler.value))
+})
 
-const key = computed(() => {
-  return route.path + Math.random();
-});
+const routeKey = computed(() => `${route.fullPath}?v=${route.hash}`)
 </script>
 
 <template>
   <div class="blog" v-close="false">
     <RouterButtons v-if="!route.path.includes('404')" />
 
-    <router-view :key="key" class="content"/>
+    <router-view :key="routeKey" class="content"/>
 
     <!-- 路由切换进度条 -->
     <my-loading :loading="loading" />

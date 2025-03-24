@@ -83,9 +83,6 @@ dependencies:
   vue-codemirror:
     specifier: ^6.1.1
     version: 6.1.1(codemirror@6.0.1)(vue@3.4.21)
-  vue-meta:
-    specifier: 3.0.0-alpha.7
-    version: 3.0.0-alpha.7(vue@3.4.21)
   vue-router:
     specifier: ^4.3.0
     version: 4.3.0(vue@3.4.21)
@@ -2356,7 +2353,7 @@ packages:
     engines: {node: '>=0.12'}
 
   /errno@0.1.8:
-    resolution: {integrity: sha1-i7Ppx9Rjvkl2/4iPdrSAnrwugR8=}
+    resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
     hasBin: true
     requiresBuild: true
     dependencies:
@@ -3365,7 +3362,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
 
   /make-dir@2.1.0:
-    resolution: {integrity: sha1-XwMQ4YuL6JjMBwCSlaMK5B6R5vU=}
+    resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
     requiresBuild: true
     dependencies:
@@ -3449,7 +3446,7 @@ packages:
     dev: false
 
   /mime@1.6.0:
-    resolution: {integrity: sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=}
+    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==}
     engines: {node: '>=4'}
     hasBin: true
     requiresBuild: true
@@ -4142,7 +4139,7 @@ packages:
     dev: true
 
   /source-map@0.6.1:
-    resolution: {integrity: sha1-dHIq8y6WFOnCh6jQu95IteLxomM=}
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
     requiresBuild: true
 
@@ -4681,14 +4678,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.4.21
-
-  /vue-meta@3.0.0-alpha.7(vue@3.4.21):
-    resolution: {integrity: sha512-C5JgqeVvqjPvWzJ1+Wpffk5GWxdlskuxP3q7iOQrI7TZ+ofVMDA5RDd1iAvAcPwfbaSrhGd8zda0zu+IfBvSLg==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      vue: 3.4.21
-    dev: false
 
   /vue-router@4.3.0(vue@3.4.21):
     resolution: {integrity: sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==}

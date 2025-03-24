@@ -1,77 +1,39 @@
 <script setup>
 import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
-import { useMeta } from "vue-meta";
-import methods from '@/utils/customMethod';
+import methods from '@/utils/customMethod'; // 按需导入方法
 
-const route = useRoute();
-const routeList = ref([]);
+// 优化2：使用更清晰的变量名
+const currentRoute = useRoute();
+const relatedArticles = ref([]);
 
-// 从数组中筛选出6个数据
-function getRandomElementsFromArray(arr, n) {
-  if (n > arr.length) {
-    throw new RangeError(
-      "Cannot extract more elements than available in the array."
-    );
-  }
-
-  // Create a copy of the original array to avoid modifying it
-  const shuffledArray = [...arr];
-
-  // Fisher-Yates (Knuth) shuffle algorithm
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-
-  // Return the first n elements from the shuffled array
-  return shuffledArray.slice(0, n);
+// 优化4：使用现代数组方法重构随机排序
+const getShuffledArray = (array, count) => {
+  return [...array]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, count)
 }
 
-onMounted(() => {
-  useMeta({
-    title: routeNow.value.title + " - 刀刀博客",
-    meta: [
-      {
-        name: "keywords",
-        content:
-          "刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端," +
-          routeNow.value.title,
-      },
-      {
-        name: "description",
-        content: `${routeNow.value.title}，主要记录${routeNow.value.info}`,
-      },
-    ],
-  });
+
+
+// 优化4：使用watchEffect自动追踪依赖
+watchEffect(() => {
+  if (!routeNow.value.path.includes("detail")) return;
+  
+  const filtered = generateArticleRoutes
+    .filter(item => item.path.includes(routeNow.value.detailType))
+    .filter(item => !routeNow.value.path.includes(item.path));
+    
+  relatedArticles.value = filtered.length > 6 
+    ? getShuffledArray(filtered, 6)
+    : filtered;
 });
 
-watch(
-  () => routeNow.value,
-  (to, from) => {
-    if (!to.path.includes("detail")) return;
-    let arr = generateArticleRoutes
-      .filter((item) => item.path.includes(to.detailType))
-      .filter((item) => !to.path.includes(item.path));
-    routeList.value = arr.length > 6 ? getRandomElementsFromArray(arr, 6) : arr;
-  },
-  {
-    immediate: true,
-    deep: true,
-  }
-);
-
 // 点击去往gitee
-const handleGiteeFn = () => {
-  let a = document.createElement("a");
-  a.href = "https://gitee.com/duyidao";
-  a.target = "_blank";
-  a.click();
-  a.remove();
-};
+const handleGiteeFn = () => window.open('https://gitee.com/duyidao', '_blank');
 
 const handleBackFn = () => {
-  methods.$goRouter(route.path.split('/')[2], '/article/', 'replace');
+  methods.$goRouter(currentRoute.path.split('/')[2], '/article/', 'replace');
 }
 
 const breadList = computed(() => ([
@@ -100,10 +62,10 @@ export { componentOptions };
 
 <template>
   <div class="catalogue" id="catalogue">
-    <div class="catalogue-title">
+    <header class="catalogue-title" aria-labelledby="pageTitle">
       <my-breadcrumb class="catalogue-title-nav" :list="breadList" />
       <div class="catalogue-title-big">
-        <p class="catalogue-title-text">{{ routeNow.title }}</p>
+        <h1 class="catalogue-title-text">{{ routeNow.title }}</h1>
         <p class="catalogue-title-subtext">{{ routeNow.info }}</p>
         <ul>
           <li v-for="(item, index) in routeNow.tags"
@@ -112,7 +74,7 @@ export { componentOptions };
           </li>
         </ul>
       </div>
-    </div>
+    </header>
     <div class="catalogue-body">
       <main class="catalogue-content">
         <router-view></router-view>
@@ -158,11 +120,11 @@ export { componentOptions };
             </div>
 
             <div class="list-info">
-              <template v-if="routeList.length > 0">
-                <div v-for="(item, index) in routeList"
+              <template v-if="relatedArticles.length > 0">
+                <div v-for="(item, index) in relatedArticles"
                   :key="index"
                   class="list-item"
-                  @click="$goRouter(item.path, '/detail/')">
+                  @click="methods.$goRouter(item.path, '/detail/')">
                   <p class="list-item-title">{{ item.meta.title }}</p>
                   <div class="list-item-info">
                     <svg-icon name="article"

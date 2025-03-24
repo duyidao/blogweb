@@ -1,0 +1,1 @@
+import{k as t}from"./index-DKBlgV4z.js";import{o as a,a as o,b as s,l as r}from"./vender-Dkdm4IfB.js";const c={class:"box-img"},_={__name:"vmax",props:{code:{type:String,default:""}},setup(e){return(l,m)=>(a(),o("div",c,[s("img",{title:"vmax",src:t,style:r(e.code),alt:"vmax"},null,4)]))}};export{_ as default};

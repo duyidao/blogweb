@@ -2,43 +2,20 @@
 import { generateArticleRoutes } from "@/router/index";
 import { routeNow } from "@/store/router.js";
 import { type } from "@/store/index.js";
-import { useMeta } from "vue-meta";
 import methods from '@/utils/customMethod';
 import TypeSwitch from './components/typeSwitch/index.vue';
 
 const routeList = ref([]);
+const currentType = computed(() => routeNow.value.articleType)
 
-onMounted(() => {
-  useMeta({
-    title: "文章列表 - 刀刀博客",
-    meta: [
-      {
-        name: "keywords",
-        content: "刀刀,刀刀博客,刀刀小站,vue,js,javascript,css,前端,程序员",
-      },
-      {
-        name: "description",
-        content: "文章列表模块，记录着效果或功能实现的方法代码，可上手实操~",
-      },
-    ],
-  });
-});
-
-watch(
-  () => routeNow.value,
-  (to, from) => {
-    if (!to.path.includes("article")) return;
-    routeList.value = generateArticleRoutes.filter((item) =>
-      item.path.startsWith(to.articleType)
-    );
-  },
-  {
-    immediate: true,
-    deep: true,
-  }
-);
-// 获取要观察的目标元素列表
-const articleItemArr = ref([]);
+// 优化3：使用watchEffect自动追踪依赖
+watchEffect(() => {
+  if (!routeNow.value.path.includes('article')) return
+  
+  routeList.value = generateArticleRoutes
+    .filter(item => item.path.startsWith(currentType.value))
+    .filter(item => !routeNow.value.path.includes(item.path))
+})
 
 const routerFn = (item) => {
   methods.$goRouter(item.path, "/detail/");

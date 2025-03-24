@@ -1,0 +1,72 @@
+import{_ as x}from"./index-DaFcaQHa.js";import{_ as I}from"./index-BELXwgsc.js";import{_ as g}from"./index-JFGvtYyG.js";import{r as d,C as R,O as y,o as p,B as A,s as G,b as e,q as m,u as o,x as h,j as M,a1 as X,a as C,t as D,y as B,z as w}from"./vender-Dkdm4IfB.js";import{c as T,m as s}from"./effect-BFrBJKb1.js";import{_ as V}from"./cat-D0qXLVnw.js";import{_ as S}from"./index-DKBlgV4z.js";import"./index-CY4hr8E5.js";import"./rem-BfWmjlJA.js";const r=l=>(B("data-v-4f460fb8"),l=l(),w(),l),U={class:"svg__container"},O={class:"input__list"},N={viewBox:"0 0 500 300"},Y={id:"conform"},b=["href"],L=r(()=>e("feColorMatrix",{in:"ORIGIN_IMAGE",type:"saturate",values:"0",result:"GRAY_IMAGE"},null,-1)),P=r(()=>e("feDisplacementMap",{in:"SourceGraphic",in2:"GRAY_IMAGE",scale:"15",xChannelSelector:"R",yChannelSelector:"R",result:"TEXTURED_TEXT"},null,-1)),k=["href"],z=r(()=>e("feColorMatrix",{in:"TEXTURED_TEXT",type:"matrix",values:"1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0",result:"OPACITY_TEXT"},null,-1)),j=r(()=>e("feBlend",{in:"BG",in2:"OPACITY_TEXT",mode:"multiply",result:"BLENDED_TEXT"},null,-1)),F=["href"],$=["fill"],q={__name:"index",setup(l){const n=d("Logo"),a=d("#ff0000"),i=d(V),E=f=>{const t=new FileReader;t.addEventListener("load",_=>{const u=_.target.result;i.value=u}),t.readAsDataURL(f)};return R(()=>{T.value=[`<svg viewBox="0 0 500 300">
+  <defs>
+    <filter id="conform">
+      <feImage
+        :href="fileValue"
+        result="ORIGIN_IMAGE"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+      ></feImage>
+      <feColorMatrix
+        in="ORIGIN_IMAGE"
+        type="saturate"
+        values="0"
+        result="GRAY_IMAGE"
+      ></feColorMatrix>
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="GRAY_IMAGE"
+        scale="15"
+        xChannelSelector="R"
+        yChannelSelector="R"
+        result="TEXTURED_TEXT"
+      ></feDisplacementMap>
+      <feImage
+        :href="fileValue"
+        in="TEXTURED_TEXT"
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        preserveAspectRatio="none"
+        result="BG"
+      ></feImage>
+      <feColorMatrix
+        in="TEXTURED_TEXT"
+        type="matrix"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"
+        result="OPACITY_TEXT"
+      ></feColorMatrix>
+      <feBlend
+        in="BG"
+        in2="OPACITY_TEXT"
+        mode="multiply"
+        result="BLENDED_TEXT"
+      ></feBlend>
+    </filter>
+  </defs>
+  <image
+    :href="fileValue"
+    x="0"
+    y="0"
+    width="100%"
+    height="100%"
+    preserveAspectRatio="none"
+  ></image>
+  <text
+    x="50%"
+    y="50%"
+    font-size="10em"
+    font-weight="bold"
+    text-anchor="middle"
+    alignment-baseline="middle"
+    :fill="colorValue"
+    filter="url(#conform)"
+  >
+    {{ inputValue }}
+  </text>
+</svg>
+`],s.value={...s.value,type:"vue",activeIndex:0}}),y(()=>{T.value=[""],s.value={...s.value,type:"javascript",activeIndex:0}}),(f,t)=>{const _=g,u=I,v=x;return p(),A(v,{title:"纹理适配"},{default:G(()=>[e("div",U,[m(_,{style:{width:"100%"},onChange:E}),e("div",O,[m(u,{modelValue:o(n),"onUpdate:modelValue":t[0]||(t[0]=c=>h(n)?n.value=c:null)},null,8,["modelValue"]),M(e("input",{"onUpdate:modelValue":t[1]||(t[1]=c=>h(a)?a.value=c:null),type:"color",name:"",id:""},null,512),[[X,o(a)]])]),(p(),C("svg",N,[e("defs",null,[e("filter",Y,[e("feImage",{href:o(i),result:"ORIGIN_IMAGE",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,b),L,P,e("feImage",{href:o(i),in:"TEXTURED_TEXT",x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none",result:"BG"},null,8,k),z,j])]),e("image",{href:o(i),x:"0",y:"0",width:"100%",height:"100%",preserveAspectRatio:"none"},null,8,F),e("text",{x:"50%",y:"50%","font-size":"10em","font-weight":"bold","text-anchor":"middle","alignment-baseline":"middle",fill:o(a),filter:"url(#conform)"},D(o(n)),9,$)]))])]),_:1})}}},le=S(q,[["__scopeId","data-v-4f460fb8"]]);export{le as default};

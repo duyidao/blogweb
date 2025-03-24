@@ -12,4 +12,11 @@ export default {
     // 如果找到匹配项，则返回第一个捕获组的内容，即冒号后面的值
     return match ? match[1].trim() : '';
   },
+  debounce: (fn, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
+  },
 };
