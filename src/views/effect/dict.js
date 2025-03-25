@@ -81,5 +81,19 @@ export default {
         title: '断点续传',
       },
     ],
+    anchor: [
+      {
+        name: 'scrollIntoView',
+        title: 'scrollIntoView',
+      },
+      {
+        name: 'scrollTo',
+        title: 'scrollTo',
+      },
+      {
+        name: 'scrollBy',
+        title: 'scrollBy',
+      },
+    ],
   }
 };
